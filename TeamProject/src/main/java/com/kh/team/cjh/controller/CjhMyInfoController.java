@@ -15,7 +15,7 @@ import com.kh.team.domain.CjhUserVo;
 
 @Controller
 @RequestMapping("/cjh")
-public class CjhMyInfoController {
+public class CjhMyInfoController { 
 	
 	@Inject
 	private CjhUserService userService;
