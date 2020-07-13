@@ -43,6 +43,12 @@ public class CjhUserDaoImpl implements CjhUserDao {
 		return vo;
 	}
 
+	@Override
+	public void getPNum(String u_id) throws Exception {
+		
+	}
+
+
 	
 
 }
