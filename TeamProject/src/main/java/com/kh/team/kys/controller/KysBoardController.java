@@ -10,18 +10,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kh.team.domain.Kys_BoardVo;
+import com.kh.team.domain.Kys_MainVo;
+import com.kh.team.domain.Kys_ServeVo;
 import com.kh.team.kys.service.KysBoardService;
+import com.kh.team.kys.service.KysServeService;
 
 @Controller
 @RequestMapping("/manager")
-public class KysBoardController { 
+public class KysBoardController {
 	
 	@Inject
 	private KysBoardService boardService;
+	
+	@Inject
+	private KysServeService serveService;
+	
 	//관리자 메인 화면
 	@RequestMapping(value="/manager_main",method = RequestMethod.GET)
-	public void manager_main() throws Exception {
-		
+	public String manager_main(Model model) throws Exception {
+		 List<Kys_MainVo> mainList = serveService.mainList();
+			List<Kys_ServeVo> serveList = serveService.serveList();
+			 model.addAttribute("mainList",mainList);
+			 model.addAttribute("serveList",serveList);
+		return "manager/manager_main";
 	}
 	
 	//상품 리스트
@@ -37,9 +48,12 @@ public class KysBoardController {
 	public void board_produce() throws Exception{
 		
 	}
+	//등록 처리 
 	@RequestMapping(value="/shop_single_input", method = RequestMethod.POST)
 	public String shop_single_input(Kys_BoardVo boardVo) throws Exception{
 		boardService.boardInsert(boardVo);
 		return "redirect:manager/manager_main";
 	}
+
+
 }
