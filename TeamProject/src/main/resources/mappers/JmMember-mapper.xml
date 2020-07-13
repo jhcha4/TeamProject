@@ -24,9 +24,9 @@
 	</insert>
 	
 	<!-- 관리자 페이지 - 회원목록 -->
-		<select id="selectList">
+		<select id="selectList" resultType="JmMemberVo">
 		
-		select * from TBL_USER order by u_info;
+		select * from TBL_USER order by u_info
 		
 		
 		</select>
