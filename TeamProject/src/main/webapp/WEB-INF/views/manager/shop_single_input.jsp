@@ -5,10 +5,10 @@
 <script type="text/javascript" >
 $(function() {
 	var options = $("#serveOption option");
-	$("select[name=mainOption]").change(function(){
+	$("#mainOption").change(function(){
 		$("#serveOption option").remove();
 		var main = $(this).val();
-		var serve = $("select[name=serveOption]").val();
+		var serve = $("#serveOption").val();
 		console.log(main);
 		if(main == "T")                                                     
 			$("#serveOption").append(options[0]).append(options[1]).append(options[2]).append(options[3]);
@@ -39,7 +39,7 @@ $(function() {
           <div class="col-md-4">
             <img src="../../resources/images/cloth_1.jpg" alt="Image" class="img-fluid">
           </div>
-          <form action="shop_single_input" method="post">
+          <form role="form"  method="post">
           <div class="col-md-4">
           
           	<!-- 상품 등록 상세 메뉴 -->
@@ -118,7 +118,7 @@ $(function() {
             </div>
 
             </div>
-            <p><input type="submit" class="buy-now btn btn-sm btn-primary">상품 등록하기</input></p>
+            <p><a type="submit" class="buy-now btn btn-sm btn-primary">상품 등록하기</a></p>
 
           </div>
        </form>
