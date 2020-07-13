@@ -18,13 +18,18 @@
 	
 	<insert id="insertMember"  >
 		
-		insert into tbl_user(u_id ,u_pw ,u_name,u_gender, u_email,u_address, u_phone)
-		values (#{u_id}, #{u_pw},#{u_name},#{u_gender},#{u_email},#{u_address},#{u_phone})
+		insert into tbl_user(u_info,u_id ,u_pw ,u_name,u_gender, u_email,u_address, u_phone)
+		values (seq_user_count.nextval,#{u_id}, #{u_pw},#{u_name},#{u_gender},#{u_email},#{u_address},#{u_phone})
 	
 	</insert>
 	
-	
-	
+	<!-- 관리자 페이지 - 회원목록 -->
+		<select id="selectList">
+		
+		select * from TBL_USER order by u_info;
+		
+		
+		</select>
 	
 	
 	
