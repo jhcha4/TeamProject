@@ -8,40 +8,18 @@
 	
 	</div>
 		<div class="col-md-8">
-			<div class="btn-group" role="group">
-				 
-				<button class="btn btn-secondary" type="button">
-					Left
-				</button> 
-				<button class="btn btn-secondary" type="button">
-					Center
-				</button> 
-				<button class="btn btn-secondary" type="button">
-					Right
-				</button> 
-				<button class="btn btn-secondary" type="button">
-					Justify
-				</button>
-			</div>
+		
 			<div class="row">
 				<div class="col-md-12">
 					<table class="table">
 						<thead>
-							<tr>
-								<th>
-									#
-								</th>
-								<th>
-									Product
-								</th>
-								<th>
-									Payment Taken
-								</th>
-								<th>
-									Status
-								</th>
-							</tr>
-						</thead>
+						<tr>
+							<th>상품 번호</th>
+							<th>상품 이름</th>
+							<th>Payment Taken</th>
+							<th>Status</th>
+						</tr>
+					</thead>
 						<tbody>
 							<tr>
 								<td>

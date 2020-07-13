@@ -1,10 +1,13 @@
 package com.kh.team.jm;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -70,6 +73,14 @@ public class Jm_controller {
 	public String jmMemberSignUpRun(JmMemberVo vo) throws Exception{
 		jmMemberService.insertMember(vo);
 		return "redirect:/jm/jm_login";
+	}
+	
+	//관리자 페이지- 일반회원 리스트 조회
+	@RequestMapping(value="jm_userList",method=RequestMethod.GET)
+	public String selectList(Model model) throws Exception{
+			List<JmMemberVo> list = jmMemberService.selectList();
+			model.addAttribute("list",list);
+		return "redirect:/jm/jm_userList";
 	}
 	
 	

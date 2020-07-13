@@ -1,6 +1,7 @@
 package com.kh.team.jm;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -35,6 +36,12 @@ public class JmMemberDaoImpl implements JmMemberDao {
 	public void insertMember(JmMemberVo vo) throws Exception{
 		SqlSession.insert(NAMESPACE+"insertMember" ,vo);
 		
+	}
+	@Override
+	public List<JmMemberVo> selectList() throws Exception {
+		
+		
+		return SqlSession.selectList(NAMESPACE+"selectList");
 	}
 
 }
