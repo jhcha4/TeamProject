@@ -136,6 +136,16 @@
 				<a class="btn btn-warning btn-large" href="/jm/jm_login">로그인</a>
 				<a class="btn btn-warning btn-large" href="/jm/jm_signUp">회원가입 가기</a>
 			<p>
+				<a href="/jm/logout" class="btn btn-default btn-danger">로그아웃</a>
+			<c:if test="${not empty jmMemberVo }">
+				<div class="pull-right">
+                      
+                    </div>
+			
+			
+			</c:if>
+			
+			
 			
 		</div>
 	</div>

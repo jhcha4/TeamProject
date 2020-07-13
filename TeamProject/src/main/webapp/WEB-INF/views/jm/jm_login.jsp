@@ -25,20 +25,20 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<form role="form">
+			<form id="formIdPw"  role="form" action="/jm/jm_login" method="post">
 				<div class="form-group">
 					 
 					<label for="user_id">
 						아이디
 					</label>
-					<input type="text" class="form-control" id="user_id"  id="user_id" required />
+					<input type="text" class="form-control" id="user_id"  name="u_id" required />
 				</div>
 				<div class="form-group">
 					 
 					<label for="user_pw">
 						비밀번호
 					</label>
-					<input type="password" class="form-control" id="user_pw" name="user_pw" required  />
+					<input type="password" class="form-control" id="user_pw" name="u_pw" required  />
 				</div>
 				
 					 
