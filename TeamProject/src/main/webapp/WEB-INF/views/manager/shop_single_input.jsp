@@ -1,18 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
+<%@ include file="../include/head.jsp" %>
 <script type="text/javascript" >
 $(function() {
-	
-	$("select[name=serveOption]").change(function(){
-		console.log($(this).val());
+	var options = $("#serveOption option");
+	$("#mainOption").change(function(){
+		$("#serveOption option").remove();
+		var main = $(this).val();
+		var serve = $("#serveOption").val();
+		console.log(main);
+		if(main == "T")                                                     
+			$("#serveOption").append(options[0]).append(options[1]).append(options[2]).append(options[3]);
+		if(main == "P")                                                       
+			$("#serveOption").append(options[4]).append(options[5]).append(options[6]).append(options[7]);
+		if(main == "S")                                                       
+			$("#serveOption").append(options[8]).append(options[9]).append(options[10]).append(options[11]);
+		if(main == "A")                                                       
+			$("#serveOption").append(options[12]).append(options[13]).append(options[14]).append(options[15]);
 	});
+	
 });
 </script>
-
-<%@ include file="../include/head.jsp" %>
-
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
@@ -20,19 +29,23 @@ $(function() {
         </div>
       </div>
     </div>  
+<%@ include file="../include/main_bar.jsp" %>
 
     <div class="site-section">
+    
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
+   		
+          <div class="col-md-4">
             <img src="../../resources/images/cloth_1.jpg" alt="Image" class="img-fluid">
           </div>
-          <div class="col-md-6">
+          <form role="form"  method="post">
+          <div class="col-md-4">
           
           	<!-- 상품 등록 상세 메뉴 -->
           	<div>
 			<label>main : </label> 
-			<select name="mainOption" id="mainOption">
+			<select name="main_code" id="mainOption">
 				<option value="T">상의
 				<option value="P">하의
 				<option value="A">악세사리
@@ -41,19 +54,36 @@ $(function() {
 		</div>
 		<div>
 			<label>serve : </label> 
-			<select name="serveOption" id="serveOption">
-				<option>
-				
+			<select name="serve_code" id="serveOption">
+				<option value="TH">반팔
+				<option value="TL">긴팔
+				<option value="TS">셔츠
+				<option value="TM">맨투맨
+				<option value="PJ">청바지
+				<option value="PM">면바지
+				<option value="PH">반바지
+				<option value="P7">7부바지
+				<option value="SD">구두
+				<option value="SU">운동화
+				<option value="SS">스릴퍼
+				<option value="SR">로퍼
+				<option value="AR">반지
+				<option value="AW">지갑
+				<option value="AC">모자
+				<option value="AB">가방
 			</select>
+		
 		</div>
 		
 		
             <h2 class="text-black" >상품이름:<input type="text" id="p_name" name="p_name"></h2>
-            <p id="p_content" name="p_content">상품 설명</p>
-            <p class="mb-4">상품 설명2</p>
+          	  <p id="p_content" name="p_content">상품 설명</p>
+            <textarea rows="" cols="" id="p_content"></textarea>
+          	  <p class="mb-4">상품 설명2</p>
             <p><strong class="text-primary h4">
             가격:<input type="text" id="p_price" name="p_price">
             </strong></p>
+           
             <div class="mb-1 d-flex">
               <label for="option-sm" class="d-flex mr-3 mb-3">
                 <span class="d-inline-block mr-2" style="top:-2px; position: relative;">
@@ -88,9 +118,11 @@ $(function() {
             </div>
 
             </div>
-            <p><a href="cart.html" class="buy-now btn btn-sm btn-primary">상품 등록하기</a></p>
+            <p><a type="submit" class="buy-now btn btn-sm btn-primary">상품 등록하기</a></p>
 
           </div>
+       </form>
+      
         </div>
       </div>
     </div>
@@ -170,5 +202,6 @@ $(function() {
         </div>
       </div>
     </div>
+
 
 <%@ include file="../include/foot.jsp" %>

@@ -7,7 +7,9 @@
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong></div>
+          <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong>
+          		<span class="mx-2 mb-0">/</span> <strong class="text-black">Top</strong>
+          </div>
         </div>
       </div>
     </div>
@@ -20,7 +22,7 @@
 
             <div class="row">
               <div class="col-md-12 mb-5">
-                <div class="float-md-left mb-4"><h2 class="text-black h5">Shop All</h2></div>
+                <div class="float-md-left mb-4"><h2 class="text-black h5">Shop Top</h2></div>
                 <div class="d-flex">
                   <div class="dropdown mr-1 ml-md-auto">
                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,7 +50,7 @@
             </div>
             
             <div class="row mb-5">
-			  <c:forEach items="${list}" var="LshBoardVo">
+              <c:forEach items="${mainList}" var="LshBoardVo">
 	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
 	                  <figure class="block-4-image">
@@ -78,6 +80,25 @@
               </ul>
             </div>
 
+            <div class="border p-4 rounded mb-4">
+
+              <div class="mb-4">
+                <h3 class="mb-3 h6 text-uppercase text-black d-block">종류</h3>
+                <a href="#" class="d-flex color-item align-items-center" id="TH">
+                  <span class="bg-danger color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">반팔</span>
+                </a>
+                <a href="#" class="d-flex color-item align-items-center" >
+                  <span class="bg-success color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">긴팔</span>
+                </a>
+                <a href="#" class="d-flex color-item align-items-center" >
+                  <span class="bg-info color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">셔츠</span>
+                </a>
+                <a href="#" class="d-flex color-item align-items-center" >
+                  <span class="bg-primary color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">맨투맨</span>
+                </a>
+              </div>
+
+            </div>
           </div>
         </div>
 
