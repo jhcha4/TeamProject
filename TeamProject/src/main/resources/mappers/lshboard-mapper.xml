@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mappers.lshboard-mapper">
+
+	<select id="list" resultType="LshBoardVo">
+		select * from tbl_product_board
+		order by p_num desc
+	</select>
+	
+	<select id="TopList" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_main = 'T'
+		order by p_num desc
+	</select>
+	
+	<select id="PantsList" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_main = 'P'
+		order by p_num desc
+	</select>
+	
+	<select id="ShoesList" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_main = 'S'
+		order by p_num desc
+	</select>
+	
+	<select id="AccList" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_main = 'A'
+		order by p_num desc
+	</select>
+	
+	<select id="TH_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'TH'
+		order by p_num desc
+	</select>
+	
+	<select id="TL_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'TL'
+		order by p_num desc
+	</select>
+	
+	<select id="TS_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'TS'
+		order by p_num desc
+	</select>
+	
+	<select id="TM_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'TM'
+		order by p_num desc
+	</select>
+	
+	<select id="PJ_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'PJ'
+		order by p_num desc
+	</select>
+	
+	<select id="PM_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'PM'
+		order by p_num desc
+	</select>
+	
+	<select id="PH_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'PH'
+		order by p_num desc
+	</select>
+	
+	<select id="P7_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'P7'
+		order by p_num desc
+	</select>
+	
+	<select id="SD_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'SD'
+		order by p_num desc
+	</select>
+	
+	<select id="SU_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'SU'
+		order by p_num desc
+	</select>
+	
+	<select id="SS_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'SS'
+		order by p_num desc
+	</select>
+	
+	<select id="SR_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'SR'
+		order by p_num desc
+	</select>
+	
+	<select id="AR_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'AR'
+		order by p_num desc
+	</select>
+	
+	<select id="AW_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'AW'
+		order by p_num desc
+	</select>
+	
+	<select id="AC_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'AC'
+		order by p_num desc
+	</select>
+	
+	<select id="AB_List" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = 'AB'
+		order by p_num desc
+	</select>
+</mapper>
