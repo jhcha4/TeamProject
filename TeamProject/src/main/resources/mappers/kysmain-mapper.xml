@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="mappers.kysmain-mapper">
+	<!-- serve리스트 -->
+	<select id="mainList" resultType="Kys_MainVo">
+		select * from tbl_Main
+	</select>
+	<!-- 상품 1개 항목 보기 -->
+	<select id="OenMain" resultType="Kys_MainVo">
+		select * from tbl_Main
+		where main_code = #{main_code}
+	</select>
+	</mapper>
+
