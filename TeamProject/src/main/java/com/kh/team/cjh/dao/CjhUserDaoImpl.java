@@ -44,10 +44,10 @@ public class CjhUserDaoImpl implements CjhUserDao {
 	}
 
 	@Override
-	public void getCart(String u_id) throws Exception {
-		// TODO Auto-generated method stub
+	public void getPNum(String u_id) throws Exception {
 		
 	}
+
 
 	
 

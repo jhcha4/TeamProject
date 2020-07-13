@@ -17,5 +17,5 @@ public interface CjhUserDao {
 	public void updateUser(CjhUserVo userVo) throws Exception;
 	
 	//	장바구니 불러오기
-	public void getCart(String u_id) throws Exception;
+	public void getPNum(String u_id) throws Exception;
 }
