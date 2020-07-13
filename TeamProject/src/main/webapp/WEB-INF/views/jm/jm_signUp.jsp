@@ -30,7 +30,7 @@
 					<label for="user_id">
 						아이디
 					</label>
-					<input type="text" class="form-control" id="user_id" name="user_id" required />
+					<input type="text" class="form-control" id="user_id" name="u_id" required />
 				</div>
 				
 				
@@ -39,7 +39,7 @@
 					<label for="user_pw">
 						비밀번호
 					</label>
-					<input type="password" class="form-control" id="user_pw" name="user_pw"  required/>
+					<input type="password" class="form-control" id="user_pw" name="u_pw"  required/>
 				</div>
 				
 				<!-- <div class="form-group">
@@ -53,7 +53,7 @@
 				<label for="user_name">
 						이름
 					</label>
-					<input type="text" class="form-control" id="name" name="name"  required/>
+					<input type="text" class="form-control" id="name" name="u_name"  required/>
 				</div>
 				
 				<!-- <div class="form-group">
@@ -70,7 +70,7 @@
 				<label for="user_gender">
 						성별
 					</label>
-					<input type="text" class="form-control" id="user_gender" name="user_gender"  required/>
+					<input type="text" class="form-control" id="user_gender" name="u_gender"  required/>
 				</div>
 				
 				
@@ -79,7 +79,7 @@
 				<label for="user_email">
 						메일주소
 					</label>
-					<input type="email" class="form-control" id="user_email" name="user_email"  required/>
+					<input type="email" class="form-control" id="user_email" name="u_email"  required/>
 				</div>
 				
 				
@@ -87,7 +87,7 @@
 				<label for="user_address">
 						주소
 					</label>
-					<input type="text" class="form-control" id="user_address" name="user_address" required />
+					<input type="text" class="form-control" id="user_address" name="u_address" required />
 				</div>
 				
 				
@@ -96,7 +96,7 @@
 				<label for="user_phone">
 						핸드폰번호
 					</label>
-					<input type="text" class="form-control" id="user_phone" name="user_phone" required />
+					<input type="text" class="form-control" id="user_phone" name="u_phone" required />
 				</div>
 				
 				
