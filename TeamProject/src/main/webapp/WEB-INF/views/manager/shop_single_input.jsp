@@ -30,19 +30,22 @@ $(function() {
       </div>
     </div>  
 <%@ include file="../include/main_bar.jsp" %>
+
     <div class="site-section">
+    
       <div class="container">
         <div class="row">
-   		<form action="">
+   		
           <div class="col-md-4">
             <img src="../../resources/images/cloth_1.jpg" alt="Image" class="img-fluid">
           </div>
+          <form action="shop_single_input" method="post">
           <div class="col-md-4">
           
           	<!-- 상품 등록 상세 메뉴 -->
           	<div>
 			<label>main : </label> 
-			<select name="mainOption" id="mainOption">
+			<select name="main_code" id="mainOption">
 				<option value="T">상의
 				<option value="P">하의
 				<option value="A">악세사리
@@ -51,7 +54,7 @@ $(function() {
 		</div>
 		<div>
 			<label>serve : </label> 
-			<select name="serveOption" id="serveOption">
+			<select name="serve_code" id="serveOption">
 				<option value="TH">반팔
 				<option value="TL">긴팔
 				<option value="TS">셔츠
@@ -115,11 +118,11 @@ $(function() {
             </div>
 
             </div>
-            <p><a href="cart.html" class="buy-now btn btn-sm btn-primary">상품 등록하기</a></p>
+            <p><input type="submit" class="buy-now btn btn-sm btn-primary">상품 등록하기</input></p>
 
           </div>
-       
        </form>
+      
         </div>
       </div>
     </div>
