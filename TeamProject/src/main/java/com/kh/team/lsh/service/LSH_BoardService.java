@@ -8,13 +8,5 @@ public interface LSH_BoardService {
 
 	public List<LshBoardVo> list() throws Exception;
 	
-	public List<LshBoardVo> topList() throws Exception;
-	
-	public List<LshBoardVo> pantsList() throws Exception;
-	
-	public List<LshBoardVo> shoesList() throws Exception;
-	
-	public List<LshBoardVo> accList() throws Exception;
-	
-	public List<LshBoardVo> TH_List() throws Exception;
+	public List<LshBoardVo> mainList(String main) throws Exception;
 }

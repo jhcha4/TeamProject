@@ -3,14 +3,6 @@
 
 <%@ include file="../include/head.jsp" %>
 
-<script>
-$(function() {
-	$("#Top").click(function(e) {
-		e.preventDefault();
-	});
-});
-
-</script>
 
     <div class="bg-light py-3">
       <div class="container">
@@ -79,10 +71,10 @@ $(function() {
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <ul class="list-unstyled mb-0">
                 <li class="mb-1"><a href="shop" class="d-flex"><span>Shop All</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a id="Top" href="shop_Top" class="d-flex"><span>Top</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a href="shop_Pants" class="d-flex"><span>Pants</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a href="shop_Shoes" class="d-flex"><span>Shoes</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a href="shop_Acc" class="d-flex"><span>Acc</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a id="Top" href="shop_main?main=T" class="d-flex"><span>Top</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="shop_main?main=P" class="d-flex"><span>Pants</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="shop_main?main=S" class="d-flex"><span>Shoes</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="shop_main?main=A" class="d-flex"><span>Acc</span> <span class="text-black ml-auto"></span></a></li>
               </ul>
             </div>
 
