@@ -131,21 +131,16 @@
 		<div class="col-md-7">
 		</div>
 		<div class="col-md-3">
-		
-			<p>
-				<a class="btn btn-warning btn-large" href="/jm/jm_login">로그인</a>
-				<a class="btn btn-warning btn-large" href="/jm/jm_signUp">회원가입 가기</a>
-			<p>
+		<c:choose>
+			<c:when test="${not empty sessionScope.u_id }">
+				<p>${sessionScope.u_id}님 로그인중</p>
 				<a href="/jm/logout" class="btn btn-default btn-danger">로그아웃</a>
-			<c:if test="${not empty jmMemberVo }">
-				<div class="pull-right">
-                      
-                    </div>
-			
-			
-			</c:if>
-			
-			
+			</c:when>
+			<c:otherwise>
+				<a class="btn btn-warning btn-large" href="/jm/jm_signUp">회원가입 가기</a>
+				<a class="btn btn-warning btn-large" href="/jm/jm_login">로그인</a>
+			</c:otherwise>		
+		</c:choose>
 			
 		</div>
 	</div>

@@ -7,7 +7,7 @@
 
 
 	<!-- 로그인 -->
-	<select id="selectMemberUserIdPw" resultSets="jmMemberVo">
+	<select id="selectMemberUserIdPw" resultType="JmMemberVo">
 
 		select * from tbl_user
 		where u_id =#{u_id} and u_pw=#{u_pw}
