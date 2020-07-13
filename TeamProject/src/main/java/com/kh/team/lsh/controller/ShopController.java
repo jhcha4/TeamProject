@@ -31,25 +31,42 @@ public class ShopController {
 		return "lsh/shop_single";
 	}
 
-	@RequestMapping(value="/shop_Top")
-	public String top() throws Exception {
+	@RequestMapping(value="/shop_Top", method = RequestMethod.GET)
+	public String top(Model model) throws Exception {
+		List<LshBoardVo> topList = boardService.topList();
+		model.addAttribute("topList", topList);
 		return "lsh/shop_Top";
 	}
 	
-	@RequestMapping(value="/shop_Pants")
-	public String pants() throws Exception {
+	@RequestMapping(value="/shop_Pants", method = RequestMethod.GET)
+	public String pants(Model model) throws Exception {
+		List<LshBoardVo> pantsList = boardService.pantsList();
+		model.addAttribute("pantsList", pantsList);
 		return "lsh/shop_Pants";
 	}
 	
-	@RequestMapping(value="/shop_Shoes")
-	public String shoes() throws Exception {
+	@RequestMapping(value="/shop_Shoes", method = RequestMethod.GET)
+	public String shoes(Model model) throws Exception {
+		List<LshBoardVo> shoesList = boardService.shoesList();
+		model.addAttribute("shoesList" + shoesList);
 		return "lsh/shop_Shoes";
 	}
 	
-	@RequestMapping(value="/shop_Acc")
-	public String acc() throws Exception {
+	@RequestMapping(value="/shop_Acc", method = RequestMethod.GET)
+	public String acc(Model model) throws Exception {
+		List<LshBoardVo> accList = boardService.accList();
+		model.addAttribute("accList" + accList);
 		return "lsh/shop_Acc";
 	}
+	
+//	@RequestMapping(value="/shop_Top", method = RequestMethod.GET)
+//	public String th(Model model) throws Exception {
+//		List<LshBoardVo> TH_List = boardService.TH_List();
+//		model.addAttribute("TH_List" + TH_List);
+//		return "lsh/shop_Top";
+//	}
+	
+	
 	
 	@RequestMapping(value="/cart")
 	public String cart() throws Exception {
