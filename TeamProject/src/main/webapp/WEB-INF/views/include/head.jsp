@@ -46,7 +46,7 @@
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="/cjh/index" class="js-logo-clone">Shoppers</a>
+                <a href="/home" class="js-logo-clone">Shoppers</a>
               </div>
             </div>
 
@@ -64,7 +64,7 @@
                   <li><a href="/cjh/mypage"><span class="icon icon-person"></span></a></li>
                   <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                   <li>
-                    <a href="/cjh/cart" class="site-cart">
+                    <a href="/cjh/cart?u_id=${u_id}" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
                       <span class="count">2</span>
                     </a>

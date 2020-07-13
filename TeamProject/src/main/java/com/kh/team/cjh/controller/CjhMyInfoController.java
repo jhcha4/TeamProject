@@ -20,6 +20,11 @@ public class CjhMyInfoController {
 	@Inject
 	private CjhUserService userService;
 	
+	@RequestMapping(value="/home")
+	public String home() throws Exception {
+		return "redirect:/home";
+	}
+	
 	@RequestMapping(value="/index")
 	public String index() throws Exception {
 		return "cjh/index";
@@ -28,11 +33,6 @@ public class CjhMyInfoController {
 	@RequestMapping(value="/about")
 	public String about() throws Exception {
 		return "cjh/about";
-	}
-	
-	@RequestMapping(value="/cart")
-	public String cart() throws Exception {
-		return "cjh/cart";
 	}
 	
 	@RequestMapping(value="/checkout")
@@ -119,7 +119,14 @@ public class CjhMyInfoController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
 		session.invalidate();		//	세션 무효화 -> 로그아웃
-		return "redirect:/cjh/index";
+		return "redirect:/home";
+	}
+	
+	@RequestMapping(value="/cart", method = RequestMethod.GET)
+	public String cart(String u_id) throws Exception {
+//		System.out.println("u_id : " + u_id);
+		
+		return "cjh/cart";
 	}
 	
 }

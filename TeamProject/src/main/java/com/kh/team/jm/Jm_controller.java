@@ -80,7 +80,7 @@ public class Jm_controller {
 	public String selectList(Model model) throws Exception{
 			List<JmMemberVo> list = jmMemberService.selectList();
 			model.addAttribute("list",list);
-		return "redirect:/jm/jm_userList";
+		return "jm/jm_userList";
 	}
 	
 	
