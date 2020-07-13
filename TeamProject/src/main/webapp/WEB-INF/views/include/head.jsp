@@ -64,7 +64,7 @@
                   <li><a href="/cjh/mypage"><span class="icon icon-person"></span></a></li>
                   <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                   <li>
-                    <a href="/cjh/cart" class="site-cart">
+                    <a href="/cjh/cart?u_id=${u_id}" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
                       <span class="count">2</span>
                     </a>
@@ -108,10 +108,10 @@
             <li class="has-children">
            		<a href="/lsh/shop">Shop</a>
            		<ul class="dropdown">
-                <li><a href="/lsh/shop_Top">Top</a></li>
-                <li><a href="/lsh/shop_Pants">Pants</a></li>
-                <li><a href="/lsh/shop_Shoes">Shoes</a></li>
-                <li><a href="/lsh/shop_Acc">Acc</a></li>
+                <li><a href="/lsh/shop_main?main=T">Top</a></li>
+                <li><a href="/lsh/shop_main?main=P">Pants</a></li>
+                <li><a href="/lsh/shop_main?main=S">Shoes</a></li>
+                <li><a href="/lsh/shop_main?main=A">Acc</a></li>
               </ul>
             </li>
             

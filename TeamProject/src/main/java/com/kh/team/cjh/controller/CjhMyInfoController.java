@@ -30,11 +30,6 @@ public class CjhMyInfoController {
 		return "cjh/about";
 	}
 	
-	@RequestMapping(value="/cart")
-	public String cart() throws Exception {
-		return "cjh/cart";
-	}
-	
 	@RequestMapping(value="/checkout")
 	public String checkout() throws Exception {
 		return "cjh/checkout";
@@ -120,6 +115,11 @@ public class CjhMyInfoController {
 	public String logout(HttpSession session) throws Exception {
 		session.invalidate();		//	세션 무효화 -> 로그아웃
 		return "redirect:/cjh/index";
+	}
+	
+	@RequestMapping(value="/cart")
+	public String cart() throws Exception {
+		return "cjh/cart";
 	}
 	
 }

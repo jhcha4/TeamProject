@@ -5,7 +5,7 @@
 
 	<div class="row">
 	<div class="col-md-2" >
-	
+
 	</div>
 		<div class="col-md-8">
 		
@@ -14,29 +14,24 @@
 					<table class="table">
 						<thead>
 						<tr>
-							<th>상품 번호</th>
+							<th>상품 코드</th>
 							<th>상품 이름</th>
-							<th>Payment Taken</th>
-							<th>Status</th>
+							<th>가격</th>
+							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 						<tbody>
-							<tr>
-								<td>
-									1
-								</td>
-								<td>
-									TB - Monthly
-								</td>
-								<td>
-									01/04/2012
-								</td>
-								<td>
-									Default
-								</td>
-							</tr>
-							
-						</tbody>
+						<c:forEach items="${list}" var="BoardVo">
+						<tr>
+							<td>${BoardVo.p_main}${BoardVo.p_serve}${BoardVo.p_num}</td>
+							<td>${BoardVo.p_name}</td>
+							<td>${BoardVo.p_price}</td>
+							<td><a type="button" class="btn btn-sm">수정</a></td>
+							<td><a type="button" class="btn btn-sm">삭제</a></td>
+						</tr>
+						</c:forEach>
+					</tbody>
 					</table>
 				</div>
 			</div>
