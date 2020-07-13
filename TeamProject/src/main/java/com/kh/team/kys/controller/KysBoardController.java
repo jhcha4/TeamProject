@@ -14,7 +14,7 @@ import com.kh.team.kys.service.KysBoardService;
 
 @Controller
 @RequestMapping("/manager")
-public class KysBoardController {
+public class KysBoardController { 
 	
 	@Inject
 	private KysBoardService boardService;
