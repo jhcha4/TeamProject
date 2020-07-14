@@ -108,11 +108,11 @@
             <li class="has-children">
            		<a href="/lsh/shop">Shop</a>
            		<ul class="dropdown">
-                <li><a href="/lsh/shop_Top">Top</a></li>
-                <li><a href="/lsh/shop_Pants">Pants</a></li>
-                <li><a href="/lsh/shop_Shoes">Shoes</a></li>
-                <li><a href="/lsh/shop_Acc">Acc</a></li>
-              </ul>
+                <li><a href="/lsh/mainShop?p_main=T">상의</a></li>
+                <li><a href="/lsh/mainShop?p_main=P">바지</a></li>
+                <li><a href="/lsh/mainShop?p_main=S">신발</a></li>
+                <li><a href="/lsh/mainShop?p_main=A">악세사리</a></li>
+              </ul>  
             </li>
             
             
