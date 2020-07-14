@@ -44,6 +44,4 @@ public class CjhUserDaoImpl implements CjhUserDao {
 		return vo;
 	}
 
-	
-
 }

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.kh.team.cjh.dao.CjhCartDao;
+import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.CjhUserVo;
 
 @Service
@@ -17,9 +18,9 @@ public class CjhCartServiceImpl implements CjhCartService {
 
 	//	장바구니 불러오기
 	@Override
-	public List<CjhUserVo> getCart(String u_id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CjhCartVo> getCart(String u_id) throws Exception {
+		List<CjhCartVo> list = cartDao.getCart(u_id);
+		return list;
 	}
 
 }

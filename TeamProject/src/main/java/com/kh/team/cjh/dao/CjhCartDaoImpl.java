@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.kh.team.domain.CjhUserVo;
+import com.kh.team.domain.CjhCartVo;
 
 @Repository
 public class CjhCartDaoImpl implements CjhCartDao {
@@ -18,8 +18,8 @@ public class CjhCartDaoImpl implements CjhCartDao {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<CjhUserVo> getCart(String u_id) throws Exception {
-		List<CjhUserVo> list = sqlSession.selectList(NAMESPACE + "getCart", u_id);
+	public List<CjhCartVo> getCart(String u_id) throws Exception {
+		List<CjhCartVo> list = sqlSession.selectList(NAMESPACE + "getCart", u_id);
 		return list;
 	}
 
