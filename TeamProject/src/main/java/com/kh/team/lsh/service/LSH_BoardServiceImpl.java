@@ -45,4 +45,10 @@ public class LSH_BoardServiceImpl implements LSH_BoardService {
 		return accList;
 	}
 
+	@Override
+	public List<LshBoardVo> topServeList(String serve) throws Exception {
+		List<LshBoardVo> serveList = boardDao.topServeList(serve);
+		return serveList;
+	}
+
 }

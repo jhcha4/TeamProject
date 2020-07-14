@@ -42,5 +42,10 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 		return sqlSession.selectList(NAMESPACE + "AccList");
 	}
 
+	@Override
+	public List<LshBoardVo> topServeList(String serve) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "ServeList", serve);
+	}
+
 
 }

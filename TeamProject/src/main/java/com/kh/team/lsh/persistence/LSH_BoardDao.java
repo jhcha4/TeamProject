@@ -16,4 +16,6 @@ public interface LSH_BoardDao {
 	
 	public List<LshBoardVo> accList() throws Exception;
 	
+	public List<LshBoardVo> topServeList(String serve) throws Exception;
+	
 }

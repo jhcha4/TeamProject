@@ -6,8 +6,12 @@
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong>
-          		<span class="mx-2 mb-0">/</span> <strong class="text-black">Shoes</strong>
+          <div class="col-md-12 mb-0">
+          		<a href="index.html">Home</a> 
+          		<span class="mx-2 mb-0">/</span> 
+          		<strong class="text-black">Shop</strong>
+          		<span class="mx-2 mb-0">/</span> 
+          		<strong class="text-black">Shoes</strong>
           </div>
         </div>
       </div>
@@ -85,16 +89,16 @@
 
               <div class="mb-4">
                 <h3 class="mb-3 h6 text-uppercase text-black d-block">종류</h3>
-                <a href="#" class="d-flex color-item align-items-center" >
+                <a href="shop_Shoes?serve=sd" class="d-flex color-item align-items-center" >
                   <span class="bg-danger color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">구두</span>
                 </a>
-                <a href="#" class="d-flex color-item align-items-center" >
+                <a href="shop_Shoes?serve=su" class="d-flex color-item align-items-center" >
                   <span class="bg-success color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">운동화</span>
                 </a>
-                <a href="#" class="d-flex color-item align-items-center" >
+                <a href="shop_Shoes?serve=ss" class="d-flex color-item align-items-center" >
                   <span class="bg-info color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">슬리퍼</span>
                 </a>
-                <a href="#" class="d-flex color-item align-items-center" >
+                <a href="shop_Shoes?serve=sr" class="d-flex color-item align-items-center" >
                   <span class="bg-info color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">로퍼</span>
                 </a>
               </div>

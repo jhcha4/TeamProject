@@ -6,8 +6,12 @@
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong>
-          		<span class="mx-2 mb-0">/</span> <strong class="text-black">Acc</strong>
+          <div class="col-md-12 mb-0">
+          		<a href="index.html">Home</a> 
+          		<span class="mx-2 mb-0">/</span> 
+          		<strong class="text-black">Shop</strong>
+          		<span class="mx-2 mb-0">/</span> 
+          		<strong class="text-black">Acc</strong>
           </div>
         </div>
       </div>
@@ -49,7 +53,7 @@
             </div>
             <div class="row mb-5">
 
-				<c:forEach items="${acclist}" var="LshBoardVo">
+				<c:forEach items="${accList}" var="LshBoardVo">
 	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
 	                  <figure class="block-4-image">
@@ -83,16 +87,16 @@
 
               <div class="mb-4">
                 <h3 class="mb-3 h6 text-uppercase text-black d-block">종류</h3>
-                <a href="#" class="d-flex color-item align-items-center" >
+                <a href="shop_Acc?serve=ar" class="d-flex color-item align-items-center" >
                   <span class="bg-danger color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">반지</span>
                 </a>
-                <a href="#" class="d-flex color-item align-items-center" >
+                <a href="shop_Acc?serve=aw" class="d-flex color-item align-items-center" >
                   <span class="bg-success color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">지갑</span>
                 </a>
-                <a href="#" class="d-flex color-item align-items-center" >
+                <a href="shop_Acc?serve=ac" class="d-flex color-item align-items-center" >
                   <span class="bg-info color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">모자</span>
                 </a>
-                <a href="#" class="d-flex color-item align-items-center" >
+                <a href="shop_Acc?serve=ab" class="d-flex color-item align-items-center" >
                   <span class="bg-primary color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">가방</span>
                 </a>
               </div>
