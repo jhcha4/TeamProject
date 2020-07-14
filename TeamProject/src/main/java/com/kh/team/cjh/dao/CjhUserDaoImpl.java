@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.team.domain.CjhPointVo;
 import com.kh.team.domain.CjhUserVo;
 
 
@@ -42,6 +43,12 @@ public class CjhUserDaoImpl implements CjhUserDao {
 	public CjhUserVo selectMemberById(String u_id) {
 		CjhUserVo vo = sqlSession.selectOne(NAMESPACE + "selectMemberById", u_id);
 		return vo;
+	}
+
+	@Override
+	public CjhPointVo getPoint(String u_id) throws Exception {
+		CjhPointVo pointVo = sqlSession.selectOne(NAMESPACE + "getPoint", u_id);
+		return pointVo;
 	}
 
 }

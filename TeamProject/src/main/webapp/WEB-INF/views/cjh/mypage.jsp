@@ -29,9 +29,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 mb-0"><a href="/cjh/index">Home</a> <span class="mx-2 mb-0">/</span>
-				<a href="/cjh/mypage">My Page</a>  <span class="mx-2 mb-0">/</span>
-				<a href="/cjh/order">Order</a>  <span class="mx-2 mb-0">/</span>
-				<a href="/cjh/cart">Cartt</a>
+				<a href="/cjh/mypage?u_id=${u_id}">My Page</a>  <span class="mx-2 mb-0"></span>
 			</div>
 		</div>
 	</div>
@@ -44,17 +42,17 @@
 				<div class="title"><h1>MY PAGE</h1></div>
 				<div class="point">
 					<ul>
-						<li class=" ">
-				            <strong class="title">가용포인트</strong>
-				            <strong class="data">&nbsp;<span class="pointText" id="nowPoint">0원</span></strong>
-				        </li>
 				        <li class="">
 				            <strong class="title">총포인트</strong>
-				            <strong class="data"><span class="pointText" id="totalPoint">0원</span></strong>
+				            <strong class="data"><span class="pointText" id="totalPoint">${pointVo.point_value}원</span></strong>
 				        </li>
 				        <li class="">
 				            <strong class="title">사용포인트</strong>
 				            <strong class="data"><span class="pointText" id="usedPoint">0원</span></strong>
+				        </li>
+						<li class=" ">
+				            <strong class="title">가용포인트</strong>
+				            <strong class="data">&nbsp;<span class="pointText" id="nowPoint">${pointVo.point_value}원</span></strong>
 				        </li>
 				        <li>
 				            <strong class="title">총주문</strong>
@@ -77,7 +75,7 @@
 			    
 				<div>
 			        <li>
-			        <h3><a href="/cjh/cart">장바구니</a></h3>
+			        <h3><a href="/cjh/cart?u_id=${u_id}">장바구니</a></h3>
 			        </li>
 			    </div>
 			    
