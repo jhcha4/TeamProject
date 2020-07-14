@@ -21,25 +21,20 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 	public List<LshBoardVo> list() throws Exception {
 		return sqlSession.selectList(NAMESPACE + "list");
 	}
-
+	
 	@Override
-	public List<LshBoardVo> topList() throws Exception {
-		return sqlSession.selectList(NAMESPACE + "TopList");
+	public LshBoardVo single(int p_num) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "single", p_num);
 	}
 
 	@Override
-	public List<LshBoardVo> pantsList() throws Exception {
-		return sqlSession.selectList(NAMESPACE + "PantsList");
+	public List<LshBoardVo> mainList(String p_main) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "MainList", p_main);
 	}
 
 	@Override
-	public List<LshBoardVo> shoesList() throws Exception {
-		return sqlSession.selectList(NAMESPACE + "ShoesList");
-	}
-
-	@Override
-	public List<LshBoardVo> accList() throws Exception {
-		return sqlSession.selectList(NAMESPACE + "AccList");
+	public List<LshBoardVo> serveList(String p_serve) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "ServeList", p_serve);
 	}
 
 

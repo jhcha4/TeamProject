@@ -26,47 +26,26 @@ public class ShopController {
 		return "lsh/shop";
 	}
 	
-	@RequestMapping(value="/shop_single")
-	public String shop_single() throws Exception {
-		return "lsh/shop_single";
+	@RequestMapping(value="/shop_single", method = RequestMethod.GET)
+	public void shop_single(int p_num, Model model) throws Exception {
+		LshBoardVo LshBoardVo = boardService.single(p_num);
+		model.addAttribute("LshBoardVo", LshBoardVo);
+	}
+	
+	@RequestMapping(value="/mainShop", method = RequestMethod.GET)
+	public String mainList(Model model, String p_main) throws Exception {
+		List<LshBoardVo> mainList = boardService.mainList(p_main);
+		model.addAttribute("mainList", mainList);
+		return "lsh/mainShop";
+	}
+	
+	@RequestMapping(value="/serveShop", method = RequestMethod.GET)
+	public String serveList(Model model, String p_serve) throws Exception {
+		List<LshBoardVo> serveList = boardService.serveList(p_serve);
+		model.addAttribute("serveList", serveList);
+		return "lsh/serveShop";
 	}
 
-	@RequestMapping(value="/shop_Top", method = RequestMethod.GET)
-	public String top(Model model) throws Exception {
-		List<LshBoardVo> topList = boardService.topList();
-		model.addAttribute("topList", topList);
-		return "lsh/shop_Top";
-	}
-	
-	@RequestMapping(value="/shop_Pants", method = RequestMethod.GET)
-	public String pants(Model model) throws Exception {
-		List<LshBoardVo> pantsList = boardService.pantsList();
-		model.addAttribute("pantsList", pantsList);
-		return "lsh/shop_Pants";
-	}
-	
-	@RequestMapping(value="/shop_Shoes", method = RequestMethod.GET)
-	public String shoes(Model model) throws Exception {
-		List<LshBoardVo> shoesList = boardService.shoesList();
-		model.addAttribute("shoesList" + shoesList);
-		return "lsh/shop_Shoes";
-	}
-	
-	@RequestMapping(value="/shop_Acc", method = RequestMethod.GET)
-	public String acc(Model model) throws Exception {
-		List<LshBoardVo> accList = boardService.accList();
-		model.addAttribute("accList" + accList);
-		return "lsh/shop_Acc";
-	}
-	
-	
-//	@RequestMapping(value="/shop_serve", method = RequestMethod.GET)
-//	public String shop_serve(String serve, Model model) throws Exception {
-//		List<LshBoardVo> serveList = boardService.serveList(serve);
-//		model.addAttribute("serveList", serveList);
-//		return "lsh/shop_serve";
-//	}
-	
 	@RequestMapping(value="/cart")
 	public String cart() throws Exception {
 		return "cjh/cart";

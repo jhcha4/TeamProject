@@ -42,6 +42,24 @@ public class JmMemberServiceImpl implements JmMemberService {
 		return list;
 		
 	}
+	//관리자페이지- 일반 유저 개인별 정보 조회
+	@Override
+	public JmMemberVo selectByid(String u_id) throws Exception {
+		JmMemberVo jmMemberVo = jmMemberDao.selectByid(u_id);
+		return jmMemberVo;
+	}
+	//관리자페이지- 일반 유저 업데이트
+	@Override
+	public void updateUser(JmMemberVo jmMemberVo) throws Exception {
+		jmMemberDao.updateUser(jmMemberVo);
+		
+	}
+	//관리자페이지- 일반 유저 삭제
+	@Override
+	public void deleteUser(String u_id) throws Exception {
+		jmMemberDao.deleteUser(u_id);
+		
+	}
 	
 
 }

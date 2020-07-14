@@ -3,11 +3,29 @@
 
 <%@ include file="../include/head.jsp" %>
 
+<script>
+$(function() {
+	$("a.title").click(function(e) {
+		e.preventDefault();
+		var p_num = $(this).attr("data-p_num");
+		$("#singlePage > input[name=p_num]").val(p_num);
+		$("#singlePage").attr("action", $(this).attr("href"));
+		$("#singlePage").submit();
+	});
+});
+</script>
+
+<form id="singlePage" action="/lsh/mainShop" method="get">
+	<input type="hidden" name="p_num" value="${LshBoardVo.p_num}"/>
+</form>
+
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong>
-          		<span class="mx-2 mb-0">/</span> <strong class="text-black">Shoes</strong>
+          <div class="col-md-12 mb-0">
+          		<a href="/cjh/index">Home</a> 
+          		<span class="mx-2 mb-0">/</span> 
+          		<strong class="text-black">Shop</strong>
           </div>
         </div>
       </div>
@@ -21,7 +39,7 @@
 
             <div class="row">
               <div class="col-md-12 mb-5">
-                <div class="float-md-left mb-4"><h2 class="text-black h5">Shop Shoes</h2></div>
+                <div class="float-md-left mb-4"><h2 class="text-black h5">Shop All</h2></div>
                 <div class="d-flex">
                   <div class="dropdown mr-1 ml-md-auto">
                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,26 +65,24 @@
                 </div>
               </div>
             </div>
+            
             <div class="row mb-5">
-
-              <div class="row mb-5">
-			  <c:forEach items="${shoesList}" var="LshBoardVo">
+			  <c:forEach items="${mainList}" var="LshBoardVo">
 	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
 	                  <figure class="block-4-image">
-	                    <a href="shop_single"><img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
+	                    <a href="shop_single" class="title" data-p_num="${LshBoardVo.p_num}"><img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
 	                  </figure>
 	                  <div class="block-4-text p-4">
-	                    <h3><a href="shop_single">${LshBoardVo.p_name}</a></h3>
+	                    <h3><a href="shop_single" class="title" data-p_num="${LshBoardVo.p_num}">${LshBoardVo.p_name}</a></h3>
 	                    <p class="mb-0">${LshBoardVo.p_content}</p>
 	                    <p class="text-primary font-weight-bold">${LshBoardVo.p_price}원</p>
 	                  </div>
 	                </div>
 	              </div>
               </c:forEach>
-           	  </div>
-
             </div>
+            
           </div>
 
           <div class="col-md-3 order-1 mb-5 mb-md-0">
@@ -81,25 +97,6 @@
               </ul>
             </div>
 
-            <div class="border p-4 rounded mb-4">
-
-              <div class="mb-4">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">종류</h3>
-                <a href="#" class="d-flex color-item align-items-center" >
-                  <span class="bg-danger color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">구두</span>
-                </a>
-                <a href="#" class="d-flex color-item align-items-center" >
-                  <span class="bg-success color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">운동화</span>
-                </a>
-                <a href="#" class="d-flex color-item align-items-center" >
-                  <span class="bg-info color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">슬리퍼</span>
-                </a>
-                <a href="#" class="d-flex color-item align-items-center" >
-                  <span class="bg-info color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">로퍼</span>
-                </a>
-              </div>
-
-            </div>
           </div>
         </div>
 

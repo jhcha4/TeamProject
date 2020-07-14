@@ -3,6 +3,22 @@
 
 <%@ include file="../include/head.jsp" %>
 
+<script>
+$(function() {
+	$("a.title").click(function(e) {
+		e.preventDefault();
+		var p_num = $(this).attr("data-p_num");
+		$("#singlePage > input[name=p_num]").val(p_num);
+		$("#singlePage").attr("action", $(this).attr("href"));
+		$("#singlePage").submit();
+	});
+});
+</script>
+
+<form id="singlePage" action="/lsh/shop" method="get">
+	<input type="hidden" name="p_num" value="${LshBoardVo.p_num}"/>
+</form>
+
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
@@ -55,10 +71,10 @@
 	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
 	                  <figure class="block-4-image">
-	                    <a href="shop_single"><img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
+	                    <a href="shop_single" class="title" data-p_num="${LshBoardVo.p_num}"><img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
 	                  </figure>
 	                  <div class="block-4-text p-4">
-	                    <h3><a href="shop_single">${LshBoardVo.p_name}</a></h3>
+	                    <h3><a href="shop_single" class="title" data-p_num="${LshBoardVo.p_num}">${LshBoardVo.p_name}</a></h3>
 	                    <p class="mb-0">${LshBoardVo.p_content}</p>
 	                    <p class="text-primary font-weight-bold">${LshBoardVo.p_price}원</p>
 	                  </div>
@@ -73,13 +89,33 @@
             <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <ul class="list-unstyled mb-0">
-                 <li class="mb-1"><a href="shop" class="d-flex"><span>Shop All</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a href="shop_Top" class="d-flex"><span>Top</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a href="shop_Pants" class="d-flex"><span>Pants</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a href="shop_Shoes" class="d-flex"><span>Shoes</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a href="shop_Acc" class="d-flex"><span>Acc</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="shop" class="d-flex"><span>Shop All</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="mainShop?p_main=T" class="d-flex"><span>Top</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="mainShop?p_main=P" class="d-flex"><span>Pants</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="mainShop?p_main=S" class="d-flex"><span>Shoes</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="mainShop?p_main=A" class="d-flex"><span>Acc</span> <span class="text-black ml-auto"></span></a></li>
               </ul>
             </div>
+
+			<div class="border p-4 rounded mb-4">
+
+             <div class="mb-4">
+               <h3 class="mb-3 h6 text-uppercase text-black d-block">종류</h3>
+               <a href="serveShop?p_serve=TH" class="d-flex color-item align-items-center">
+                 <span class="bg-danger color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">반팔</span>
+               </a>
+               <a href="serveShop?p_serve=TL" class="d-flex color-item align-items-center" >
+                 <span class="bg-success color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">긴팔</span>
+               </a>
+               <a href="serveShop?p_serve=TS" class="d-flex color-item align-items-center" >
+                 <span class="bg-info color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">셔츠</span>
+               </a>
+               <a href="serveShop?p_serve=TM" class="d-flex color-item align-items-center" >
+                 <span class="bg-primary color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">맨투맨</span>
+               </a>
+             </div>
+
+           </div>
 
           </div>
         </div>

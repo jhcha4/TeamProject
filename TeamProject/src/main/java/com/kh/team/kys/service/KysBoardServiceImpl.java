@@ -34,13 +34,13 @@ public class KysBoardServiceImpl implements KysBoardService {
 	}
 
 	@Override
-	public void boardDelete(int raiment_num) throws Exception {
-		boardDao.boardDelete(raiment_num);
+	public void boardDelete(int p_num) throws Exception {
+		boardDao.boardDelete(p_num);
 	}
 
 	@Override
-	public void boardSelectBy(int raiment_num) throws Exception {
-			boardDao.boardSelectBy(raiment_num);
+	public Kys_BoardVo boardSelectBy(int p_num) throws Exception {
+			return boardDao.boardSelectBy(p_num);
 		
 	}
 

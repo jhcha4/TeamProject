@@ -37,11 +37,34 @@ public class JmMemberDaoImpl implements JmMemberDao {
 		SqlSession.insert(NAMESPACE+"insertMember" ,vo);
 		
 	}
+	
+	//관리자 게시판-회원 리스트
 	@Override
 	public List<JmMemberVo> selectList() throws Exception {
 		
 		
 		return SqlSession.selectList(NAMESPACE+"selectList");
+	}
+	
+	
+	//관리자 게시판-회원 개인 조회
+	@Override
+	public JmMemberVo selectByid(String u_id) throws Exception {
+		
+		return SqlSession.selectOne(NAMESPACE+"selectById", u_id);
+	}
+	
+	//관리자 게시판-회원 정보 수정
+	@Override
+	public void updateUser(JmMemberVo jmMemberVo) throws Exception {
+		SqlSession.update(NAMESPACE+"updateUser",jmMemberVo);
+		
+	}
+	//관리자 게시판-일반 회원 삭제 
+	@Override
+	public void deleteUser(String u_id) throws Exception {
+		SqlSession.delete(NAMESPACE+"deleteUser", u_id);
+		
 	}
 
 }

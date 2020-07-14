@@ -10,4 +10,7 @@
 		<!-- 패키지 단위 -->
 		<package name="com.kh.team.domain"/>
 	</typeAliases>
+	
 </configuration>
+
+	

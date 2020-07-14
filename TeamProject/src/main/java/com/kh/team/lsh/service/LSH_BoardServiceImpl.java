@@ -14,7 +14,7 @@ public class LSH_BoardServiceImpl implements LSH_BoardService {
 
 	@Inject
 	private LSH_BoardDao boardDao;
-	
+
 	@Override
 	public List<LshBoardVo> list() throws Exception {
 		List<LshBoardVo> list = boardDao.list();
@@ -22,27 +22,21 @@ public class LSH_BoardServiceImpl implements LSH_BoardService {
 	}
 
 	@Override
-	public List<LshBoardVo> topList() throws Exception {
-		List<LshBoardVo> topList = boardDao.topList();
-		return topList;
+	public LshBoardVo single(int p_num) throws Exception {
+		LshBoardVo boardVo = boardDao.single(p_num);
+		return boardVo;
 	}
 
 	@Override
-	public List<LshBoardVo> pantsList() throws Exception {
-		List<LshBoardVo> pantsList = boardDao.pantsList();
-		return pantsList;
+	public List<LshBoardVo> mainList(String p_main) throws Exception {
+		List<LshBoardVo> mainList = boardDao.mainList(p_main);
+		return mainList;
 	}
 
 	@Override
-	public List<LshBoardVo> shoesList() throws Exception {
-		List<LshBoardVo> shoesList = boardDao.shoesList();
-		return shoesList;
+	public List<LshBoardVo> serveList(String p_serve) throws Exception {
+		List<LshBoardVo> serveList = boardDao.serveList(p_serve);
+		return serveList;
 	}
-
-	@Override
-	public List<LshBoardVo> accList() throws Exception {
-		List<LshBoardVo> accList = boardDao.accList();
-		return accList;
-	}
-
+	
 }
