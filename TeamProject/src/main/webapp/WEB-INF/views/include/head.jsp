@@ -52,6 +52,21 @@
 
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
+              
+              <c:choose>
+			<c:when test="${not empty sessionScope.u_id }">
+				<p>${sessionScope.u_id}님 로그인중</p>
+				<a href="/jm/logout" class="btn btn-default btn-danger">로그아웃</a>
+			</c:when>
+			<c:otherwise>
+				<a class="btn btn-default btn-sm" href="/jm/jm_signUp">signUp</a>
+				<a class="btn btn-default btn-sm" href="/jm/jm_login">Login</a>
+			</c:otherwise>		
+		</c:choose>
+              
+              
+              
+              
                 <ul>
                   <c:choose>
 		             <c:when test="${not empty sessionScope.u_id}">
@@ -77,6 +92,11 @@
           </div>
         </div>
       </div> 
+      
+      
+      
+      
+      
       <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
@@ -131,16 +151,7 @@
 		<div class="col-md-7">
 		</div>
 		<div class="col-md-3">
-		<c:choose>
-			<c:when test="${not empty sessionScope.u_id }">
-				<p>${sessionScope.u_id}님 로그인중</p>
-				<a href="/jm/logout" class="btn btn-default btn-danger">로그아웃</a>
-			</c:when>
-			<c:otherwise>
-				<a class="btn btn-warning btn-large" href="/jm/jm_signUp">회원가입 가기</a>
-				<a class="btn btn-warning btn-large" href="/jm/jm_login">로그인</a>
-			</c:otherwise>		
-		</c:choose>
+		
 			
 		</div>
 	</div>

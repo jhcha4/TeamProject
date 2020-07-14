@@ -32,7 +32,7 @@ public class JmTestInsert {
 		vo.setU_gender("f");
 		vo.setU_email("123@123");
 		vo.setU_address("123");
-		vo.setU_phone(123);
+		vo.setU_phone("123");
 		
 		jmMemberDao.insertMember(vo);
 		
@@ -66,7 +66,7 @@ public class JmTestInsert {
 		jmMemberVo.setU_name("999");
 		jmMemberVo.setU_email("999@999");
 		jmMemberVo.setU_address("999");
-		jmMemberVo.setU_phone(999);
+		jmMemberVo.setU_phone("999");
 		jmMemberVo.setU_grade("silver");
 		
 		jmMemberDao.updateUser(jmMemberVo);

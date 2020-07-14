@@ -71,6 +71,7 @@ public class Jm_controller {
 	//회원가입 처리
 	@RequestMapping(value="/jm_signUpRun",method=RequestMethod.POST)
 	public String jmMemberSignUpRun(JmMemberVo vo) throws Exception{
+		System.out.println("vo:" + vo);
 		jmMemberService.insertMember(vo);
 		return "redirect:/jm/jm_login";
 	}
@@ -105,7 +106,12 @@ public class Jm_controller {
 		
 		return "redirect:/jm/jm_userList";
 	}
+	
+	//패스워드 찾기 폼 화면
+	public String jmuserPw()throws Exception{
 		
+		return "redirect:/jm/jm_userList";
+	}
 	
 	
 	
