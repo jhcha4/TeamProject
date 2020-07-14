@@ -39,7 +39,7 @@ $(function() {
 
             <div class="row">
               <div class="col-md-12 mb-5">
-                <div class="float-md-left mb-4"><h2 class="text-black h5">Shop All</h2></div>
+                <div class="float-md-left mb-4"><h2 class="text-black h5">Shop</h2></div>
                 <div class="d-flex">
                   <div class="dropdown mr-1 ml-md-auto">
                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -88,13 +88,39 @@ $(function() {
           <div class="col-md-3 order-1 mb-5 mb-md-0">
             <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
-              <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="shop" class="d-flex"><span>Shop All</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a href="shop_Top" class="d-flex"><span>Top</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a href="shop_Pants" class="d-flex"><span>Pants</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a href="shop_Shoes" class="d-flex"><span>Shoes</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a href="shop_Acc" class="d-flex"><span>Acc</span> <span class="text-black ml-auto"></span></a></li>
-              </ul>
+              
+           		<a href="mainShop?p_main=T">상의</a>
+           		<ul class="dropdown">
+	                <li><a href="serveShop?p_serve=TH">반팔</a></li>
+	                <li><a href="serveShop?p_serve=TL">긴팔</a></li>
+	                <li><a href="serveShop?p_serve=TS">셔츠</a></li>
+	                <li><a href="serveShop?p_serve=TM">맨투맨</a></li>
+              	</ul>
+              	
+           		<a href="mainShop?p_main=P">하의</a>
+           		<ul class="dropdown">
+	                <li><a href="serveShop?p_serve=PJ">청바지</a></li>
+	                <li><a href="serveShop?p_serve=PM">면바지</a></li>
+	                <li><a href="serveShop?p_serve=PH">반바지</a></li>
+	                <li><a href="serveShop?p_serve=P7">7부바지</a></li>
+              	</ul>
+              	
+           		<a href="mainShop?p_main=S">신발</a>
+           		<ul class="dropdown">
+	                <li><a href="serveShop?p_serve=SD">구두</a></li>
+	                <li><a href="serveShop?p_serve=SU">운동화</a></li>
+	                <li><a href="serveShop?p_serve=SS">슬리퍼</a></li>
+	                <li><a href="serveShop?p_serve=SR">로퍼</a></li>
+              	</ul>
+              	
+           		<a href="mainShop?p_main=A">악세사리</a>
+           		<ul class="dropdown">
+	                <li><a href="serveShop?p_serve=AR">반지</a></li>
+	                <li><a href="serveShop?p_serve=AW">지갑</a></li>
+	                <li><a href="serveShop?p_serve=AC">모자</a></li>
+	                <li><a href="serveShop?p_serve=AB">가방</a></li>
+              	</ul>
+              
             </div>
 
           </div>
@@ -110,7 +136,7 @@ $(function() {
                 </div>
                 <div class="row">
                   <div class="col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-                    <a class="block-2-item" href="shop_Top">
+                    <a class="block-2-item" href="mainShop?p_main=T">
                       <figure class="image">
                         <img src="../../resources/images/Top.jpg" alt="" class="img-fluid">
                       </figure>
@@ -121,7 +147,7 @@ $(function() {
                     </a>
                   </div>
                   <div class="col-sm-6 col-md-6 col-lg-3 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-                    <a class="block-2-item" href="shop_Pants">
+                    <a class="block-2-item" href="mainShop?p_main=P">
                       <figure class="image">
                         <img src="../../resources/images/Pants.jpg" alt="" class="img-fluid">
                       </figure>
@@ -132,7 +158,7 @@ $(function() {
                     </a>
                   </div>
                   <div class="col-sm-6 col-md-6 col-lg-3 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-                    <a class="block-2-item" href="shop_Shoes">
+                    <a class="block-2-item" href="mainShop?p_main=S">
                       <figure class="image">
                         <img src="../../resources/images/Shoes.jpg" alt="" class="img-fluid">
                       </figure>
@@ -144,7 +170,7 @@ $(function() {
                   </div>
                   
                   <div class="col-sm-6 col-md-6 col-lg-3 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-                    <a class="block-2-item" href="shop_Acc">
+                    <a class="block-2-item" href="mainShop?p_main=A">
                       <figure class="image">
                         <img src="../../resources/images/Acc.jpg" alt="" class="img-fluid">
                       </figure>
