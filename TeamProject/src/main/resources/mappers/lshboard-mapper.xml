@@ -15,33 +15,15 @@
 		where p_num = #{p_num}
 	</select>
 	
-	<select id="TopList" resultType="LshBoardVo">
+	<select id="MainList" resultType="LshBoardVo">
 		select * from tbl_product_board
-		where p_main = 'T'
-		order by p_num desc
-	</select>
-	
-	<select id="PantsList" resultType="LshBoardVo">
-		select * from tbl_product_board
-		where p_main = 'P'
-		order by p_num desc
-	</select>
-	
-	<select id="ShoesList" resultType="LshBoardVo">
-		select * from tbl_product_board
-		where p_main = 'S'
-		order by p_num desc
-	</select>
-	
-	<select id="AccList" resultType="LshBoardVo">
-		select * from tbl_product_board
-		where p_main = 'A'
+		where p_main = #{p_main}
 		order by p_num desc
 	</select>
 	
 	<select id="ServeList" resultType="LshBoardVo">
 		select * from tbl_product_board
-		where p_serve = #{serve}
+		where p_serve = #{p_serve}
 		order by p_num desc
 	</select>
 	

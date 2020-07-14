@@ -28,43 +28,13 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 	}
 
 	@Override
-	public List<LshBoardVo> topList() throws Exception {
-		return sqlSession.selectList(NAMESPACE + "TopList");
+	public List<LshBoardVo> mainList(String p_main) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "MainList", p_main);
 	}
 
 	@Override
-	public List<LshBoardVo> pantsList() throws Exception {
-		return sqlSession.selectList(NAMESPACE + "PantsList");
-	}
-
-	@Override
-	public List<LshBoardVo> shoesList() throws Exception {
-		return sqlSession.selectList(NAMESPACE + "ShoesList");
-	}
-
-	@Override
-	public List<LshBoardVo> accList() throws Exception {
-		return sqlSession.selectList(NAMESPACE + "AccList");
-	}
-
-	@Override
-	public List<LshBoardVo> topServeList(String serve) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "ServeList", serve);
-	}
-
-	@Override
-	public List<LshBoardVo> pantsServeList(String serve) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "ServeList", serve);
-	}
-
-	@Override
-	public List<LshBoardVo> shoesServeList(String serve) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "ServeList", serve);
-	}
-
-	@Override
-	public List<LshBoardVo> accServeList(String serve) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "ServeList", serve);
+	public List<LshBoardVo> serveList(String p_serve) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "ServeList", p_serve);
 	}
 
 
