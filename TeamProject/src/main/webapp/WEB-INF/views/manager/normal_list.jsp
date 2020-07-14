@@ -92,8 +92,9 @@ $(function() {
 							<td>${BoardVo.p_main}${BoardVo.p_serve}${BoardVo.p_num}</td>
 							<td>${BoardVo.p_name}</td>
 							<td>${BoardVo.p_price}</td>
-							<td><a type="button" class="btn btn-sm">수정</a></td>
-							<td><a type="button" class="btn btn-sm">삭제</a></td>
+							<td><a type="button" class="btn btn-sm btn-warning"
+								href="/manager/oenSelect?p_num=${BoardVo.p_num}">수정</a></td>
+							<td><a type="button" class="btn btn-sm btn-danger" >삭제</a></td>
 						</tr>
 						</c:forEach>
 					</tbody>

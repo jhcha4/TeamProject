@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <form id="shop_form" action="/magager/manager_main" method="get">
-	
 	<input type="hidden" name="main_code" value="${Kys_MainVo.main_code}"/>
 	<input type="hidden" name="main_name" value="${Kys_MainVo.main_name}"/>
 	<input type="hidden" name="serve_code" value="${Kys_ServeVo.servo_code }"/>
