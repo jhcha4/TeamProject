@@ -21,6 +21,11 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 	public List<LshBoardVo> list() throws Exception {
 		return sqlSession.selectList(NAMESPACE + "list");
 	}
+	
+	@Override
+	public LshBoardVo single(int p_num) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "single", p_num);
+	}
 
 	@Override
 	public List<LshBoardVo> topList() throws Exception {
@@ -44,6 +49,21 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 
 	@Override
 	public List<LshBoardVo> topServeList(String serve) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "ServeList", serve);
+	}
+
+	@Override
+	public List<LshBoardVo> pantsServeList(String serve) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "ServeList", serve);
+	}
+
+	@Override
+	public List<LshBoardVo> shoesServeList(String serve) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "ServeList", serve);
+	}
+
+	@Override
+	public List<LshBoardVo> accServeList(String serve) throws Exception {
 		return sqlSession.selectList(NAMESPACE + "ServeList", serve);
 	}
 

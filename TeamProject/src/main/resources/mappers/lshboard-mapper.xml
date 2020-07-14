@@ -10,6 +10,11 @@
 		order by p_num desc
 	</select>
 	
+	<select id="single" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_num = #{p_num}
+	</select>
+	
 	<select id="TopList" resultType="LshBoardVo">
 		select * from tbl_product_board
 		where p_main = 'T'

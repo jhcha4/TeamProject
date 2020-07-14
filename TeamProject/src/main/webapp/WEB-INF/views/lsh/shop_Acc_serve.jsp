@@ -11,7 +11,7 @@
           		<span class="mx-2 mb-0">/</span> 
           		<strong class="text-black">Shop</strong>
           		<span class="mx-2 mb-0">/</span> 
-          		<strong class="text-black">Pants</strong>
+          		<strong class="text-black">Acc</strong>
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
 
             <div class="row">
               <div class="col-md-12 mb-5">
-                <div class="float-md-left mb-4"><h2 class="text-black h5">Shop Pants</h2></div>
+                <div class="float-md-left mb-4"><h2 class="text-black h5">Shop Acc</h2></div>
                 <div class="d-flex">
                   <div class="dropdown mr-1 ml-md-auto">
                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,7 +53,7 @@
             </div>
             <div class="row mb-5">
 
-              <c:forEach items="${pantsList}" var="LshBoardVo">
+				<c:forEach items="${accServeList}" var="LshBoardVo">
 	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
 	                  <figure class="block-4-image">
@@ -66,7 +66,7 @@
 	                  </div>
 	                </div>
 	              </div>
-              </c:forEach>
+              	</c:forEach>
 
             </div>
           </div>
@@ -87,17 +87,17 @@
 
               <div class="mb-4">
                 <h3 class="mb-3 h6 text-uppercase text-black d-block">종류</h3>
-                <a href="shop_Pants_serve?serve=PJ" class="d-flex color-item align-items-center" >
-                  <span class="bg-danger color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">청바지</span>
+                <a href="shop_Acc_serve?serve=AR" class="d-flex color-item align-items-center" >
+                  <span class="bg-danger color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">반지</span>
                 </a>
-                <a href="shop_Pants_serve?serve=PM" class="d-flex color-item align-items-center" >
-                  <span class="bg-success color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">면바지</span>
+                <a href="shop_Acc_serve?serve=AW" class="d-flex color-item align-items-center" >
+                  <span class="bg-success color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">지갑</span>
                 </a>
-                <a href="shop_Pants_serve?serve=PH" class="d-flex color-item align-items-center" >
-                  <span class="bg-info color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">반바지</span>
+                <a href="shop_Acc_serve?serve=AC" class="d-flex color-item align-items-center" >
+                  <span class="bg-info color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">모자</span>
                 </a>
-                <a href="shop_Pants_serve?serve=P7" class="d-flex color-item align-items-center" >
-                  <span class="bg-primary color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">7부바지</span>
+                <a href="shop_Acc_serve?serve=AB" class="d-flex color-item align-items-center" >
+                  <span class="bg-primary color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">가방</span>
                 </a>
               </div>
 

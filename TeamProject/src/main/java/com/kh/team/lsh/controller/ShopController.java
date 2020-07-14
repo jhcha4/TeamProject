@@ -26,9 +26,10 @@ public class ShopController {
 		return "lsh/shop";
 	}
 	
-	@RequestMapping(value="/shop_single")
-	public String shop_single() throws Exception {
-		return "lsh/shop_single";
+	@RequestMapping(value="/shop_single", method = RequestMethod.GET)
+	public void shop_single(int p_num, Model model) throws Exception {
+		LshBoardVo LshBoardVo = boardService.single(p_num);
+		model.addAttribute("LshBoardVo", LshBoardVo);
 	}
 
 	@RequestMapping(value="/shop_Top", method = RequestMethod.GET)
@@ -65,6 +66,27 @@ public class ShopController {
 		List<LshBoardVo> topServeList = boardService.topServeList(serve);
 		model.addAttribute("topServeList", topServeList);
 		return "lsh/shop_Top_serve";
+	}
+	
+	@RequestMapping(value="/shop_Pants_serve", method = RequestMethod.GET)
+	public String shop_Pants_serve(String serve, Model model) throws Exception {
+		List<LshBoardVo> pantsServeList = boardService.pantsServeList(serve);
+		model.addAttribute("pantsServeList", pantsServeList);
+		return "lsh/shop_Pants_serve";
+	}
+	
+	@RequestMapping(value="/shop_Shoes_serve", method = RequestMethod.GET)
+	public String shop_Shoes_serve(String serve, Model model) throws Exception {
+		List<LshBoardVo> shoesServeList = boardService.shoesServeList(serve);
+		model.addAttribute("shoesServeList", shoesServeList);
+		return "lsh/shop_Shoes_serve";
+	}
+	
+	@RequestMapping(value="/shop_Acc_serve", method = RequestMethod.GET)
+	public String shop_Acc_serve(String serve, Model model) throws Exception {
+		List<LshBoardVo> accServeList = boardService.accServeList(serve);
+		model.addAttribute("accServeList", accServeList);
+		return "lsh/shop_Acc_serve";
 	}
 	
 	@RequestMapping(value="/cart")

@@ -108,10 +108,10 @@
             <li class="has-children">
            		<a href="/lsh/shop">Shop</a>
            		<ul class="dropdown">
-                <li><a href="/lsh/shop_main?main=T">Top</a></li>
-                <li><a href="/lsh/shop_main?main=P">Pants</a></li>
-                <li><a href="/lsh/shop_main?main=S">Shoes</a></li>
-                <li><a href="/lsh/shop_main?main=A">Acc</a></li>
+                <li><a href="/lsh/shop_Top">Top</a></li>
+                <li><a href="/lsh/shop_Pants">Pants</a></li>
+                <li><a href="/lsh/shop_Shoes">Shoes</a></li>
+                <li><a href="/lsh/shop_Acc">Acc</a></li>
               </ul>
             </li>
             

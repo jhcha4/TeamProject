@@ -3,6 +3,22 @@
 
 <%@ include file="../include/head.jsp" %>
 
+<script>
+$(function() {
+	$("a.title").click(function(e) {
+		e.preventDefault();
+		var p_num = $(this).attr("data-p_num");
+		$("#singlePage > input[name=p_num]").val(p_num);
+		$("#singlePage").attr("action", $(this).attr("href"));
+		$("#singlePage").submit();
+	});
+});
+</script>
+
+<form id="singlePage" action="/lsh/shop" method="get">
+	<input type="hidden" name="p_num" value="${LshBoardVo.p_num}"/>
+</form>
+
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
@@ -55,10 +71,10 @@
 	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
 	                  <figure class="block-4-image">
-	                    <a href="shop_single"><img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
+	                    <a href="shop_single" class="title" data-p_num="${LshBoardVo.p_num}"><img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
 	                  </figure>
 	                  <div class="block-4-text p-4">
-	                    <h3><a href="shop_single">${LshBoardVo.p_name}</a></h3>
+	                    <h3><a href="shop_single" class="title" data-p_num="${LshBoardVo.p_num}">${LshBoardVo.p_name}</a></h3>
 	                    <p class="mb-0">${LshBoardVo.p_content}</p>
 	                    <p class="text-primary font-weight-bold">${LshBoardVo.p_price}원</p>
 	                  </div>

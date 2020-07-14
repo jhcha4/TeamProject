@@ -53,7 +53,7 @@
             </div>
             <div class="row mb-5">
 
-              <c:forEach items="${pantsList}" var="LshBoardVo">
+              <c:forEach items="${pantsServeList}" var="LshBoardVo">
 	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
 	                  <figure class="block-4-image">
