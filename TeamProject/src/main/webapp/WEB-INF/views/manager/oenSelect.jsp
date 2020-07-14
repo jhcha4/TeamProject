@@ -46,7 +46,7 @@ $(function() {
 
 					<!-- 상품 등록 상세 메뉴 select 바-->
 					<div>
-						<label>main : </label> <select name="p_main" id="mainOption">
+						<label>main : </label> <select name="p_main" id="mainOption" disabled="disabled">
 							<option value="T" selected="selected">상의
 							<option value="P">하의
 							<option value="A">악세사리

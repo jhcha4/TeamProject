@@ -5,6 +5,11 @@
 <script type="text/javascript" >
 $(function() {
 	var options = $("#serveOption option");
+	var m = $("#mainOption option:selected").val();
+	if(m == "T") {   
+		$("#serveOption option").remove();
+		$("#serveOption").append(options[0]).append(options[1]).append(options[2]).append(options[3]);
+	}
 	$("#mainOption").change(function(){
 		$("#serveOption option").remove();
 		var main = $(this).val();
@@ -17,7 +22,7 @@ $(function() {
 		if(main == "S")                                                       
 			$("#serveOption").append(options[8]).append(options[9]).append(options[10]).append(options[11]);
 		if(main == "A")                                                       
-			$("#serveOption").append(options[12]).append(options[13]).append(options[14]).append(options[15]);
+			$("#serveOption").append(options[12]).append(options[13]).append(options[14]).append(options[15]).append(selected);
 	});
 	
 	
@@ -42,7 +47,7 @@ $(function() {
 					<!-- 상품 등록 상세 메뉴 -->
 					<div>
 						<label>main : </label> <select name="p_main" id="mainOption">
-							<option value="T" selected="selected">상의
+							<option value="T" >상의
 							<option value="P">하의
 							<option value="A">악세사리
 							<option value="S">신발
