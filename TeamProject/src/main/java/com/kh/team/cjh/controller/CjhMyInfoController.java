@@ -60,10 +60,7 @@ public class CjhMyInfoController {
 		return "cjh/thankyou";
 	}
 	
-	@RequestMapping(value="/mypage")
-	public String mypage() throws Exception {
-		return "cjh/mypage";
-	}
+
 	
 	@RequestMapping(value="/order")
 	public String order() throws Exception {
@@ -120,5 +117,11 @@ public class CjhMyInfoController {
 	public String logout(HttpSession session) throws Exception {
 		session.invalidate();		//	세션 무효화 -> 로그아웃
 		return "redirect:/cjh/index";
+	}
+	
+	//	마이페이지
+	@RequestMapping(value="/mypage", method = RequestMethod.GET)
+	public String mypage(String u_id) throws Exception {
+		return "cjh/mypage";
 	}
 }

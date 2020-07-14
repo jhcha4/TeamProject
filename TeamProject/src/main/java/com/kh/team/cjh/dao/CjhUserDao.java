@@ -18,4 +18,7 @@ public interface CjhUserDao {
 	//	내정보 수정
 	public void updateUser(CjhUserVo userVo) throws Exception;
 	
+	//	포인트 정보 불러오기
+	
+	
 }
