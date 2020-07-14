@@ -10,10 +10,7 @@
 
 
  <p>관리자 유저정보 관리 페이지 입니다</p>
- 
- 
 
- 
  <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">

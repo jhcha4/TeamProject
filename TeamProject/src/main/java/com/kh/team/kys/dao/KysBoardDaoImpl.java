@@ -39,14 +39,14 @@ public class KysBoardDaoImpl implements KysBoardDao {
 	}
 	// 삭제
 	@Override
-	public void boardDelete(int raiment_num) throws Exception {
-		sqlSession.delete(NAMESPACE + "boardDelete",raiment_num);
+	public void boardDelete(int p_num) throws Exception {
+		sqlSession.delete(NAMESPACE + "boardDelete",p_num);
 
 	}
 	//게시물 내용 보기
 	@Override
-	public void boardSelectBy(int raiment_num) throws Exception {
-		sqlSession.selectOne(NAMESPACE+"boardSelectBy",raiment_num);
+	public Kys_BoardVo boardSelectBy(int p_num) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"boardSelectBy",p_num);
 
 	}
 
