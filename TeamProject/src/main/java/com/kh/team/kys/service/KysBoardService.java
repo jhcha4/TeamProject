@@ -20,8 +20,8 @@ public interface KysBoardService {
 		
 		
 		//삭제 
-		public void boardDelete(int p_num) throws Exception;
+		public void boardDelete(int raiment_num) throws Exception;
 		
 		//게시물 보기
-		public Kys_BoardVo boardSelectBy(int p_num) throws Exception;
+		public void boardSelectBy(int raiment_num) throws Exception;
 }

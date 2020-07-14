@@ -26,7 +26,7 @@ public class KysBoardServiceImpl implements KysBoardService {
 		boardDao.boardInsert(boardVo);
 		
 	}
-	//수정
+
 	@Override
 	public void boardUpdate(Kys_BoardVo boardVo) throws Exception {
 		boardDao.boardUpdate(boardVo);
@@ -34,14 +34,14 @@ public class KysBoardServiceImpl implements KysBoardService {
 	}
 
 	@Override
-	public void boardDelete(int p_num) throws Exception {
-		boardDao.boardDelete(p_num);
+	public void boardDelete(int raiment_num) throws Exception {
+		boardDao.boardDelete(raiment_num);
 	}
-	//게시물 1개 찾기
+
 	@Override
-	public Kys_BoardVo boardSelectBy(int p_num) throws Exception {
-		Kys_BoardVo boardVo =	boardDao.boardSelectBy(p_num);
-		return boardVo;
+	public void boardSelectBy(int raiment_num) throws Exception {
+			boardDao.boardSelectBy(raiment_num);
+		
 	}
 
 }

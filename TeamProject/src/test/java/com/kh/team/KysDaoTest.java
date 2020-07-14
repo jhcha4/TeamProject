@@ -57,7 +57,7 @@ public class KysDaoTest {
 	//게시물 보기
 	@Test
 	public void boardSelectBy() throws Exception{
-		boardDao.boardSelectBy(745);
+		boardDao.boardSelectBy(1);
 	}
 
 }

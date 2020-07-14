@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/head.jsp" %>
 <%@ include file="../include/main_bar.jsp" %>
+
 <script type="text/javascript">
 $(function() {
 	$("#mainOption").val("T").attr("selected","selected");
@@ -30,7 +31,9 @@ $(function() {
 });
 
 
+
 </script>
+
 
 	<div class="row">
 	<div class="col-md-2" >
@@ -89,9 +92,8 @@ $(function() {
 							<td>${BoardVo.p_main}${BoardVo.p_serve}${BoardVo.p_num}</td>
 							<td>${BoardVo.p_name}</td>
 							<td>${BoardVo.p_price}</td>
-							<td><a type="button" class="btn btn-sm btn-primary" id="update"
-							href="/manager/oenSelect?p_num=${BoardVo.p_num}" >수정</a></td>
-							<td><a type="button" class="btn btn-sm btn-danger" id="delete">삭제</a></td>
+							<td><a type="button" class="btn btn-sm">수정</a></td>
+							<td><a type="button" class="btn btn-sm">삭제</a></td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -127,7 +129,7 @@ $(function() {
 		<div class="col-md-2">
 		</div>
 		</div>
-	
+	</div>
 
 
 
