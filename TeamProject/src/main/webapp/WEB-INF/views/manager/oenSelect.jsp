@@ -1,15 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+    
+    
 <%@ include file="../include/head.jsp" %>
 <script type="text/javascript" >
 $(function() {
+	
+	$("#mainOption").val("${boardVo.p_main}").attr("selected","selected");
+	$("#serveOption").val("${boardVo.p_serve}").attr("selected","selected");
+	
 	var options = $("#serveOption option");
 	$("#mainOption").change(function(){
 		$("#serveOption option").remove();
 		var main = $(this).val();
 		var serve = $("#serveOption").val();
-		console.log(main);
 		if(main == "T")                                                     
 			$("#serveOption").append(options[0]).append(options[1]).append(options[2]).append(options[3]);
 		if(main == "P")                                                       
@@ -25,7 +30,7 @@ $(function() {
 </script>
 
 <%@ include file="../include/main_bar.jsp" %>
-
+${boardVo.p_num}
 <div class="site-section">
 
 	<div class="container">
@@ -35,11 +40,11 @@ $(function() {
 				<img src="../../resources/images/cloth_1.jpg" alt="Image"
 					class="img-fluid">
 			</div>
-			<form id="formSubmit" role="form" action="/manager/shop_single_input"
+			<form id="formSubmit" role="form" action="/manager/productUpdate"
 				method="post">
 				<div class="col-md-4">
 
-					<!-- 상품 등록 상세 메뉴 -->
+					<!-- 상품 등록 상세 메뉴 select 바-->
 					<div>
 						<label>main : </label> <select name="p_main" id="mainOption">
 							<option value="T" selected="selected">상의
@@ -50,39 +55,49 @@ $(function() {
 					</div>
 					<div>
 						<label>serve : </label> <select name="p_serve" id="serveOption">
-							<option value="TH">반팔
-							<option value="TL">긴팔
-							<option value="TS">셔츠
-							<option value="TM">맨투맨
-							<option value="PJ">청바지
-							<option value="PM">면바지
-							<option value="PH">반바지
-							<option value="P7">7부바지
-							<option value="SD">구두
-							<option value="SU">운동화
-							<option value="SS">스릴퍼
-							<option value="SR">로퍼
-							<option value="AR">반지
-							<option value="AW">지갑
-							<option value="AC">모자
-							<option value="AB">가방
+						<c:if test="${boardVo.p_main == 'T' }">
+								<option value="TH">반팔
+								<option value="TL">긴팔
+								<option value="TS">셔츠
+								<option value="TM">맨투맨
+							</c:if>
+							<c:if test="${boardVo.p_main == 'P' }">
+								<option value="PJ">청바지
+								<option value="PM">면바지
+								<option value="PH">반바지
+								<option value="P7">7부바지
+							</c:if>
+							<c:if test="${boardVo.p_main == 'S' }">
+								<option value="SD">구두
+								<option value="SU">운동화
+								<option value="SS">스릴퍼
+								<option value="SR">로퍼
+							</c:if>
+							<c:if test="${boardVo.p_main == 'A' }">
+								<option value="AR">반지
+								<option value="AW">지갑
+								<option value="AC">모자
+								<option value="AB">가방
+							</c:if>
 						</select>
 
 					</div>
 
 
 					<h2 class="text-black">
-						상품이름:<input type="text" id="p_name" name="p_name">
+						상품이름:<input type="text" id="p_name" name="p_name" value="${boardVo.p_name}">
 					</h2>
 					<p id="p_content" name="p_content">상품 설명</p>
-					<textarea rows="" cols="" id="p_content" name="p_content"></textarea>
+					<textarea rows="" cols="" id="p_content" name="p_content">${boardVo.p_content}</textarea>
 					<p class="mb-4">상품 설명2</p>
 					<p>
-						<strong class="text-primary h4"> 가격:<input type="text"
-							id="p_price" name="p_price">
+						<strong class="text-primary h4">
+						 가격:<input type="text" id="p_price" name="p_price" value="${boardVo.p_price}">
 						</strong>
 					</p>
-
+					<p>상품 코드 
+					<input type="text" value="${boardVo.p_main}${boardVo.p_serve}${boardVo.p_num}" disabled="disabled"/>
+					</p>
 					<!-- 채크 리스트 -->
 					<div class="mb-1 d-flex">
 						<label for="option-sm" class="d-flex mr-3 mb-3"> <span
@@ -117,8 +132,7 @@ $(function() {
 
 						<!-- 상품 등록 버튼 -->
 					</div>
-					<button type="submit" class="btn btn-sm btn-primary">상품
-						등록하기</button>
+					<button type="submit" class="btn btn-sm btn-primary">상품수정하기</button>
 
 				</div>
 			</form>

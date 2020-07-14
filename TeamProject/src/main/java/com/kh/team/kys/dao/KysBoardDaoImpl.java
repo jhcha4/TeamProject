@@ -31,7 +31,7 @@ public class KysBoardDaoImpl implements KysBoardDao {
 		
 
 	}
-
+	//수정
 	@Override
 	public void boardUpdate(Kys_BoardVo boardVo) throws Exception {
 		sqlSession.update(NAMESPACE+"boardUpdate",boardVo);
@@ -45,9 +45,11 @@ public class KysBoardDaoImpl implements KysBoardDao {
 	}
 	//게시물 내용 보기
 	@Override
-	public void boardSelectBy(int raiment_num) throws Exception {
-		sqlSession.selectOne(NAMESPACE+"boardSelectBy",raiment_num);
-
+	public Kys_BoardVo boardSelectBy(int raiment_num) throws Exception {
+		
+		return sqlSession.selectOne(NAMESPACE+"boardSelectBy",raiment_num);
 	}
+
+	
 
 }

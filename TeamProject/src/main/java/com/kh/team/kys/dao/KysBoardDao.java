@@ -12,12 +12,14 @@ public interface KysBoardDao {
 	//등록 처리 폼
 	public void boardInsert(Kys_BoardVo boardVo) throws Exception;
 	
-	//수정 처리폼
+	//수정 폼
 	public void boardUpdate(Kys_BoardVo boardVo) throws Exception;
 	
 	//삭제 
-	public void boardDelete(int raiment_num) throws Exception;
+	public void boardDelete(int p_num) throws Exception;
 	
 	//게시물 보기
-	public void boardSelectBy(int raiment_num) throws Exception;
+	public Kys_BoardVo boardSelectBy(int p_num) throws Exception;
+	
+	
 }

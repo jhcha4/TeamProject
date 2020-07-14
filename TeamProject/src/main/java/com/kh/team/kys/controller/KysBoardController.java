@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -57,5 +58,18 @@ public class KysBoardController {
 		return "redirect:/manager/manager_main";
 	}
 
-
+	//게시물 보기
+	@RequestMapping(value="/oenSelect", method = RequestMethod.GET)
+	public void oenSelect(Model model,int p_num) throws Exception{
+		
+		Kys_BoardVo boardVo = boardService.boardSelectBy(p_num);
+		
+		model.addAttribute("boardVo",boardVo);
+	}
+	@RequestMapping(value="/productUpdate", method = RequestMethod.POST)
+	public String productUpdate(Kys_BoardVo boardVo) throws Exception{
+		System.out.println("boardVo:"+boardVo);
+		boardService.boardUpdate(boardVo);
+		return "redirect:/manager/normal_list";
+	}
 }
