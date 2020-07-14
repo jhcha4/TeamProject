@@ -50,4 +50,37 @@ public class JmTestInsert {
 	}
 	
 	
+	//관리자 페이지- 일반회원 개인별 조회
+	@Test
+	public void selectByid()throws Exception{
+		jmMemberDao.selectByid("123");
+	}
+		
+		
+	//관리자 페이지- 일반회원 수정
+	@Test
+	public void updateUser()throws Exception{
+		
+		JmMemberVo jmMemberVo = new JmMemberVo();
+		jmMemberVo.setU_id("123");
+		jmMemberVo.setU_name("999");
+		jmMemberVo.setU_email("999@999");
+		jmMemberVo.setU_address("999");
+		jmMemberVo.setU_phone(999);
+		jmMemberVo.setU_grade("silver");
+		
+		jmMemberDao.updateUser(jmMemberVo);
+	}
+	//관리자 페이지 - 일반회원 삭제
+	@Test
+	public void deleteUser()throws Exception{
+	
+		jmMemberDao.deleteUser("298d");
+	}
+	
+	
+	
+	
+	
+	
 }

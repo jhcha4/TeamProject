@@ -1,5 +1,7 @@
 package com.kh.team.cjh.service;
 
+import java.util.List;
+
 import com.kh.team.domain.CjhUserVo;
 
 public interface CjhUserService {
@@ -14,4 +16,5 @@ public interface CjhUserService {
 
 	//	내정보 수정
 	public void updateUser(CjhUserVo userVo) throws Exception;
+	
 }

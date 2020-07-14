@@ -1,5 +1,7 @@
 package com.kh.team.cjh.dao;
 
+import java.util.List;
+
 import com.kh.team.domain.CjhUserVo;
 
 public interface CjhUserDao {
@@ -16,6 +18,4 @@ public interface CjhUserDao {
 	//	내정보 수정
 	public void updateUser(CjhUserVo userVo) throws Exception;
 	
-	//	장바구니 불러오기
-	public void getCart(String u_id) throws Exception;
 }

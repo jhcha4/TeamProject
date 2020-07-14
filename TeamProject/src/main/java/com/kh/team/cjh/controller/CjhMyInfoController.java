@@ -80,8 +80,8 @@ public class CjhMyInfoController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(String u_id, String u_pw,
 							HttpSession session, RedirectAttributes rttr) throws Exception {
-		System.out.println("u_id : " + u_id);
-		System.out.println("u_pw : " + u_pw);
+//		System.out.println("u_id : " + u_id);
+//		System.out.println("u_pw : " + u_pw);
 		boolean result = userService.login(u_id, u_pw);
 		if (result == true) {
 			//	해당 사용자가 있다면 아이디를 세션에 저장
@@ -100,16 +100,16 @@ public class CjhMyInfoController {
 	//	회원정보 수정 폼
 	@RequestMapping(value="/modifyMyInfo", method = RequestMethod.GET)
 	public void modifyMyInfoGet(String u_id, Model model) throws Exception {
-		System.out.println("u_id : " + u_id);
+//		System.out.println("u_id : " + u_id);
 		CjhUserVo userVo = userService.selectUser(u_id);
-		System.out.println("userVo : " + userVo);
+//		System.out.println("userVo : " + userVo);
 		model.addAttribute("userVo", userVo);
 	}
 	
 	//	회원정보 수정처리
 	@RequestMapping(value="/modifyMyInfo", method = RequestMethod.POST)
 	public String modifyMyInfoPost(CjhUserVo userVo) throws Exception {
-		System.out.println("userVo : " + userVo);
+//		System.out.println("userVo : " + userVo);
 		String url = MyUrlUtil.makeUrl("/cjh/modifyMyInfo", userVo.getU_id());
 		userService.updateUser(userVo);
 		return "redirect:" + url; 
@@ -122,11 +122,6 @@ public class CjhMyInfoController {
 		return "redirect:/home";
 	}
 	
-	@RequestMapping(value="/cart", method = RequestMethod.GET)
-	public String cart(String u_id) throws Exception {
-//		System.out.println("u_id : " + u_id);
-		
-		return "cjh/cart";
-	}
+
 	
 }

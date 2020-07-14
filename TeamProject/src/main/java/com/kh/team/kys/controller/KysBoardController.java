@@ -51,8 +51,10 @@ public class KysBoardController {
 	//등록 처리 
 	@RequestMapping(value="/shop_single_input", method = RequestMethod.POST)
 	public String shop_single_input(Kys_BoardVo boardVo) throws Exception{
+		System.out.println("shop : "+boardVo);
 		boardService.boardInsert(boardVo);
-		return "redirect:manager/manager_main";
+		
+		return "redirect:/manager/manager_main";
 	}
 
 
