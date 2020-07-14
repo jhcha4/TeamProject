@@ -1,5 +1,7 @@
 package com.kh.team.cjh.dao;
 
+import java.util.List;
+
 import com.kh.team.domain.CjhUserVo;
 
 public interface CjhUserDao {

@@ -18,8 +18,12 @@
 	</select>
 	<!-- 상품 등록 -->
 	<insert id="boardInsert">
-	insert into tbl_product_board(p_num,p_name,p_content,p_price,p_main,p_serve)
-	values(seq_p_num.nextva, #{p_name}, #{p_content}, #{p_price}, #{p_main}, #{p_serve})
+	insert into tbl_product_board(p_num, p_name,
+								 p_content, p_price, 
+								 p_main, p_serve)
+				values(seq_p_num.nextval, #{p_name}, 
+						#{p_content}, #{p_price}, 
+						#{p_main},	#{p_serve})
 	</insert>
 	<!-- 상품 수정 -->
 	<update id="boardUpdate">

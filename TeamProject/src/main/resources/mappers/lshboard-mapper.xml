@@ -10,9 +10,33 @@
 		order by p_num desc
 	</select>
 	
-	<select id="MainList" resultType="LshBoardVo">
+	<select id="TopList" resultType="LshBoardVo">
 		select * from tbl_product_board
-		where p_main = #{main}
+		where p_main = 'T'
+		order by p_num desc
+	</select>
+	
+	<select id="PantsList" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_main = 'P'
+		order by p_num desc
+	</select>
+	
+	<select id="ShoesList" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_main = 'S'
+		order by p_num desc
+	</select>
+	
+	<select id="AccList" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_main = 'A'
+		order by p_num desc
+	</select>
+	
+	<select id="ServeList" resultType="LshBoardVo">
+		select * from tbl_product_board
+		where p_serve = #{serve}
 		order by p_num desc
 	</select>
 	

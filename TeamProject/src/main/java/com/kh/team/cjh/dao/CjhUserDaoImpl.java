@@ -1,6 +1,7 @@
 package com.kh.team.cjh.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -42,7 +43,5 @@ public class CjhUserDaoImpl implements CjhUserDao {
 		CjhUserVo vo = sqlSession.selectOne(NAMESPACE + "selectMemberById", u_id);
 		return vo;
 	}
-
-	
 
 }

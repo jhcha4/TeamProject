@@ -20,6 +20,7 @@ $(function() {
 			$("#serveOption").append(options[12]).append(options[13]).append(options[14]).append(options[15]);
 	});
 	
+	
 });
 </script>
     <div class="bg-light py-3">
@@ -39,13 +40,13 @@ $(function() {
           <div class="col-md-4">
             <img src="../../resources/images/cloth_1.jpg" alt="Image" class="img-fluid">
           </div>
-          <form role="form"  method="post">
+          <form id="formSubmit" role="form" action="/manager/shop_single_input" method="post">
           <div class="col-md-4">
           
           	<!-- 상품 등록 상세 메뉴 -->
           	<div>
 			<label>main : </label> 
-			<select name="main_code" id="mainOption">
+			<select name="p_main" id="mainOption">
 				<option value="T">상의
 				<option value="P">하의
 				<option value="A">악세사리
@@ -54,7 +55,7 @@ $(function() {
 		</div>
 		<div>
 			<label>serve : </label> 
-			<select name="serve_code" id="serveOption">
+			<select name="p_serve" id="serveOption">
 				<option value="TH">반팔
 				<option value="TL">긴팔
 				<option value="TS">셔츠
@@ -78,7 +79,7 @@ $(function() {
 		
             <h2 class="text-black" >상품이름:<input type="text" id="p_name" name="p_name"></h2>
           	  <p id="p_content" name="p_content">상품 설명</p>
-            <textarea rows="" cols="" id="p_content"></textarea>
+            <textarea rows="" cols="" id="p_content" name="p_content"></textarea>
           	  <p class="mb-4">상품 설명2</p>
             <p><strong class="text-primary h4">
             가격:<input type="text" id="p_price" name="p_price">
@@ -118,7 +119,7 @@ $(function() {
             </div>
 
             </div>
-            <p><a type="submit" class="buy-now btn btn-sm btn-primary">상품 등록하기</a></p>
+            <button type="submit" class="btn btn-sm btn-primary" >상품 등록하기</button>
 
           </div>
        </form>
