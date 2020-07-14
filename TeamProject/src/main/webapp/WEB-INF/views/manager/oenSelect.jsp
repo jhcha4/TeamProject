@@ -30,7 +30,7 @@ $(function() {
 </script>
 
 <%@ include file="../include/main_bar.jsp" %>
-${boardVo.p_num}
+
 <div class="site-section">
 
 	<div class="container">
@@ -40,8 +40,8 @@ ${boardVo.p_num}
 				<img src="../../resources/images/cloth_1.jpg" alt="Image"
 					class="img-fluid">
 			</div>
-			<form id="formSubmit" role="form" action="/manager/productUpdate"
-				method="post">
+			<form id="formSubmit" role="form" action="/manager/productUpdate" method="post">
+			<input type="hidden" name="p_num" value="${boardVo.p_num}"/>
 				<div class="col-md-4">
 
 					<!-- 상품 등록 상세 메뉴 select 바-->
