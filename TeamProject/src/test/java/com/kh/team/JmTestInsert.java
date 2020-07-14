@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.kh.team.domain.JmMemberVo;
 import com.kh.team.jm.JmMemberDao;
+import com.kh.team.jm.JmMemberService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -19,6 +20,9 @@ public class JmTestInsert {
 
 	@Inject
 	private JmMemberDao jmMemberDao;
+	
+	@Inject
+	private JmMemberService jmMemberService;
 	
 	//회원가입
 	@Test
@@ -32,7 +36,7 @@ public class JmTestInsert {
 		vo.setU_gender("f");
 		vo.setU_email("123@123");
 		vo.setU_address("123");
-		vo.setU_phone(123);
+		vo.setU_phone("123");
 		
 		jmMemberDao.insertMember(vo);
 		
@@ -66,7 +70,7 @@ public class JmTestInsert {
 		jmMemberVo.setU_name("999");
 		jmMemberVo.setU_email("999@999");
 		jmMemberVo.setU_address("999");
-		jmMemberVo.setU_phone(999);
+		jmMemberVo.setU_phone("999");
 		jmMemberVo.setU_grade("silver");
 		
 		jmMemberDao.updateUser(jmMemberVo);
@@ -78,9 +82,17 @@ public class JmTestInsert {
 		jmMemberDao.deleteUser("298d");
 	}
 	
+	//비밀번호 찾기(이메일)dao
+	@Test
+	public void selectPw()throws Exception{
+		jmMemberDao.selectPw("123");
+	}
 	
-	
-	
+	//비밀번호 찾기(이메일)
+		@Test
+		public void selectPwService()throws Exception{
+			jmMemberService.selectPw("123");
+		}
 	
 	
 }

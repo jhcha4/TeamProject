@@ -52,6 +52,21 @@
 
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
+              
+              <c:choose>
+			<c:when test="${not empty sessionScope.u_id }">
+				<p>${sessionScope.u_id}님 로그인중</p>
+				<a href="/jm/logout" class="btn btn-default btn-danger">로그아웃</a>
+			</c:when>
+			<c:otherwise>
+				<a class="btn btn-default btn-sm" href="/jm/jm_signUp">signUp</a>
+				<a class="btn btn-default btn-sm" href="/jm/jm_login">Login</a>
+			</c:otherwise>		
+		</c:choose>
+              
+              
+              
+              
                 <ul>
                   <c:choose>
 		             <c:when test="${not empty sessionScope.u_id}">
@@ -61,7 +76,7 @@
 		              	<a href="/cjh/login" class="btn btn-basic btn-flat">login</a>
 		            </c:otherwise>
 		          </c:choose>
-                  <li><a href="/cjh/mypage?u_id=${u_id}"><span class="icon icon-person"></span></a></li>
+                  <li><a href="/cjh/mypage"><span class="icon icon-person"></span></a></li>
                   <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                   <li>
                     <a href="/cjh/cart?u_id=${u_id}" class="site-cart">
@@ -77,6 +92,11 @@
           </div>
         </div>
       </div> 
+      
+      
+      
+      
+      
       <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
@@ -108,10 +128,10 @@
             <li class="has-children">
            		<a href="/lsh/shop">Shop</a>
            		<ul class="dropdown">
-                <li><a href="/lsh/shop_Top">Top</a></li>
-                <li><a href="/lsh/shop_Pants">Pants</a></li>
-                <li><a href="/lsh/shop_Shoes">Shoes</a></li>
-                <li><a href="/lsh/shop_Acc">Acc</a></li>
+                <li><a href="/lsh/shop_main?main=T">Top</a></li>
+                <li><a href="/lsh/shop_main?main=P">Pants</a></li>
+                <li><a href="/lsh/shop_main?main=S">Shoes</a></li>
+                <li><a href="/lsh/shop_main?main=A">Acc</a></li>
               </ul>
             </li>
             
@@ -131,16 +151,7 @@
 		<div class="col-md-7">
 		</div>
 		<div class="col-md-3">
-		<c:choose>
-			<c:when test="${not empty sessionScope.u_id }">
-				<p>${sessionScope.u_id}님 로그인중</p>
-				<a href="/jm/logout" class="btn btn-default btn-danger">로그아웃</a>
-			</c:when>
-			<c:otherwise>
-				<a class="btn btn-warning btn-large" href="/jm/jm_signUp">회원가입 가기</a>
-				<a class="btn btn-warning btn-large" href="/jm/jm_login">로그인</a>
-			</c:otherwise>		
-		</c:choose>
+		
 			
 		</div>
 	</div>
