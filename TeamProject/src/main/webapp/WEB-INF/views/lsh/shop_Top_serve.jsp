@@ -4,6 +4,7 @@
 <%@ include file="../include/head.jsp" %>
 
 
+
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
@@ -50,7 +51,7 @@
             </div>
             
             <div class="row mb-5">
-              <c:forEach items="${mainList}" var="LshBoardVo">
+              <c:forEach items="${topServeList}" var="LshBoardVo">
 	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
 	                  <figure class="block-4-image">
@@ -73,10 +74,10 @@
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <ul class="list-unstyled mb-0">
                 <li class="mb-1"><a href="shop" class="d-flex"><span>Shop All</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a id="Top" href="shop_main?main=T" class="d-flex"><span>Top</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a href="shop_main?main=P" class="d-flex"><span>Pants</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a href="shop_main?main=S" class="d-flex"><span>Shoes</span> <span class="text-black ml-auto"></span></a></li>
-                <li class="mb-1"><a href="shop_main?main=A" class="d-flex"><span>Acc</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="shop_Top" class="d-flex"><span>Top</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="shop_Pants" class="d-flex"><span>Pants</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="shop_Shoes" class="d-flex"><span>Shoes</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="shop_Acc" class="d-flex"><span>Acc</span> <span class="text-black ml-auto"></span></a></li>
               </ul>
             </div>
 
@@ -84,20 +85,20 @@
 
               <div class="mb-4">
                 <h3 class="mb-3 h6 text-uppercase text-black d-block">종류</h3>
-                <a href="#" class="d-flex color-item align-items-center" id="TH">
+                <a href="shop_Top_serve?serve=TH" class="d-flex color-item align-items-center">
                   <span class="bg-danger color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">반팔</span>
                 </a>
-                <a href="#" class="d-flex color-item align-items-center" >
+                <a href="shop_Top_serve?serve=TL" class="d-flex color-item align-items-center" >
                   <span class="bg-success color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">긴팔</span>
                 </a>
-                <a href="#" class="d-flex color-item align-items-center" >
+                <a href="shop_Top_serve?serve=TS" class="d-flex color-item align-items-center" >
                   <span class="bg-info color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">셔츠</span>
                 </a>
-                <a href="#" class="d-flex color-item align-items-center" >
+                <a href="shop_Top_serve?serve=TM" class="d-flex color-item align-items-center" >
                   <span class="bg-primary color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">맨투맨</span>
                 </a>
               </div>
-
+			
             </div>
           </div>
         </div>

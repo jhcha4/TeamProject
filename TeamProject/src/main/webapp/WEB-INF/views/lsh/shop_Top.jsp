@@ -3,6 +3,7 @@
 
 <%@ include file="../include/head.jsp" %>
 
+
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
@@ -87,16 +88,16 @@
 
               <div class="mb-4">
                 <h3 class="mb-3 h6 text-uppercase text-black d-block">종류</h3>
-                <a href="#" class="d-flex color-item align-items-center" id="TH">
+                <a href="shop_Top_serve?serve=TH" class="d-flex color-item align-items-center">
                   <span class="bg-danger color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">반팔</span>
                 </a>
-                <a href="#" class="d-flex color-item align-items-center" >
+                <a href="shop_Top_serve?serve=TL" class="d-flex color-item align-items-center" >
                   <span class="bg-success color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">긴팔</span>
                 </a>
-                <a href="#" class="d-flex color-item align-items-center" >
+                <a href="shop_Top_serve?serve=TS" class="d-flex color-item align-items-center" >
                   <span class="bg-info color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">셔츠</span>
                 </a>
-                <a href="#" class="d-flex color-item align-items-center" >
+                <a href="shop_Top_serve?serve=TM" class="d-flex color-item align-items-center" >
                   <span class="bg-primary color d-inline-block rounded-rectangle mr-2"></span> <span class="text-black">맨투맨</span>
                 </a>
               </div>
