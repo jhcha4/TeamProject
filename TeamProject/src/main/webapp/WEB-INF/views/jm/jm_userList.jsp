@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@ include file="../include/head.jsp" %>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 
 
+
+
+
+
+
  <p>관리자 유저정보 관리 페이지 입니다</p>
+ 
+ 
+
  
  <div class="container-fluid">
 	<div class="row">
@@ -60,6 +66,12 @@
 						</td>
 						<td>
 							${jmMemberVo.u_grade}
+						</td>
+						<td>
+							<a type="button" class=" btn btn-sm  btn-warning" href="/jm/jm_userUpdate?u_id=${jmMemberVo.u_id}">유저 수정</a>
+						</td>
+						<td>
+							<a type="button" class=" btn btn-sm  btn-danger"  href="/jm/jm_userDelete?u_id=${jmMemberVo.u_id}" >유저 삭제</a>
 						</td>
 					</tr>
 					</c:forEach>

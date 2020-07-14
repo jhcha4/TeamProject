@@ -28,8 +28,38 @@
 		
 		select * from TBL_USER order by u_info
 		
-		
 		</select>
+	
+	<!-- 관리자 페이지 - 회원정보 개인별 조회 -->
+		<select id="selectById" resultType="JmMemberVo">
+		
+		select * from tbl_user
+		where u_id=#{u_id}
+	
+		</select>
+	
+	
+	
+	<!-- 관리자 페이지 - 회원정보 수정 -->
+		<update id="updateUser">
+		
+		update tbl_user set
+		u_name= #{u_name},
+		u_email= #{u_email},
+		u_address= #{u_address},
+		u_phone= #{u_phone},
+		u_grade= #{u_grade}
+		where u_id= #{u_id}
+	
+		</update>
+	
+	<!-- 관리자 페이지 - 회원정보 삭제 -->
+	<delete id="deleteUser">
+		delete from tbl_user 
+		where u_id=#{u_id}
+	
+	</delete>
+		
 	
 	
 	
