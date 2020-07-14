@@ -8,4 +8,9 @@
 		select * from tbl_cart
 		where u_id = #{u_id}
 	</select>
+	
+	<delete id="deleteCart">
+		delete from tbl_cart
+		where u_id = #{u_id} and p_num = #{p_num}
+	</delete>
 </mapper>

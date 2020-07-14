@@ -23,4 +23,9 @@ public class CjhCartServiceImpl implements CjhCartService {
 		return list;
 	}
 
+	@Override
+	public void deleteCart(String u_id, int p_num) throws Exception {
+		cartDao.deleteCart(u_id, p_num);
+	}
+
 }

@@ -2,6 +2,7 @@ package com.kh.team.cjh.dao;
 
 import java.util.List;
 
+import com.kh.team.domain.CjhPointVo;
 import com.kh.team.domain.CjhUserVo;
 
 public interface CjhUserDao {
@@ -17,5 +18,8 @@ public interface CjhUserDao {
 	
 	//	내정보 수정
 	public void updateUser(CjhUserVo userVo) throws Exception;
+	
+	//	포인트 정보 불러오기
+	public CjhPointVo getPoint(String u_id) throws Exception;
 	
 }

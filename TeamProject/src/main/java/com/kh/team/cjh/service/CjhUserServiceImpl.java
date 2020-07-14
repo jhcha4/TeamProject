@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.kh.team.cjh.dao.CjhUserDao;
+import com.kh.team.domain.CjhPointVo;
 import com.kh.team.domain.CjhUserVo;
 
 @Service
@@ -41,6 +42,12 @@ public class CjhUserServiceImpl implements CjhUserService {
 	@Override
 	public void updateUser(CjhUserVo userVo) throws Exception {
 		userDao.updateUser(userVo);
+	}
+
+	@Override
+	public CjhPointVo getPoint(String u_id) throws Exception {
+		CjhPointVo pointVo = userDao.getPoint(u_id);
+		return pointVo;
 	}
 
 }

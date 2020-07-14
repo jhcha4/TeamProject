@@ -10,14 +10,42 @@
     margin:0 auto;
 }
 </style>
-
+<script>
+$(document).ready(function() {
+	$("#allcheck").click(function() {
+		if($("#allcheck").prop("checked")) {
+			$("input[name=checkbox]").prop("checked", true);
+		} else {
+			$("input[name=checkbox]").prop("checked", false);
+		}
+	});
+	
+	$("#btnplus").click(function() {
+		var p_count = $("#p_count").val();
+		var np_count = Number(p_count) + 1;
+		var p_price = $("#p_price").text();
+		var np_price = Number(p_price);
+		var sumPrice = $("#sumPrice").text(np_price * np_count);
+	});
+	
+	$("#btnminus").click(function() {
+		var p_count = $("#p_count").val();
+		var np_count = Number(p_count) - 1;
+		var p_price = $("#p_price").text();
+		var np_price = Number(p_price);
+		console.log(np_price);
+		console.log(np_count);
+		var sumPrice = $("#sumPrice").text(np_price * np_count);
+		console.log(sumPrice);
+	});
+	
+});
+</script>
 
 <div class="bg-light py-3">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 mb-0"><a href="/cjh/index">Home</a> <span class="mx-2 mb-0">/</span>
-				<a href="/cjh/mypage">My Page</a>  <span class="mx-2 mb-0">/</span>
-				<a href="/cjh/order">Order</a>  <span class="mx-2 mb-0">/</span>
 				<a href="/cjh/cart">Cart</a>
 			</div>
 		</div>
@@ -32,9 +60,10 @@
 				<div class="site-blocks-table">
 					<table class="table table-bordered">
 						<thead style="height: 10px">
+							<tr bgcolor="#eeeeee"><th colspan="7" style="text-align: Left;">장바구니 목록</th></tr>
 							<tr>
 								<th style="width: 5%">
-									<input type="checkbox" id="cbtr${status.index}" name="checkbox"/>
+									<input type="checkbox" id="allcheck" name="allcheck"/>
 								</th>
 								<th style="width: 15%" class="product-thumbnail">상품이미지</th>
 								<th style="width: 25%" class="product-name">상품내용</th>
@@ -50,7 +79,7 @@
 								<c:forEach var="item" items="${list}" varStatus="status">
 									<tr class="calculation1_tbody_tr1" style="height: 90px; background-color: #fff;" >
 										<td style="text-align: Left; text-align:center; border-right:none; width:10px">
-											<input type="checkbox" id="cbtr${status.index}" name="checkbox"/>
+											<input type="checkbox" id="checkbox" name="checkbox"/>
 											<input type="hidden" class="buypd${status.index}" value="${item.p_num}">
 										</td>
 										
@@ -59,25 +88,24 @@
 										
 										<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.p_name}</td>
 										
-										<td><span style="padding-left: 10px;" class="p_price${status.index}">${item.p_price}</span>원</td>
+										<td><span id="p_price" style="padding-left: 10px;" class="p_price${status.index}">${item.p_price}</span>원</td>
 										
 										<td	style="width:150px">
 											
 											<div class="input-group mb-3" style="max-width: 120px;">
 												<div class="input-group-prepend">
-													<button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+													<button id="btnminus" class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
 												</div>
-												<input type="text" class="form-control text-center" value="${item.p_count}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+												<input id="p_count" type="text" class="form-control text-center" value="${item.p_count}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
 												<div class="input-group-append">
-													<button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+													<button id="btnplus" class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
 												</div>
 											</div>
-											
 										</td>
 										
-										<td><span>${item.p_price * item.p_count}</span>원</td>
+										<td><span id="sumPrice">${item.p_price * item.p_count}</span>원</td>
 										
-										<td><a href="#" class="btn btn-primary btn-sm">X</a></td>
+										<td><a href="/cjh/deleteCart?u_id=${u_id}&p_num=${item.p_num}" class="btn btn-basic btn-sm">X</a></td>
 									
 								</c:forEach>
 							</c:if>
@@ -87,6 +115,13 @@
 									<td colspan="10" style="font-size: 20pt; color: gray;"><span>장바구니에 등록된 상품이 없습니다.</span></td>
 								</tr>
 							</c:if>
+							
+							<tr bgcolor="#eeeeee">
+								<th colspan="7" style="text-align: Right;">
+									선택항목 삭제 <a href="#" class="btn btn-basic btn-sm">X</a>
+								</th>
+							</tr>
+							
 						</tbody>
 						
 					</table>
@@ -101,7 +136,7 @@
 						<button class="btn btn-primary btn-sm btn-block">Update Cart</button>
 					</div>
 					<div class="col-md-6">
-						<button type="button" onclick="location.href='/cjh/shop'" class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
+						<button type="button" onclick="location.href='/lsh/shop'" class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
 					</div>
 				</div>
 				<div class="row">
@@ -127,23 +162,15 @@
 						</div>
 						<div class="row mb-3">
 							<div class="col-md-6">
-								<span class="text-black">Subtotal</span>
+								<span class="text-black">결제 가격</span>
 							</div>
 							<div class="col-md-6 text-right">
-								<strong class="text-black">$230.00</strong>
-							</div>
-						</div>
-						<div class="row mb-5">
-							<div class="col-md-6">
-								<span class="text-black">Total</span>
-							</div>
-							<div class="col-md-6 text-right">
-								<strong class="text-black">$230.00</strong>
+								<span></span>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='/cjh/checkout'">Proceed To Checkout</button>
+								<button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='/cjh/checkout'">결제하기</button>
 							</div>
 						</div>
 					</div>

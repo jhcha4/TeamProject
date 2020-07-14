@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.team.cjh.service.CjhUserService;
 import com.kh.team.cjh.util.MyUrlUtil;
+import com.kh.team.domain.CjhPointVo;
 import com.kh.team.domain.CjhUserVo;
 
 @Controller
@@ -60,10 +61,7 @@ public class CjhMyInfoController {
 		return "cjh/thankyou";
 	}
 	
-	@RequestMapping(value="/mypage")
-	public String mypage() throws Exception {
-		return "cjh/mypage";
-	}
+
 	
 	@RequestMapping(value="/order")
 	public String order() throws Exception {
@@ -119,9 +117,14 @@ public class CjhMyInfoController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
 		session.invalidate();		//	세션 무효화 -> 로그아웃
-		return "redirect:/home";
+		return "redirect:/cjh/index";
 	}
 	
-
-	
+	//	마이페이지
+	@RequestMapping(value="/mypage", method = RequestMethod.GET)
+	public void mypage(String u_id, Model model) throws Exception {
+		CjhPointVo pointVo = userService.getPoint(u_id);
+		System.out.println("pointVo : " + pointVo);
+		model.addAttribute("pointVo", pointVo);
+	}
 }
