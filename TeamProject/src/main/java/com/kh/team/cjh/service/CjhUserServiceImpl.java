@@ -1,5 +1,7 @@
 package com.kh.team.cjh.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -40,6 +42,5 @@ public class CjhUserServiceImpl implements CjhUserService {
 	public void updateUser(CjhUserVo userVo) throws Exception {
 		userDao.updateUser(userVo);
 	}
-
 
 }

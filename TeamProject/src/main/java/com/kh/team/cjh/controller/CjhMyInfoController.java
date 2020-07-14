@@ -124,7 +124,6 @@ public class CjhMyInfoController {
 	
 	@RequestMapping(value="/cart", method = RequestMethod.GET)
 	public String cart(String u_id) throws Exception {
-//		System.out.println("u_id : " + u_id);
 		
 		return "cjh/cart";
 	}
