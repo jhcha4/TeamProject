@@ -7,13 +7,16 @@ public class Kys_BoardVo {
 	private int p_price;
 	private String p_main;
 	private String p_serve;
-	
+	private String p_deleted;
 	public Kys_BoardVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Kys_BoardVo(int p_num, String p_name, String p_content, int p_price, String p_main, String p_serve) {
+	
+
+	public Kys_BoardVo(int p_num, String p_name, String p_content, int p_price, String p_main, String p_serve,
+			String p_deleted) {
 		super();
 		this.p_num = p_num;
 		this.p_name = p_name;
@@ -21,7 +24,10 @@ public class Kys_BoardVo {
 		this.p_price = p_price;
 		this.p_main = p_main;
 		this.p_serve = p_serve;
+		this.p_deleted = p_deleted;
 	}
+
+
 
 	public int getP_num() {
 		return p_num;
@@ -70,12 +76,24 @@ public class Kys_BoardVo {
 	public void setP_serve(String p_serve) {
 		this.p_serve = p_serve;
 	}
+	
+	public String getP_deleted() {
+		return p_deleted;
+	}
+
+	public void setP_deleted(String p_deleted) {
+		this.p_deleted = p_deleted;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return "BoardVo [p_num=" + p_num + ", p_name=" + p_name + ", p_content=" + p_content + ", p_price=" + p_price
-				+ ", p_main=" + p_main + ", p_serve=" + p_serve + "]";
+		return "Kys_BoardVo [p_num=" + p_num + ", p_name=" + p_name + ", p_content=" + p_content + ", p_price="
+				+ p_price + ", p_main=" + p_main + ", p_serve=" + p_serve + ", p_deleted=" + p_deleted + "]";
 	}
+
 	
+
 	
 }
