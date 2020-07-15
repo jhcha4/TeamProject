@@ -1,6 +1,6 @@
 package com.kh.team;
 
-import java.util.List;
+
 
 import javax.inject.Inject;
 
@@ -88,7 +88,7 @@ public class JmTestInsert {
 		jmMemberDao.selectPw("123");
 	}
 	
-	//비밀번호 찾기(이메일)
+	//비밀번호 찾기(이메일)service
 		@Test
 		public void selectPwService()throws Exception{
 			jmMemberService.selectPw("123");

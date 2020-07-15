@@ -59,5 +59,9 @@ public class KysDaoTest {
 	public void boardSelectBy() throws Exception{
 		boardDao.boardSelectBy(1);
 	}
+	@Test
+	public void selectByTow() throws Exception{
+		boardDao.selectByTow("S", "SR");
+	}
 
 }

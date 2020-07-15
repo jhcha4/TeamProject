@@ -125,13 +125,47 @@
             <li class="has-children">
            		<a href="/lsh/shop">Shop</a>
            		<ul class="dropdown">
-
-                <li><a href="/lsh/mainShop?p_main=T">상의</a></li>
-                <li><a href="/lsh/mainShop?p_main=P">바지</a></li>
-                <li><a href="/lsh/mainShop?p_main=S">신발</a></li>
-                <li><a href="/lsh/mainShop?p_main=A">악세사리</a></li>
-              </ul>  
-
+					<li class="has-children">
+	                  <a href="/lsh/shop_main?p_main=T">상의</a>
+	                  <ul class="dropdown">
+	                    <li><a href="/lsh/shop_serve?p_serve=TH">반팔</a></li>
+	                    <li><a href="/lsh/shop_serve?p_serve=TL">긴팔</a></li>
+	                    <li><a href="/lsh/shop_serve?p_serve=TS">셔츠</a></li>
+	                    <li><a href="/lsh/shop_serve?p_serve=TM">맨투맨</a></li>
+	                  </ul>
+	                </li>
+	                 
+	                <li class="has-children">
+	                  <a href="/lsh/shop_main?p_main=P">하의</a>
+	                  <ul class="dropdown">
+	                    <li><a href="/lsh/shop_serve?p_serve=PJ">청바지</a></li>
+	                    <li><a href="/lsh/shop_serve?p_serve=PM">면바지</a></li>
+	                    <li><a href="/lsh/shop_serve?p_serve=PH">반바지</a></li>
+	                    <li><a href="/lsh/shop_serve?p_serve=P7">7부바지</a></li>
+	                  </ul>
+	                </li>
+	                  
+	                <li class="has-children">
+					  <a href="/lsh/shop_main?p_main=S">신발</a>
+	                  <ul class="dropdown">
+	                    <li><a href="/lsh/shop_serve?p_serve=SD">구두</a></li>
+	                    <li><a href="/lsh/shop_serve?p_serve=SU">운동화</a></li>
+	                    <li><a href="/lsh/shop_serve?p_serve=SS">슬리퍼</a></li>
+	                    <li><a href="/lsh/shop_serve?p_serve=SR">로퍼</a></li>
+	                  </ul>
+	                </li>
+	                  
+					<li class="has-children">	                  
+	                  <a href="/lsh/shop_main?p_main=A">악세사리</a>
+	                  <ul class="dropdown">
+	                    <li><a href="/lsh/shop_serve?p_serve=AR">반지</a></li>
+	                    <li><a href="/lsh/shop_serve?p_serve=AW">지갑</a></li>
+	                    <li><a href="/lsh/shop_serve?p_serve=AC">모자</a></li>
+	                    <li><a href="/lsh/shop_serve?p_serve=AB">가방</a></li>
+	                  </ul>
+	                </li>
+	                
+             	</ul>  
             </li>
             
             
