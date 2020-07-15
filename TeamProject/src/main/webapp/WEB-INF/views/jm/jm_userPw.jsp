@@ -33,28 +33,29 @@ $(function(){
 		$.get(url,sendData,function(rData){
 			  console.log(rData); 
 			  	  
-				var email=$("#u_email").val();
-				email.val(rData);
-			} 
-			
+			  var email =rData.u_email;
+			  var pw =rData.u_pw;
 			  
-				
-				
-		 
+			  $("#u_email").val(email);
+			  $("#u_pw").val(pw);
 		 });
-		
-		
-		
-		
-		
+
 	}); 
+ 	
+ 	$("#btnEmail").click(function(){
+ 		
+ 	});
+ 	
+ 	
+ 	
+ 	
 });
 </script> 
 
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<form role="form" >
+			<form id="mailFrom"  role="form" action="" method="post" >
 			
 			
 				<div class="form-group">
@@ -73,10 +74,17 @@ $(function(){
 					<label for="u_email">
 						이메일
 					</label>
-					<input type="email" class="form-control" id="u_email" name="u_email"  <%-- value="${jmMemberVo.u_email}" --%>   readonly/>
+					<input type="email" class="form-control" id="u_email" name="u_email"    readonly/>
 				</div>
 				
-				<button type="submit" class="btn btn-info">
+				<div class="form-group"> 
+					<label for="u_pw">	
+					</label>
+					
+					<input type="hidden" class="form-control" id="u_pw" name="u_pw" />
+				</div>
+				
+				<button type="submit" class="btn btn-info" id="btnEmail" name="btnEmail">
 					전송하기
 				</button>
 			</form>

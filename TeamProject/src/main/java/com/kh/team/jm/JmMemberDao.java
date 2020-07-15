@@ -3,6 +3,7 @@ package com.kh.team.jm;
 import java.util.List;
 
 import com.kh.team.domain.JmMemberVo;
+import com.kh.team.domain.JmPwEmailDto;
 
 public interface JmMemberDao {
 
@@ -30,6 +31,6 @@ public interface JmMemberDao {
 	public void deleteUser(String u_id)throws Exception;
 	
 	//비밀번호찾기(이메일)
-	public String selectPw(String u_id)throws Exception;
+	public JmPwEmailDto selectPw(String u_id)throws Exception;
 	
 }

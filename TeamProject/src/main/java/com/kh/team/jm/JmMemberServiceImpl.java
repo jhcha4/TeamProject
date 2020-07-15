@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.kh.team.domain.JmMemberVo;
+import com.kh.team.domain.JmPwEmailDto;
 
 @Service
 public class JmMemberServiceImpl implements JmMemberService {
@@ -62,7 +63,7 @@ public class JmMemberServiceImpl implements JmMemberService {
 	}
 	//비밀번호 찾기(이메일)
 	@Override
-	public String selectPw(String u_id) throws Exception {
+	public JmPwEmailDto selectPw(String u_id) throws Exception {
 		return jmMemberDao.selectPw(u_id);
 	}
 	
