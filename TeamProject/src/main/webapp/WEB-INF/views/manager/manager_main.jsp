@@ -3,7 +3,6 @@
 <%@ include file="../include/head.jsp" %>
 <%@ include file="../include/main_bar.jsp" %>
 
-${Kys_serveVo.serve_name}
 
 
 

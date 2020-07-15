@@ -8,6 +8,8 @@
 	<input type="hidden" name="serve_maincode" value="${Kys_ServeVo.main_code }"/>
 </form>
 <form id="frmPage" action="/manager/normal_list" method="get">
+	<input type="hidden" name="p_main" value="${boardDto.p_main}">
+	<input type="hidden" name="p_serve" value="${boardDto.p_serve}">
 	<input type="hidden" name="page" value="${boardDto.page}"/>
 	<input type="hidden" name="perPage" value="${boardDto.perPage}"/>
 </form>
@@ -19,6 +21,7 @@
 		<div class="col-md-8">
 			<div class="btn-group" role="group">
 
+				<button class="btn btn-secondary" type="button"><a href="/manager/manager_main">관리자 홈</a></button>
 				<button class="btn btn-secondary" type="button"><a href="/manager/shop_single_input">상품 등록</a></button>
 				<button class="btn btn-secondary" type="button"><a href="/manager/normal_list">상품리스트</a></button>
 				<button class="btn btn-secondary" type="button"><a href="/jm/jm_userList">유저리스트</a></button>

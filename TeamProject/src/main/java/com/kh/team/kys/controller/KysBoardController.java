@@ -40,14 +40,13 @@ public class KysBoardController {
 	@RequestMapping(value="/normal_list",method = RequestMethod.GET)
 	public void normal_list(Kys_BoardDto boardDto, Model model) throws Exception{
 		boardDto.setPageInfo();
-		List<Kys_BoardVo> list = boardService.boardList(boardDto);
+//		List<Kys_BoardVo> list = boardService.boardList(boardDto);
 		int totalCount = boardService.getCount(boardDto);
-		
 		
 		boardDto.setTotalCount(totalCount);
 	
 		List<Kys_BoardVo> pageList = boardService.pageList(boardDto);
-		model.addAttribute("list",list);
+//		model.addAttribute("list",list);
 		model.addAttribute("pageList",pageList);
 		model.addAttribute("boardDto",boardDto);
 		
@@ -80,6 +79,15 @@ public class KysBoardController {
 		boardService.boardUpdate(boardVo);
 		return "redirect:/manager/normal_list";
 	}
-	//게시물 페이징
+	@RequestMapping(value = "/productDelete", method = RequestMethod.GET)
+	public void getDelete() throws Exception{
+		
+	}
+	//삭제 처리
+	@RequestMapping(value="/productDelete", method = RequestMethod.POST)
+	public String postDelete(int p_num) throws Exception{
+		boardService.boardDelete(p_num);
+		return "redirect:/manger/normal_list";
+	}
 	
 }

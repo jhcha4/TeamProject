@@ -5,10 +5,6 @@
 
 <script type="text/javascript">
 $(function() {
-	$("#mainOption").val("T").attr("selected","selected");
-	$("#serveOption").val("TH").attr("selected","selected");
-	
-
 	var options = $("#serveOption option");
 	var m = $("#mainOption option:selected").val();
 	if(m == "T") {   
@@ -28,28 +24,50 @@ $(function() {
 		if(main == "A")                                                       
 			$("#serveOption").append(options[12]).append(options[13]).append(options[14]).append(options[15]);
 	});
-	
+	//검색
 	$("#btnSearch").click(function(){
 		var main = $("select[name=p_main]").val();
 		var serve = $("select[name=p_serve]").val();
 		console.log("main:"+main);
 		console.log("serve:"+serve);
-		$("#shop_form input[name=p_main])").val(main);
-		$("#shop_form input[name=p_serve])").val(serve);
-		$("#shop_form").submit();
+		$("#frmPage  > input[name=p_main]").val(main);
+		$("#frmPage > input[name=p_serve]").val(serve);
+		$("#frmPage").submit();
 	});
+	
 	//n줄씩 보기
 	$("select[name=perPage]").change(function(){
 		console.log($(this).val());
 		$("#frmPage > input[name=perPage]").val($(this).val());
 		$("#frmPage").submit();
 	});
-	
-	
+	//패이지 번호
+	$("a.page-link").click(function(e){
+		e.preventDefault();
+		var page = $(this).attr("href").trim();
+		$("#frmPage > input[name=page]").val(page);
+		$("#frmPage").submit();
+	});
+	//페이지 액티브
+	$("a.page-link").each(function(){
+		var page = $(this).attr("href");
+		if (page == "${boardDto.page}" ){
+			$(this).parent().addClass("active");
+			return;
+		}
+	});
+	//삭제 버튼
+	$("#btnDelete").click(function(){
+		var that = $(this);
+		console.log(that);
+	});
+
+
 });
 </script>
 
-
+${boardDto}
+<div id="div"></div>
 <div class="row">
 	<div class="col-md-2"></div>
 	<div class="col-md-8">
@@ -57,28 +75,30 @@ $(function() {
 		<div class="row">
 			<div class="col-md-12">
 				<div>
-					<label>main : </label> <select name="p_main" id="mainOption">
-						<option value="T">상의
-						<option value="P">하의
-						<option value="A">악세사리
-						<option value="S">신발
-					</select> <label>serve : </label> <select name="p_serve" id="serveOption">
-						<option value="TH">반팔
-						<option value="TL">긴팔
-						<option value="TS">셔츠
-						<option value="TM">맨투맨
-						<option value="PJ">청바지
-						<option value="PM">면바지
-						<option value="PH">반바지
-						<option value="P7">7부바지
-						<option value="SD">구두
-						<option value="SU">운동화
-						<option value="SS">스릴퍼
-						<option value="SR">로퍼
-						<option value="AR">반지
-						<option value="AW">지갑
-						<option value="AC">모자
-						<option value="AB">가방
+					<label>main : </label> 
+					<select name="p_main" id="mainOption">
+						<option value="T">상의</option>
+						<option value="P">하의</option>
+						<option value="A">악세사리</option>
+						<option value="S">신발</option>
+					</select> <label>serve : </label> 
+					<select name="p_serve" id="serveOption">
+						<option value="TH">반팔</option>
+						<option value="TL">긴팔</option>
+						<option value="TS">셔츠</option>
+						<option value="TM">맨투맨</option>
+						<option value="PJ">청바지</option>
+						<option value="PM">면바지</option>
+						<option value="PH">반바지</option>
+						<option value="P7">7부바지</option>
+						<option value="SD">구두</option>
+						<option value="SU">운동화</option>
+						<option value="SS">스릴퍼</option>
+						<option value="SR">로퍼</option>
+						<option value="AR">반지</option>
+						<option value="AW">지갑</option>
+						<option value="AC">모자</option>
+						<option value="AB">가방</option>
 					</select>
 					<button type="button" id="btnSearch">검색</button>
 					<!-- n줄 씩보기 -->
@@ -110,30 +130,45 @@ $(function() {
 							<td>${BoardVo.p_price}</td>
 							<td><a type="button" class="btn btn-sm btn-warning"
 								href="/manager/oenSelect?p_num=${BoardVo.p_num}">수정</a></td>
-							<td><a type="button" class="btn btn-sm btn-danger">삭제</a></td>
+							<td><a type="button" class="btn btn-sm btn-danger"
+								 id="btnDelete">삭제</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<div>
-		<nav class="pagination-sm">
-			<ul class="pagination">
-				<li class="page-item"><a class="page-link" href="#">Previous</a>
-				</li>
-
-				<c:forEach begin="${boardDto.startPage}"
-					end="${boardDto.endPage}" var="v">
-					<li class="page-item"><a class="page-link" href="${v}">${v}</a></li>
-
-				</c:forEach>
-				<li class="page-item"><a class="page-link" href="#">Next</a></li>
-			</ul>
-		</nav>
-	</div>
+	
 	<div class="col-md-2"></div>
 </div>
+<!-- 패이징 -->
+<div class="row">
+		<div class="col-md-12 text-center">
+		<nav class="pagination-sm">
+			<ul class="pagination">
+				<!-- 이전 -->
+				<c:if test="${boardDto.startPage != 1}">
+					<li class="page-item">
+					<a class="page-link" href="${boardDto.startPage -1}">Previous</a>
+					</li>
+				</c:if>
+				<!-- 페이지 번호 -->
+				<c:forEach begin="${boardDto.startPage}" end="${boardDto.endPage}" var="v">
+					<li class="page-item">
+					<a class="page-link" href="${v}">${v}</a>
+					</li>
+				</c:forEach>
+				<!-- 다음 -->
+				<c:if test="${boardDto.endPage < boardDto.totalPage}">
+					<li class="page-item">
+						<a class="page-link" href="${boardDto.endPage +1}">Next</a>
+					</li>
+				</c:if>
+				
+			</ul>
+		</nav>
+		</div>
+	</div>
 
 
 
