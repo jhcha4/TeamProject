@@ -33,28 +33,29 @@ $(function(){
 		$.get(url,sendData,function(rData){
 			  console.log(rData); 
 			  	  
-				var email=$("#u_email").val();
-				email.val(rData);
-			} 
-			
+			  var email =rData.u_email;
+			  var pw =rData.u_pw;
 			  
-				
-				
-		 
+			  $("#to").val(email);
+			  $("#contents").val("비밀번호는"+pw+"입니다");
 		 });
-		
-		
-		
-		
-		
+
 	}); 
+ 	
+ 	$("#btnEmail").click(function(){
+ 		
+ 	});
+ 	
+ 	
+ 	
+ 	
 });
 </script> 
 
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<form role="form" >
+			<form id="mailFrom"  role="form" action="/email/sendPwMail" method="post" >
 			
 			
 				<div class="form-group">
@@ -70,13 +71,28 @@ $(function(){
 	
 				<div class="form-group">
 					 
-					<label for="u_email">
+					<label for="to">
 						이메일
 					</label>
-					<input type="email" class="form-control" id="u_email" name="u_email"  <%-- value="${jmMemberVo.u_email}" --%>   readonly/>
+					<input type="email" class="form-control" id="to" name="to"    readonly/>
 				</div>
 				
-				<button type="submit" class="btn btn-info">
+				<div class="form-group"> 
+					<label for="contents">	
+					</label>
+					
+					<input type="hidden" class="form-control" id="contents" name="contents" />
+				</div>
+				
+				<div class="form-group"> 
+					<label for="subject">	
+					</label>
+					
+					<input type="hidden" class="form-control" id="subject" name="subject" value="비밀번호 확인 메일 입니다" />
+				</div>
+				
+				
+				<button type="submit" class="btn btn-info" id="btnEmail" name="btnEmail">
 					전송하기
 				</button>
 			</form>

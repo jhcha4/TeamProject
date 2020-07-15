@@ -20,4 +20,8 @@ public interface CjhUserService {
 	
 	//	포인트 정보 불러오기
 	public CjhPointVo getPoint(String u_id) throws Exception;
+	
+	//	유저 포인트 정보 불러오기
+	public int getUserPoint(String u_id) throws Exception;
+	
 }
