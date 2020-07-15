@@ -37,7 +37,7 @@
 	<delete id="boardDelete">
 	   update tbl_product_board set
  	   p_deleted  = 'D'
- 	   where p_num = #{p_num};
+ 	   where p_num = #{p_num}
 	</delete>
 	
 	<!-- 상품 조건 검색 -->

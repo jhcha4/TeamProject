@@ -79,15 +79,6 @@ public class KysBoardController {
 		boardService.boardUpdate(boardVo);
 		return "redirect:/manager/normal_list";
 	}
-	@RequestMapping(value = "/productDelete", method = RequestMethod.GET)
-	public void getDelete() throws Exception{
-		
-	}
-	//삭제 처리
-	@RequestMapping(value="/productDelete", method = RequestMethod.POST)
-	public String postDelete(int p_num) throws Exception{
-		boardService.boardDelete(p_num);
-		return "redirect:/manger/normal_list";
-	}
+	
 	
 }
