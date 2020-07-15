@@ -29,6 +29,7 @@ public interface JmMemberDao {
 	//관리자 페이지- 일반회원 삭제
 	public void deleteUser(String u_id)throws Exception;
 	
-	
+	//비밀번호찾기(이메일)
+	public String selectPw(String u_id)throws Exception;
 	
 }

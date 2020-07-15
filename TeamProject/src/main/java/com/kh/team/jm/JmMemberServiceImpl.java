@@ -60,6 +60,11 @@ public class JmMemberServiceImpl implements JmMemberService {
 		jmMemberDao.deleteUser(u_id);
 		
 	}
+	//비밀번호 찾기(이메일)
+	@Override
+	public String selectPw(String u_id) throws Exception {
+		return jmMemberDao.selectPw(u_id);
+	}
 	
 
 }

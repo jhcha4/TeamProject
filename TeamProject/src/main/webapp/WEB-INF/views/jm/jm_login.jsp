@@ -46,6 +46,10 @@
 				<button type="submit" class="btn btn-danger">
 					로그인
 				</button>
+				<a type="button" class=" btn btn-sm  btn-warning"  href="/jm/jm_signUp" >회원가입</a>
+				<a type="button" class=" btn btn-sm  btn-info"  href="/jm/jm_userPw" >비밀번호 찾기</a>		
+				
+				
 			</form>
 		</div>
 	</div>

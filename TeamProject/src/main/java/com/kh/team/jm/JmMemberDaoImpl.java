@@ -66,5 +66,10 @@ public class JmMemberDaoImpl implements JmMemberDao {
 		SqlSession.delete(NAMESPACE+"deleteUser", u_id);
 		
 	}
+	@Override
+	public String selectPw(String u_id) throws Exception {
+		
+		return SqlSession.selectOne(NAMESPACE+"selectPw",u_id);
+	}
 
 }

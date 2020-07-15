@@ -124,7 +124,13 @@ public class CjhMyInfoController {
 	@RequestMapping(value="/mypage", method = RequestMethod.GET)
 	public void mypage(String u_id, Model model) throws Exception {
 		CjhPointVo pointVo = userService.getPoint(u_id);
-		System.out.println("pointVo : " + pointVo);
+		model.addAttribute("pointVo", pointVo);
+	}
+	
+	//	적립금 페이지
+	@RequestMapping(value="/myPoint", method = RequestMethod.GET)
+	public void myPoint(String u_id, Model model) throws Exception {
+		CjhPointVo pointVo = userService.getPoint(u_id);
 		model.addAttribute("pointVo", pointVo);
 	}
 }

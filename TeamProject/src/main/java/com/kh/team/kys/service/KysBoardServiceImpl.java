@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.kys.dao.KysBoardDao;
 
@@ -42,6 +43,16 @@ public class KysBoardServiceImpl implements KysBoardService {
 	public Kys_BoardVo boardSelectBy(int p_num) throws Exception {
 			return boardDao.boardSelectBy(p_num);
 		
+	}
+	@Override
+	public int getCount(Kys_BoardDto boardDto) throws Exception {
+		
+		return boardDao.getCount(boardDto);
+	}
+	@Override
+	public List<Kys_BoardVo> pageList(Kys_BoardDto boardDto) throws Exception {
+		
+		return boardDao.boardListPage(boardDto);
 	}
 
 }

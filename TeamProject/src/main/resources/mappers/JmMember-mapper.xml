@@ -59,8 +59,14 @@
 		where u_id=#{u_id}
 	
 	</delete>
-		
 	
+	<!-- 비밀번호 찾기(이메일 찾기) -->
+	<select id="selectPw" resultType="string">
+		select u_email from tbl_user
+		where u_id = #{u_id}
+	
+	
+	</select>
 	
 	
 </mapper>
