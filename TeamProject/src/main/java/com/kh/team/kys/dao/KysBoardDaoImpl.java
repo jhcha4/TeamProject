@@ -22,7 +22,7 @@ public class KysBoardDaoImpl implements KysBoardDao {
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<Kys_BoardVo> boardList() throws Exception {
+	public List<Kys_BoardVo> boardList(Kys_BoardDto boardDto) throws Exception {
 		
 		return sqlSession.selectList(NAMESPACE +"boardList");
 	}

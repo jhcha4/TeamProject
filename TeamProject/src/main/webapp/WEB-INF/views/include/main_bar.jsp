@@ -7,7 +7,10 @@
 	<input type="hidden" name="serve_name" value="${Kys_ServeVo.serve_name }"/>
 	<input type="hidden" name="serve_maincode" value="${Kys_ServeVo.main_code }"/>
 </form>
-
+<form id="frmPage" action="/manager/normal_list" method="get">
+	<input type="hidden" name="page" value="${boardDto.page}"/>
+	<input type="hidden" name="perPage" value="${boardDto.perPage}"/>
+</form>
 
 	<div class="row">
 		<div class="col-md-2">

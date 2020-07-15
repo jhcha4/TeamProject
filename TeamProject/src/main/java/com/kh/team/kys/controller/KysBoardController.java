@@ -39,12 +39,14 @@ public class KysBoardController {
 	//상품 리스트  + 게시물 페이징
 	@RequestMapping(value="/normal_list",method = RequestMethod.GET)
 	public void normal_list(Kys_BoardDto boardDto, Model model) throws Exception{
-		List<Kys_BoardVo> list = boardService.boardList();
+		boardDto.setPageInfo();
+		List<Kys_BoardVo> list = boardService.boardList(boardDto);
 		int totalCount = boardService.getCount(boardDto);
-		List<Kys_BoardVo> pageList = boardService.pageList(boardDto);
-		System.out.println(pageList);
-		boardDto.setTotalCount(totalCount);
 		
+		
+		boardDto.setTotalCount(totalCount);
+	
+		List<Kys_BoardVo> pageList = boardService.pageList(boardDto);
 		model.addAttribute("list",list);
 		model.addAttribute("pageList",pageList);
 		model.addAttribute("boardDto",boardDto);

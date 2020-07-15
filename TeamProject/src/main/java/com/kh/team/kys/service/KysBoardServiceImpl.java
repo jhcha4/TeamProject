@@ -17,8 +17,8 @@ public class KysBoardServiceImpl implements KysBoardService {
 	private KysBoardDao boardDao;
 	//리스트
 	@Override
-	public List<Kys_BoardVo> boardList() throws Exception {
-		List<Kys_BoardVo> list =  boardDao.boardList();
+	public List<Kys_BoardVo> boardList(Kys_BoardDto boardDto) throws Exception {
+		List<Kys_BoardVo> list =  boardDao.boardList(boardDto);
 		return list;
 	}
 	//등록

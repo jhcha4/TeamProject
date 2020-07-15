@@ -8,7 +8,7 @@ import com.kh.team.domain.Kys_BoardDto;
 
 public interface KysBoardDao {
 	//게시물 리스트
-	public List<Kys_BoardVo> boardList() throws Exception;
+	public List<Kys_BoardVo> boardList(Kys_BoardDto boardDto) throws Exception;
 	//게시물 리스트 페이징
 	public List<Kys_BoardVo> boardListPage(Kys_BoardDto boardDto) throws Exception;
 	//게시글 수

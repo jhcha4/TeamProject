@@ -37,25 +37,24 @@ $(function() {
 		$("#shop_form input[name=p_main])").val(main);
 		$("#shop_form input[name=p_serve])").val(serve);
 		$("#shop_form").submit();
-		
 	});
+	//n줄씩 보기
+	$("select[name=perPage]").change(function(){
+		console.log($(this).val());
+		$("#frmPage > input[name=perPage]").val($(this).val());
+		$("#frmPage").submit();
+	});
+	
+	
 });
-
-
-
 </script>
-<form id="frmPage" action="/normal_list" method="get">
-	<input type="hidden" name="page" value="${boardDto.page}"/>
-	<input type="hidden" name="perPage" value="${boardDto.perPage}"/>
-</form>
-${pageList}
-	<div class="row">
-	<div class="col-md-2" >
 
-	</div>
-		<div class="col-md-8">
-		
-			<div class="row">
+
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+
+		<div class="row">
 			<div class="col-md-12">
 				<div>
 					<label>main : </label> <select name="p_main" id="mainOption">
@@ -63,9 +62,7 @@ ${pageList}
 						<option value="P">하의
 						<option value="A">악세사리
 						<option value="S">신발
-					</select>
-				
-					<label>serve : </label> <select name="p_serve" id="serveOption">
+					</select> <label>serve : </label> <select name="p_serve" id="serveOption">
 						<option value="TH">반팔
 						<option value="TL">긴팔
 						<option value="TS">셔츠
@@ -84,7 +81,14 @@ ${pageList}
 						<option value="AB">가방
 					</select>
 					<button type="button" id="btnSearch">검색</button>
-					
+					<!-- n줄 씩보기 -->
+					<select name="perPage" class="form-inline">
+						<c:forEach begin="5" end="50" step="5" var="i">
+						<option value="${i}" 
+							<c:if test="${i == pagingDto.perPage}"> selected</c:if>
+							>${i}줄씩 보기</option>
+						</c:forEach>
+					</select>
 				</div>
 			</div>
 			<!-- 테이블 -->
@@ -99,7 +103,7 @@ ${pageList}
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${list}" var="BoardVo">
+					<c:forEach items="${pageList}" var="BoardVo">
 						<tr>
 							<td>${BoardVo.p_main}${BoardVo.p_serve}${BoardVo.p_num}</td>
 							<td>${BoardVo.p_name}</td>
@@ -112,24 +116,25 @@ ${pageList}
 				</tbody>
 			</table>
 		</div>
-			</div>
-			<div>
-			<nav class="pagination-sm">
-				<ul class="pagination">
-			<li class="page-item"><a class="page-link" href="#">Previous</a>
-			</li>
-			
-			<c:forEach begin="${Kys_boardDto.startPage}" end="${Kys_boardDto.endPage}" var="v">
-			<li class="page-item"><a class="page-link" href="${v}">${v}</a></li>
-			
-			</c:forEach>
-			<li class="page-item"><a class="page-link" href="#">Next</a></li>
-		</ul>
-			</nav>
-		</div>
-		<div class="col-md-2">
-		</div>
-	
+	</div>
+	<div>
+		<nav class="pagination-sm">
+			<ul class="pagination">
+				<li class="page-item"><a class="page-link" href="#">Previous</a>
+				</li>
+
+				<c:forEach begin="${boardDto.startPage}"
+					end="${boardDto.endPage}" var="v">
+					<li class="page-item"><a class="page-link" href="${v}">${v}</a></li>
+
+				</c:forEach>
+				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="col-md-2"></div>
+</div>
+
 
 
 
