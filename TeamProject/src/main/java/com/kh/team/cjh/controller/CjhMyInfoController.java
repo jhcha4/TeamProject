@@ -61,8 +61,6 @@ public class CjhMyInfoController {
 		return "cjh/thankyou";
 	}
 	
-
-	
 	@RequestMapping(value="/order")
 	public String order() throws Exception {
 		return "cjh/order";
@@ -123,8 +121,8 @@ public class CjhMyInfoController {
 	//	마이페이지
 	@RequestMapping(value="/mypage", method = RequestMethod.GET)
 	public void mypage(String u_id, Model model) throws Exception {
-		CjhPointVo pointVo = userService.getPoint(u_id);
-		model.addAttribute("pointVo", pointVo);
+		int u_point = userService.getUserPoint(u_id);
+		model.addAttribute("u_point", u_point);
 	}
 	
 	//	적립금 페이지

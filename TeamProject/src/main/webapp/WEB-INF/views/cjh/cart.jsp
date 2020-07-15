@@ -20,23 +20,33 @@ $(document).ready(function() {
 		}
 	});
 	
-	$("#btnplus").click(function() {
-		var p_count = $("#p_count").val();
-		var np_count = Number(p_count) + 1;
-		var p_price = $("#p_price").text();
-		var np_price = Number(p_price);
-		var sumPrice = $("#sumPrice").text(np_price * np_count);
+	$('button[name="btnplus"]').click(function() {
+		var p_count = $(this).parent().prev().val();
+// 		var p_price = $('a[name="p_price"]').text();
+		var p_price = $(this).parent().parent().parent().prev().text();
+// 		console.log("p_count : " + p_count);
+// 		console.log("p_price : " + p_price);
+		$(this).parent().parent().parent().next().children().text((p_count*1 +1)*p_price);
+		
+	});
+
+	$('button[name="btnminus"]').click(function() {
+		var p_count = $(this).parent().next().val();
+		var p_price = $(this).parent().parent().parent().prev().text();
+// 		console.log("p_count : " + p_count);
+// 		console.log("p_price : " + p_price);
+		$(this).parent().parent().parent().next().children().text((p_count*1 -1)*p_price);
 	});
 	
-	$("#btnminus").click(function() {
-		var p_count = $("#p_count").val();
-		var np_count = Number(p_count) - 1;
-		var p_price = $("#p_price").text();
-		var np_price = Number(p_price);
-		console.log(np_price);
-		console.log(np_count);
-		var sumPrice = $("#sumPrice").text(np_price * np_count);
-		console.log(sumPrice);
+	$("#updateCart").click(function() {
+		var totalPrice = 0;
+		$(".sumPrice").each(function(index, element) {
+			var price = ($(this).text());
+			var nPrice = Number(price);
+			totalPrice += nPrice;
+		});
+// 		console.log("totalPrice : " + totalPrice);
+		$("#totalPrice").text(totalPrice );
 	});
 	
 });
@@ -88,22 +98,22 @@ $(document).ready(function() {
 										
 										<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.p_name}</td>
 										
-										<td><span id="p_price" style="padding-left: 10px;" class="p_price${status.index}">${item.p_price}</span>원</td>
+										<td><a name="p_price" style="padding-left: 10px;" class="p_price${status.index}">${item.p_price}</a></td>
 										
 										<td	style="width:150px">
 											
 											<div class="input-group mb-3" style="max-width: 120px;">
 												<div class="input-group-prepend">
-													<button id="btnminus" class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+													<button name="btnminus" class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
 												</div>
-												<input id="p_count" type="text" class="form-control text-center" value="${item.p_count}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+												<input name="p_count" type="text" class="form-control text-center" value="${item.p_count}">
 												<div class="input-group-append">
-													<button id="btnplus" class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+													<button name="btnplus" class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
 												</div>
 											</div>
 										</td>
 										
-										<td><span id="sumPrice">${item.p_price * item.p_count}</span>원</td>
+										<td><a class="sumPrice" id="sumPrice${status.index}" name="sumPrice">${item.p_price * item.p_count}</a>원</td>
 										
 										<td><a href="/cjh/deleteCart?u_id=${u_id}&p_num=${item.p_num}" class="btn btn-basic btn-sm">X</a></td>
 									
@@ -133,7 +143,7 @@ $(document).ready(function() {
 			<div class="col-md-6">
 				<div class="row mb-5">
 					<div class="col-md-6 mb-3 mb-md-0">
-						<button class="btn btn-primary btn-sm btn-block">Update Cart</button>
+						<button id="updateCart" class="btn btn-primary btn-sm btn-block">Update Cart</button>
 					</div>
 					<div class="col-md-6">
 						<button type="button" onclick="location.href='/lsh/shop'" class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
@@ -165,7 +175,7 @@ $(document).ready(function() {
 								<span class="text-black">결제 가격</span>
 							</div>
 							<div class="col-md-6 text-right">
-								<span></span>
+								<span class="text-black"><strong id="totalPrice"></strong>  원</span>
 							</div>
 						</div>
 						<div class="row">
