@@ -136,7 +136,7 @@ $(function() {
                 </div>
                 <div class="row">
                   <div class="col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-                    <a class="block-2-item" href="mainShop?p_main=T">
+                    <a class="block-2-item" href="shop_main?p_main=T">
                       <figure class="image">
                         <img src="../../resources/images/Top.jpg" alt="" class="img-fluid">
                       </figure>
@@ -147,7 +147,7 @@ $(function() {
                     </a>
                   </div>
                   <div class="col-sm-6 col-md-6 col-lg-3 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-                    <a class="block-2-item" href="mainShop?p_main=P">
+                    <a class="block-2-item" href="shop_main?p_main=P">
                       <figure class="image">
                         <img src="../../resources/images/Pants.jpg" alt="" class="img-fluid">
                       </figure>
@@ -158,7 +158,7 @@ $(function() {
                     </a>
                   </div>
                   <div class="col-sm-6 col-md-6 col-lg-3 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-                    <a class="block-2-item" href="mainShop?p_main=S">
+                    <a class="block-2-item" href="shop_main?p_main=S">
                       <figure class="image">
                         <img src="../../resources/images/Shoes.jpg" alt="" class="img-fluid">
                       </figure>
@@ -170,7 +170,7 @@ $(function() {
                   </div>
                   
                   <div class="col-sm-6 col-md-6 col-lg-3 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-                    <a class="block-2-item" href="mainShop?p_main=A">
+                    <a class="block-2-item" href="shop_main?p_main=A">
                       <figure class="image">
                         <img src="../../resources/images/Acc.jpg" alt="" class="img-fluid">
                       </figure>
