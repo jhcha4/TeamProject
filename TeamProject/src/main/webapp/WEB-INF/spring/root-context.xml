@@ -38,17 +38,16 @@
 	</bean>
 	
 	<!-- 구글 메일 -->
-	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com"/>
-		<property name="port" value="587"/>
-		<property name="username" value=""/>
-		<property name="password" value=""/>
-		<property name="javaMailProperties">
-			<props>
-				<prop key="mail.smtp.auth">true</prop>
-				<prop key="mail.smtp.starttls.enable">true</prop>
-			</props>
-		</property>
-	</bean>
-		
+		<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+			<property name="host" value="smtp.gmail.com"></property>
+			<property name="port" value="587"></property>
+			<property name="username" value="aoyamamin@gmail.com"></property>
+			<property name="password" value="acwfodlffhszxxvs"></property>
+			<property name="javaMailProperties" >
+				<props>
+					<prop key="mail.smtp.auth">true</prop>
+					<prop key="mail.smtp.starttls.enable">true</prop>
+				</props>
+			</property>
+		</bean>
 </beans>

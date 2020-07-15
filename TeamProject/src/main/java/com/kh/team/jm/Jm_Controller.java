@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.team.domain.JmMemberVo;
+import com.kh.team.domain.JmPwEmailDto;
 
 @Controller
 @RequestMapping("/jm")
-public class Jm_controller {
+public class Jm_Controller {
 
 	@Inject
 	private JmMemberService jmMemberService;
@@ -119,10 +120,11 @@ public class Jm_controller {
 	// 패스워드 찾기 데이터(이메일)
 	@ResponseBody
 	@RequestMapping(value = "/jm_userPwEmail", method = RequestMethod.GET)
-	public String userPw(String u_id) throws Exception {
+	public JmPwEmailDto userPw(String u_id) throws Exception {
 		System.out.println("u_id:" + u_id);
-		String email = jmMemberService.selectPw(u_id);
-		return email;
+		JmPwEmailDto jmPwEmailDto=jmMemberService.selectPw(u_id);
+		
+		return jmPwEmailDto;
 
 	}
 

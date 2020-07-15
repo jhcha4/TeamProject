@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kh.team.domain.JmMemberVo;
+import com.kh.team.domain.JmPwEmailDto;
 
 @Repository
 public class JmMemberDaoImpl implements JmMemberDao {
@@ -67,7 +68,7 @@ public class JmMemberDaoImpl implements JmMemberDao {
 		
 	}
 	@Override
-	public String selectPw(String u_id) throws Exception {
+	public JmPwEmailDto selectPw(String u_id) throws Exception {
 		
 		return SqlSession.selectOne(NAMESPACE+"selectPw",u_id);
 	}
