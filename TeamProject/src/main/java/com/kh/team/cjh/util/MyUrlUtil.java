@@ -6,5 +6,5 @@ public class MyUrlUtil {
 		url += "?";
 		url += "u_id=" + u_id;
 		return url;
-	}
+	} 
 }

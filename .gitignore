@@ -96,6 +96,7 @@ hs_err_pid*
 ### Java-Web ###
 ## ignoring target file
 target/
+workspace/
 
 ### Windows ###
 # Windows thumbnail cache files
