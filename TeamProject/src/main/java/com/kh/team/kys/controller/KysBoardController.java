@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_MainVo;
 import com.kh.team.domain.Kys_ServeVo;
@@ -35,12 +36,20 @@ public class KysBoardController {
 		return "manager/manager_main";
 	}
 	
-	//상품 리스트
+	//상품 리스트  + 게시물 페이징
 	@RequestMapping(value="/normal_list",method = RequestMethod.GET)
-	public String normal_list(Model model) throws Exception{
+	public void normal_list(Kys_BoardDto boardDto, Model model) throws Exception{
 		List<Kys_BoardVo> list = boardService.boardList();
+		int totalCount = boardService.getCount(boardDto);
+		List<Kys_BoardVo> pageList = boardService.pageList(boardDto);
+		System.out.println(pageList);
+		boardDto.setTotalCount(totalCount);
+		
 		model.addAttribute("list",list);
-		return "manager/normal_list";
+		model.addAttribute("pageList",pageList);
+		model.addAttribute("boardDto",boardDto);
+		
+		
 	}
 	
 	//상품 등록 폼
@@ -56,7 +65,7 @@ public class KysBoardController {
 		
 		return "redirect:/manager/manager_main";
 	}
-	//상품
+	//상품 1개 검색
 	@RequestMapping(value="oenSelect", method = RequestMethod.GET)
 	public void oenSelect(Model model, int p_num) throws Exception {
 		Kys_BoardVo boardVo = boardService.boardSelectBy(p_num);
@@ -69,6 +78,6 @@ public class KysBoardController {
 		boardService.boardUpdate(boardVo);
 		return "redirect:/manager/normal_list";
 	}
-
-
+	//게시물 페이징
+	
 }

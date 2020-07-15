@@ -38,4 +38,24 @@
 	delete from tbl_product_board
 	where p_num = #{p_num}
 	</delete>
+	<!-- 상품 조건 검색 -->
+	<select id="selectByTow" resultType="Kys_BoardVo">
+		select * from tbl_product_board 
+		where p_main = #{p_main} and p_serve = #{p_serve}  
+	</select>
+	<!-- 게시글 수 -->
+	<select id="getCount" resultType="int">
+	select count(*) from tbl_product_board
+	</select>
+	<!-- 게시글 페이징 -->
+	<select id="boardListPage" resultType="kys_BoardVo">
+	select * from (
+			select rownum rnum, a.* from(
+    		select * from tbl_product_board
+   					 order by p_num desc)
+   					  a)
+    where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	
 </mapper>
