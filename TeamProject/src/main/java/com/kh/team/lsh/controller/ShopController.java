@@ -32,18 +32,18 @@ public class ShopController {
 		model.addAttribute("LshBoardVo", LshBoardVo);
 	}
 	
-	@RequestMapping(value="/mainShop", method = RequestMethod.GET)
+	@RequestMapping(value="/shop_main", method = RequestMethod.GET)
 	public String mainList(Model model, String p_main) throws Exception {
 		List<LshBoardVo> mainList = boardService.mainList(p_main);
 		model.addAttribute("mainList", mainList);
-		return "lsh/mainShop";
+		return "lsh/shop_main";
 	}
 	
-	@RequestMapping(value="/serveShop", method = RequestMethod.GET)
+	@RequestMapping(value="/shop_serve", method = RequestMethod.GET)
 	public String serveList(Model model, String p_serve) throws Exception {
 		List<LshBoardVo> serveList = boardService.serveList(p_serve);
 		model.addAttribute("serveList", serveList);
-		return "lsh/serveShop";
+		return "lsh/shop_serve";
 	}
 
 	@RequestMapping(value="/cart")
