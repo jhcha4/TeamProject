@@ -18,7 +18,7 @@ import com.kh.team.domain.JmPwEmailDto;
 
 @Controller
 @RequestMapping("/jm")
-public class Jm_controller {
+public class Jm_Controller {
 
 	@Inject
 	private JmMemberService jmMemberService;

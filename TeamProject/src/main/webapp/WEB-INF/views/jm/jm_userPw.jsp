@@ -36,8 +36,8 @@ $(function(){
 			  var email =rData.u_email;
 			  var pw =rData.u_pw;
 			  
-			  $("#u_email").val(email);
-			  $("#u_pw").val(pw);
+			  $("#to").val(email);
+			  $("#contents").val("비밀번호는"+pw+"입니다");
 		 });
 
 	}); 
@@ -55,7 +55,7 @@ $(function(){
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<form id="mailFrom"  role="form" action="" method="post" >
+			<form id="mailFrom"  role="form" action="/email/sendPwMail" method="post" >
 			
 			
 				<div class="form-group">
@@ -71,18 +71,26 @@ $(function(){
 	
 				<div class="form-group">
 					 
-					<label for="u_email">
+					<label for="to">
 						이메일
 					</label>
-					<input type="email" class="form-control" id="u_email" name="u_email"    readonly/>
+					<input type="email" class="form-control" id="to" name="to"    readonly/>
 				</div>
 				
 				<div class="form-group"> 
-					<label for="u_pw">	
+					<label for="contents">	
 					</label>
 					
-					<input type="hidden" class="form-control" id="u_pw" name="u_pw" />
+					<input type="hidden" class="form-control" id="contents" name="contents" />
 				</div>
+				
+				<div class="form-group"> 
+					<label for="subject">	
+					</label>
+					
+					<input type="hidden" class="form-control" id="subject" name="subject" value="비밀번호 확인 메일 입니다" />
+				</div>
+				
 				
 				<button type="submit" class="btn btn-info" id="btnEmail" name="btnEmail">
 					전송하기
