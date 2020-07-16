@@ -33,4 +33,9 @@ public interface JmMemberDao {
 	//비밀번호찾기(이메일)
 	public JmPwEmailDto selectPw(String u_id)throws Exception;
 	
+	//아이디중복체크
+	public String selectId(String u_id)throws Exception;
+	
+	
+	
 }

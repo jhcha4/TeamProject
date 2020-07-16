@@ -67,10 +67,16 @@ public class JmMemberDaoImpl implements JmMemberDao {
 		SqlSession.delete(NAMESPACE+"deleteUser", u_id);
 		
 	}
+	//비밀번호 찾기(이메일)
 	@Override
 	public JmPwEmailDto selectPw(String u_id) throws Exception {
 		
 		return SqlSession.selectOne(NAMESPACE+"selectPw",u_id);
+	}
+	@Override
+	public String selectId(String u_id) throws Exception {
+		
+		return SqlSession.selectOne(NAMESPACE+"selectId",u_id);
 	}
 
 }
