@@ -3,7 +3,28 @@
 
 <%@ include file="../include/head.jsp" %>
 
+${userPoint}
 
+<script>
+$(document).ready(function() {
+	var totalPrice = 0;
+	$("td[name=p_price]").each(function() {
+		var p_price = $(this).children().text();
+		totalPrice += Number(p_price);
+	});
+	$("td[name=totalPrice]").children().text(totalPrice);
+	
+	$("#btnOrder").click(function(e) {
+		e.preventDefault();
+		var userPoint = $("td[name=userPoint]").children().text();
+		if (userPoint < totalPrice) {
+			alert("포인트가 부족합니다");
+		} else {
+			location.href = "/cjh/order?u_id=${u_id}&totalPrice="+totalPrice+"&"
+		}
+	});
+});
+</script>
 
     <div class="bg-light py-3">
       <div class="container">
@@ -218,63 +239,50 @@
                       <th>Total</th>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Top Up T-Shirt <strong class="mx-2">x</strong> 1</td>
-                        <td>$250.00</td>
-                      </tr>
-                      <tr>
-                        <td>Polo Shirt <strong class="mx-2">x</strong>   1</td>
-                        <td>$100.00</td>
-                      </tr>
-                      <tr>
-                        <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
-                        <td class="text-black">$350.00</td>
-                      </tr>
-                      <tr>
-                        <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
-                        <td class="text-black font-weight-bold"><strong>$350.00</strong></td>
-                      </tr>
+	                    <c:forEach var="item" items="${list}" varStatus="status">
+	                    	<tr>
+	                    		<td>
+	                    			${item.p_name} <strong class="mx-2">x</strong> ${item.p_count}
+	                    		</td>
+	                    		<td name="p_price">
+	                    			<strong>${item.p_price * item.p_count}</strong> 원
+	                    		</td>
+	                    	</tr>
+                    	</c:forEach>
+                    	<tr>
+                    		<td><strong class="mx-5">TOTAL PRICE</strong></td>
+                    		<td name="totalPrice"><strong></strong> 원</td>
+                    	</tr>
                     </tbody>
                   </table>
 
-                  <div class="border p-3 mb-3">
-                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Direct Bank Transfer</a></h3>
-
-                    <div class="collapse" id="collapsebank">
-                      <div class="py-2">
-                        <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order wonât be shipped until the funds have cleared in our account.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="border p-3 mb-3">
-                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">Cheque Payment</a></h3>
-
-                    <div class="collapse" id="collapsecheque">
-                      <div class="py-2">
-                        <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order wonât be shipped until the funds have cleared in our account.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="border p-3 mb-5">
-                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
-
-                    <div class="collapse" id="collapsepaypal">
-                      <div class="py-2">
-                        <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order wonât be shipped until the funds have cleared in our account.</p>
-                      </div>
-                    </div>
-                  </div>
+				  <table class="table site-block-order-table mb-5">
+                    <tbody>
+                    	<tr>
+                    		<td>
+                    			보유 포인트
+                    		</td>
+                    		<td name="userPoint">
+                    			<strong>${userPoint}</strong> 원
+                    		</td>
+                    	</tr>
+                    	<tr>
+                    		<td>
+                    			결제 금액
+                    		</td>
+                    		<td name="totalPrice">
+                    			<strong></strong> 원
+                    		</td>
+                    	</tr>
+                    </tbody>
+				  </table>
 
                   <div class="form-group">
-                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='/cjh/thankyou'">Place Order</button>
+                    <button id="btnOrder" type="button" class="btn btn-primary btn-lg py-3 btn-block">Place Order</button>
                   </div>
-
                 </div>
               </div>
             </div>
-
           </div>
         </div>
         <!-- </form> -->
