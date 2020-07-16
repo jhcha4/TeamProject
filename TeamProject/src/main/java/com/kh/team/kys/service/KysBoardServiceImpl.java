@@ -68,5 +68,10 @@ public class KysBoardServiceImpl implements KysBoardService {
 		boardDao.boardRestoration(p_num);
 		
 	}
+	@Override
+	public void delete(int p_num) throws Exception {
+		boardDao.delete(p_num);
+		
+	}
 	
 }

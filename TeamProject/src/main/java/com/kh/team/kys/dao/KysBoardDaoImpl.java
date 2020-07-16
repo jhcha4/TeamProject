@@ -91,7 +91,13 @@ public class KysBoardDaoImpl implements KysBoardDao {
 		@Override
 		public void boardRestoration(int p_num) throws Exception {
 			sqlSession.update(NAMESPACE+"boardRestoration",p_num);
+		}
+		//완전 삭제
+		@Override
+		public void delete(int p_num) throws Exception {
+			sqlSession.delete(NAMESPACE+"delete",p_num);
 			
 		}
+		
 
 }
