@@ -46,13 +46,11 @@ $(document).ready(function() {
 	
 	$("#btnCheckOut").click(function(e) {
 		e.preventDefault();
-		$("#frmCart").submit();
+		location.href = "/cjh/checkout?u_id=${u_id}";
 	});
-	
 });
 </script>
 
-${list}
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -145,10 +143,12 @@ ${list}
 			<div class="col-md-6">
 				<div class="row mb-5">
 					<div class="col-md-6 mb-3 mb-md-0">
-						<button id="updateCart" class="btn btn-primary btn-sm btn-block">Update Cart</button>
+						<button type="button" onclick="location.href='/lsh/shop'" class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
 					</div>
 					<div class="col-md-6">
-						<button type="button" onclick="location.href='/lsh/shop'" class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
+						<c:if test="${not empty list}">
+							<button id="updateCart" class="btn btn-primary btn-sm btn-block">Update Cart</button>
+						</c:if>
 					</div>
 				</div>
 				<div class="row">

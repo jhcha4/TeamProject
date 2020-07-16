@@ -17,4 +17,5 @@ public interface CjhCartDao {
 	
 	//	장바구니 갱신
 	public void updateCart(String u_id, int p_num, int p_count) throws Exception;
+	
 }
