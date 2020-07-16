@@ -37,9 +37,15 @@ public class CjhCartController {
 	}
 	
 	//	장바구니 수정
-	@RequestMapping(value="updateCart", method = RequestMethod.POST)
-	public String updateCart(CjhCartVo cartVo) throws Exception {
-		System.out.println("dd");
-		return "/cjh/checkout";
+	@RequestMapping(value="updateCart", method = RequestMethod.GET)
+	public String updateCart(String u_id, int p_num, int p_count) throws Exception {
+		cartService.updateCart(u_id, p_num, p_count);
+		return "redirect:/cjh/cart?u_id="+u_id;
+	}
+	
+	//	결제 폼
+	@RequestMapping(value="/checkout", method = RequestMethod.GET)
+	public String checkout() throws Exception {
+		return "cjh/checkout";
 	}
 }
