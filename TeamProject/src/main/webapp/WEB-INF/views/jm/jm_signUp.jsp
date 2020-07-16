@@ -27,6 +27,9 @@ $(function(){
 		var u_email=$("#u_email").val();
 		
 		$("#to").val(u_email);
+		
+		alert("회원가입 처리중입니다");
+		
 	});
 	
 	$("#u_pwCheck").click(function(){
@@ -83,6 +86,13 @@ $(function(){
 		});
 			
 	});
+	
+	
+	
+	
+	
+	
+	
 });
 </script>
 
