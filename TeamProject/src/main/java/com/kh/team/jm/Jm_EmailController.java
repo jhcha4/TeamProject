@@ -21,6 +21,7 @@ public class Jm_EmailController {
 	@Inject
 	private JavaMailSenderImpl mailSenderImpl;
 	
+	//비밀번호 찾기 메일
 	@RequestMapping(value="/sendPwMail" , method=RequestMethod.POST)
 	public String sendPwMail(JmEmailDto jmEmailDto ,RedirectAttributes rttr) throws Exception{
 		
@@ -32,17 +33,15 @@ public class Jm_EmailController {
 				helper.setFrom(jmEmailDto.getFrom());
 				helper.setTo(jmEmailDto.getTo());
 				helper.setSubject(jmEmailDto.getSubject());
-				helper.setText(jmEmailDto.getContents());
-				
-				
+				helper.setText(jmEmailDto.getContents());	
 			}
 		};
-		
 		mailSenderImpl.send(preparator);
 		rttr.addFlashAttribute("to",jmEmailDto.getTo());
-		
-		
 		return "/jm/jm_userPw";
 	}
+	
+	
+	
 	
 }

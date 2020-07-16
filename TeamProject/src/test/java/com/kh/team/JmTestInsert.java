@@ -94,5 +94,10 @@ public class JmTestInsert {
 			jmMemberService.selectPw("123");
 		}
 	
+	//아이디 중복 체크
+		@Test
+		public void selectId()throws Exception{
+			jmMemberDao.selectId("123");
+		}
 	
 }
