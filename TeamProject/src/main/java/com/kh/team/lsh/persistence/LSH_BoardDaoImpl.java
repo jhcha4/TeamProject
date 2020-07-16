@@ -21,8 +21,12 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<LshBoardVo> list(LshBoardDto lshBoardDto) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "list", lshBoardDto);
+	public List<LshBoardVo> list(LshBoardDto lshBoardDto, String p_main, String p_serve) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("lshBoardDto", lshBoardDto);
+		paramMap.put("p_main", p_main);
+		paramMap.put("p_serve", p_serve);
+		return sqlSession.selectList(NAMESPACE + "list", paramMap);
 	}
 	
 	@Override
@@ -30,21 +34,6 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 		return sqlSession.selectOne(NAMESPACE + "single", p_num);
 	}
 
-	@Override
-	public List<LshBoardVo> mainList(LshBoardDto lshBoardDto, String p_main) throws Exception {
-		Map<String, Object> paramMap = new HashMap<>();
-		paramMap.put("lshBoardDto", lshBoardDto);
-		paramMap.put("p_main", p_main);
-		return sqlSession.selectList(NAMESPACE + "MainList", paramMap);
-	}
-
-	@Override
-	public List<LshBoardVo> serveList(LshBoardDto lshBoardDto, String p_serve) throws Exception {
-		Map<String, Object> paramMap = new HashMap<>();
-		paramMap.put("lshBoardDto", lshBoardDto);
-		paramMap.put("p_serve", p_serve);
-		return sqlSession.selectList(NAMESPACE + "ServeList", paramMap);
-	}
 
 
 }

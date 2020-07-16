@@ -21,10 +21,12 @@ public class ShopController {
 	private LSH_BoardService boardService;
 	
 	@RequestMapping(value="/shop", method = RequestMethod.GET)
-	public String shop(LshBoardDto lshBoardDto, Model model) throws Exception {
-		List<LshBoardVo> list = boardService.list(lshBoardDto);
+	public String shop(LshBoardDto lshBoardDto, Model model, String p_main, String p_serve) throws Exception {
+		List<LshBoardVo> list = boardService.list(lshBoardDto, p_main, p_serve);
 		model.addAttribute("list", list);
 		model.addAttribute("lshBoardDto", lshBoardDto);
+		model.addAttribute("p_main", p_main);
+		model.addAttribute("p_serve", p_serve);
 		return "lsh/shop";
 	}
 	
@@ -34,22 +36,6 @@ public class ShopController {
 		model.addAttribute("LshBoardVo", LshBoardVo);
 	}
 	
-	@RequestMapping(value="/shop_main", method = RequestMethod.GET)
-	public String mainList(LshBoardDto lshBoardDto, Model model, String p_main) throws Exception {
-		List<LshBoardVo> mainList = boardService.mainList(lshBoardDto, p_main);
-		model.addAttribute("mainList", mainList);
-		model.addAttribute("lshBoardDto", lshBoardDto);
-		return "lsh/shop_main";
-	}
-	
-	@RequestMapping(value="/shop_serve", method = RequestMethod.GET)
-	public String serveList(LshBoardDto lshBoardDto, Model model, String p_serve) throws Exception {
-		List<LshBoardVo> serveList = boardService.serveList(lshBoardDto, p_serve);
-		model.addAttribute("serveList", serveList);
-		model.addAttribute("lshBoardDto", lshBoardDto);
-		return "lsh/shop_serve";
-	}
-
 	@RequestMapping(value="/cart")
 	public String cart() throws Exception {
 		return "cjh/cart";

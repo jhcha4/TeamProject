@@ -15,8 +15,8 @@ $(function() {
 	
 	$("#price").change(function() {
 		var priceType = $("select[name=priceType]").val();
-		$("#pricePage > input[name=priceType]").val(priceType);
-		$("#pricePage").submit();
+		$("#frmPage > input[name=priceType]").val(priceType);
+		$("#frmPage").submit();
 	});
 	
 });
@@ -26,8 +26,10 @@ $(function() {
 	<input type="hidden" name="p_num" value="${LshBoardVo.p_num}"/>
 </form>
 
-<form id="pricePage" action="/lsh/shop" method="get">
+<form id="frmPage" action="/lsh/shop" method="get">
 	<input type="hidden" name="priceType" value="${lshBoardDto.priceType}"/>
+	<input type="hidden" name="p_main" value="${LshBoardVo.p_main}"/>
+	<input type="hidden" name="p_serve" value="${LshBoardVo.p_serve}"/>
 </form>
 
     <div class="bg-light py-3">
@@ -55,12 +57,12 @@ $(function() {
                   <div class="dropdown mr-1 ml-md-auto">
                     
                     <select name="priceType" id="price">
-                    	<option value="H" 
-                    		<c:if test="${lshBoardDto.priceType == 'H'}">selected</c:if>
-                    	>높은 가격순</option>
                     	<option value="L" 
-                    	    <c:if test="${lshBoardDto.priceType == 'L'}">selected</c:if>
+                    		<c:if test="${lshBoardDto.priceType == 'H'}">selected</c:if>
                     	>낮은 가격순</option>
+                    	<option value="H" 
+                    	    <c:if test="${lshBoardDto.priceType == 'L'}">selected</c:if>
+                    	>높은 가격순</option>
                     </select>
                     
                   </div>
@@ -92,20 +94,20 @@ $(function() {
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <h2 class="mb-3 h6  text-black d-block"><a href="shop">전체 상품</a></h2>
               
-           		<a href="shop_main?p_main=T">상의</a>
+           		<a href="shop?p_main=T">상의</a>
            		<ul class="dropdown" id="UL">
-	                <li><a href="shop_serve?p_serve=TH">반팔</a></li>
-	                <li><a href="shop_serve?p_serve=TL">긴팔</a></li>
-	                <li><a href="shop_serve?p_serve=TS">셔츠</a></li>
-	                <li><a href="shop_serve?p_serve=TM">맨투맨</a></li>
+	                <li><a href="shop?p_serve=TH">반팔</a></li>
+	                <li><a href="shop?p_serve=TL">긴팔</a></li>
+	                <li><a href="shop?p_serve=TS">셔츠</a></li>
+	                <li><a href="shop?p_serve=TM">맨투맨</a></li>
               	</ul>
               	
-           		<a href="shop_main?p_main=P">하의</a>
+           		<a href="shop?p_main=P">하의</a>
            		<ul class="dropdown">
-	                <li><a href="shop_serve?p_serve=PJ">청바지</a></li>
-	                <li><a href="shop_serve?p_serve=PM">면바지</a></li>
-	                <li><a href="shop_serve?p_serve=PH">반바지</a></li>
-	                <li><a href="shop_serve?p_serve=P7">7부바지</a></li>
+	                <li><a href="shop?p_serve=PJ">청바지</a></li>
+	                <li><a href="shop?p_serve=PM">면바지</a></li>
+	                <li><a href="shop?p_serve=PH">반바지</a></li>
+	                <li><a href="shop?p_serve=P7">7부바지</a></li>
               	</ul>
               	
            		<a href="shop_main?p_main=S">신발</a>
@@ -116,12 +118,12 @@ $(function() {
 	                <li><a href="shop_serve?p_serve=SR">로퍼</a></li>
               	</ul>
               	
-           		<a href="shop_main?p_main=A">악세사리</a>
+           		<a href="shop?p_main=A">악세사리</a>
            		<ul class="dropdown">
-	                <li><a href="shop_serve?p_serve=AR">반지</a></li>
-	                <li><a href="shop_serve?p_serve=AW">지갑</a></li>
-	                <li><a href="shop_serve?p_serve=AC">모자</a></li>
-	                <li><a href="shop_serve?p_serve=AB">가방</a></li>
+	                <li><a href="shop?p_serve=AR">반지</a></li>
+	                <li><a href="shop?p_serve=AW">지갑</a></li>
+	                <li><a href="shop?p_serve=AC">모자</a></li>
+	                <li><a href="shop?p_serve=AB">가방</a></li>
               	</ul>
               
             </div>
@@ -139,7 +141,7 @@ $(function() {
                 </div>
                 <div class="row">
                   <div class="col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-                    <a class="block-2-item" href="mainShop?p_main=T">
+                    <a class="block-2-item" href="shop?p_main=T">
                       <figure class="image">
                         <img src="../../resources/images/Top.jpg" alt="" class="img-fluid">
                       </figure>
@@ -150,7 +152,7 @@ $(function() {
                     </a>
                   </div>
                   <div class="col-sm-6 col-md-6 col-lg-3 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-                    <a class="block-2-item" href="mainShop?p_main=P">
+                    <a class="block-2-item" href="shop?p_main=P">
                       <figure class="image">
                         <img src="../../resources/images/Pants.jpg" alt="" class="img-fluid">
                       </figure>
@@ -161,7 +163,7 @@ $(function() {
                     </a>
                   </div>
                   <div class="col-sm-6 col-md-6 col-lg-3 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-                    <a class="block-2-item" href="mainShop?p_main=S">
+                    <a class="block-2-item" href="shop?p_main=S">
                       <figure class="image">
                         <img src="../../resources/images/Shoes.jpg" alt="" class="img-fluid">
                       </figure>
@@ -173,7 +175,7 @@ $(function() {
                   </div>
                   
                   <div class="col-sm-6 col-md-6 col-lg-3 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-                    <a class="block-2-item" href="mainShop?p_main=A">
+                    <a class="block-2-item" href="shop?p_main=A">
                       <figure class="image">
                         <img src="../../resources/images/Acc.jpg" alt="" class="img-fluid">
                       </figure>
