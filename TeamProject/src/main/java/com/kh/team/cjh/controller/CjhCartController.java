@@ -4,13 +4,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.omg.CORBA.Request;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kh.team.cjh.service.CjhCartService;
+import com.kh.team.cjh.service.CjhUserService;
 import com.kh.team.domain.CjhCartVo;
 
 @Controller
@@ -19,6 +20,8 @@ public class CjhCartController {
 	
 	@Inject
 	private CjhCartService cartService;
+	@Inject
+	private CjhUserService userService;
 	
 //	장바구니 목록보기
 	@RequestMapping(value="/cart", method = RequestMethod.GET)
@@ -37,9 +40,29 @@ public class CjhCartController {
 	}
 	
 	//	장바구니 수정
-	@RequestMapping(value="updateCart", method = RequestMethod.POST)
-	public String updateCart(CjhCartVo cartVo) throws Exception {
-		System.out.println("dd");
-		return "/cjh/checkout";
+	@RequestMapping(value="updateCart", method = RequestMethod.GET)
+	public String updateCart(String u_id, int p_num, int p_count) throws Exception {
+		cartService.updateCart(u_id, p_num, p_count);
+		return "redirect:/cjh/cart?u_id="+u_id;
+	}
+	
+	//	결제 폼
+	@Transactional
+	@RequestMapping(value="/checkout", method = RequestMethod.GET)
+	public String checkout(String u_id, Model model) throws Exception {
+//		System.out.println("u_id : " + u_id);
+		List<CjhCartVo> list = cartService.getCart(u_id);
+		int userPoint = userService.getUserPoint(u_id);
+		model.addAttribute("userPoint", userPoint);
+		model.addAttribute("list", list);
+		return "cjh/checkout";
+	}
+	
+	//	결제 처리
+	@RequestMapping(value="/order", method = RequestMethod.GET)
+	public String order(String u_id, int totalPrice) throws Exception {
+		System.out.println("u_id : " + u_id);
+		System.out.println("totalPrice : " + totalPrice);
+		return "/cjh/thankyou";
 	}
 }

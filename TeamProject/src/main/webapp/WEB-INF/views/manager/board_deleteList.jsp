@@ -30,23 +30,23 @@ $(function() {
 		var serve = $("select[name=p_serve]").val();
 		console.log("main:"+main);
 		console.log("serve:"+serve);
-		$("#frmPage  > input[name=p_main]").val(main);
-		$("#frmPage > input[name=p_serve]").val(serve);
-		$("#frmPage").submit();
+		$("#frmDeletePage  > input[name=p_main]").val(main);
+		$("#frmDeletePage > input[name=p_serve]").val(serve);
+		$("#frmDeletePage").submit();
 	});
 	
 	//n줄씩 보기
 	$("select[name=perPage]").change(function(){
 		console.log($(this).val());
-		$("#frmPage > input[name=perPage]").val($(this).val());
-		$("#frmPage").submit();
+		$("#frmDeletePage > input[name=perPage]").val($(this).val());
+		$("#frmDeletePage").submit();
 	});
 	//패이지 번호
 	$("a.page-link").click(function(e){
 		e.preventDefault();
 		var page = $(this).attr("href").trim();
-		$("#frmPage > input[name=page]").val(page);
-		$("#frmPage").submit();
+		$("#frmDeletePage > input[name=page]").val(page);
+		$("#frmDeletePage").submit();
 	});
 	//페이지 액티브
 	$("a.page-link").each(function(){
@@ -56,30 +56,45 @@ $(function() {
 			return;
 		}
 	});
-	//삭제 버튼
+	//완전 삭제 버튼
 	$("a[name=btnDelete]").click(function(){
 		var that = $(this);
 		
 		var p_num = $(this).attr("data-p_num");
 		console.log("p_num:"+p_num);
-		var url = "/ajax/productDelete?p_num="+p_num;
+		var url = "/ajax/delete?p_num="+p_num;
 		$.ajax({
 			"type" : "POST",
 			"url" : url,
 			"dataType" : "text",
 			"success" : function(rData){
 				console.log(rData);
-				
+				that.parent().parent().hide(1);
 			}
 		});
 	});
-
-
+	//복구 버튼
+	$("a[name=btnRestoration]").click(function(){
+		var that = $(this);
+		
+	var p_num = $(this).attr("data-p_num");
+	console.log(p_num);
+	var url = "/ajax/restoration?p_num="+p_num;
+	$.ajax({
+		"type" : "post",
+		"url" : url,
+		"dataType" : "text",
+		"success" : function(rData) {
+			console.log(rData);
+			that.parent().parent().hide(1);
+		}
+	});
+	});
 });
 </script>
 
-${boardDto}
-<div id="div"></div>
+${deleteListDto}
+
 <div class="row">
 	<div class="col-md-2"></div>
 	<div class="col-md-8">
@@ -87,14 +102,12 @@ ${boardDto}
 		<div class="row">
 			<div class="col-md-12">
 				<div>
-					<label>main : </label> 
-					<select name="p_main" id="mainOption">
+					<label>main : </label> <select name="p_main" id="mainOption">
 						<option value="T">상의</option>
 						<option value="P">하의</option>
 						<option value="A">악세사리</option>
 						<option value="S">신발</option>
-					</select> <label>serve : </label> 
-					<select name="p_serve" id="serveOption">
+					</select> <label>serve : </label> <select name="p_serve" id="serveOption">
 						<option value="TH">반팔</option>
 						<option value="TL">긴팔</option>
 						<option value="TS">셔츠</option>
@@ -116,9 +129,9 @@ ${boardDto}
 					<!-- n줄 씩보기 -->
 					<select name="perPage" class="form-inline">
 						<c:forEach begin="5" end="50" step="5" var="i">
-						<option value="${i}" 
-							<c:if test="${i == pagingDto.perPage}"> selected</c:if>
-							>${i}줄씩 보기</option>
+							<option value="${i}"
+								<c:if test="${i == pagingDto.perPage}"> selected</c:if>>${i}줄씩
+								보기</option>
 						</c:forEach>
 					</select>
 				</div>
@@ -135,52 +148,53 @@ ${boardDto}
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${pageList}" var="BoardVo">
+					<c:forEach items="${list}" var="BoardVo">
 						<tr>
 							<td>${BoardVo.p_main}${BoardVo.p_serve}${BoardVo.p_num}</td>
 							<td>${BoardVo.p_name}</td>
 							<td>${BoardVo.p_price}</td>
-							<td><a type="button" class="btn btn-sm btn-warning"
-								href="/manager/oenSelect?p_num=${BoardVo.p_num}">수정</a></td>
 							<td><a type="button" class="btn btn-sm btn-danger"
-								 id="btnDelete" name="btnDelete" data-p_num="${BoardVo.p_num}">삭제</a></td>
+								id="btnDelete" name="btnRestoration" data-p_num="${BoardVo.p_num}">복구</a></td>
+							<td><a type="button" class="btn btn-sm btn-danger"
+								id="btnDelete" name="btnDelete" data-p_num="${BoardVo.p_num}">완전 삭제</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	
+
 	<div class="col-md-2"></div>
 </div>
 <!-- 패이징 -->
 <div class="row">
-		<div class="col-md-12 text-center">
-		<nav class="pagination-sm">
-			<ul class="pagination">
-				<!-- 이전 -->
-				<c:if test="${boardDto.startPage != 1}">
-					<li class="page-item">
-					<a class="page-link" href="${boardDto.startPage -1}">Previous</a>
-					</li>
-				</c:if>
-				<!-- 페이지 번호 -->
-				<c:forEach begin="${boardDto.startPage}" end="${boardDto.endPage}" var="v">
-					<li class="page-item">
-					<a class="page-link" href="${v}">${v}</a>
-					</li>
-				</c:forEach>
-				<!-- 다음 -->
-				<c:if test="${boardDto.endPage < boardDto.totalPage}">
-					<li class="page-item">
-						<a class="page-link" href="${boardDto.endPage +1}">Next</a>
-					</li>
-				</c:if>
-				
-			</ul>
-		</nav>
+	<div class="col-md-12">
+		<div class="row justify-content-center">
+			<nav class="pagination-sm">
+				<ul class="pagination">
+					<!-- 이전 -->
+					<c:if test="${deleteListDto.startPage != 1}">
+						<li class="page-item"><a class="page-link"
+							href="${deleteListDto.startPage -1}">Previous</a></li>
+					</c:if>
+					
+					<!-- 페이지 번호 -->
+					<c:forEach begin="${deleteListDto.startPage}" end="${deleteListDto.endPage}"
+						var="v">
+						<li class="page-item"><a class="page-link" href="${v}">${v}</a>
+						</li>
+					</c:forEach>
+					
+					<!-- 다음 -->
+					<c:if test="${deleteListDto.endPage < deleteListDto.totalPage}">
+						<li class="page-item"><a class="page-link"
+							href="${deleteListDto.endPage +1}">Next</a></li>
+					</c:if>
+				</ul>
+			</nav>
 		</div>
 	</div>
+</div>
 
 
 

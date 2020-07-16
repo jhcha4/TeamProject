@@ -51,8 +51,27 @@ public class KysBoardServiceImpl implements KysBoardService {
 	}
 	@Override
 	public List<Kys_BoardVo> pageList(Kys_BoardDto boardDto) throws Exception {
-		
 		return boardDao.boardListPage(boardDto);
 	}
-
+	@Override
+	public List<Kys_BoardVo> deleteList(Kys_BoardDto boardDto) throws Exception {
+		List<Kys_BoardVo> list = boardDao.deleteList(boardDto);
+		return list;
+	}
+	@Override
+	public int getDeleteCount(Kys_BoardDto boardDto) throws Exception {
+		
+		return boardDao.getDeleteCount(boardDto);
+	}
+	@Override
+	public void boardRestoration(int p_num) throws Exception {
+		boardDao.boardRestoration(p_num);
+		
+	}
+	@Override
+	public void delete(int p_num) throws Exception {
+		boardDao.delete(p_num);
+		
+	}
+	
 }

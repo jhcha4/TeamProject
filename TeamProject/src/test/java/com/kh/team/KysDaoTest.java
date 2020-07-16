@@ -54,12 +54,18 @@ public class KysDaoTest {
 	public void boardDelete() throws Exception{
 		boardDao.boardDelete(3);
 	}
+	//삭제 복구
+	@Test
+	public void restoration() throws Exception{
+		boardDao.boardRestoration(1342);
+	}
 	
 	//게시물 보기
 	@Test
 	public void boardSelectBy() throws Exception{
 		boardDao.boardSelectBy(1);
 	}
+	
 	@Test
 	public void selectByTow() throws Exception{
 		boardDao.selectByTow("S", "SR");

@@ -36,11 +36,6 @@ public class CjhMyInfoController {
 		return "cjh/about";
 	}
 	
-	@RequestMapping(value="/checkout")
-	public String checkout() throws Exception {
-		return "cjh/checkout";
-	}
-	
 	@RequestMapping(value="/contact")
 	public String contact() throws Exception {
 		return "cjh/contact";
@@ -61,9 +56,9 @@ public class CjhMyInfoController {
 		return "cjh/thankyou";
 	}
 	
-	@RequestMapping(value="/order")
+	@RequestMapping(value="/myOrder")
 	public String order() throws Exception {
-		return "cjh/order";
+		return "cjh/myOrder";
 	}
 	
 	//	로그인 폼

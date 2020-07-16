@@ -34,7 +34,9 @@ $(document).ready(function() {
 	
 	$("input[name=p_count]").change(function() {
 // 		console.log($(this).val());
+		var p_num = $(this).parent().parent().prev().prev().val();
 		var count = $(this).val();
+		location.href = "/cjh/updateCart?u_id=${u_id}&p_num="+p_num+"&p_count="+count;
 		var p_price = $(this).parent().parent().prev().text();
 // 		var p_count = $(this).parent().parent().next().children().text();
 // 		console.log("p_count : " + p_count);
@@ -44,11 +46,11 @@ $(document).ready(function() {
 	
 	$("#btnCheckOut").click(function(e) {
 		e.preventDefault();
-		$("#frmCart").submit();
+		location.href = "/cjh/checkout?u_id=${u_id}";
 	});
-	
 });
 </script>
+
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -95,7 +97,7 @@ $(document).ready(function() {
 										<td style="border-left: none; border-right: none;"><img style="width:150px;" src="/resources/images/cloth_1.jpg"></td>
 										
 										<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.p_name}</td>
-										
+										<input type="hidden" id="p_num" value="${item.p_num}">
 										<td><a name="p_price" style="padding-left: 10px;" class="p_price${status.index}">${item.p_price}</a></td>
 										
 										<td	style="width:150px">
@@ -141,10 +143,12 @@ $(document).ready(function() {
 			<div class="col-md-6">
 				<div class="row mb-5">
 					<div class="col-md-6 mb-3 mb-md-0">
-						<button id="updateCart" class="btn btn-primary btn-sm btn-block">Update Cart</button>
+						<button type="button" onclick="location.href='/lsh/shop'" class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
 					</div>
 					<div class="col-md-6">
-						<button type="button" onclick="location.href='/lsh/shop'" class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
+						<c:if test="${not empty list}">
+							<button id="updateCart" class="btn btn-primary btn-sm btn-block">Update Cart</button>
+						</c:if>
 					</div>
 				</div>
 				<div class="row">
@@ -166,16 +170,11 @@ $(document).ready(function() {
 						<div class="row">
 							<div class="col-md-12 text-right border-bottom mb-5">
 								<h3 class="text-black h4 text-uppercase">Cart Totals</h3>
-								<c:if test="${not empty list}">
-									<c:forEach var="item" items="${list}" varStatus="status">
-										<h7>${item.p_name}</h7>
-									</c:forEach>
-								</c:if>
 							</div>
 						</div>
 						<div class="row mb-3">
 							<div class="col-md-6">
-								<span class="text-black">결제 가격</span>
+								<span class="text-black">결제 가격</span><br>
 							</div>
 							<div class="col-md-6 text-right">
 								<span class="text-black"><strong id="totalPrice"></strong>  원</span>

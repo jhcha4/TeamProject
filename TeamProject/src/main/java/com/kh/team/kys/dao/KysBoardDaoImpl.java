@@ -43,7 +43,7 @@ public class KysBoardDaoImpl implements KysBoardDao {
 	// 삭제
 	@Override
 	public void boardDelete(int p_num) throws Exception {
-		sqlSession.delete(NAMESPACE + "boardDelete",p_num);
+		sqlSession.update(NAMESPACE + "boardDelete",p_num);
 
 	}
 	//게시물 내용 보기
@@ -69,11 +69,35 @@ public class KysBoardDaoImpl implements KysBoardDao {
 		List<Kys_BoardVo> pageList = sqlSession.selectList(NAMESPACE+"boardListPage",boardDto);
 		return pageList;
 	}
-	//게시글 수
-	@Override
-	public int getCount(Kys_BoardDto boardDto) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getCount",boardDto);
 	
+	//삭제처리된 게시물 복구
+	@Override
+	public List<Kys_BoardVo> deleteList(Kys_BoardDto boardDto) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"deleteList",boardDto);
+		
 	}
+	//게시된 게시글 수
+		@Override
+		public int getCount(Kys_BoardDto boardDto) throws Exception {
+			return sqlSession.selectOne(NAMESPACE+"getCount",boardDto);
+		
+		}
+		//삭제된 게시글 수
+		@Override
+		public int getDeleteCount(Kys_BoardDto boardDto) throws Exception {
+			return sqlSession.selectOne(NAMESPACE+"getDeleteCount",boardDto);
+		}
+		//삭제 복구
+		@Override
+		public void boardRestoration(int p_num) throws Exception {
+			sqlSession.update(NAMESPACE+"boardRestoration",p_num);
+		}
+		//완전 삭제
+		@Override
+		public void delete(int p_num) throws Exception {
+			sqlSession.delete(NAMESPACE+"delete",p_num);
+			
+		}
+		
 
 }
