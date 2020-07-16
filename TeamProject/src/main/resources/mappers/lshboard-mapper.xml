@@ -7,7 +7,7 @@
 
 	<select id="list" resultType="LshBoardVo">
 		select * from tbl_product_board
-		order by p_num desc
+		order by <include refid="type"/>p_num desc
 	</select>
 	
 	<select id="single" resultType="LshBoardVo">
@@ -18,13 +18,26 @@
 	<select id="MainList" resultType="LshBoardVo">
 		select * from tbl_product_board
 		where p_main = #{p_main}
-		order by p_num desc
+		order by <include refid="type"/>p_num desc
 	</select>
 	
 	<select id="ServeList" resultType="LshBoardVo">
 		select * from tbl_product_board
 		where p_serve = #{p_serve}
-		order by p_num desc
+		order by <include refid="type"/>p_num desc
 	</select>
+	
+	<sql id="type">
+		<if test="priceType != null">
+			<choose>
+				<when test='priceType == "H"'>
+					p_price desc,
+				</when>
+				<when test='priceType == "L"'>
+					p_price,
+				</when>
+			</choose>
+		</if>
+	</sql>
 	
 </mapper>

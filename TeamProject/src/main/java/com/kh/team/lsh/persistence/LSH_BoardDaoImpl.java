@@ -1,12 +1,15 @@
 package com.kh.team.lsh.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.team.domain.LshBoardDto;
 import com.kh.team.domain.LshBoardVo;
 
 @Repository
@@ -18,8 +21,8 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<LshBoardVo> list() throws Exception {
-		return sqlSession.selectList(NAMESPACE + "list");
+	public List<LshBoardVo> list(LshBoardDto lshBoardDto) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "list", lshBoardDto);
 	}
 	
 	@Override
@@ -28,13 +31,19 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 	}
 
 	@Override
-	public List<LshBoardVo> mainList(String p_main) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "MainList", p_main);
+	public List<LshBoardVo> mainList(LshBoardDto lshBoardDto, String p_main) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("lshBoardDto", lshBoardDto);
+		paramMap.put("p_main", p_main);
+		return sqlSession.selectList(NAMESPACE + "MainList", paramMap);
 	}
 
 	@Override
-	public List<LshBoardVo> serveList(String p_serve) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "ServeList", p_serve);
+	public List<LshBoardVo> serveList(LshBoardDto lshBoardDto, String p_serve) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("lshBoardDto", lshBoardDto);
+		paramMap.put("p_serve", p_serve);
+		return sqlSession.selectList(NAMESPACE + "ServeList", paramMap);
 	}
 
 

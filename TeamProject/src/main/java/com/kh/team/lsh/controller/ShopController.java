@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kh.team.domain.LshBoardDto;
 import com.kh.team.domain.LshBoardVo;
 import com.kh.team.lsh.service.LSH_BoardService;
 
@@ -20,9 +21,10 @@ public class ShopController {
 	private LSH_BoardService boardService;
 	
 	@RequestMapping(value="/shop", method = RequestMethod.GET)
-	public String shop(Model model) throws Exception {
-		List<LshBoardVo> list = boardService.list();
+	public String shop(LshBoardDto lshBoardDto, Model model) throws Exception {
+		List<LshBoardVo> list = boardService.list(lshBoardDto);
 		model.addAttribute("list", list);
+		model.addAttribute("lshBoardDto", lshBoardDto);
 		return "lsh/shop";
 	}
 	
@@ -33,16 +35,18 @@ public class ShopController {
 	}
 	
 	@RequestMapping(value="/shop_main", method = RequestMethod.GET)
-	public String mainList(Model model, String p_main) throws Exception {
-		List<LshBoardVo> mainList = boardService.mainList(p_main);
+	public String mainList(LshBoardDto lshBoardDto, Model model, String p_main) throws Exception {
+		List<LshBoardVo> mainList = boardService.mainList(lshBoardDto, p_main);
 		model.addAttribute("mainList", mainList);
+		model.addAttribute("lshBoardDto", lshBoardDto);
 		return "lsh/shop_main";
 	}
 	
 	@RequestMapping(value="/shop_serve", method = RequestMethod.GET)
-	public String serveList(Model model, String p_serve) throws Exception {
-		List<LshBoardVo> serveList = boardService.serveList(p_serve);
+	public String serveList(LshBoardDto lshBoardDto, Model model, String p_serve) throws Exception {
+		List<LshBoardVo> serveList = boardService.serveList(lshBoardDto, p_serve);
 		model.addAttribute("serveList", serveList);
+		model.addAttribute("lshBoardDto", lshBoardDto);
 		return "lsh/shop_serve";
 	}
 

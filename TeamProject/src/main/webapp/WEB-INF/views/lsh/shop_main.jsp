@@ -12,11 +12,22 @@ $(function() {
 		$("#singlePage").attr("action", $(this).attr("href"));
 		$("#singlePage").submit();
 	});
+	
+	$("#price").change(function() {
+		var priceType = $("select[name=priceType]").val();
+		$("#pricePage > input[name=priceType]").val(priceType);
+		$("#pricePage").submit();
+	});
+	
 });
 </script>
 
-<form id="singlePage" action="/lsh/mainShop" method="get">
+<form id="singlePage" action="/lsh/shop_main" method="get">
 	<input type="hidden" name="p_num" value="${LshBoardVo.p_num}"/>
+</form>
+
+<form id="pricePage" action="/lsh/shop_main" method="get">
+	<input type="hidden" name="priceType" value="${lshBoardDto.priceType}"/>
 </form>
 
     <div class="bg-light py-3">
@@ -42,13 +53,16 @@ $(function() {
                 <div class="float-md-left mb-4"><h2 class="text-black h5">Shop</h2></div>
                 <div class="d-flex">
                   <div class="dropdown mr-1 ml-md-auto">
-                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      옵션
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                      <a class="dropdown-item" href="#">낮은 가격순</a>
-                      <a class="dropdown-item" href="#">높은 가격순</a>
-                    </div>
+                    
+                    <select name="priceType" id="price">
+                    	<option value="H" 
+                    		<c:if test="${lshBoardDto.priceType == 'H'}">selected</c:if>
+                    	>높은 가격순</option>
+                    	<option value="L" 
+                    	    <c:if test="${lshBoardDto.priceType == 'L'}">selected</c:if>
+                    	>낮은 가격순</option>
+                    </select>
+                    
                   </div>
                 </div>
               </div>

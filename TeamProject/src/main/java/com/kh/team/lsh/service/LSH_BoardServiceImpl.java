@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.team.domain.LshBoardDto;
 import com.kh.team.domain.LshBoardVo;
 import com.kh.team.lsh.persistence.LSH_BoardDao;
 
@@ -16,8 +17,8 @@ public class LSH_BoardServiceImpl implements LSH_BoardService {
 	private LSH_BoardDao boardDao;
 
 	@Override
-	public List<LshBoardVo> list() throws Exception {
-		List<LshBoardVo> list = boardDao.list();
+	public List<LshBoardVo> list(LshBoardDto lshBoardDto) throws Exception {
+		List<LshBoardVo> list = boardDao.list(lshBoardDto);
 		return list;
 	}
 
@@ -28,14 +29,14 @@ public class LSH_BoardServiceImpl implements LSH_BoardService {
 	}
 
 	@Override
-	public List<LshBoardVo> mainList(String p_main) throws Exception {
-		List<LshBoardVo> mainList = boardDao.mainList(p_main);
+	public List<LshBoardVo> mainList(LshBoardDto lshBoardDto, String p_main) throws Exception {
+		List<LshBoardVo> mainList = boardDao.mainList(lshBoardDto, p_main);
 		return mainList;
 	}
 
 	@Override
-	public List<LshBoardVo> serveList(String p_serve) throws Exception {
-		List<LshBoardVo> serveList = boardDao.serveList(p_serve);
+	public List<LshBoardVo> serveList(LshBoardDto lshBoardDto, String p_serve) throws Exception {
+		List<LshBoardVo> serveList = boardDao.serveList(lshBoardDto, p_serve);
 		return serveList;
 	}
 	
