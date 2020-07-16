@@ -21,7 +21,8 @@ public class LSH_BoardServiceImpl implements LSH_BoardService {
 		List<LshBoardVo> list = boardDao.list(lshBoardDto, p_main, p_serve);
 		return list;
 	}
-
+// , String p_main, String p_serve
+// , p_main, p_serve
 	@Override
 	public LshBoardVo single(int p_num) throws Exception {
 		LshBoardVo boardVo = boardDao.single(p_num);

@@ -29,6 +29,7 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 		return sqlSession.selectList(NAMESPACE + "list", paramMap);
 	}
 	
+	
 	@Override
 	public LshBoardVo single(int p_num) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "single", p_num);
