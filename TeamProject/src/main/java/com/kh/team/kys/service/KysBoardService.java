@@ -10,7 +10,7 @@ public interface KysBoardService {
 	
 	//게시물 리스트
 		
-	public List<Kys_BoardVo> boardList() throws Exception;
+	public List<Kys_BoardVo> boardList(Kys_BoardDto boardDto) throws Exception;
 		//등록  
 		public void boardInsert(Kys_BoardVo boardVo) throws Exception;
 		//수정 

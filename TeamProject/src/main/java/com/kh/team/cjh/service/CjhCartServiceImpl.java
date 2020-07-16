@@ -28,4 +28,10 @@ public class CjhCartServiceImpl implements CjhCartService {
 		cartDao.deleteCart(u_id, p_num);
 	}
 
+	@Override
+	public void updateCart(String u_id, int p_num, int p_count) throws Exception {
+		cartDao.updateCart(u_id, p_num, p_count);
+	}
+
+
 }

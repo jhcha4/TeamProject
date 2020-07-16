@@ -20,27 +20,39 @@ $(document).ready(function() {
 		}
 	});
 	
-	$("#btnplus").click(function() {
-		var p_count = $("#p_count").val();
-		var np_count = Number(p_count) + 1;
-		var p_price = $("#p_price").text();
-		var np_price = Number(p_price);
-		var sumPrice = $("#sumPrice").text(np_price * np_count);
+	$("#updateCart").click(function() {
+		var totalPrice = 0;
+		$(".sumPrice").each(function(index, element) {
+			var price = ($(this).text());
+			var nPrice = Number(price);
+			totalPrice += nPrice;
+		});
+// 		console.log("totalPrice : " + totalPrice);
+		$("#totalPrice").text(totalPrice );
+		$("#btnCheckOut").attr("disabled", false);
 	});
 	
-	$("#btnminus").click(function() {
-		var p_count = $("#p_count").val();
-		var np_count = Number(p_count) - 1;
-		var p_price = $("#p_price").text();
-		var np_price = Number(p_price);
-		console.log(np_price);
-		console.log(np_count);
-		var sumPrice = $("#sumPrice").text(np_price * np_count);
-		console.log(sumPrice);
+	$("input[name=p_count]").change(function() {
+// 		console.log($(this).val());
+		var p_num = $(this).parent().parent().prev().prev().val();
+		var count = $(this).val();
+		location.href = "/cjh/updateCart?u_id=${u_id}&p_num="+p_num+"&p_count="+count;
+		var p_price = $(this).parent().parent().prev().text();
+// 		var p_count = $(this).parent().parent().next().children().text();
+// 		console.log("p_count : " + p_count);
+// 		console.log("p_price : " + p_price);
+		$(this).parent().parent().next().children().text(count * p_price);
+	});
+	
+	$("#btnCheckOut").click(function(e) {
+		e.preventDefault();
+		$("#frmCart").submit();
 	});
 	
 });
 </script>
+
+${list}
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -55,7 +67,7 @@ $(document).ready(function() {
 <div class="site-section">
 	<div class="container">
 		<div class="row mb-5">
-			<form class="col-md-12" method="post">
+			<form id="frmCart" class="col-md-12" action="/cjh/updateCart" method="post">
 				<div class="title"><h1 class="tit">CART</h1></div>
 				<div class="site-blocks-table">
 					<table class="table table-bordered">
@@ -87,26 +99,26 @@ $(document).ready(function() {
 										<td style="border-left: none; border-right: none;"><img style="width:150px;" src="/resources/images/cloth_1.jpg"></td>
 										
 										<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.p_name}</td>
-										
-										<td><span id="p_price" style="padding-left: 10px;" class="p_price${status.index}">${item.p_price}</span>원</td>
+										<input type="hidden" id="p_num" value="${item.p_num}">
+										<td><a name="p_price" style="padding-left: 10px;" class="p_price${status.index}">${item.p_price}</a></td>
 										
 										<td	style="width:150px">
 											
 											<div class="input-group mb-3" style="max-width: 120px;">
-												<div class="input-group-prepend">
-													<button id="btnminus" class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-												</div>
-												<input id="p_count" type="text" class="form-control text-center" value="${item.p_count}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-												<div class="input-group-append">
-													<button id="btnplus" class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-												</div>
+<!-- 												<div class="input-group-prepend"> -->
+<!-- 													<button name="btnminus" class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button> -->
+<!-- 												</div> -->
+												<input name="p_count" type="number" min="1" class="form-control text-center" value="${item.p_count}">
+<!-- 												<div class="input-group-append"> -->
+<!-- 													<button name="btnplus" class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button> -->
+<!-- 												</div> -->
 											</div>
 										</td>
 										
-										<td><span id="sumPrice">${item.p_price * item.p_count}</span>원</td>
+										<td><a class="sumPrice" id="sumPrice${status.index}" name="sumPrice">${item.p_price * item.p_count}</a>원</td>
 										
 										<td><a href="/cjh/deleteCart?u_id=${u_id}&p_num=${item.p_num}" class="btn btn-basic btn-sm">X</a></td>
-									
+									</tr>
 								</c:forEach>
 							</c:if>
 							
@@ -133,7 +145,7 @@ $(document).ready(function() {
 			<div class="col-md-6">
 				<div class="row mb-5">
 					<div class="col-md-6 mb-3 mb-md-0">
-						<button class="btn btn-primary btn-sm btn-block">Update Cart</button>
+						<button id="updateCart" class="btn btn-primary btn-sm btn-block">Update Cart</button>
 					</div>
 					<div class="col-md-6">
 						<button type="button" onclick="location.href='/lsh/shop'" class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
@@ -162,15 +174,15 @@ $(document).ready(function() {
 						</div>
 						<div class="row mb-3">
 							<div class="col-md-6">
-								<span class="text-black">결제 가격</span>
+								<span class="text-black">결제 가격</span><br>
 							</div>
 							<div class="col-md-6 text-right">
-								<span></span>
+								<span class="text-black"><strong id="totalPrice"></strong>  원</span>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='/cjh/checkout'">결제하기</button>
+								<button id="btnCheckOut" class="btn btn-primary btn-lg py-3 btn-block" disabled>결제하기</button>
 							</div>
 						</div>
 					</div>

@@ -44,7 +44,7 @@
 					<ul>
 				        <li class="">
 				            <strong class="title">총포인트</strong>
-				            <strong class="data"><span class="pointText" id="totalPoint">${pointVo.point_value}원</span></strong>
+				            <strong class="data"><span class="pointText" id="totalPoint">${u_point}원</span></strong>
 				        </li>
 				        <li class="">
 				            <strong class="title">사용포인트</strong>
@@ -52,7 +52,7 @@
 				        </li>
 						<li class=" ">
 				            <strong class="title">가용포인트</strong>
-				            <strong class="data">&nbsp;<span class="pointText" id="nowPoint">${pointVo.point_value}원</span></strong>
+				            <strong class="data">&nbsp;<span class="pointText" id="nowPoint">${u_point}원</span></strong>
 				        </li>
 				        <li>
 				            <strong class="title">총주문</strong>

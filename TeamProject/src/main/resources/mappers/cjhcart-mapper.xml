@@ -13,4 +13,15 @@
 		delete from tbl_cart
 		where u_id = #{u_id} and p_num = #{p_num}
 	</delete>
+	
+	<select id="getCountCart" resultType="int">
+		select count(*) from tbl_cart
+		where u_id = #{u_id}
+	</select>
+	
+	<update id="updateCart">
+		update tbl_cart set
+		p_count = #{p_count}
+		where u_id = #{u_id} and p_num = #{p_num}
+	</update>
 </mapper>

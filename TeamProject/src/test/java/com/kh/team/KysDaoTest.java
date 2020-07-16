@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.kys.dao.KysBoardDao;
 
@@ -21,8 +22,8 @@ public class KysDaoTest {
 	  
 	//게시물 리스트
 	@Test
-	public void boardList() throws Exception{
-		boardDao.boardList();
+	public void boardList(Kys_BoardDto boardDto) throws Exception{
+		boardDao.boardList(boardDto);
 	}
 	
 	//등록 처리 폼

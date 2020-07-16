@@ -36,8 +36,8 @@ $(function(){
 			  var email =rData.u_email;
 			  var pw =rData.u_pw;
 			  
-			  $("#to").val(email);
-			  $("#contents").val("비밀번호는"+pw+"입니다");
+			   $("#to").val(email);
+			  $("#contents").val("비밀번호는"+pw+"입니다"); 
 		 });
 
 	}); 
@@ -81,7 +81,7 @@ $(function(){
 					<label for="contents">	
 					</label>
 					
-					<input type="hidden" class="form-control" id="contents" name="contents" />
+					<input type="hidden" class="form-control" id="contents" name="contents"  />
 				</div>
 				
 				<div class="form-group"> 

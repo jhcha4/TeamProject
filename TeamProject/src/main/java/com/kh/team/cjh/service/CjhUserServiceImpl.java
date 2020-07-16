@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.team.cjh.dao.CjhCartDao;
 import com.kh.team.cjh.dao.CjhUserDao;
 import com.kh.team.domain.CjhPointVo;
 import com.kh.team.domain.CjhUserVo;
@@ -15,6 +16,8 @@ public class CjhUserServiceImpl implements CjhUserService {
 	
 	@Inject
 	private CjhUserDao userDao;
+	@Inject
+	private CjhCartDao cartDao;
 	
 	//	로그인
 	@Override
@@ -48,6 +51,11 @@ public class CjhUserServiceImpl implements CjhUserService {
 	public CjhPointVo getPoint(String u_id) throws Exception {
 		CjhPointVo pointVo = userDao.getPoint(u_id);
 		return pointVo;
+	}
+
+	@Override
+	public int getUserPoint(String u_id) throws Exception {
+		return userDao.getUserPoint(u_id);
 	}
 
 }

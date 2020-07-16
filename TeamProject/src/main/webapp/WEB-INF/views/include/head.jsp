@@ -64,9 +64,6 @@
 			</c:otherwise>		
 		</c:choose>
               
-              
-              
-              
                 <ul>
                   <c:choose>
 		             <c:when test="${not empty sessionScope.u_id}">
