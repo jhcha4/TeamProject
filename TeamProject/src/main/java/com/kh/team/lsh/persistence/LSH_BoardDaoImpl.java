@@ -1,12 +1,15 @@
 package com.kh.team.lsh.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.team.domain.LshBoardDto;
 import com.kh.team.domain.LshBoardVo;
 
 @Repository
@@ -18,8 +21,12 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<LshBoardVo> list() throws Exception {
-		return sqlSession.selectList(NAMESPACE + "list");
+	public List<LshBoardVo> list(LshBoardDto lshBoardDto, String p_main, String p_serve) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("lshBoardDto", lshBoardDto);
+		paramMap.put("p_main", p_main);
+		paramMap.put("p_serve", p_serve);
+		return sqlSession.selectList(NAMESPACE + "list", paramMap);
 	}
 	
 	@Override
@@ -27,15 +34,6 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 		return sqlSession.selectOne(NAMESPACE + "single", p_num);
 	}
 
-	@Override
-	public List<LshBoardVo> mainList(String p_main) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "MainList", p_main);
-	}
-
-	@Override
-	public List<LshBoardVo> serveList(String p_serve) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "ServeList", p_serve);
-	}
 
 
 }

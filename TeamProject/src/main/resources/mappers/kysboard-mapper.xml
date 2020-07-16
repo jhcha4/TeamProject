@@ -34,42 +34,69 @@
 	where p_num = #{p_num}
 	</update>
 	<!-- 상품 삭제 컬럼추가-->
-	<delete id="boardDelete">
+	<update id="boardDelete">
 	   update tbl_product_board set
  	   p_deleted  = 'D'
  	   where p_num = #{p_num}
-	</delete>
-	
+	</update>
+	<!-- 상품 게시물 복구 -->
+	<update id="boardRestoration">
+		  update tbl_product_board set
+ 	 	  p_deleted  = ''
+ 	 	  where p_num = #{p_num}
+	</update>
 	<!-- 상품 조건 검색 -->
 	<select id="selectByTow" resultType="Kys_BoardVo">
 		select * from tbl_product_board 
 		where p_main = #{p_main} and p_serve = #{p_serve}  
 	</select>
 	
-	<!-- 게시글 수 -->
-	<select id="getCount" resultType="int">
-	select count(*) from tbl_product_board
-	<include refid="serch"></include>
-	</select>
+	
 	
 	<!-- 게시글 페이징 -->
-	<select id="boardListPage" resultType="kys_BoardVo">
+	<select id="boardListPage" resultType="Kys_BoardVo">
 	select * from (
 			select rownum rnum, a.* from(
-    		select * from tbl_product_board
+    			select * from tbl_product_board
+    				where p_deleted != 'D' or p_deleted is null
     				<include refid="serch"></include>
    					 order by p_num desc)
    					  a)
     where rnum between #{startRow} and #{endRow}
 	</select>
+	<!-- 삭제처리된 게시물 -->
+	<select id="deleteList" resultType="Kys_BoardVo">
+	select * from (
+			select rownum rnum, a.* from(
+    			select * from tbl_product_board
+    				where p_deleted = 'D'
+    				<include refid="serch"></include>
+   					 order by p_num desc)
+   					  a)
+    where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 게시된 게시글 수 -->
+	<select id="getCount" resultType="int">
+	select count(*) from tbl_product_board
+	where p_deleted != 'D' or p_deleted is null
+	<include refid="serch"></include>
+	</select>
+	<select id="getDeleteCount" resultType="int">
+	select count(*) from tbl_product_board
+	where p_deleted = 'D'
+	<include refid="serch"></include>
+	</select>
+	
+	<!-- select bar 검색 -->
 	<sql id="serch">
 		<if test="p_main != null and p_main !='' ">
-		
-					where p_main like #{p_main}
-					or p_serve like #{p_serve}
-    			
+					and p_main like #{p_main}
+					and p_serve like #{p_serve}
 		</if>
 	</sql>
+	
+	
 	
 	
 </mapper>

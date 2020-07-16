@@ -2,7 +2,7 @@ package com.kh.team.domain;
 
 public class Kys_BoardDto {
 	private int page = 1;
-	private int perPage = 10; //한 페이지당 보여질 글의 겟수
+	private int perPage = 5; //한 페이지당 보여질 글의 겟수
 	private int startRow = 1;  //시작점
 	private int endRow = 10;
 	private int totalCount;

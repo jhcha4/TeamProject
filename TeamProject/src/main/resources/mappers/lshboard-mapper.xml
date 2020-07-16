@@ -7,7 +7,8 @@
 
 	<select id="list" resultType="LshBoardVo">
 		select * from tbl_product_board
-		order by p_num desc
+		<include refid="type"/>
+		order by <include refid="price"/>p_num desc
 	</select>
 	
 	<select id="single" resultType="LshBoardVo">
@@ -15,16 +16,38 @@
 		where p_num = #{p_num}
 	</select>
 	
-	<select id="MainList" resultType="LshBoardVo">
-		select * from tbl_product_board
-		where p_main = #{p_main}
-		order by p_num desc
-	</select>
+<!-- 	<select id="MainList" resultType="LshBoardVo"> -->
+<!-- 		select * from tbl_product_board -->
+<!-- 		where p_main = #{p_main} -->
+<!-- 		order by <include refid="type"/>p_num desc -->
+<!-- 	</select> -->
 	
-	<select id="ServeList" resultType="LshBoardVo">
-		select * from tbl_product_board
-		where p_serve = #{p_serve}
-		order by p_num desc
-	</select>
+<!-- 	<select id="ServeList" resultType="LshBoardVo"> -->
+<!-- 		select * from tbl_product_board -->
+<!-- 		where p_serve = #{p_serve} -->
+<!-- 		order by <include refid="type"/>p_num desc -->
+<!-- 	</select> -->
+	
+	<sql id="price">
+		<if test="priceType != null">
+			<choose>
+				<when test='priceType == "H"'>
+					p_price desc,
+				</when>
+				<when test='priceType == "L"'>
+					p_price,
+				</when>
+			</choose>
+		</if>
+	</sql>
+	
+	<sql id="type">
+		<if test="p_main != null">
+			where p_main = #{p_main}
+		</if>
+		<if test="p_serve != null">
+			where p_serve = #{p_serve}
+		</if>
+	</sql>
 	
 </mapper>

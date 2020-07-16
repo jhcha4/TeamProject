@@ -21,4 +21,9 @@ public class KysAjaxContriller {
 			boardService.boardDelete(p_num);
 			return "success";
 		}
+		@RequestMapping(value = "/restoration", method = RequestMethod.POST)
+		public String restoration(int p_num) throws Exception{
+			boardService.boardRestoration(p_num);
+			return "success";
+		}
 }
