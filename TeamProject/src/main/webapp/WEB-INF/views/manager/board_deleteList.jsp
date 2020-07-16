@@ -56,23 +56,24 @@ $(function() {
 			return;
 		}
 	});
-	//삭제 버튼
+	//완전 삭제 버튼
 	$("a[name=btnDelete]").click(function(){
 		var that = $(this);
 		
 		var p_num = $(this).attr("data-p_num");
 		console.log("p_num:"+p_num);
-		var url = "/ajax/productDelete?p_num="+p_num;
+		var url = "/ajax/delete?p_num="+p_num;
 		$.ajax({
 			"type" : "POST",
 			"url" : url,
 			"dataType" : "text",
 			"success" : function(rData){
 				console.log(rData);
-				
+				that.parent().parent().hide(1);
 			}
 		});
 	});
+	//복구 버튼
 	$("a[name=btnRestoration]").click(function(){
 		var that = $(this);
 		
@@ -155,7 +156,7 @@ ${deleteListDto}
 							<td><a type="button" class="btn btn-sm btn-danger"
 								id="btnDelete" name="btnRestoration" data-p_num="${BoardVo.p_num}">복구</a></td>
 							<td><a type="button" class="btn btn-sm btn-danger"
-								id="btnDelete" name="btnDelete" data-p_num="${BoardVo.p_num}">삭제</a></td>
+								id="btnDelete" name="btnDelete" data-p_num="${BoardVo.p_num}">완전 삭제</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

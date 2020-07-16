@@ -45,6 +45,11 @@
  	 	  p_deleted  = ''
  	 	  where p_num = #{p_num}
 	</update>
+	<!-- 게시물 완전 삭제 -->
+	<delete id="delete">
+		delete tbl_product_board
+		where p_num = #{p_num}
+	</delete>
 	<!-- 상품 조건 검색 -->
 	<select id="selectByTow" resultType="Kys_BoardVo">
 		select * from tbl_product_board 

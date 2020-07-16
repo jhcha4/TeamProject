@@ -24,6 +24,9 @@ public interface KysBoardDao {
 	//삭제 복구
 	public void boardRestoration(int p_num) throws Exception;
 	
+	//완전 삭제
+	public void delete(int p_num) throws Exception;
+	
 	//게시물 보기
 	public Kys_BoardVo boardSelectBy(int p_num) throws Exception;
 	
