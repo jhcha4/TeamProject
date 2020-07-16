@@ -68,6 +68,14 @@
 	
 	</select>
 	
+	<!-- 아이디 중복체크 -->
+		<select id="selectId" resultType="string">
+			select u_id from tbl_user
+			where u_id = #{u_id}
+		
+		</select>
+	
+	
 	
 </mapper>
 

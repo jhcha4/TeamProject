@@ -66,6 +66,11 @@ public class JmMemberServiceImpl implements JmMemberService {
 	public JmPwEmailDto selectPw(String u_id) throws Exception {
 		return jmMemberDao.selectPw(u_id);
 	}
+	@Override
+	public String selectId(String u_id) throws Exception {
+		
+		return jmMemberDao.selectId(u_id);
+	}
 	
 
 }
