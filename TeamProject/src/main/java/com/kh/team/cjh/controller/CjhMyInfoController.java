@@ -56,10 +56,6 @@ public class CjhMyInfoController {
 		return "cjh/thankyou";
 	}
 	
-	@RequestMapping(value="/order")
-	public String order() throws Exception {
-		return "cjh/order";
-	}
 	
 	//	로그인 폼
 	@RequestMapping(value="/login", method = RequestMethod.GET)

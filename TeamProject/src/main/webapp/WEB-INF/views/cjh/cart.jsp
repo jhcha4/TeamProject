@@ -36,7 +36,9 @@ $(document).ready(function() {
 // 		console.log($(this).val());
 		var p_num = $(this).parent().parent().prev().prev().val();
 		var count = $(this).val();
-		location.href = "/cjh/updateCart?u_id=${u_id}&p_num="+p_num+"&p_count="+count;
+		var c_num = $(this).parent().parent().next().next().next().text();
+		console.log("c_num : " + c_num);
+		location.href = "/cjh/updateCart?u_id=${u_id}&p_num="+p_num+"&p_count="+count+"&c_num="+c_num;
 		var p_price = $(this).parent().parent().prev().text();
 // 		var p_count = $(this).parent().parent().next().children().text();
 // 		console.log("p_count : " + p_count);
@@ -46,13 +48,11 @@ $(document).ready(function() {
 	
 	$("#btnCheckOut").click(function(e) {
 		e.preventDefault();
-		$("#frmCart").submit();
+		location.href = "/cjh/checkout?u_id=${u_id}";
 	});
-	
 });
 </script>
 
-${list}
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -118,6 +118,7 @@ ${list}
 										<td><a class="sumPrice" id="sumPrice${status.index}" name="sumPrice">${item.p_price * item.p_count}</a>원</td>
 										
 										<td><a href="/cjh/deleteCart?u_id=${u_id}&p_num=${item.p_num}" class="btn btn-basic btn-sm">X</a></td>
+										<td name="c_num" style="display : none;">${item.c_num}</td>
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -145,10 +146,12 @@ ${list}
 			<div class="col-md-6">
 				<div class="row mb-5">
 					<div class="col-md-6 mb-3 mb-md-0">
-						<button id="updateCart" class="btn btn-primary btn-sm btn-block">Update Cart</button>
+						<button type="button" onclick="location.href='/lsh/shop'" class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
 					</div>
 					<div class="col-md-6">
-						<button type="button" onclick="location.href='/lsh/shop'" class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
+						<c:if test="${not empty list}">
+							<button id="updateCart" class="btn btn-primary btn-sm btn-block">Update Cart</button>
+						</c:if>
 					</div>
 				</div>
 				<div class="row">

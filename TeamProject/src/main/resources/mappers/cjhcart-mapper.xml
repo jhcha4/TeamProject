@@ -6,7 +6,12 @@
 <mapper namespace="mappers.cjhcart-mapper">
 	<select id="getCart" resultType="CjhCartVo">
 		select * from tbl_cart
-		where u_id = #{u_id}
+		where u_id = #{u_id} and p_status = 1001
+	</select>
+	
+	<select id="getOrder" resultType="CjhCartVo">
+		select * from tbl_cart
+		where u_id = #{u_id} and p_status != 1001
 	</select>
 	
 	<delete id="deleteCart">
@@ -22,6 +27,13 @@
 	<update id="updateCart">
 		update tbl_cart set
 		p_count = #{p_count}
-		where u_id = #{u_id} and p_num = #{p_num}
+		where u_id = #{u_id} and c_num = #{c_num}
 	</update>
+	
+	<delete id="orderCartUpdate">
+		update tbl_cart set
+		p_status = 1002,
+		p_date = sysdate
+		where u_id = #{u_id} and p_status = 1001
+	</delete>
 </mapper>

@@ -13,7 +13,12 @@
 	<input type="hidden" name="page" value="${boardDto.page}"/>
 	<input type="hidden" name="perPage" value="${boardDto.perPage}"/>
 </form>
-
+<form id="frmDeletePage" action="/manager/board_deleteList" method="get">
+	<input type="hidden" name="p_main" value="${deleteListDto.p_main}">
+	<input type="hidden" name="p_serve" value="${deleteListDto.p_serve}">
+	<input type="hidden" name="page" value="${deleteListDto.page}"/>
+	<input type="hidden" name="perPage" value="${deleteListDto.perPage}"/>
+</form>
 	<div class="row">
 		<div class="col-md-2">
 			
@@ -25,7 +30,7 @@
 				<button class="btn btn-secondary" type="button"><a href="/manager/shop_single_input">상품 등록</a></button>
 				<button class="btn btn-secondary" type="button"><a href="/manager/normal_list">상품리스트</a></button>
 				<button class="btn btn-secondary" type="button"><a href="/jm/jm_userList">유저리스트</a></button>
-				<button class="btn btn-secondary" type="button">Justify</button>
+				<button class="btn btn-secondary" type="button"><a href="/manager/board_deleteList">삭제된 상품</a></button>
 			</div>
 			<div class="row">
 				<div class="col-md-12"></div>

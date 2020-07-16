@@ -29,9 +29,17 @@ public class CjhCartServiceImpl implements CjhCartService {
 	}
 
 	@Override
-	public void updateCart(String u_id, int p_num, int p_count) throws Exception {
-		cartDao.updateCart(u_id, p_num, p_count);
+	public void updateCart(String u_id, int p_count, int c_num) throws Exception {
+		cartDao.updateCart(u_id, p_count, c_num);
 	}
 
+	@Override
+	public void orderCartUpdate(String u_id) throws Exception {
+		cartDao.orderCartUpdate(u_id);
+	}
 
+	@Override
+	public List<CjhCartVo> getOrder(String u_id) throws Exception {
+		return cartDao.getOrder(u_id);
+	}
 }

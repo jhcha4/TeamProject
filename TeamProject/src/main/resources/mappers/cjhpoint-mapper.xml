@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mappers.cjhpoint-mapper">
+	<update id="usePoint">
+		update tbl_usertest set
+			u_point = (select u_point from tbl_usertest
+					   where u_id = #{u_id}) - #{totalPrice}
+		where u_id = #{u_id}
+	</update>
+</mapper>

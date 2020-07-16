@@ -69,7 +69,7 @@ $(function() {
 			"dataType" : "text",
 			"success" : function(rData){
 				console.log(rData);
-				
+				that.parent().parent().hide(1);
 			}
 		});
 	});
@@ -136,6 +136,7 @@ ${boardDto}
 				</thead>
 				<tbody>
 					<c:forEach items="${pageList}" var="BoardVo">
+						
 						<tr>
 							<td>${BoardVo.p_main}${BoardVo.p_serve}${BoardVo.p_num}</td>
 							<td>${BoardVo.p_name}</td>
@@ -145,6 +146,7 @@ ${boardDto}
 							<td><a type="button" class="btn btn-sm btn-danger"
 								 id="btnDelete" name="btnDelete" data-p_num="${BoardVo.p_num}">삭제</a></td>
 						</tr>
+						
 					</c:forEach>
 				</tbody>
 			</table>
@@ -154,8 +156,9 @@ ${boardDto}
 	<div class="col-md-2"></div>
 </div>
 <!-- 패이징 -->
-<div class="row">
-		<div class="col-md-12 text-center">
+<div class="row justify-content-center">
+		<div class="col-md-12 ">
+		<div class="row justify-content-center">
 		<nav class="pagination-sm">
 			<ul class="pagination">
 				<!-- 이전 -->
@@ -179,6 +182,7 @@ ${boardDto}
 				
 			</ul>
 		</nav>
+		</div>
 		</div>
 	</div>
 

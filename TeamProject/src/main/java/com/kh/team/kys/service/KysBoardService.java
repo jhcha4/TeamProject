@@ -15,12 +15,21 @@ public interface KysBoardService {
 		public void boardInsert(Kys_BoardVo boardVo) throws Exception;
 		//수정 
 		public void boardUpdate(Kys_BoardVo boardVo) throws Exception;
-		//삭제 
+		//삭제 처리
 		public void boardDelete(int p_num) throws Exception;
+		//삭제 복구
+		public void boardRestoration(int p_num) throws Exception;
 		//게시물 보기
 		public Kys_BoardVo boardSelectBy(int p_num) throws Exception;
-		//게시글 수
+		//게시된 게시글 수
 		public int getCount(Kys_BoardDto boardDto) throws Exception;
 		//게시글 페이징
 		public List<Kys_BoardVo> pageList(Kys_BoardDto boardDto) throws Exception;
+		//삭제 처리된 게시물 
+		public List<Kys_BoardVo> deleteList(Kys_BoardDto boardDto) throws Exception;
+		//게시된 게시글 수
+		public int getDeleteCount(Kys_BoardDto boardDto) throws Exception;
+
+		//완전 삭제
+		public void delete(int p_num) throws Exception;
 }
