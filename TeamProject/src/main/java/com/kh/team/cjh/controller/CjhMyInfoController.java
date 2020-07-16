@@ -56,9 +56,9 @@ public class CjhMyInfoController {
 		return "cjh/thankyou";
 	}
 	
-	@RequestMapping(value="/order")
+	@RequestMapping(value="/myOrder")
 	public String order() throws Exception {
-		return "cjh/order";
+		return "cjh/myOrder";
 	}
 	
 	//	로그인 폼

@@ -57,4 +57,12 @@ public class CjhCartController {
 		model.addAttribute("list", list);
 		return "cjh/checkout";
 	}
+	
+	//	결제 처리
+	@RequestMapping(value="/order", method = RequestMethod.GET)
+	public String order(String u_id, int totalPrice) throws Exception {
+		System.out.println("u_id : " + u_id);
+		System.out.println("totalPrice : " + totalPrice);
+		return "/cjh/thankyou";
+	}
 }

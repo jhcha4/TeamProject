@@ -20,7 +20,7 @@ $(document).ready(function() {
 		if (userPoint < totalPrice) {
 			alert("포인트가 부족합니다");
 		} else {
-			location.href = "/cjh/order?u_id=${u_id}&totalPrice="+totalPrice+"&"
+			location.href = "/cjh/order?u_id=${u_id}&totalPrice="+totalPrice;
 		}
 	});
 });
