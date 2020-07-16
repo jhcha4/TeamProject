@@ -51,4 +51,8 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		sqlSession.update(NAMESPACE + "updateCart", paramMap);
 	}
 
+	@Override
+	public void orderCartDelete(String u_id) throws Exception {
+		sqlSession.delete(NAMESPACE + "orderCartDelete", u_id);
+	}
 }

@@ -36,24 +36,39 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td class="product-thumbnail">
-							<img src="../../resources/images/cloth_1.jpg" alt="Image" class="img-fluid">
-						</td>
-						<td>1</td>
-						<td>TB - Monthly</td>
-						<td>01/04/2012</td>
-						<td>Default</td>
-					</tr>
-					<tr>
-						<td class="product-thumbnail">
-							<img src="../../resources/images/cloth_2.jpg" alt="Image" class="img-fluid">
-						</td>
-						<td>2</td>
-						<td>TB - Monthly</td>
-						<td>01/04/2012</td>
-						<td>Default</td>
-					</tr>
+					<c:if test="${not empty list}">
+								<c:forEach var="item" items="${list}" varStatus="status">
+									<tr class="calculation1_tbody_tr1" style="height: 90px; background-color: #fff;" >
+										<td style="text-align: Left; text-align:center; border-right:none; width:10px">
+											<input type="checkbox" id="checkbox" name="checkbox"/>
+											<input type="hidden" class="buypd${status.index}" value="${item.p_num}">
+										</td>
+										
+										<td style="border-left: none; border-right: none;"><img style="width:150px;" src="/resources/images/cloth_1.jpg"></td>
+										
+										<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.p_name}</td>
+										<input type="hidden" id="p_num" value="${item.p_num}">
+										<td><a name="p_price" style="padding-left: 10px;" class="p_price${status.index}">${item.p_price}</a></td>
+										
+										<td	style="width:150px">
+											
+											<div class="input-group mb-3" style="max-width: 120px;">
+												<input name="p_count" type="number" min="1" class="form-control text-center" value="${item.p_count}">
+											</div>
+										</td>
+										
+										<td><a class="sumPrice" id="sumPrice${status.index}" name="sumPrice">${item.p_price * item.p_count}</a>원</td>
+										
+										<td><a href="/cjh/deleteCart?u_id=${u_id}&p_num=${item.p_num}" class="btn btn-basic btn-sm">X</a></td>
+									</tr>
+								</c:forEach>
+							</c:if>
+							
+							<c:if test="${empty list}">
+								<tr id="not product" style="background-color: #fff;">
+									<td colspan="10" style="font-size: 20pt; color: gray;"><span>주문내역이 없습니다.</span></td>
+								</tr>
+							</c:if>
 					
 				</tbody>
 			</table>

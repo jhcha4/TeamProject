@@ -56,8 +56,9 @@ public class CjhMyInfoController {
 		return "cjh/thankyou";
 	}
 	
-	@RequestMapping(value="/myOrder")
-	public String order() throws Exception {
+	@RequestMapping(value="/myOrder", method = RequestMethod.GET)
+	public String order(String u_id) throws Exception {
+		System.out.println("u_id : " + u_id);
 		return "cjh/myOrder";
 	}
 	

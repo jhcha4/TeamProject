@@ -14,4 +14,7 @@ public interface CjhCartService {
 	
 	//	장바구니 갱신
 	public void updateCart(String u_id, int p_num, int p_count) throws Exception;
+	
+	//	주문후 장바구니 삭제
+	public void orderCartDelete(String u_id) throws Exception;
 }
