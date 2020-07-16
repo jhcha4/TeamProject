@@ -79,6 +79,14 @@ public class KysBoardController {
 		boardService.boardUpdate(boardVo);
 		return "redirect:/manager/normal_list";
 	}
-	
-	
+	//삭제 처리된 게시물
+	@RequestMapping(value = "/board_deleteList", method = RequestMethod.GET)
+	public void deleteList(Kys_BoardDto deleteListDto,Model model) throws Exception{
+		deleteListDto.setPageInfo();
+		int totalCount = boardService.getDeleteCount(deleteListDto);
+		deleteListDto.setTotalCount(totalCount);
+		List<Kys_BoardVo> list = boardService.deleteList(deleteListDto);
+		model.addAttribute("list",list);
+		model.addAttribute("deleteListDto",deleteListDto);
+	}
 }
