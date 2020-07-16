@@ -1,6 +1,6 @@
 package com.kh.team.jm;
 
-import java.util.List;
+
 
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
@@ -23,7 +23,7 @@ import com.kh.team.domain.JmPwEmailDto;
 
 @Controller
 @RequestMapping("/jm")
-public class Jm_Controller {
+public class Jm_UserController {
 
 	@Inject
 	private JmMemberService jmMemberService;
