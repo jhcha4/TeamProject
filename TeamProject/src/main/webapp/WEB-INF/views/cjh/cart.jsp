@@ -36,7 +36,9 @@ $(document).ready(function() {
 // 		console.log($(this).val());
 		var p_num = $(this).parent().parent().prev().prev().val();
 		var count = $(this).val();
-		location.href = "/cjh/updateCart?u_id=${u_id}&p_num="+p_num+"&p_count="+count;
+		var c_num = $(this).parent().parent().next().next().next().text();
+		console.log("c_num : " + c_num);
+		location.href = "/cjh/updateCart?u_id=${u_id}&p_num="+p_num+"&p_count="+count+"&c_num="+c_num;
 		var p_price = $(this).parent().parent().prev().text();
 // 		var p_count = $(this).parent().parent().next().children().text();
 // 		console.log("p_count : " + p_count);
@@ -116,6 +118,7 @@ $(document).ready(function() {
 										<td><a class="sumPrice" id="sumPrice${status.index}" name="sumPrice">${item.p_price * item.p_count}</a>원</td>
 										
 										<td><a href="/cjh/deleteCart?u_id=${u_id}&p_num=${item.p_num}" class="btn btn-basic btn-sm">X</a></td>
+										<td name="c_num" style="display : none;">${item.c_num}</td>
 									</tr>
 								</c:forEach>
 							</c:if>

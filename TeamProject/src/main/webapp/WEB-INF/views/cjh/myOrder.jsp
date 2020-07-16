@@ -11,6 +11,8 @@
 }
 </style>
 
+${list}
+
 <div class="bg-light py-3">
 	<div class="container">
 		<div class="row">
@@ -28,8 +30,8 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th>상품정보</th>
 						<th>주문번호</th>
+						<th>상품정보</th>
 						<th>수량</th>
 						<th>주문금액</th>
 						<th>진행상태</th>
@@ -39,27 +41,23 @@
 					<c:if test="${not empty list}">
 								<c:forEach var="item" items="${list}" varStatus="status">
 									<tr class="calculation1_tbody_tr1" style="height: 90px; background-color: #fff;" >
-										<td style="text-align: Left; text-align:center; border-right:none; width:10px">
-											<input type="checkbox" id="checkbox" name="checkbox"/>
-											<input type="hidden" class="buypd${status.index}" value="${item.p_num}">
+										<td style="text-align: Left; text-align:center; width:1px">
+											주문번호
 										</td>
 										
-										<td style="border-left: none; border-right: none;"><img style="width:150px;" src="/resources/images/cloth_1.jpg"></td>
+										<td><img style="width:150px;" src="/resources/images/cloth_1.jpg">
+											상품정보
+										</td>
 										
-										<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.p_name}</td>
-										<input type="hidden" id="p_num" value="${item.p_num}">
-										<td><a name="p_price" style="padding-left: 10px;" class="p_price${status.index}">${item.p_price}</a></td>
+										<td style="text-align:center; padding-left: 10px; font-weight: bold;">
+											${item.p_count}
+										</td>
+										<td><a name="p_price" style="padding-left: 10px;">${item.p_price * item.p_count}</a></td>
 										
 										<td	style="width:150px">
-											
-											<div class="input-group mb-3" style="max-width: 120px;">
-												<input name="p_count" type="number" min="1" class="form-control text-center" value="${item.p_count}">
-											</div>
+											진행상태
 										</td>
 										
-										<td><a class="sumPrice" id="sumPrice${status.index}" name="sumPrice">${item.p_price * item.p_count}</a>원</td>
-										
-										<td><a href="/cjh/deleteCart?u_id=${u_id}&p_num=${item.p_num}" class="btn btn-basic btn-sm">X</a></td>
 									</tr>
 								</c:forEach>
 							</c:if>

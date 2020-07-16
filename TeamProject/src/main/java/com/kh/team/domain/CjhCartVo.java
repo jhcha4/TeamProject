@@ -1,7 +1,10 @@
 package com.kh.team.domain;
 
-public class CjhCartVo {
+import java.sql.Timestamp;
 
+public class CjhCartVo {
+	
+	private int c_num;
 	private String u_id;
 	private int p_num;
 	private String p_name;
@@ -9,15 +12,18 @@ public class CjhCartVo {
 	private String p_content;
 	private int p_count;
 	private String p_image;
+	private int p_status;
+	private Timestamp p_date;
 	
 	public CjhCartVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CjhCartVo(String u_id, int p_num, String p_name, int p_price, String p_content, int p_count,
-			String p_image) {
+	public CjhCartVo(int c_num, String u_id, int p_num, String p_name, int p_price, String p_content, int p_count,
+			String p_image, int p_status, Timestamp p_date) {
 		super();
+		this.c_num = c_num;
 		this.u_id = u_id;
 		this.p_num = p_num;
 		this.p_name = p_name;
@@ -25,6 +31,16 @@ public class CjhCartVo {
 		this.p_content = p_content;
 		this.p_count = p_count;
 		this.p_image = p_image;
+		this.p_status = p_status;
+		this.p_date = p_date;
+	}
+
+	public int getC_num() {
+		return c_num;
+	}
+
+	public void setC_num(int c_num) {
+		this.c_num = c_num;
 	}
 
 	public String getU_id() {
@@ -83,11 +99,28 @@ public class CjhCartVo {
 		this.p_image = p_image;
 	}
 
+	public int getP_status() {
+		return p_status;
+	}
+
+	public void setP_status(int p_status) {
+		this.p_status = p_status;
+	}
+
+	public Timestamp getP_date() {
+		return p_date;
+	}
+
+	public void setP_date(Timestamp p_date) {
+		this.p_date = p_date;
+	}
+
 	@Override
 	public String toString() {
-		return "CjhCartVo [u_id=" + u_id + ", p_num=" + p_num + ", p_name=" + p_name + ", p_price=" + p_price
-				+ ", p_content=" + p_content + ", p_count=" + p_count + ", p_image=" + p_image + "]";
+		return "CjhCartVo [c_num=" + c_num + ", u_id=" + u_id + ", p_num=" + p_num + ", p_name=" + p_name + ", p_price="
+				+ p_price + ", p_content=" + p_content + ", p_count=" + p_count + ", p_image=" + p_image + ", p_status="
+				+ p_status + ", p_date=" + p_date + "]";
 	}
-	
-	
+
+
 }

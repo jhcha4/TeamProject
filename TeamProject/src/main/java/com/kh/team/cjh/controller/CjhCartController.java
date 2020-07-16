@@ -26,17 +26,17 @@ public class CjhCartController {
 	@Inject
 	private CjhPointService pointService;
 	
-//	장바구니 목록보기
+	//	장바구니 목록보기
 	@RequestMapping(value="/cart", method = RequestMethod.GET)
 	public String cart(String u_id, Model model) throws Exception {
-//		System.out.println("u_id : " + u_id);
+	//		System.out.println("u_id : " + u_id);
 		List<CjhCartVo> list = cartService.getCart(u_id);
 		model.addAttribute("list", list);
 		return "/cjh/cart";
 	}
 	
 	//	장바구니 삭제
-	@RequestMapping(value="/deleteCart", method = RequestMethod.GET)
+//	@RequestMapping(value="/deleteCart", method = RequestMethod.GET)
 	public String deleteCart(String u_id, int p_num) throws Exception {
 		cartService.deleteCart(u_id, p_num);
 		return "redirect:/cjh/cart?u_id=" + u_id;
@@ -44,8 +44,8 @@ public class CjhCartController {
 	
 	//	장바구니 수정
 	@RequestMapping(value="updateCart", method = RequestMethod.GET)
-	public String updateCart(String u_id, int p_num, int p_count) throws Exception {
-		cartService.updateCart(u_id, p_num, p_count);
+	public String updateCart(String u_id, int p_count, int c_num) throws Exception {
+		cartService.updateCart(u_id, p_count, c_num);
 		return "redirect:/cjh/cart?u_id="+u_id;
 	}
 	
@@ -65,8 +65,17 @@ public class CjhCartController {
 	@RequestMapping(value="/order", method = RequestMethod.GET)
 	public String order(String u_id, int totalPrice) throws Exception {
 		pointService.usePoint(u_id, totalPrice);
-		
-//		cartService.orderCartDelete(u_id);
+		cartService.orderCartUpdate(u_id);
 		return "/cjh/thankyou";
+	}
+	
+	//	주문목록 불러오기
+	@RequestMapping(value="/myOrder", method = RequestMethod.GET)
+	public String getOrder(String u_id, Model model) throws Exception {
+//		System.out.println("u_id : " + u_id);
+		List<CjhCartVo> list = cartService.getOrder(u_id);
+//		System.out.println("list : " + list);
+		model.addAttribute("list", list);
+		return "cjh/myOrder";
 	}
 }

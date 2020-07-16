@@ -13,8 +13,11 @@ public interface CjhCartService {
 	public void deleteCart(String u_id, int p_num) throws Exception;
 	
 	//	장바구니 갱신
-	public void updateCart(String u_id, int p_num, int p_count) throws Exception;
+	public void updateCart(String u_id, int p_count, int c_num) throws Exception;
 	
-	//	주문후 장바구니 삭제
-	public void orderCartDelete(String u_id) throws Exception;
+	//	주문후 장바구니 상태변경
+	public void orderCartUpdate(String u_id) throws Exception;
+	
+	//	주문목록 불러오기
+	public List<CjhCartVo> getOrder(String u_id) throws Exception;
 }

@@ -16,11 +16,11 @@ public interface CjhCartDao {
 	public int getCountCart(String u_id) throws Exception;
 	
 	//	장바구니 갱신
-	public void updateCart(String u_id, int p_num, int p_count) throws Exception;
+	public void updateCart(String u_id, int p_count, int c_num) throws Exception;
 	
-	//	장바구니 주문후 삭제
-	public void orderCartDelete(String u_id) throws Exception;
+	//	장바구니 주문후 상태변경
+	public void orderCartUpdate(String u_id) throws Exception;
 	
-	//	장바구니 주문후 주문목록에 추가
-//	public void addOrder()
+	//	주문목록 불러오기
+	public List<CjhCartVo> getOrder(String u_id) throws Exception;
 }
