@@ -15,10 +15,25 @@ $(function() {
 	
 	$("#price").change(function() {
 		var priceType = $("select[name=priceType]").val();
-		$("#frmPage > input[name=priceType]").val(priceType);
-		$("#frmPage").submit();
+		$("#mainPage > input[name=priceType]").val(priceType);
+		$("#mainPage").submit();
 	});
 	
+	$(".main").click(function(e) {
+		e.preventDefault();
+		var length =$(this).attr("href").length;
+		var p_main = $(this).attr("href").substring(length-1);
+		$("#mainPage > input[name=p_main]").val(p_main);
+		$("#mainPage").submit();
+	});
+	
+	$(".serve > li > a").click(function(e) {
+		e.preventDefault();  
+		var length = $(this).attr("href").length;
+		var p_serve = $(this).attr("href").substring(length-2);
+		$("#servePage > input[name=p_serve]").val(p_serve); 
+		$("#servePage").submit();
+	}); 
 });
 </script>
 
@@ -26,10 +41,14 @@ $(function() {
 	<input type="hidden" name="p_num" value="${LshBoardVo.p_num}"/>
 </form>
 
-<form id="frmPage" action="/lsh/shop" method="get">
-	<input type="hidden" name="priceType" value="${lshBoardDto.priceType}"/>
+<form id="mainPage" action="/lsh/shop" method="get">
 	<input type="hidden" name="p_main" value="${LshBoardVo.p_main}"/>
+	<input type="hidden" name="priceType" value="${LshBoardDto.priceType}"/>
+</form>
+
+<form id="servePage" action="/lsh/shop" method="get">
 	<input type="hidden" name="p_serve" value="${LshBoardVo.p_serve}"/>
+	<input type="hidden" name="priceType" value="${LshBoardDto.priceType}"/>
 </form>
 
     <div class="bg-light py-3">
@@ -57,11 +76,12 @@ $(function() {
                   <div class="dropdown mr-1 ml-md-auto">
                     
                     <select name="priceType" id="price">
+                    	<option>가격순</option>
                     	<option value="L" 
-                    		<c:if test="${lshBoardDto.priceType == 'H'}">selected</c:if>
+                    		<c:if test="${LshBoardDto.priceType == 'L'}">selected</c:if>
                     	>낮은 가격순</option>
                     	<option value="H" 
-                    	    <c:if test="${lshBoardDto.priceType == 'L'}">selected</c:if>
+                    	    <c:if test="${LshBoardDto.priceType == 'H'}">selected</c:if>
                     	>높은 가격순</option>
                     </select>
                     
@@ -94,32 +114,32 @@ $(function() {
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <h2 class="mb-3 h6  text-black d-block"><a href="shop">전체 상품</a></h2>
               
-           		<a href="shop?p_main=T">상의</a>
-           		<ul class="dropdown" id="UL">
+           		<a href="shop?p_main=T" class="main">상의</a>
+           		<ul class="dropdown serve"> 
 	                <li><a href="shop?p_serve=TH">반팔</a></li>
 	                <li><a href="shop?p_serve=TL">긴팔</a></li>
 	                <li><a href="shop?p_serve=TS">셔츠</a></li>
 	                <li><a href="shop?p_serve=TM">맨투맨</a></li>
               	</ul>
-              	
-           		<a href="shop?p_main=P">하의</a>
-           		<ul class="dropdown">
+              	 
+           		<a href="shop?p_main=P" class="main">하의</a>
+           		<ul class="dropdown serve">
 	                <li><a href="shop?p_serve=PJ">청바지</a></li>
 	                <li><a href="shop?p_serve=PM">면바지</a></li>
 	                <li><a href="shop?p_serve=PH">반바지</a></li>
 	                <li><a href="shop?p_serve=P7">7부바지</a></li>
               	</ul>
               	
-           		<a href="shop_main?p_main=S">신발</a>
-           		<ul class="dropdown">
-	                <li><a href="shop_serve?p_serve=SD">구두</a></li>
-	                <li><a href="shop_serve?p_serve=SU">운동화</a></li>
-	                <li><a href="shop_serve?p_serve=SS">슬리퍼</a></li>
-	                <li><a href="shop_serve?p_serve=SR">로퍼</a></li>
+           		<a href="shop?p_main=S" class="main">신발</a>
+           		<ul class="dropdown serve">
+	                <li><a href="shop?p_serve=SD">구두</a></li>
+	                <li><a href="shop?p_serve=SU">운동화</a></li>
+	                <li><a href="shop?p_serve=SS">슬리퍼</a></li>
+	                <li><a href="shop?p_serve=SR">로퍼</a></li>
               	</ul>
               	
-           		<a href="shop?p_main=A">악세사리</a>
-           		<ul class="dropdown">
+           		<a href="shop?p_main=A" class="main">악세사리</a>
+           		<ul class="dropdown serve">
 	                <li><a href="shop?p_serve=AR">반지</a></li>
 	                <li><a href="shop?p_serve=AW">지갑</a></li>
 	                <li><a href="shop?p_serve=AC">모자</a></li>

@@ -12,3 +12,4 @@ public interface LSH_BoardDao {
 	public LshBoardVo single(int p_num) throws Exception;
 	
 }
+

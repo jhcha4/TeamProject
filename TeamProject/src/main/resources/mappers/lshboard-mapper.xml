@@ -16,25 +16,13 @@
 		where p_num = #{p_num}
 	</select>
 	
-<!-- 	<select id="MainList" resultType="LshBoardVo"> -->
-<!-- 		select * from tbl_product_board -->
-<!-- 		where p_main = #{p_main} -->
-<!-- 		order by <include refid="type"/>p_num desc -->
-<!-- 	</select> -->
-	
-<!-- 	<select id="ServeList" resultType="LshBoardVo"> -->
-<!-- 		select * from tbl_product_board -->
-<!-- 		where p_serve = #{p_serve} -->
-<!-- 		order by <include refid="type"/>p_num desc -->
-<!-- 	</select> -->
-	
 	<sql id="price">
-		<if test="priceType != null">
+		<if test="lshBoardDto.priceType != null">
 			<choose>
-				<when test='priceType == "H"'>
+				<when test='lshBoardDto.priceType == "H"'>
 					p_price desc,
 				</when>
-				<when test='priceType == "L"'>
+				<when test='lshBoardDto.priceType == "L"'>
 					p_price,
 				</when>
 			</choose>
