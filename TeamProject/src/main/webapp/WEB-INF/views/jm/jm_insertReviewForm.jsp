@@ -26,7 +26,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<form role="form">
+			<form role="form" action="/jm/jm_insertReviewRun" method="post">
 				<div class="form-group">
 					 
 					<label for="r_id">

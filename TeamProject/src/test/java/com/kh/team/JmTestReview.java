@@ -1,6 +1,6 @@
 package com.kh.team;
 
-import java.util.List;
+
 
 import javax.inject.Inject;
 
@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.kh.team.domain.JmMemberVo;
+import com.kh.team.domain.JmReviewVo;
 import com.kh.team.jm.JmReviewDao;
 import com.kh.team.jm.JmReviewService;
 
@@ -33,5 +34,23 @@ public class JmTestReview {
 	public void selectList() throws Exception{
 		jmReviewService.selectReviewInfo(3);
 	}
+	
+	//게시판 글쓰기
+	@Test
+	public void insertReview()throws Exception{
+		JmReviewVo vo = new JmReviewVo();
+		
+		vo.setR_id("123");
+		vo.setR_subject("123");
+		vo.setR_contents("123");
+		vo.setR_star(11);
+		vo.setR_item(1073);
+		
+		jmReviewDao.insertReview(vo);
+		
+	}
+	
+	
+	
 	
 }
