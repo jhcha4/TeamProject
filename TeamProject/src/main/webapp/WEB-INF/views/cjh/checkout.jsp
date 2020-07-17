@@ -3,8 +3,7 @@
 
 <%@ include file="../include/head.jsp" %>
 
-${userPoint}
-
+${list }
 <script>
 $(document).ready(function() {
 	var totalPrice = 0;
