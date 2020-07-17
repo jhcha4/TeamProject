@@ -29,7 +29,8 @@ public interface KysBoardService {
 		public List<Kys_BoardVo> deleteList(Kys_BoardDto boardDto) throws Exception;
 		//게시된 게시글 수
 		public int getDeleteCount(Kys_BoardDto boardDto) throws Exception;
-
 		//완전 삭제
 		public void delete(int p_num) throws Exception;
+		//이미지 보기
+		public List<Kys_BoardVo> imgSelectBy(int p_num) throws Exception;
 }

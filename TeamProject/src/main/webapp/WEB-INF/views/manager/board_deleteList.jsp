@@ -92,7 +92,11 @@ $(function() {
 	});
 });
 </script>
-
+<style>
+#btnDelete {
+	color : yellow;
+}
+</style>
 ${deleteListDto}
 
 <div class="row">
@@ -153,7 +157,8 @@ ${deleteListDto}
 							<td>${BoardVo.p_main}${BoardVo.p_serve}${BoardVo.p_num}</td>
 							<td>${BoardVo.p_name}</td>
 							<td>${BoardVo.p_price}</td>
-							<td><a type="button" class="btn btn-sm btn-danger"
+							<td>
+							<a type="button" class="btn btn-sm btn-success"
 								id="btnDelete" name="btnRestoration" data-p_num="${BoardVo.p_num}">복구</a></td>
 							<td><a type="button" class="btn btn-sm btn-danger"
 								id="btnDelete" name="btnDelete" data-p_num="${BoardVo.p_num}">완전 삭제</a></td>

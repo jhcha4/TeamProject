@@ -24,112 +24,181 @@ $(function() {
 		if(main == "A")                                                       
 			$("#serveOption").append(options[12]).append(options[13]).append(options[14]).append(options[15]).append(selected);
 	});
+	//이미지 파일 드롭
+	$("#imgFileDrop").on("dragenter dragover", function(e){
+		e.preventDefault();
+	});
+	// 광고 사진
+	$("#imgFileDrop").on("drop",function(e){
+		e.preventDefault();
+		$(this).css("height", "auto");
+		var file = e.originalEvent.dataTransfer.files[0];
+		var formData = new FormData();
+		formData.append("file",file);
+		var url= "/upload/imgFile";
+		$.ajax({
+			"processData" : false,
+			"contentType" : false,
+			"type" : "post",
+			"url" : url,
+			"data" :formData,
+			"success" : function(rData) {
+				console.log(rData)
+				var slashIndex = rData.lastIndexOf("/");
+				var front = rData.substring(0, slashIndex +1);
+				var rear = rData.substring(slashIndex +1);
+				var thumbnailName = front + rear;
+// 				var thumbnailName = front +"sm_"+ rear;
+				
+				var originalFilename = rData.substring(rData.indexOf("_")+1);
+				
+				var html ="<div data-filename='"+rData+"'>";
+					html += "<img class='img-rounded' src='/upload/displayFile?fileName="+thumbnailName+"' /> ";
+					html += "<span>"+originalFilename+"</span>";
+					html +="<a href='"+rData+"' class='attach-del'><span class='pull-rigth'>X</span></a>";
+					html +="</div>";
+					$("#imgFileDrop").append(html);
+
+			}
+		});
+	});
+	//삭제 버튼
+	$("#imgFileDrop").on("click",".attach-del", function(e){
+		e.preventDefault();
+		var that = $(this);
+		var filename = $(this).attr("href");
+		var url= "/upload/deleteFile";
+		var sendData= {"filename" : filename};
+		$.ajax({
+			"type" : "get",
+			"url" : url,
+			"data" : sendData,
+			"success" : function(rData){
+				that.parent().remove();
+			}
+		});
+	});
 	
+	$("#formSubmit").submit(function(){
+		var upDiv = $("#imgFileDrop > div");
+		console.log("upDiv:"+upDiv);
+		upDiv.each(function(index){
+			var filename = $(this).attr("data-filename");
+			console.log("submit filename:"+filename);
+			console.log("formsubmit/filename:"+filename);
+			var hiddenInput = "<input type='hidden' name='p_files["+index+"]' value='"+filename+"'/>";
+			$("#formSubmit").prepend(hiddenInput);
+		});
+		
+	});
 	
 });
 </script>
-  
+<%@ include file="../include/main_style.jsp" %>
 <%@ include file="../include/main_bar.jsp" %>
 
 
-    <div class="site-section">
-    
-      <div class="container">
-        <div class="row">
-   		
-          <div class="col-md-4">
-            <img src="../../resources/images/cloth_1.jpg" alt="Image" class="img-fluid">
-          </div>
-          <form id="formSubmit" role="form" action="/manager/shop_single_input" method="post">
-          <div class="col-md-4">
-          
-          	<!-- 상품 등록 상세 메뉴 -->
-          	<div>
-			<label>main : </label> 
-			<select name="p_main" id="mainOption">
-				<option value="T">상의
-				<option value="P">하의
-				<option value="A">악세사리
-				<option value="S">신발
-			</select>
+<div class="site-section">
+	<div class="container">
+		<!-- 시작 -->
+		<form id="formSubmit" role="form" action="/manager/shop_single_input"	method="post">
+			<div class="row">
 
-		</div>
-		<div>
-			<label>serve : </label> 
-			<select name="p_serve" id="serveOption">
-				<option value="TH">반팔
-				<option value="TL">긴팔
-				<option value="TS">셔츠
-				<option value="TM">맨투맨
-				<option value="PJ">청바지
-				<option value="PM">면바지
-				<option value="PH">반바지
-				<option value="P7">7부바지
-				<option value="SD">구두
-				<option value="SU">운동화
-				<option value="SS">스릴퍼
-				<option value="SR">로퍼
-				<option value="AR">반지
-				<option value="AW">지갑
-				<option value="AC">모자
-				<option value="AB">가방
-			</select>
-		
-		</div>
-		
-		
-            <h2 class="text-black" >상품이름:<input type="text" id="p_name" name="p_name"></h2>
-          	  <p id="p_content" name="p_content">상품 설명</p>
-            <textarea rows="" cols="" id="p_content" name="p_content"></textarea>
-          	  <p class="mb-4">상품 설명2</p>
-            <p><strong class="text-primary h4">
-            가격:<input type="text" id="p_price" name="p_price">
-            </strong></p>
-           
-            <div class="mb-1 d-flex">
-              <label for="option-sm" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;">
-                <input type="checkbox" id="option-sm" name="shop-sizes"></span> 
-                <span class="d-inline-block text-black">Small</span>
-              </label>
-              <label for="option-md" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;">
-                <input type="checkbox" id="option-md" name="shop-sizes"></span> 
-                <span class="d-inline-block text-black">Medium</span>
-              </label>
-              <label for="option-lg" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;">
-                <input type="checkbox" id="option-lg" name="shop-sizes"></span> 
-                <span class="d-inline-block text-black">Large</span>
-              </label>
-              <label for="option-xl" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;">
-                <input type="checkbox" id="option-xl" name="shop-sizes"></span> 
-                <span class="d-inline-block text-black"> Extra Large</span>
-              </label>
-            </div>
-            <div class="mb-5">
-              <div class="input-group mb-3" style="max-width: 120px;">
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-              </div>
-              <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-              <div class="input-group-append">
-                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-              </div>
-            </div>
+				<div class="col-md-6">
+					<div id="subImg"></div>
+				
+				</div>
+				
+					<div class="col-md-6">
 
-            </div>
-            <button type="submit" class="btn btn-sm btn-primary" >상품 등록하기</button>
+					<!-- 상품 등록 상세 메뉴 -->
+					<div>
+						<label>main : </label> <select name="p_main" id="mainOption">
+							<option value="T" selected="selected">상의
+							<option value="P">하의
+							<option value="A">악세사리
+							<option value="S">신발
+						</select>
+					
+						<label>serve : </label> <select name="p_serve" id="serveOption">
+							<option value="TH" selected="selected">반팔
+							<option value="TL">긴팔
+							<option value="TS">셔츠
+							<option value="TM">맨투맨
+							<option value="PJ">청바지
+							<option value="PM">면바지
+							<option value="PH">반바지
+							<option value="P7">7부바지
+							<option value="SD">구두
+							<option value="SU">운동화
+							<option value="SS">스릴퍼
+							<option value="SR">로퍼
+							<option value="AR">반지
+							<option value="AW">지갑
+							<option value="AC">모자
+							<option value="AB">가방
+						</select>
 
-          </div>
-       </form>
-      
-        </div>
-      </div>
-    </div>
+					</div>
 
-    <div class="site-section block-3 site-blocks-2 bg-light">
+					<h2 class="text-black">
+						상품이름<input type="text" id="p_name" name="p_name">
+					</h2>
+					<p>
+						<label>상품 설명</label>
+						<input type="text" id="p_content" name="p_content">
+					</p>
+					<p>
+						<strong class="text-primary h4"> 가격
+						<input type="text"	id="p_price" name="p_price">
+						</strong>
+					</p>
+					<!-- 사이즈 -->
+					<div class="mb-1 d-flex">
+						<label for="option-sm" class="d-flex mr-3 mb-3"> <span
+							class="d-inline-block mr-2"
+							style="top: -2px; position: relative;"> <input
+								type="checkbox" id="option-sm" name="shop-sizes"></span> <span
+							class="d-inline-block text-black">Small</span>
+						</label> <label for="option-md" class="d-flex mr-3 mb-3"> <span
+							class="d-inline-block mr-2"
+							style="top: -2px; position: relative;"> <input
+								type="checkbox" id="option-md" name="shop-sizes"></span> <span
+							class="d-inline-block text-black">Medium</span>
+						</label> <label for="option-lg" class="d-flex mr-3 mb-3"> <span
+							class="d-inline-block mr-2"
+							style="top: -2px; position: relative;"> <input
+								type="checkbox" id="option-lg" name="shop-sizes"></span> <span
+							class="d-inline-block text-black">Large</span>
+						</label> <label for="option-xl" class="d-flex mr-3 mb-3"> <span
+							class="d-inline-block mr-2"
+							style="top: -2px; position: relative;"> <input
+								type="checkbox" id="option-xl" name="shop-sizes"></span> <span
+							class="d-inline-block text-black"> Extra Large</span>
+						</label>
+					</div>
+					<!-- 사이즈 끝 -->
+
+					<button type="submit" class="btn btn-sm btn-primary">상품
+						등록하기</button>
+				</div>
+
+			</div>
+			<div class="col-md-12">
+				<label>상품 이미지</label>
+				<div id="imgDiv">
+					<div id="imgFileDrop" class="btn btn-primary"
+						style="margin-buttom: 10px;"></div>
+
+				</div>
+			</div>
+		</form>
+		<!-- 끝 -->
+	</div>
+
+</div>
+
+<div class="site-section block-3 site-blocks-2 bg-light">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 site-section-heading text-center pt-4">

@@ -36,5 +36,15 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 	}
 
 
+	@Override
+	public int getCount(LshBoardDto lshBoardDto, String p_main, String p_serve) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("lshBoardDto", lshBoardDto);
+		paramMap.put("p_main", p_main);
+		paramMap.put("p_serve", p_serve);
+		return sqlSession.selectOne(NAMESPACE + "getCount", lshBoardDto);
+	}
+
+
 
 }

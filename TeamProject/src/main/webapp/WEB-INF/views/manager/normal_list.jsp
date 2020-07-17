@@ -73,11 +73,13 @@ $(function() {
 			}
 		});
 	});
-
-
 });
 </script>
-
+<style>
+#btnDelete{
+	color : yellow;
+}
+</style>
 ${boardDto}
 <div id="div"></div>
 <div class="row">

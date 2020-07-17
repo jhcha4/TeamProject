@@ -53,7 +53,6 @@ $(document).ready(function() {
 });
 </script>
 
-${list}
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -100,7 +99,7 @@ ${list}
 										<td style="border-left: none; border-right: none;"><img style="width:150px;" src="/resources/images/cloth_1.jpg"></td>
 										
 										<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.p_name}</td>
-										<input type="hidden" id="p_num" value="${item.p_num}">
+											<input type="hidden" id="p_num" value="${item.p_num}">
 										<td><a name="p_price" style="padding-left: 10px;" class="p_price${status.index}">${item.p_price}</a></td>
 										
 										<td	style="width:150px">

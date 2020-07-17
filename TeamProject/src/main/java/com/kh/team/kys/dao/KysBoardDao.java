@@ -7,6 +7,8 @@ import com.kh.team.domain.Kys_BoardDto;
 
 
 public interface KysBoardDao {
+	//p_num 값 가져옴
+	public int getNextVal() throws Exception;
 	//게시물 리스트
 	public List<Kys_BoardVo> boardList(Kys_BoardDto boardDto) throws Exception;
 	//게시물 리스트 페이징
@@ -39,4 +41,8 @@ public interface KysBoardDao {
 	public int getCount(Kys_BoardDto boardDto) throws Exception;
 	//삭제된 게시글 수
 	public int getDeleteCount(Kys_BoardDto boardDto) throws Exception;
+	//이미지 파일 저장
+	public void imgFile(String file_name,int p_num) throws Exception;
+	//이미지 보기
+	public List<Kys_BoardVo> imgSelectBy(int p_num) throws Exception;
 }

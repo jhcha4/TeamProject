@@ -10,6 +10,17 @@
 }
 </style>
 
+<script>
+$(document).ready(function() {
+	$("span[name=point_date]").each(function() {
+		var point_date = $(this).text();
+		var spoint_date = point_date.substring(0, 16);
+		console.log("spoint_date : " + spoint_date);
+		$(this).text(spoint_date);
+	});
+});
+</script>
+
 <div class="bg-light py-3">
 	<div class="container">
 		<div class="row">
@@ -49,7 +60,7 @@
 									
 									<td><span id="point_value" style="padding-left: 10px;">${pointVo.point_value}</span>원</td>
 									
-									<td><span id="point_date" style="padding-left: 10px;">${pointVo.point_date}</span></td>
+									<td><span name="point_date" style="padding-left: 10px;">${pointVo.point_date}</span></td>
 									
 								</tr>
 							</c:if>

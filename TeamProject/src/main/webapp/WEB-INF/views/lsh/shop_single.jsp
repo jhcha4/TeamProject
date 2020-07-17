@@ -15,7 +15,7 @@ $(function() {
 		e.preventDefault();
 		var p_count = $("input[name=p_count]").val();
 // 		console.log(p_count);
-		location.href="/cjh/insertCart?u_id=${u_id}&p_num=${LshBoardVo.p_num}&p_count="+p_count;
+		location.href="/cjh/insertCart?u_id=${u_id}&p_num=${lshBoardVo.p_num}&p_count="+p_count;
 	});
 });
 </script>
@@ -28,7 +28,7 @@ $(function() {
 	          <span class="mx-2 mb-0">/</span> 
 	          <a href="shop">Shop</a>  
 	          <span class="mx-2 mb-0">/</span>
-	          <strong class="text-black">${LshBoardVo.p_name}</strong>
+	          <strong class="text-black">${lshBoardVo.p_name}</strong>
           </div>
         </div>
       </div>
@@ -41,9 +41,9 @@ $(function() {
             <img src="../../resources/images/cloth_1.jpg" alt="Image" class="img-fluid">
           </div>
           <div class="col-md-6">
-            <h2 class="text-black">${LshBoardVo.p_name}</h2>
-            <p>${LshBoardVo.p_content}</p>
-            <p><strong class="text-primary h4">${LshBoardVo.p_price}원</strong></p>
+            <h2 class="text-black">${lshBoardVo.p_name}</h2>
+            <p>${lshBoardVo.p_content}</p>
+            <p><strong class="text-primary h4">${lshBoardVo.p_price}원</strong></p>
             <div class="mb-1 d-flex">
             </div>
             <div class="mb-6">
