@@ -34,7 +34,7 @@ public class CjhCartController {
 	@RequestMapping(value="/insertCart", method = RequestMethod.GET)
 	public String insertCart(String u_id, int p_num) throws Exception {
 		LshBoardVo boardVo = boardService.single(p_num);
-		cartService.insertCart(u_id, boardVo);
+		cartService.insertCart(u_id, boardVo); 
 		return "/cjh/cart";
 	}
 	
