@@ -38,11 +38,22 @@ public class Jm_ReviewController {
 			return "/jm/jm_reviewInfo";
 	}
 	
-	//리뷰 게시판 글쓰기
+	//리뷰 게시판 글쓰기 폼
 	@RequestMapping(value="/jm_insertReviewForm" ,method=RequestMethod.GET)
 	public void insertInfoForm()throws Exception{
 		
 	}
+	
+	//리뷰 게시판 글쓰기 작업
+	@RequestMapping(value="/jm_insertReviewRun",method=RequestMethod.POST)
+	public String insertReviewRun(JmReviewVo jmReviewVo, Model model)throws Exception{
+		
+			jmReviewService.insertReview(jmReviewVo);
+			model.addAttribute("jmReviewVo", jmReviewVo);
+		return "redirect:/jm/jm_reviewForm";
+	}
+	
+	
 	
 	
 	

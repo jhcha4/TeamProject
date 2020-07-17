@@ -30,4 +30,12 @@ public class JmReviewServiceImpl implements JmReviewService {
 		return jmReviewVo;
 	}
 
+
+
+	@Override
+	public void insertReview(JmReviewVo jmReviewVo) throws Exception {
+		jmReviewDao.insertReview(jmReviewVo);
+		
+	}
+
 }

@@ -29,4 +29,11 @@ public class JmReviewDaoImpl implements JmReviewDao {
 		return sqlSession.selectOne(NAMESPACE+"selectReviewInfo",r_info);
 	}
 
+	@Override
+	public void insertReview(JmReviewVo jmReviewVo) throws Exception {
+		
+		sqlSession.insert(NAMESPACE+"insertReview",jmReviewVo);
+		
+	}
+
 }
