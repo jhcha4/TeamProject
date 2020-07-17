@@ -51,7 +51,7 @@ $(function() {
             </div>
 
             </div>
-            <p><a href="/cjh/insertCart?p_num=${LshBoardVo.p_num}" class="buy-now btn btn-sm btn-primary">장바구니에 담기</a></p>
+            <p><a href="/cjh/insertCart?u_id=${u_id}&p_num=${LshBoardVo.p_num}" class="buy-now btn btn-sm btn-primary">장바구니에 담기</a></p>
 
           </div>
         </div>

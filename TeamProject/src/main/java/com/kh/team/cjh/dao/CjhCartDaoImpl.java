@@ -23,9 +23,16 @@ public class CjhCartDaoImpl implements CjhCartDao {
 	//	장바구니 추가하기
 	@Override
 	public void insertCart(String u_id, LshBoardVo boardVo) throws Exception {
+		int p_num = boardVo.getP_num();
+		String p_name = boardVo.getP_name();
+		String p_content = boardVo.getP_content();
+		int p_price = boardVo.getP_price();
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("u_id", u_id);
-		paramMap.put("p_num", boardVo);
+		paramMap.put("p_num", p_num);
+		paramMap.put("p_name", p_name);
+		paramMap.put("p_content", p_content);
+		paramMap.put("p_price", p_price);
 		sqlSession.insert(NAMESPACE + "insertCart", paramMap);
 	}
 

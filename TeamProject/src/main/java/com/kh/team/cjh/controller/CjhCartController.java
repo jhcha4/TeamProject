@@ -34,9 +34,12 @@ public class CjhCartController {
 	@Transactional
 	@RequestMapping(value="/insertCart", method = RequestMethod.GET)
 	public String insertCart(String u_id, int p_num) throws Exception {
+//		System.out.println("u_id : " + u_id);
+//		System.out.println("p_num : " + p_num);
 		LshBoardVo boardVo = boardService.single(p_num);
+		System.out.println("boardVo : " + boardVo);
 		cartService.insertCart(u_id, boardVo); 
-		return "/cjh/cart";
+		return "redirect:/cjh/cart?u_id=" + u_id;
 	}
 	
 	//	장바구니 목록보기
