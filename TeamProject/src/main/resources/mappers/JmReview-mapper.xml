@@ -24,4 +24,25 @@
 		values (seq_review.nextval,#{r_id},#{r_subject},#{r_contents},#{r_star},#{r_item})
 		
 		</insert>
+		
+	<!-- 리뷰 게시판 업데이트 -->
+		<update id="updateReview" >
+		
+		update tbl_review set 
+   	 		r_subject = #{r_subject},
+   			r_contents = #{r_contents},
+    		r_star = #{r_star}
+    	where r_info= #{r_info}
+		
+		</update>
+		
+	<!-- 리뷰 게시판 삭제기능 -->
+		<delete id="deleteReview">
+		
+		delete from tbl_review
+		where r_info = #{r_info}
+		
+		</delete>
+		
+		
 </mapper>

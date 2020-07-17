@@ -78,8 +78,8 @@
 				
 				
 				<a href="/jm/jm_reviewForm" class="btn btn-danger">목록으로 가기</a>
-				<a href="/jm/jm_reviewForm" class="btn btn-info">수정하기</a>
-				<a href="/jm/jm_reviewForm" class="btn btn-warning">삭제하기</a>
+				<a href="/jm/jm_updateReview/?r_info=${jmReviewVo.r_info}" class="btn btn-info">수정하기</a>
+				<a href="/jm/jm_deleteReview/${jmReviewVo.r_info}" class="btn btn-warning">삭제하기</a>
 			</form>
 		</div>
 	</div>

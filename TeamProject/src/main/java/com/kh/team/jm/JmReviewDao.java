@@ -15,5 +15,9 @@ public interface JmReviewDao {
 	//게시판 글쓰기
 	public void insertReview(JmReviewVo jmReviewVo)throws Exception;
 	
+	// 리뷰 게시판 업데이트 //받는거//파라미터(아규먼트)
+	public void updateReview(JmReviewVo jmReviewVo)throws Exception;
 	
+	//리뷰 게시판 삭제기능
+	public void deleteReview(int r_info)throws Exception;
 }

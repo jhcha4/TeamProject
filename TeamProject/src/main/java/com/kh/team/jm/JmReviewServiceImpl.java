@@ -38,4 +38,20 @@ public class JmReviewServiceImpl implements JmReviewService {
 		
 	}
 
+
+
+	@Override
+	public void updateReview(JmReviewVo jmReviewVo) throws Exception {
+		jmReviewDao.updateReview(jmReviewVo);
+		
+	}
+
+
+
+	@Override
+	public void deleteReview(int r_info) throws Exception {
+		jmReviewDao.deleteReview(r_info);
+		
+	}
+
 }

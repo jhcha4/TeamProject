@@ -50,7 +50,48 @@ public class JmTestReview {
 		
 	}
 	
+	// 리뷰 게시판 업데이트
+	@Test
+	public void updateReview()throws Exception{
+		JmReviewVo vo = new JmReviewVo();
+		
+		
+		vo.setR_info(123);
+		vo.setR_subject("999");
+		vo.setR_contents("999");
+		vo.setR_star(11);
+		//vo.setR_item(1073);
+		
+		jmReviewDao.updateReview(vo);
+	}
 	
+	// 리뷰 게시판 업데이트(서비스)
+		@Test
+		public void updateReviewService()throws Exception{
+			JmReviewVo vo = new JmReviewVo();
+			
+			
+			vo.setR_info(123);
+			vo.setR_subject("999");
+			vo.setR_contents("999");
+			vo.setR_star(11);
+			//vo.setR_item(1073);
+			
+			jmReviewService.updateReview(vo);
+		}
 	
-	
+	//삭제 dao
+		
+		@Test
+		public void deleteReview()throws Exception{
+			jmReviewDao.deleteReview(32);
+		}
+		
+		
+		
+	//삭제 service
+		@Test
+		public void deleteReviewService()throws Exception{
+			jmReviewService.deleteReview(31);
+		}
 }

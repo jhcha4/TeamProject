@@ -53,10 +53,31 @@ public class Jm_ReviewController {
 		return "redirect:/jm/jm_reviewForm";
 	}
 	
+	//리뷰 게시판 업데이트  폼
+	@RequestMapping(value="/jm_updateReview",method=RequestMethod.GET)
+	public void updateReviewForm(int r_info, Model model )throws Exception{
+		
+		JmReviewVo jmReviewVo = jmReviewService.selectReviewInfo(r_info);
+		model.addAttribute("jmReviewVo",jmReviewVo);
+		
+	}
+	//리뷰 게시판 업데이트 런
+	@RequestMapping(value="/jm_updateReviewRun",method=RequestMethod.POST)
+	public String updateReviewRun(JmReviewVo jmReviewVo)throws Exception{
+		
+		jmReviewService.updateReview(jmReviewVo);
+		System.out.println(jmReviewVo);
+		
+		return "redirect:/jm/jm_reviewForm";
+	}
 	
-	
-	
-	
+	//리뷰 게시판 삭제 기능
+	@RequestMapping(value="/jm_deleteReview/{r_info}",method=RequestMethod.GET)
+	public String deleteReview(@PathVariable("r_info")  int r_info)throws Exception{
+		jmReviewService.deleteReview(r_info);
+		
+		return "redirect:/jm/jm_reviewForm";
+	}
 	
 	
 }
