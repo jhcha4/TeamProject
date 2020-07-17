@@ -15,8 +15,16 @@ $(function() {
 	
 	$("#price").change(function() {
 		var priceType = $("select[name=priceType]").val();
-		$("#mainPage > input[name=priceType]").val(priceType);
-		$("#mainPage").submit();
+		if (${p_main != null}) {
+			$("#mainPage > input[name=priceType]").val(priceType);
+			$("#mainPage").submit();
+		} else if (${p_serve != null}) {
+			$("#servePage > input[name=priceType]").val(priceType);
+			$("#servePage").submit();
+		} else {
+			$("#shop > input[name=priceType]").val(priceType);
+			$("#shop").submit();
+		}
 	});
 	
 	$(".main").click(function(e) {
@@ -36,18 +44,21 @@ $(function() {
 	}); 
 });
 </script>
-
 <form id="singlePage" action="/lsh/shop" method="get">
 	<input type="hidden" name="p_num" value="${LshBoardVo.p_num}"/>
 </form>
 
 <form id="mainPage" action="/lsh/shop" method="get">
-	<input type="hidden" name="p_main" value="${LshBoardVo.p_main}"/>
+	<input type="hidden" name="p_main" value="${p_main}"/>
 	<input type="hidden" name="priceType" value="${LshBoardDto.priceType}"/>
 </form>
 
 <form id="servePage" action="/lsh/shop" method="get">
-	<input type="hidden" name="p_serve" value="${LshBoardVo.p_serve}"/>
+	<input type="hidden" name="p_serve" value="${p_serve}"/> 
+	<input type="hidden" name="priceType" value="${LshBoardDto.priceType}"/>
+</form>
+
+<form id="shop" action="/lsh/shop" method="get">
 	<input type="hidden" name="priceType" value="${LshBoardDto.priceType}"/>
 </form>
 
@@ -76,7 +87,6 @@ $(function() {
                   <div class="dropdown mr-1 ml-md-auto">
                     
                     <select name="priceType" id="price">
-                    	<option>가격순</option>
                     	<option value="L" 
                     		<c:if test="${LshBoardDto.priceType == 'L'}">selected</c:if>
                     	>낮은 가격순</option>
