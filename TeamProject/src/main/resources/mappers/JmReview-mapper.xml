@@ -10,11 +10,18 @@
 		<select id="selectReviewList" resultType="JmReviewVo">
 			select * from  tbl_review order by r_info desc
 		
-		
 		</select>
 
-
-
-
-
+	<!-- 리뷰 게시판 info 조회 -->
+		<select id="selectReviewInfo" resultType="JmReviewVo">
+		select * from tbl_review 
+    	where  r_info = #{r_info} 
+		
+		</select>
+	<!-- 리뷰 게시판 글쓰기 -->
+		<insert id="insertReview">
+		insert into tbl_review(r_info,r_id,r_subject,r_contents,r_star,r_item)
+		values (seq_review.nextval,#{r_id},#{r_subject},#{r_contents},#{r_star},#{r_item});
+		
+		</insert>
 </mapper>
