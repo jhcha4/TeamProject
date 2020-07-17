@@ -22,4 +22,12 @@ public class JmReviewServiceImpl implements JmReviewService {
 		return list;
 	}
 
+
+
+	@Override
+	public JmReviewVo selectReviewInfo(int r_info) throws Exception {
+		JmReviewVo jmReviewVo = jmReviewDao.selectReviewInfo(r_info);
+		return jmReviewVo;
+	}
+
 }

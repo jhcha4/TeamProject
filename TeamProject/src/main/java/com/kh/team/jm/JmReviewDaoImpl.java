@@ -23,4 +23,10 @@ public class JmReviewDaoImpl implements JmReviewDao {
 		return sqlSession.selectList(NAMESPACE+"selectReviewList");
 	}
 
+	@Override
+	public JmReviewVo selectReviewInfo(int r_info) throws Exception {
+		
+		return sqlSession.selectOne(NAMESPACE+"selectReviewInfo",r_info);
+	}
+
 }
