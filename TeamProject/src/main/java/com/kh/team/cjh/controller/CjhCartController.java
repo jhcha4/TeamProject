@@ -14,6 +14,8 @@ import com.kh.team.cjh.service.CjhCartService;
 import com.kh.team.cjh.service.CjhPointService;
 import com.kh.team.cjh.service.CjhUserService;
 import com.kh.team.domain.CjhCartVo;
+import com.kh.team.domain.LshBoardVo;
+import com.kh.team.lsh.service.LSH_BoardService;
 
 @Controller
 @RequestMapping("/cjh")
@@ -25,6 +27,20 @@ public class CjhCartController {
 	private CjhUserService userService;
 	@Inject
 	private CjhPointService pointService;
+	@Inject
+	private LSH_BoardService boardService;
+	
+	//	장바구니에 추가
+	@Transactional
+	@RequestMapping(value="/insertCart", method = RequestMethod.GET)
+	public String insertCart(String u_id, int p_num) throws Exception {
+//		System.out.println("u_id : " + u_id);
+//		System.out.println("p_num : " + p_num);
+		LshBoardVo boardVo = boardService.single(p_num);
+		System.out.println("boardVo : " + boardVo);
+		cartService.insertCart(u_id, boardVo); 
+		return "redirect:/cjh/cart?u_id=" + u_id;
+	}
 	
 	//	장바구니 목록보기
 	@RequestMapping(value="/cart", method = RequestMethod.GET)
@@ -36,9 +52,9 @@ public class CjhCartController {
 	}
 	
 	//	장바구니 삭제
-//	@RequestMapping(value="/deleteCart", method = RequestMethod.GET)
-	public String deleteCart(String u_id, int p_num) throws Exception {
-		cartService.deleteCart(u_id, p_num);
+	@RequestMapping(value="/deleteCart", method = RequestMethod.GET)
+	public String deleteCart(String u_id, int c_num) throws Exception {
+		cartService.deleteCart(u_id, c_num);
 		return "redirect:/cjh/cart?u_id=" + u_id;
 	}
 	

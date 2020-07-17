@@ -3,6 +3,16 @@
 
 <%@ include file="../include/head.jsp" %>
 
+<script>
+$(function() {
+	$("input[name=p_count]").text("1");
+	$("input[name=p_count]").change(function() {
+		var txt = $(this).text();
+		$(this).text(txt);
+	});
+});
+</script>
+
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
@@ -29,19 +39,19 @@
             <p><strong class="text-primary h4">${LshBoardVo.p_price}원</strong></p>
             <div class="mb-1 d-flex">
             </div>
-            <div class="mb-5">
-              <div class="input-group mb-3" style="max-width: 120px;">
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-              </div>
-              <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-              <div class="input-group-append">
-                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-              </div>
+            <div class="mb-6">
+              <div class="input-group mb-3" style="max-width: 120px;"> 
+<!--               <div class="input-group-prepend"> -->
+<!--                 <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button> -->
+<!--               </div> --> 
+              <h4>수량 :</h4><input name="p_count" type="number" min="1" class="form-control text-center" value="1">
+<!--               <div class="input-group-append"> -->
+<!--                 <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button> -->
+<!--               </div> -->
             </div>
 
             </div>
-            <p><a href="cart" class="buy-now btn btn-sm btn-primary">장바구니에 담기</a></p>
+            <p><a href="/cjh/insertCart?u_id=${u_id}&p_num=${LshBoardVo.p_num}" class="buy-now btn btn-sm btn-primary">장바구니에 담기</a></p>
 
           </div>
         </div>

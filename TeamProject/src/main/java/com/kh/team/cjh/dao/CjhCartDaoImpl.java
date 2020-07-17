@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kh.team.domain.CjhCartVo;
+import com.kh.team.domain.LshBoardVo;
 
 @Repository
 public class CjhCartDaoImpl implements CjhCartDao {
@@ -18,6 +19,22 @@ public class CjhCartDaoImpl implements CjhCartDao {
 	
 	@Inject
 	private SqlSession sqlSession;
+	
+	//	장바구니 추가하기
+	@Override
+	public void insertCart(String u_id, LshBoardVo boardVo) throws Exception {
+		int p_num = boardVo.getP_num();
+		String p_name = boardVo.getP_name();
+		String p_content = boardVo.getP_content();
+		int p_price = boardVo.getP_price();
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("u_id", u_id);
+		paramMap.put("p_num", p_num);
+		paramMap.put("p_name", p_name);
+		paramMap.put("p_content", p_content);
+		paramMap.put("p_price", p_price);
+		sqlSession.insert(NAMESPACE + "insertCart", paramMap);
+	}
 
 	//	장바구니 불러오기
 	@Override
@@ -28,10 +45,10 @@ public class CjhCartDaoImpl implements CjhCartDao {
 
 	//	장바구니 삭제
 	@Override
-	public void deleteCart(String u_id, int p_num) throws Exception {
+	public void deleteCart(String u_id, int c_num) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("u_id", u_id);
-		paramMap.put("p_num", p_num);
+		paramMap.put("c_num", c_num);
 		sqlSession.delete(NAMESPACE + "deleteCart", paramMap);
 	}
 
@@ -57,8 +74,10 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		sqlSession.delete(NAMESPACE + "orderCartUpdate", u_id);
 	}
 
+	//	주문목록 불러오기
 	@Override
 	public List<CjhCartVo> getOrder(String u_id) throws Exception {
 		return sqlSession.selectList(NAMESPACE + "getOrder", u_id);
 	}
+
 }
