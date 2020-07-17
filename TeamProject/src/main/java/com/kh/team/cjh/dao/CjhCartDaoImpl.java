@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kh.team.domain.CjhCartVo;
+import com.kh.team.domain.LshBoardVo;
 
 @Repository
 public class CjhCartDaoImpl implements CjhCartDao {
@@ -18,6 +19,15 @@ public class CjhCartDaoImpl implements CjhCartDao {
 	
 	@Inject
 	private SqlSession sqlSession;
+	
+	//	장바구니 추가하기
+	@Override
+	public void insertCart(String u_id, LshBoardVo boardVo) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("u_id", u_id);
+		paramMap.put("p_num", boardVo);
+		sqlSession.insert(NAMESPACE + "insertCart", paramMap);
+	}
 
 	//	장바구니 불러오기
 	@Override
@@ -28,10 +38,10 @@ public class CjhCartDaoImpl implements CjhCartDao {
 
 	//	장바구니 삭제
 	@Override
-	public void deleteCart(String u_id, int p_num) throws Exception {
+	public void deleteCart(String u_id, int c_num) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("u_id", u_id);
-		paramMap.put("p_num", p_num);
+		paramMap.put("c_num", c_num);
 		sqlSession.delete(NAMESPACE + "deleteCart", paramMap);
 	}
 
@@ -57,8 +67,10 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		sqlSession.delete(NAMESPACE + "orderCartUpdate", u_id);
 	}
 
+	//	주문목록 불러오기
 	@Override
 	public List<CjhCartVo> getOrder(String u_id) throws Exception {
 		return sqlSession.selectList(NAMESPACE + "getOrder", u_id);
 	}
+
 }

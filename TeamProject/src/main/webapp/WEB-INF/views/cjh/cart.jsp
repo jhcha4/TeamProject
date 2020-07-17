@@ -53,6 +53,7 @@ $(document).ready(function() {
 });
 </script>
 
+${list}
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -117,7 +118,7 @@ $(document).ready(function() {
 										
 										<td><a class="sumPrice" id="sumPrice${status.index}" name="sumPrice">${item.p_price * item.p_count}</a>원</td>
 										
-										<td><a href="/cjh/deleteCart?u_id=${u_id}&p_num=${item.p_num}" class="btn btn-basic btn-sm">X</a></td>
+										<td><a href="/cjh/deleteCart?u_id=${u_id}&c_num=${item.c_num}" class="btn btn-basic btn-sm">X</a></td>
 										<td name="c_num" style="display : none;">${item.c_num}</td>
 									</tr>
 								</c:forEach>

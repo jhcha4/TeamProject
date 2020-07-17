@@ -4,11 +4,13 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kh.team.cjh.service.CjhCartService;
 import com.kh.team.cjh.service.CjhUserService;
 import com.kh.team.cjh.util.MyUrlUtil;
 import com.kh.team.domain.CjhPointVo;
@@ -20,6 +22,8 @@ public class CjhMyInfoController {
 	
 	@Inject
 	private CjhUserService userService;
+	@Inject
+	private CjhCartService cartService;
 	
 	@RequestMapping(value="/home")
 	public String home() throws Exception {
@@ -65,13 +69,14 @@ public class CjhMyInfoController {
 	
 //	로그인 처리 폼
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPost(String u_id, String u_pw,
+	public String loginPost(String u_id, String u_pw, Model model,
 							HttpSession session, RedirectAttributes rttr) throws Exception {
 //		System.out.println("u_id : " + u_id);
 //		System.out.println("u_pw : " + u_pw);
 		boolean result = userService.login(u_id, u_pw);
 		if (result == true) {
 			//	해당 사용자가 있다면 아이디를 세션에 저장
+			
 			session.setAttribute("u_id", u_id);
 			String targetLocation = (String)session.getAttribute("targetLocation");
 			if (targetLocation != null && !targetLocation.equals("")) {
