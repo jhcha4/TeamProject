@@ -31,6 +31,7 @@ public class CjhCartController {
 	private LSH_BoardService boardService;
 	
 	//	장바구니에 추가
+	@Transactional
 	@RequestMapping(value="/insertCart", method = RequestMethod.GET)
 	public String insertCart(String u_id, int p_num) throws Exception {
 		LshBoardVo boardVo = boardService.single(p_num);
