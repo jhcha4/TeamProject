@@ -1,5 +1,7 @@
 package com.kh.team.domain;
 
+import java.util.Arrays;
+
 public class Kys_BoardVo {
 	private int p_num;
 	private String p_name;
@@ -8,6 +10,10 @@ public class Kys_BoardVo {
 	private String p_main;
 	private String p_serve;
 	private String p_deleted;
+	private int viewcnt;
+	
+	private String[] p_files;
+	
 	public Kys_BoardVo() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -87,12 +93,38 @@ public class Kys_BoardVo {
 
 
 
+	public int getViewcnt() {
+		return viewcnt;
+	}
+
+
+
+	public String[] getP_files() {
+		return p_files;
+	}
+
+
+
+	public void setP_files(String[] p_files) {
+		this.p_files = p_files;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Kys_BoardVo [p_num=" + p_num + ", p_name=" + p_name + ", p_content=" + p_content + ", p_price="
-				+ p_price + ", p_main=" + p_main + ", p_serve=" + p_serve + ", p_deleted=" + p_deleted + "]";
+				+ p_price + ", p_main=" + p_main + ", p_serve=" + p_serve + ", p_deleted=" + p_deleted + ", viewcnt="
+				+ viewcnt + ", p_files=" + Arrays.toString(p_files) + "]";
 	}
 
+	
+
+	
+
+
+
+	
 	
 
 	

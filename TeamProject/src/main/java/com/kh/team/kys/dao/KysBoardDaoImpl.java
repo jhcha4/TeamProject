@@ -20,56 +20,52 @@ public class KysBoardDaoImpl implements KysBoardDao {
 	
 	@Inject
 	private SqlSession sqlSession;
+
+	@Override
+	public int getNextVal() throws Exception {
+		
+		return sqlSession.selectOne(NAMESPACE+"getNextVal");
+	}
 	
 	@Override
 	public List<Kys_BoardVo> boardList(Kys_BoardDto boardDto) throws Exception {
 		
 		return sqlSession.selectList(NAMESPACE +"boardList");
 	}
-
+	
 	//등록
 	@Override
 	public void boardInsert(Kys_BoardVo boardVo) throws Exception {
 		sqlSession.insert(NAMESPACE + "boardInsert", boardVo);
-		
-
 	}
 
 	@Override
 	public void boardUpdate(Kys_BoardVo boardVo) throws Exception {
 		sqlSession.update(NAMESPACE+"boardUpdate",boardVo);
-
 	}
 	// 삭제
 	@Override
 	public void boardDelete(int p_num) throws Exception {
 		sqlSession.update(NAMESPACE + "boardDelete",p_num);
-
 	}
 	//게시물 내용 보기
 	@Override
 	public Kys_BoardVo boardSelectBy(int p_num) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"boardSelectBy",p_num);
-
 	}
-
 	@Override
 	public void selectByTow(String p_main, String p_serve) throws Exception {
 		Map<String, Object> paraMap = new HashMap<>();
 		paraMap.put("p_main", p_main);
 		paraMap.put("p_serve", p_serve);
 		sqlSession.selectList(NAMESPACE+"selectByTow",paraMap);
-	
 	}
-
-
 	//게시물 페이징
 	@Override
 	public List<Kys_BoardVo> boardListPage(Kys_BoardDto boardDto) throws Exception {
 		List<Kys_BoardVo> pageList = sqlSession.selectList(NAMESPACE+"boardListPage",boardDto);
 		return pageList;
 	}
-	
 	//삭제처리된 게시물 복구
 	@Override
 	public List<Kys_BoardVo> deleteList(Kys_BoardDto boardDto) throws Exception {
@@ -98,6 +94,23 @@ public class KysBoardDaoImpl implements KysBoardDao {
 			sqlSession.delete(NAMESPACE+"delete",p_num);
 			
 		}
-		
+
+		@Override
+		public void imgFile(String file_name, int p_num) throws Exception {
+			Map<String,Object> paramMap = new HashMap<>();
+			paramMap.put("file_name", file_name);
+			paramMap.put("p_num", p_num);
+			sqlSession.insert(NAMESPACE+"imgFile",paramMap);
+			
+		}
+
+		@Override
+		public List<Kys_BoardVo> imgSelectBy(int p_num) throws Exception {
+			List<Kys_BoardVo> list = sqlSession.selectList(NAMESPACE+"imgSelectBy",p_num);
+			
+			System.out.println("imgDao list : " + list);
+			return list;
+		}
+
 
 }
