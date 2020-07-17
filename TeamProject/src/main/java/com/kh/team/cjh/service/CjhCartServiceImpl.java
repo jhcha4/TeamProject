@@ -23,21 +23,25 @@ public class CjhCartServiceImpl implements CjhCartService {
 		return list;
 	}
 
+	//	장바구니 삭제
 	@Override
-	public void deleteCart(String u_id, int p_num) throws Exception {
-		cartDao.deleteCart(u_id, p_num);
+	public void deleteCart(String u_id, int c_num) throws Exception {
+		cartDao.deleteCart(u_id, c_num);
 	}
 
+	//	장바구니 갱신
 	@Override
 	public void updateCart(String u_id, int p_count, int c_num) throws Exception {
 		cartDao.updateCart(u_id, p_count, c_num);
 	}
 
+	//	주문시 주문목록으로 변경
 	@Override
 	public void orderCartUpdate(String u_id) throws Exception {
 		cartDao.orderCartUpdate(u_id);
 	}
 
+	//	주문목록 불러오기
 	@Override
 	public List<CjhCartVo> getOrder(String u_id) throws Exception {
 		return cartDao.getOrder(u_id);

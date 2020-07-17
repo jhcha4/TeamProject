@@ -36,9 +36,9 @@ public class CjhCartController {
 	}
 	
 	//	장바구니 삭제
-//	@RequestMapping(value="/deleteCart", method = RequestMethod.GET)
-	public String deleteCart(String u_id, int p_num) throws Exception {
-		cartService.deleteCart(u_id, p_num);
+	@RequestMapping(value="/deleteCart", method = RequestMethod.GET)
+	public String deleteCart(String u_id, int c_num) throws Exception {
+		cartService.deleteCart(u_id, c_num);
 		return "redirect:/cjh/cart?u_id=" + u_id;
 	}
 	

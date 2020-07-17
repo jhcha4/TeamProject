@@ -23,7 +23,6 @@ $(document).ready(function() {
 });
 </script>
 
-${list}
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -71,7 +70,7 @@ ${list}
 								<td name="p_date" style="text-align:center; padding-left: 10px; font-weight: bold;">${item.p_date}</td>
 								
 								<td	style="width:10%">
-									${item.p_status}
+									${item.o_status}
 								</td>
 								
 							</tr>

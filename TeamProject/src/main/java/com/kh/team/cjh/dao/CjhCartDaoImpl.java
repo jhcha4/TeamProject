@@ -28,10 +28,10 @@ public class CjhCartDaoImpl implements CjhCartDao {
 
 	//	장바구니 삭제
 	@Override
-	public void deleteCart(String u_id, int p_num) throws Exception {
+	public void deleteCart(String u_id, int c_num) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("u_id", u_id);
-		paramMap.put("p_num", p_num);
+		paramMap.put("c_num", c_num);
 		sqlSession.delete(NAMESPACE + "deleteCart", paramMap);
 	}
 
@@ -57,6 +57,7 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		sqlSession.delete(NAMESPACE + "orderCartUpdate", u_id);
 	}
 
+	//	주문목록 불러오기
 	@Override
 	public List<CjhCartVo> getOrder(String u_id) throws Exception {
 		return sqlSession.selectList(NAMESPACE + "getOrder", u_id);

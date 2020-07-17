@@ -10,7 +10,7 @@ public interface CjhCartService {
 	public List<CjhCartVo> getCart(String u_id) throws Exception;
 	
 	//	장바구니 목록 삭제
-	public void deleteCart(String u_id, int p_num) throws Exception;
+	public void deleteCart(String u_id, int c_num) throws Exception;
 	
 	//	장바구니 갱신
 	public void updateCart(String u_id, int p_count, int c_num) throws Exception;
