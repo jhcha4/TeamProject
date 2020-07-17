@@ -41,7 +41,7 @@
             </div>
 
             </div>
-            <p><a href="cart" class="buy-now btn btn-sm btn-primary">장바구니에 담기</a></p>
+            <p><a href="/cjh/cart" class="buy-now btn btn-sm btn-primary">장바구니에 담기</a></p>
 
           </div>
         </div>
