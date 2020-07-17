@@ -4,6 +4,12 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mappers.cjhcart-mapper">
+	
+	<insert id="insertCart">
+		insert into tbl_cart (c_num, u_id, p_num, p_name, p_price, p_content)
+		values (seq_c_num.nextval, #{u_id}, #{p_num}, #{p_name}, #{p_price}, #{p_content})
+	</insert>
+
 	<select id="getCart" resultType="CjhCartVo">
 		select * from tbl_cart
 		where u_id = #{u_id} and p_status = 1001
@@ -26,7 +32,7 @@
 	
 	<select id="getCountCart" resultType="int">
 		select count(*) from tbl_cart
-		where u_id = #{u_id}
+		where u_id = #{u_id} and p_status = 1001
 	</select>
 	
 	<update id="updateCart">

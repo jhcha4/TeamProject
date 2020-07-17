@@ -14,6 +14,8 @@ import com.kh.team.cjh.service.CjhCartService;
 import com.kh.team.cjh.service.CjhPointService;
 import com.kh.team.cjh.service.CjhUserService;
 import com.kh.team.domain.CjhCartVo;
+import com.kh.team.domain.LshBoardVo;
+import com.kh.team.lsh.service.LSH_BoardService;
 
 @Controller
 @RequestMapping("/cjh")
@@ -25,6 +27,16 @@ public class CjhCartController {
 	private CjhUserService userService;
 	@Inject
 	private CjhPointService pointService;
+	@Inject
+	private LSH_BoardService boardService;
+	
+	//	장바구니에 추가
+	@RequestMapping(value="/insertCart", method = RequestMethod.GET)
+	public String insertCart(String u_id, int p_num) throws Exception {
+		LshBoardVo boardVo = boardService.single(p_num);
+		cartService.insertCart(u_id, boardVo);
+		return "/cjh/cart";
+	}
 	
 	//	장바구니 목록보기
 	@RequestMapping(value="/cart", method = RequestMethod.GET)
