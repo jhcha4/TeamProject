@@ -5,10 +5,17 @@
 
 <script>
 $(function() {
-	$("input[name=p_count]").text("1");
 	$("input[name=p_count]").change(function() {
-		var txt = $(this).text();
-		$(this).text(txt);
+		var p_count = $(this).val();
+		$(this).val(p_count);
+// 		console.log("p_count : "+ p_count);
+	});
+	
+	$("#insertCart").click(function(e) {
+		e.preventDefault();
+		var p_count = $("input[name=p_count]").val();
+// 		console.log(p_count);
+		location.href="/cjh/insertCart?u_id=${u_id}&p_num=${LshBoardVo.p_num}&p_count="+p_count;
 	});
 });
 </script>
@@ -51,7 +58,7 @@ $(function() {
             </div>
 
             </div>
-            <p><a href="/cjh/insertCart?u_id=${u_id}&p_num=${LshBoardVo.p_num}" class="buy-now btn btn-sm btn-primary">장바구니에 담기</a></p>
+            <p><a id="insertCart" class="buy-now btn btn-sm btn-primary">장바구니에 담기</a></p>
 
           </div>
         </div>

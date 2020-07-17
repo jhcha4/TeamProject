@@ -18,8 +18,8 @@ public class CjhCartServiceImpl implements CjhCartService {
 	private CjhCartDao cartDao;
 	
 	@Override
-	public void insertCart(String u_id, LshBoardVo boardVo) throws Exception {
-		cartDao.insertCart(u_id, boardVo);
+	public void insertCart(String u_id, int p_count, LshBoardVo boardVo) throws Exception {
+		cartDao.insertCart(u_id, p_count, boardVo);
 	}
 
 	//	장바구니 불러오기
