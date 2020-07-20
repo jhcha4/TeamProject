@@ -1,5 +1,7 @@
 package com.kh.team.cjh.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -124,7 +126,7 @@ public class CjhMyInfoController {
 	//	적립금 페이지
 	@RequestMapping(value="/myPoint", method = RequestMethod.GET)
 	public void myPoint(String u_id, Model model) throws Exception {
-		CjhPointVo pointVo = userService.getPoint(u_id);
-		model.addAttribute("pointVo", pointVo);
+		List<CjhPointVo> list= userService.getPoint(u_id);
+		model.addAttribute("list", list);
 	}
 }

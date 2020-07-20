@@ -78,9 +78,14 @@ public class CjhCartController {
 	}
 	
 	//	결제 처리
+	@Transactional
 	@RequestMapping(value="/order", method = RequestMethod.GET)
 	public String order(String u_id, int totalPrice) throws Exception {
+		pointService.minusPoint(u_id, totalPrice);
+		pointService.plusPoint(u_id, totalPrice);
 		pointService.usePoint(u_id, totalPrice);
+		pointService.getPoint(u_id, totalPrice);
+		
 		cartService.orderCartUpdate(u_id);
 		return "/cjh/thankyou";
 	}

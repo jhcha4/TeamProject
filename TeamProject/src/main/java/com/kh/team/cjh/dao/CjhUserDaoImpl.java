@@ -46,14 +46,15 @@ public class CjhUserDaoImpl implements CjhUserDao {
 	}
 
 	@Override
-	public CjhPointVo getPoint(String u_id) throws Exception {
-		CjhPointVo pointVo = sqlSession.selectOne(NAMESPACE + "getPoint", u_id);
-		return pointVo;
+	public List<CjhPointVo> getPoint(String u_id) throws Exception {
+		List<CjhPointVo> list= sqlSession.selectList(NAMESPACE + "getPoint", u_id);
+		return list;
 	}
 
 	@Override
 	public int getUserPoint(String u_id) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "getUserPoint", u_id);
 	}
+
 
 }
