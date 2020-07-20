@@ -30,6 +30,13 @@
 		where p_num = #{p_num}
 	</update>
 	
+	<select id="MostList" resultType="LshBoardVo">
+		select * from (select rownum rnum, a.*
+		    from (select * from tbl_product_board
+		    order by p_viewcnt desc) a)
+			where rnum between 1 and 7
+	</select>
+	
 	<sql id="type">
 		<if test="lshBoardDto.type != null">
 			<choose>

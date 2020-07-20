@@ -52,5 +52,11 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 	}
 
 
+	@Override
+	public List<LshBoardVo> MostList() throws Exception {
+		return sqlSession.selectList(NAMESPACE + "MostList");
+	}
+
+
 
 }

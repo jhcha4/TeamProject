@@ -39,6 +39,8 @@ public class ShopController {
 	@RequestMapping(value="/shop_single", method = RequestMethod.GET)
 	public void shop_single(int p_num, Model model) throws Exception {
 		LshBoardVo lshBoardVo = boardService.single(p_num);
+		List<LshBoardVo> MostList = boardService.MostList();
+		model.addAttribute("MostList",MostList);
 		model.addAttribute("lshBoardVo", lshBoardVo);
 	}
 	

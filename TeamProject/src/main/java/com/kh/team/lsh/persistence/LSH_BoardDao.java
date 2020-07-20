@@ -14,5 +14,7 @@ public interface LSH_BoardDao {
 	public int getCount(LshBoardDto lshBoardDto, String p_main, String p_serve) throws Exception;
 	
 	public void updateViewCnt(int p_num) throws Exception;
+	
+	public List<LshBoardVo> MostList() throws Exception;
 }
 
