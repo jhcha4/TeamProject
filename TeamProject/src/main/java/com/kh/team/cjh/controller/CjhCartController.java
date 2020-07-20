@@ -39,7 +39,7 @@ public class CjhCartController {
 		LshBoardVo boardVo = boardService.single(p_num);
 		System.out.println("boardVo : " + boardVo);
 		cartService.insertCart(u_id, p_count, boardVo); 
-		return "redirect:/cjh/cart?u_id=" + u_id;
+		return "redirect:/cjh/cart?u_id=" + u_id; 
 	}
 	
 	//	장바구니 목록보기
