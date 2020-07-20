@@ -123,45 +123,45 @@
             </li>
             
             <li class="has-children">
-           		<a href="/lsh/shop?priceType=L">Shop</a>
+           		<a href="/lsh/shop?type=L">Shop</a>
            		<ul class="dropdown">
 					<li class="has-children">
-	                  <a href="/lsh/shop?p_main=T&priceType=L&page=1">상의</a>
+	                  <a href="/lsh/shop?p_main=T&type=L&page=1">상의</a>
 	                  <ul class="dropdown">
-	                    <li><a href="/lsh/shop?p_serve=TH&priceType=L&page=1">반팔</a></li>
-	                    <li><a href="/lsh/shop?p_serve=TL&priceType=L&page=1">긴팔</a></li>
-	                    <li><a href="/lsh/shop?p_serve=TS&priceType=L&page=1">셔츠</a></li>
-	                    <li><a href="/lsh/shop?p_serve=TM&priceType=L&page=1">맨투맨</a></li>
+	                    <li><a href="/lsh/shop?p_serve=TH&type=L&page=1">반팔</a></li>
+	                    <li><a href="/lsh/shop?p_serve=TL&type=L&page=1">긴팔</a></li>
+	                    <li><a href="/lsh/shop?p_serve=TS&type=L&page=1">셔츠</a></li>
+	                    <li><a href="/lsh/shop?p_serve=TM&type=L&page=1">맨투맨</a></li>
 	                  </ul>
 	                </li>
 	                 
 	                <li class="has-children">
-	                  <a href="/lsh/shop?p_main=P&priceType=L&page=1">하의</a>
+	                  <a href="/lsh/shop?p_main=P&type=L&page=1">하의</a>
 	                  <ul class="dropdown">
-	                    <li><a href="/lsh/shop?p_serve=PJ&priceType=L&page=1">청바지</a></li>
-	                    <li><a href="/lsh/shop?p_serve=PM&priceType=L&page=1">면바지</a></li>
-	                    <li><a href="/lsh/shop?p_serve=PH&priceType=L&page=1">반바지</a></li>
-	                    <li><a href="/lsh/shop?p_serve=P7&priceType=L&page=1">7부바지</a></li>
+	                    <li><a href="/lsh/shop?p_serve=PJ&type=L&page=1">청바지</a></li>
+	                    <li><a href="/lsh/shop?p_serve=PM&type=L&page=1">면바지</a></li>
+	                    <li><a href="/lsh/shop?p_serve=PH&type=L&page=1">반바지</a></li>
+	                    <li><a href="/lsh/shop?p_serve=P7&type=L&page=1">7부바지</a></li>
 	                  </ul>
 	                </li>
 	                  
 	                <li class="has-children">
-					  <a href="/lsh/shop?p_main=S&priceType=L&page=1">신발</a>
+					  <a href="/lsh/shop?p_main=S&type=L&page=1">신발</a>
 	                  <ul class="dropdown">
-	                    <li><a href="/lsh/shop?p_serve=SD&priceType=L&page=1">구두</a></li>
-	                    <li><a href="/lsh/shop?p_serve=SU&priceType=L&page=1">운동화</a></li>
-	                    <li><a href="/lsh/shop?p_serve=SS&priceType=L&page=1">슬리퍼</a></li>
-	                    <li><a href="/lsh/shop?p_serve=SR&priceType=L&page=1">로퍼</a></li>
+	                    <li><a href="/lsh/shop?p_serve=SD&type=L&page=1">구두</a></li>
+	                    <li><a href="/lsh/shop?p_serve=SU&type=L&page=1">운동화</a></li>
+	                    <li><a href="/lsh/shop?p_serve=SS&type=L&page=1">슬리퍼</a></li>
+	                    <li><a href="/lsh/shop?p_serve=SR&type=L&page=1">로퍼</a></li>
 	                  </ul>
 	                </li>
 	                  
 					<li class="has-children">	                  
-	                  <a href="/lsh/shop?p_main=A&priceType=L&page=1">악세사리</a>
+	                  <a href="/lsh/shop?p_main=A&type=L&page=1">악세사리</a>
 	                  <ul class="dropdown">
-	                    <li><a href="/lsh/shop?p_serve=AR&priceType=L&page=1">반지</a></li>
-	                    <li><a href="/lsh/shop?p_serve=AW&priceType=L&page=1">지갑</a></li>
-	                    <li><a href="/lsh/shop?p_serve=AC&priceType=L&page=1">모자</a></li>
-	                    <li><a href="/lsh/shop?p_serve=AB&priceType=L&page=1">가방</a></li>
+	                    <li><a href="/lsh/shop?p_serve=AR&type=L&page=1">반지</a></li>
+	                    <li><a href="/lsh/shop?p_serve=AW&type=L&page=1">지갑</a></li>
+	                    <li><a href="/lsh/shop?p_serve=AC&type=L&page=1">모자</a></li>
+	                    <li><a href="/lsh/shop?p_serve=AB&type=L&page=1">가방</a></li>
 	                  </ul>
 	                </li>
 	                

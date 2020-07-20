@@ -9,8 +9,8 @@
 		select *
 		from (select rownum rnum, a.*
 		    from (select * from tbl_product_board
-		        <include refid="type"/>
-		        order by <include refid="price"/>p_num desc) a)
+		        <include refid="item"/>
+		        order by <include refid="type"/>p_num desc) a)
 				where rnum between #{lshBoardDto.startRow} and #{lshBoardDto.endRow}
 	</select>
 	
@@ -21,23 +21,32 @@
 	
 	<select id="getCount" resultType="int">
 		select count(*) from tbl_product_board
-		<include refid="type"/>
+		<include refid="item"/>
 	</select>
 	
-	<sql id="price">
-		<if test="lshBoardDto.priceType != null">
+	<update id="updateViewCnt">
+		update tbl_product_board set
+   			p_viewCnt = p_viewCnt +1
+		where p_num = #{p_num}
+	</update>
+	
+	<sql id="type">
+		<if test="lshBoardDto.type != null">
 			<choose>
-				<when test='lshBoardDto.priceType == "H"'>
+				<when test='lshBoardDto.type == "H"'>
 					p_price desc,
 				</when>
-				<when test='lshBoardDto.priceType == "L"'>
+				<when test='lshBoardDto.type == "L"'>
 					p_price,
+				</when>
+				<when test='lshBoardDto.type == "C"'>
+					p_viewCnt desc,
 				</when>
 			</choose>
 		</if>
 	</sql>
 	
-	<sql id="type">
+	<sql id="item">
 		<if test="p_main != null">
 			where p_main = #{p_main}
 		</if>
