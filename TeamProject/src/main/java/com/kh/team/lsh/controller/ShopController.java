@@ -20,6 +20,7 @@ public class ShopController {
 	@Inject
 	private LSH_BoardService boardService;
 	
+	// 리스트
 	@RequestMapping(value="/shop", method = RequestMethod.GET)
 	public String shop(LshBoardDto lshBoardDto, Model model, String p_main, String p_serve) throws Exception {
 		lshBoardDto.setPageInfo();
@@ -33,9 +34,7 @@ public class ShopController {
 		return "lsh/shop";
 	}
 	
-//	 
-// 
-	
+	// 상품클릭 화면
 	@RequestMapping(value="/shop_single", method = RequestMethod.GET)
 	public void shop_single(int p_num, Model model) throws Exception {
 		LshBoardVo lshBoardVo = boardService.single(p_num);
@@ -44,8 +43,4 @@ public class ShopController {
 		model.addAttribute("lshBoardVo", lshBoardVo);
 	}
 	
-	@RequestMapping(value="/cart")
-	public String cart() throws Exception {
-		return "cjh/cart";
-	}
 }

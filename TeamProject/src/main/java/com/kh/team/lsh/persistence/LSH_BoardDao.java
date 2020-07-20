@@ -7,14 +7,19 @@ import com.kh.team.domain.LshBoardVo;
 
 public interface LSH_BoardDao {
 
+	// 전체상품 리스트
 	public List<LshBoardVo> list(LshBoardDto lshBoardDto, String p_main, String p_serve) throws Exception;
 	
+	// 상품 한개 화면
 	public LshBoardVo single(int p_num) throws Exception;
 	
+	// 상품별 갯수 얻기
 	public int getCount(LshBoardDto lshBoardDto, String p_main, String p_serve) throws Exception;
 	
+	// 조회수 얻기
 	public void updateViewCnt(int p_num) throws Exception;
 	
+	// 주요 상품 리스트
 	public List<LshBoardVo> MostList() throws Exception;
 }
 
