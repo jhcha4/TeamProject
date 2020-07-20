@@ -15,8 +15,8 @@ $(function() {
 		$("#singlePage").submit();
 	});
 	
-	// 가격순으로 정렬
-	$("#price").change(function() {
+	// 정렬 하기
+	$("#type").change(function() {
 		var type = $("select[name=type]").val();
 		if ("${p_main}" != "") {
 			$("#mainPage > input[name=type]").val(type);
@@ -104,7 +104,7 @@ $(function() {
                 <div class="float-md-left mb-4"><h2 class="text-black h5">Shop</h2></div>
                 <div class="d-flex"> 
                   <div class="dropdown mr-1 ml-md-auto">
-                    <select name="type" id="price">
+                    <select name="type" id="type">
                     	<option value="L" 
                     		<c:if test="${lshBoardDto.type == 'L'}">selected</c:if>
                     	>낮은 가격순</option>
