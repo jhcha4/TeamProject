@@ -124,7 +124,7 @@ $(document).ready(function() {
 			    
 				<div>
 			        <li>
-			        <h3><a href="/cjh/myPoint?u_id=${u_id}&point_Type=0">적립금</a></h3>
+			        <h3><a href="/cjh/myPoint?u_id=${u_id}&point_code=0">적립금</a></h3>
 			        </li>
 			    </div>
 				

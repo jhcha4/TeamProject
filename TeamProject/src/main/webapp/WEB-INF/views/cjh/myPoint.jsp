@@ -22,7 +22,7 @@ $(document).ready(function() {
 	$("#pointType").change(function() {
 		var pointType = $(this).val();
 		console.log("pointType : " + pointType);
-		location.href="cjh/myPoint?u_id=${u_id}&pointType=" + pointType;
+		location.href="/cjh/myPoint?u_id=${u_id}&point_code=" + point_code;
 	});
 });
 </script>

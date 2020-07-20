@@ -16,6 +16,7 @@ import com.kh.team.cjh.service.CjhCartService;
 import com.kh.team.cjh.service.CjhPointService;
 import com.kh.team.cjh.service.CjhUserService;
 import com.kh.team.cjh.util.MyUrlUtil;
+import com.kh.team.domain.CjhPagingDto;
 import com.kh.team.domain.CjhPointVo;
 import com.kh.team.domain.CjhUserVo;
 
@@ -25,8 +26,6 @@ public class CjhMyInfoController {
 	
 	@Inject
 	private CjhUserService userService;
-	@Inject
-	private CjhCartService cartService;
 	@Inject
 	private CjhPointService pointService;
 	
@@ -132,9 +131,16 @@ public class CjhMyInfoController {
 	
 	//	적립금 페이지
 	@RequestMapping(value="/myPoint", method = RequestMethod.GET)
-	public void myPoint(String u_id, int pointType, Model model) throws Exception {
-		System.out.println("pointType : " + pointType);
-		List<CjhPointVo> list= pointService.listPoint(u_id, pointType);
+	public void myPoint(String u_id,  Model model) throws Exception {
+		List<CjhPointVo> list= pointService.listPoint(u_id);
 		model.addAttribute("list", list);
 	}
+	
+//	//	적립금 페이지
+//	@RequestMapping(value="/myPoint", method = RequestMethod.GET)
+//	public void myPoint(String u_id, CjhPagingDto pagingDto, Model model) throws Exception {
+////		System.out.println("pagingDto : " + pagingDto);
+//		List<CjhPointVo> list= pointService.listPoint(u_id, pagingDto);
+//		model.addAttribute("list", list);
+//	}
 }

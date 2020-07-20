@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.team.cjh.dao.CjhPointDao;
 import com.kh.team.cjh.dao.CjhUserDao;
+import com.kh.team.domain.CjhPagingDto;
 import com.kh.team.domain.CjhPointVo;
 
 @Service
@@ -46,17 +47,28 @@ public class CjhPointServiceImpl implements CjhPointService {
 		return pointDao.getTotalPoint(u_id);
 	}
 
+	//	총 사용 포인트
 	@Override
 	public List<CjhPointVo> getUsePoint(String u_id) throws Exception {
 		return pointDao.getUsePoint(u_id);
 	}
 
+	//	유저의 포인트 목록
 	@Override
-	public List<CjhPointVo> listPoint(String u_id, int pointType) throws Exception {
-		List<CjhPointVo> list= pointDao.listPoint(u_id, pointType);
+	public List<CjhPointVo> listPoint(String u_id) throws Exception {
+		List<CjhPointVo> list= pointDao.listPoint(u_id);
 		return list;
 	}
+	
+//	//	유저의 포인트 목록
+//	@Override
+//	public List<CjhPointVo> listPoint(String u_id, CjhPagingDto pagingDto) throws Exception {
+//		System.out.println("pagingDto : " + pagingDto);
+//		List<CjhPointVo> list= pointDao.listPoint(u_id, pagingDto);
+//		return list;
+//	}
 
+	// 유저의 
 	@Override
 	public int getUserPoint(String u_id) throws Exception {
 		return pointDao.getUserPoint(u_id);

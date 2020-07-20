@@ -2,6 +2,7 @@ package com.kh.team.cjh.dao;
 
 import java.util.List;
 
+import com.kh.team.domain.CjhPagingDto;
 import com.kh.team.domain.CjhPointVo;
 
 public interface CjhPointDao {
@@ -25,7 +26,10 @@ public interface CjhPointDao {
 	public List<CjhPointVo> getUsePoint(String u_id) throws Exception;
 	
 	//	포인트 정보 불러오기
-	public List<CjhPointVo> listPoint(String u_id, int pointType) throws Exception;
+	public List<CjhPointVo> listPoint(String u_id) throws Exception;
+	
+//	//	포인트 정보 불러오기
+//	public List<CjhPointVo> listPoint(String u_id, CjhPagingDto pagingDto) throws Exception;
 	
 	//	유저의 포인트값 불러오기
 	public int getUserPoint(String u_id) throws Exception;
