@@ -21,4 +21,15 @@ public interface CjhPointService {
 	//	총 적립 포인트
 	public List<CjhPointVo> getTotalPoint(String u_id) throws Exception;
 	
+	//	총 사용 포인트
+	public List<CjhPointVo> getUsePoint(String u_id) throws Exception;
+	
+	//	포인트 정보 불러오기
+	public List<CjhPointVo> listPoint(String u_id, int pointType) throws Exception;
+	
+	//	유저 포인트 정보 불러오기
+	public int getUserPoint(String u_id) throws Exception;
+	
+	
+	
 }

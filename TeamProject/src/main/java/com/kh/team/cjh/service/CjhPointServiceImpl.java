@@ -46,5 +46,20 @@ public class CjhPointServiceImpl implements CjhPointService {
 		return pointDao.getTotalPoint(u_id);
 	}
 
+	@Override
+	public List<CjhPointVo> getUsePoint(String u_id) throws Exception {
+		return pointDao.getUsePoint(u_id);
+	}
+
+	@Override
+	public List<CjhPointVo> listPoint(String u_id, int pointType) throws Exception {
+		List<CjhPointVo> list= pointDao.listPoint(u_id, pointType);
+		return list;
+	}
+
+	@Override
+	public int getUserPoint(String u_id) throws Exception {
+		return pointDao.getUserPoint(u_id);
+	}
 
 }
