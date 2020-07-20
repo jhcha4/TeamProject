@@ -71,7 +71,7 @@ public class CjhCartController {
 	public String checkout(String u_id, Model model) throws Exception {
 //		System.out.println("u_id : " + u_id);
 		List<CjhCartVo> list = cartService.getCart(u_id);
-		int userPoint = userService.getUserPoint(u_id);
+		int userPoint = pointService.getUserPoint(u_id);
 		model.addAttribute("userPoint", userPoint);
 		model.addAttribute("list", list);
 		return "cjh/checkout";

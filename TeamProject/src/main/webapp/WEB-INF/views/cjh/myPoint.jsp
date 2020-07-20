@@ -18,8 +18,16 @@ $(document).ready(function() {
 		console.log("spoint_date : " + spoint_date);
 		$(this).text(spoint_date);
 	});
+	
+	$("#pointType").change(function() {
+		var pointType = $(this).val();
+		console.log("pointType : " + pointType);
+		location.href="cjh/myPoint?u_id=${u_id}&pointType=" + pointType;
+	});
 });
 </script>
+
+${list}
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -39,40 +47,53 @@ $(document).ready(function() {
 			<form class="col-md-12" method="post">
 				<div class="title"><h1 class="tit">POINT</h1></div>
 				<div class="site-blocks-table">
-					<table class="table table-bordered">
-						<thead style="height: 5px">
-							<tr bgcolor="#eeeeee"><th colspan="7" style="text-align: Left;">포인트 정보</th></tr>
-							<tr>
-								<th style="width: 10%" class="point-number">No</th>
-								<th style="width: 40%" class="point-content">포인트내용</th>
-								<th style="width: 25%" class="point-value">포인트</th>
-								<th style="width: 25%" class="point-date">받은날짜</th>
-							</tr>
-						</thead>
-						
-						<tbody>
-							<c:if test="${not empty list}">
-								<c:forEach var="item" items="${list}" varStatus="status">
-									<tr class="calculation1_tbody_tr1" style="height: 90px; background-color: #fff;" >
-	<%-- 										<td style="border-left: none; border-right: none;"><img style="width:15px;" src="/resources/images/${item.p_image}"></td> --%>
-										<td style="border-left: none; border-right: none;">${item.point_num}</td>
-										
-										<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.point_content}</td>
-										
-										<td><span id="point_value" style="padding-left: 10px;">${item.point_value}</span>원</td>
-										
-										<td><span name="point_date" style="padding-left: 10px;">${item.point_date}</span></td>
-									</tr>
-								</c:forEach>
-							</c:if>
-							
-							<c:if test="${empty list}">
-								<tr id="not product" style="background-color: #fff;">
-									<td colspan="10" style="font-size: 20pt; color: gray;"><span>포인트 목록이 없습니다.</span></td>
+					<div class="row">
+						<div class="col-md-12 mb-5">
+							<div class="d-flex"> 
+								<div class="dropdown mr-1 ml-md-auto">
+								<select id="pointType" id="pointType">
+									<option value="0">전체</option>
+									<option value="1001">받은 포인트</option>
+									<option value="1002">사용 포인트</option>
+								</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				<table class="table table-bordered">
+					<thead style="height: 5px">
+						<tr bgcolor="#eeeeee"><th colspan="7" style="text-align: Left;">포인트 정보</th></tr>
+						<tr>
+							<th style="width: 10%" class="point-number">No</th>
+							<th style="width: 40%" class="point-content">포인트내용</th>
+							<th style="width: 25%" class="point-value">포인트</th>
+							<th style="width: 25%" class="point-date">받은날짜</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<c:if test="${not empty list}">
+							<c:forEach var="item" items="${list}" varStatus="status">
+								<tr class="calculation1_tbody_tr1" style="height: 90px; background-color: #fff;" >
+<%-- 										<td style="border-left: none; border-right: none;"><img style="width:15px;" src="/resources/images/${item.p_image}"></td> --%>
+									<td style="border-left: none; border-right: none;">${item.point_num}</td>
+									
+									<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.point_content}</td>
+									
+									<td><span id="point_value" style="padding-left: 10px;">${item.point_value}</span>원</td>
+									
+									<td><span name="point_date" style="padding-left: 10px;">${item.point_date}</span></td>
 								</tr>
-							</c:if>
-						</tbody>
-					</table>
+							</c:forEach>
+						</c:if>
+						
+						<c:if test="${empty list}">
+							<tr id="not product" style="background-color: #fff;">
+								<td colspan="10" style="font-size: 20pt; color: gray;"><span>포인트 목록이 없습니다.</span></td>
+							</tr>
+						</c:if>
+					</tbody>
+				</table>
 				</div>
 			</form>
 		</div>

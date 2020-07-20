@@ -47,14 +47,5 @@ public class CjhUserServiceImpl implements CjhUserService {
 		userDao.updateUser(userVo);
 	}
 
-	@Override
-	public List<CjhPointVo> getPoint(String u_id) throws Exception {
-		List<CjhPointVo> list= userDao.getPoint(u_id);
-		return list;
-	}
 
-	@Override
-	public int getUserPoint(String u_id) throws Exception {
-		return userDao.getUserPoint(u_id);
-	}
 }

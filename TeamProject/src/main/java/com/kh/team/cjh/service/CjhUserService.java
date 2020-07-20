@@ -18,11 +18,7 @@ public interface CjhUserService {
 	//	내정보 수정
 	public void updateUser(CjhUserVo userVo) throws Exception;
 	
-	//	포인트 정보 불러오기
-	public List<CjhPointVo> getPoint(String u_id) throws Exception;
-	
-	//	유저 포인트 정보 불러오기
-	public int getUserPoint(String u_id) throws Exception;
+
 	
 
 }

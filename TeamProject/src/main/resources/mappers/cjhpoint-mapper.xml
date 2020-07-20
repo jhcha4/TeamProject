@@ -28,8 +28,41 @@
 		values (seq_point_num.nextval, 1003, #{u_id}, #{totalPrice})
 	</insert>
 	
+	<select id="getUserPoint" resultType="int">
+		select u_point from tbl_usertest
+		where u_id = #{u_id}
+	</select>
+	
 	<select id="getTotalPoint" resultType="CjhPointVo">
-		select point_value from tbl_point
+		select * from tbl_point
 		where u_id = #{u_id} and point_code = 1002
 	</select>
+	
+	<select id="getUsePoint" resultType="CjhPointVo">
+		select * from tbl_point
+		where u_id = #{u_id} and point_code = 1003
+	</select>
+	
+	<select id="listPoint" resultType="CjhPointVo">
+		select p.point_num, p.point_code, p.u_id, p.point_value, c.point_content, p.point_date
+		from tbl_point p, tbl_point_code c
+		where u_id = #{u_id}
+		and p.point_code = c.point_code and <include refid="point"/>
+		order by point_num desc
+	</select>
+	
+	<sql id="point">
+		<if test="#{pointType} != 3">
+			<choose>
+				<when test='#{pointType = 0'>
+				</when>
+				<when test='#{pointType = 1002'>
+					point_code = 1002
+				</when>
+				<when test='#{pointType = 1003'>
+					point_code = 1003
+				</when>
+			</choose>
+		</if>
+	</sql>
 </mapper>

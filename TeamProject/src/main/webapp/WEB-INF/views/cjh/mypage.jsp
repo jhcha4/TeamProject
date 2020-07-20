@@ -24,19 +24,49 @@
 }
 </style>
 
-<c:forEach var="item" items="${list}" varStatus="status">
-	<tr class="calculation1_tbody_tr1" style="height: 90px; background-color: #fff; display:none;" >
-	<td>dddddddddddddd</td>
-<%-- 		<td style="border-left: none; border-right: none;">${item.point_num}</td> --%>
-		
-<%-- 		<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.point_content}</td> --%>
-		
-<%-- 		<td><span id="point_value" style="padding-left: 10px;">${item.point_value}</span>원</td> --%>
-		
-<%-- 		<td><span name="point_date" style="padding-left: 10px;">${item.point_date}</span></td> --%>
+<script>
+$(document).ready(function() {
+	var totalPoints = 0;
+	var usePoints = 0;
+	
+	$(".getPoints").each(function() {
+		$(this).css("display", "none");
+	});
+	
+	$("input[name=getPoints]").each(function() {
+		var point = $(this).val();
+		totalPoints += Number(point);
+// 		console.log(totalPoints);
+		$("#totalPoints").text(totalPoints + " 원");
+	});
+	
+	
+	$(".usePoints").each(function() {
+		$(this).css("display", "none");
+	});
+	
+	$("input[name=usePoints]").each(function() {
+		var point = $(this).val();
+		usePoints += Number(point);
+// 		console.log(usePoints);
+		$("#usePoints").text(usePoints + " 원");
+		$("#usedPoint").text(usePoints + " 원");
+	});
+	
+});
+</script>
+
+<c:forEach var="item" items="${getList}" varStatus="status">
+	<tr class="getPoints" style="height: 90px; background-color: #fff;" >
+		<td><input style="display:none;" name="getPoints" value = "${item.point_value}"/></td>
 	</tr>
 </c:forEach>
 
+<c:forEach var="item" items="${useList}" varStatus="status">
+	<tr class="usePoints" style="height: 90px; background-color: #fff;" >
+		<td><input style="display:none;" name="usePoints" value = "${item.point_value}"/></td>
+	</tr>
+</c:forEach>
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -57,19 +87,19 @@
 					<ul>
 				        <li class="">
 				            <strong class="title">총포인트</strong>
-				            <strong class="data"><span class="pointText" id="totalPoint">${u_point}원</span></strong>
+				            <strong class="data"><span id="totalPoints" class="pointText" id="totalPoint">${u_point}원</span></strong>
 				        </li>
 				        <li class="">
 				            <strong class="title">사용포인트</strong>
-				            <strong class="data"><span class="pointText" id="usedPoint">0원</span></strong>
+				            <strong class="data"><span id="usePoints" class="pointText" id="usePoints">0원</span></strong>
 				        </li>
 						<li class=" ">
 				            <strong class="title">가용포인트</strong>
 				            <strong class="data">&nbsp;<span class="pointText" id="nowPoint">${u_point}원</span></strong>
 				        </li>
 				        <li>
-				            <strong class="title">총주문</strong>
-				            <strong class="data"><span class="pointText" id="usedPoint">₩0</span>(<span id="totalOrderCount">0</span>회)</strong>
+				            <strong class="title">총 주문상품</strong>
+				            <strong class="data"><span class="pointText" id="usedPoint">₩0</span>(<span id="totalOrderCount">0</span>개)</strong>
 				        </li>
 				    </ul>
 				</div>
@@ -94,7 +124,7 @@
 			    
 				<div>
 			        <li>
-			        <h3><a href="/cjh/myPoint?u_id=${u_id}">적립금</a></h3>
+			        <h3><a href="/cjh/myPoint?u_id=${u_id}&point_Type=0">적립금</a></h3>
 			        </li>
 			    </div>
 				

@@ -61,5 +61,26 @@ public class CjhPointDaoImpl implements CjhPointDao {
 		return sqlSession.selectList(NAMESPACE + "getTotalPoint", u_id);
 	}
 
-	
+	//	유저 사용 포인트
+	@Override
+	public List<CjhPointVo> getUsePoint(String u_id) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "getUsePoint", u_id);
+	}
+
+	//	유저 포인트 목록
+	@Override
+	public List<CjhPointVo> listPoint(String u_id, int pointType) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("u_id", u_id);
+		paramMap.put("pointType", pointType);
+		List<CjhPointVo> list= sqlSession.selectList(NAMESPACE + "getPoint", paramMap);
+		return list;
+	}
+
+	//	유저 포인트
+	@Override
+	public int getUserPoint(String u_id) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getUserPoint", u_id);
+	}
+
 }
