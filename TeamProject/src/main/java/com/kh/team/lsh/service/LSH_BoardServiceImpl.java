@@ -24,6 +24,7 @@ public class LSH_BoardServiceImpl implements LSH_BoardService {
 	
 	@Override
 	public LshBoardVo single(int p_num) throws Exception {
+		boardDao.updateViewCnt(p_num);
 		LshBoardVo boardVo = boardDao.single(p_num);
 		return boardVo;
 	}

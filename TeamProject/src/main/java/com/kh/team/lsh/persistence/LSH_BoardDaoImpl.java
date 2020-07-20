@@ -46,5 +46,11 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 	}
 
 
+	@Override
+	public void updateViewCnt(int p_num) throws Exception {
+		sqlSession.update(NAMESPACE + "updateViewCnt", p_num);
+	}
+
+
 
 }
