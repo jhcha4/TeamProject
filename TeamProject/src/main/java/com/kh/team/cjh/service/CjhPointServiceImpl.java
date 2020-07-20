@@ -1,11 +1,14 @@
 package com.kh.team.cjh.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
 import com.kh.team.cjh.dao.CjhPointDao;
 import com.kh.team.cjh.dao.CjhUserDao;
+import com.kh.team.domain.CjhPointVo;
 
 @Service
 public class CjhPointServiceImpl implements CjhPointService {
@@ -35,6 +38,12 @@ public class CjhPointServiceImpl implements CjhPointService {
 	@Override
 	public void plusPoint(String u_id, int totalPrice) throws Exception {
 		pointDao.plusPoint(u_id, totalPrice);
+	}
+
+	//	총 적립 포인트
+	@Override
+	public List<CjhPointVo> getTotalPoint(String u_id) throws Exception {
+		return pointDao.getTotalPoint(u_id);
 	}
 
 

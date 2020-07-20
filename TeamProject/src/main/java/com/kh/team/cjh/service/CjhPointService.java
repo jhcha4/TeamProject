@@ -1,5 +1,9 @@
 package com.kh.team.cjh.service;
 
+import java.util.List;
+
+import com.kh.team.domain.CjhPointVo;
+
 public interface CjhPointService {
 
 	//	포인트 사용
@@ -13,5 +17,8 @@ public interface CjhPointService {
 	
 	//	결제시 포인트 적립
 	public void plusPoint(String u_id, int totalPrice) throws Exception;
+	
+	//	총 적립 포인트
+	public List<CjhPointVo> getTotalPoint(String u_id) throws Exception;
 	
 }

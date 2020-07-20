@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.team.cjh.service.CjhCartService;
+import com.kh.team.cjh.service.CjhPointService;
 import com.kh.team.cjh.service.CjhUserService;
 import com.kh.team.cjh.util.MyUrlUtil;
 import com.kh.team.domain.CjhPointVo;
@@ -26,6 +27,8 @@ public class CjhMyInfoController {
 	private CjhUserService userService;
 	@Inject
 	private CjhCartService cartService;
+	@Inject
+	private CjhPointService pointService;
 	
 	@RequestMapping(value="/home")
 	public String home() throws Exception {
@@ -120,6 +123,8 @@ public class CjhMyInfoController {
 	@RequestMapping(value="/mypage", method = RequestMethod.GET)
 	public void mypage(String u_id, Model model) throws Exception {
 		int u_point = userService.getUserPoint(u_id);
+		List<CjhPointVo> list = pointService.getTotalPoint(u_id);
+		model.addAttribute("list", list);
 		model.addAttribute("u_point", u_point);
 	}
 	

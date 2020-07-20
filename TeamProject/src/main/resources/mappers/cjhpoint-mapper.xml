@@ -27,4 +27,9 @@
 		insert into tbl_point (point_num, point_code, u_id, point_value)
 		values (seq_point_num.nextval, 1003, #{u_id}, #{totalPrice})
 	</insert>
+	
+	<select id="getTotalPoint" resultType="CjhPointVo">
+		select point_value from tbl_point
+		where u_id = #{u_id} and point_code = 1002
+	</select>
 </mapper>
