@@ -36,6 +36,8 @@ $(function() {
 		var length =$(this).attr("href").length;
 		var p_main = $(this).attr("href").substring(length-1);
 		$("#mainPage > input[name=p_main]").val(p_main);
+		$("#mainPage > input[name=priceType]").val("L");  
+		$("#mainPage > input[name=page]").val("1");
 		$("#mainPage").submit();
 	});
 	
@@ -44,7 +46,9 @@ $(function() {
 		e.preventDefault();  
 		var length = $(this).attr("href").length;
 		var p_serve = $(this).attr("href").substring(length-2);
-		$("#servePage > input[name=p_serve]").val(p_serve); 
+		$("#servePage > input[name=p_serve]").val(p_serve);
+		$("#servePage > input[name=priceType]").val("L");
+		$("#servePage > input[name=page]").val("1");
 		$("#servePage").submit();
 	}); 
 	
@@ -101,7 +105,6 @@ $(function() {
                 <div class="d-flex"> 
                   <div class="dropdown mr-1 ml-md-auto">
                     <select name="priceType" id="price">
-                    	<option>가격순</option>
                     	<option value="L" 
                     		<c:if test="${lshBoardDto.priceType == 'L'}">selected</c:if>
                     	>낮은 가격순</option>
@@ -163,7 +166,7 @@ $(function() {
           <div class="col-md-3 order-1 mb-5 mb-md-0">
             <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
-              <h2 class="mb-3 h6  text-black d-block"><a href="shop">전체 상품</a></h2>
+              <h2 class="mb-3 h6  text-black d-block"><a href="shop?priceType=L">전체 상품</a></h2>
               
            		<a href="shop?p_main=T" class="main">상의</a>
            		<ul class="dropdown serve"> 
