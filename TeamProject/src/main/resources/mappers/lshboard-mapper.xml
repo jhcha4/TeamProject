@@ -5,6 +5,7 @@
 
 <mapper namespace="mappers.lshboard-mapper">
 
+	<!-- 상품 리스트 -->
 	<select id="list" resultType="LshBoardVo">
 		select *
 		from (select rownum rnum, a.*
@@ -14,21 +15,32 @@
 				where rnum between #{lshBoardDto.startRow} and #{lshBoardDto.endRow}
 	</select>
 	
+	<!-- 상품한개 화면 -->
 	<select id="single" resultType="LshBoardVo">
 		select * from tbl_product_board
 		where p_num = #{p_num}
 	</select>
 	
+	<!-- 상품별 갯수 얻기 -->
 	<select id="getCount" resultType="int">
 		select count(*) from tbl_product_board
 		<include refid="item"/>
 	</select>
 	
+	<!-- 조회수 증가 -->
 	<update id="updateViewCnt">
 		update tbl_product_board set
    			p_viewCnt = p_viewCnt +1
 		where p_num = #{p_num}
 	</update>
+	
+	<!-- 주요상품 리스트 -->
+	<select id="MostList" resultType="LshBoardVo">
+		select * from (select rownum rnum, a.*
+		    from (select * from tbl_product_board
+		    order by p_viewcnt desc) a)
+			where rnum between 1 and 7
+	</select>
 	
 	<sql id="type">
 		<if test="lshBoardDto.type != null">

@@ -34,4 +34,9 @@ public class LSH_BoardServiceImpl implements LSH_BoardService {
 		return boardDao.getCount(lshBoardDto, p_main, p_serve);
 	}
 
+	@Override
+	public List<LshBoardVo> MostList() throws Exception {
+		return boardDao.MostList();
+	}
+
 }
