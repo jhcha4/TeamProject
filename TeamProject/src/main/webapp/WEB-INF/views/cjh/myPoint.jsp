@@ -51,26 +51,26 @@ $(document).ready(function() {
 						</thead>
 						
 						<tbody>
-							<c:if test="${not empty pointVo}">
-								<tr class="calculation1_tbody_tr1" style="height: 90px; background-color: #fff;" >
-<%-- 										<td style="border-left: none; border-right: none;"><img style="width:15px;" src="/resources/images/${item.p_image}"></td> --%>
-									<td style="border-left: none; border-right: none;">${pointVo.point_num}</td>
-									
-									<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${pointVo.point_content}</td>
-									
-									<td><span id="point_value" style="padding-left: 10px;">${pointVo.point_value}</span>원</td>
-									
-									<td><span name="point_date" style="padding-left: 10px;">${pointVo.point_date}</span></td>
-									
-								</tr>
+							<c:if test="${not empty list}">
+								<c:forEach var="item" items="${list}" varStatus="status">
+									<tr class="calculation1_tbody_tr1" style="height: 90px; background-color: #fff;" >
+	<%-- 										<td style="border-left: none; border-right: none;"><img style="width:15px;" src="/resources/images/${item.p_image}"></td> --%>
+										<td style="border-left: none; border-right: none;">${item.point_num}</td>
+										
+										<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.point_content}</td>
+										
+										<td><span id="point_value" style="padding-left: 10px;">${item.point_value}</span>원</td>
+										
+										<td><span name="point_date" style="padding-left: 10px;">${item.point_date}</span></td>
+									</tr>
+								</c:forEach>
 							</c:if>
 							
-							<c:if test="${empty pointVo}">
+							<c:if test="${empty list}">
 								<tr id="not product" style="background-color: #fff;">
 									<td colspan="10" style="font-size: 20pt; color: gray;"><span>포인트 목록이 없습니다.</span></td>
 								</tr>
 							</c:if>
-							
 						</tbody>
 					</table>
 				</div>

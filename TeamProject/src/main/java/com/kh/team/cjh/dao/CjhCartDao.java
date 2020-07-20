@@ -27,4 +27,5 @@ public interface CjhCartDao {
 	
 	//	주문목록 불러오기
 	public List<CjhCartVo> getOrder(String u_id) throws Exception;
+	
 }

@@ -48,14 +48,13 @@ public class CjhUserServiceImpl implements CjhUserService {
 	}
 
 	@Override
-	public CjhPointVo getPoint(String u_id) throws Exception {
-		CjhPointVo pointVo = userDao.getPoint(u_id);
-		return pointVo;
+	public List<CjhPointVo> getPoint(String u_id) throws Exception {
+		List<CjhPointVo> list= userDao.getPoint(u_id);
+		return list;
 	}
 
 	@Override
 	public int getUserPoint(String u_id) throws Exception {
 		return userDao.getUserPoint(u_id);
 	}
-
 }

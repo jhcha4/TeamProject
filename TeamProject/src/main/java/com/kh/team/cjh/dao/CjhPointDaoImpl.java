@@ -1,12 +1,15 @@
 package com.kh.team.cjh.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
+import com.kh.team.domain.CjhPointVo;
 
 @Repository
 public class CjhPointDaoImpl implements CjhPointDao {
@@ -16,6 +19,7 @@ public class CjhPointDaoImpl implements CjhPointDao {
 	@Inject
 	private SqlSession sqlSession;
 
+	//	유저의 포인트 차감
 	@Override
 	public void usePoint(String u_id, int totalPrice) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
@@ -24,4 +28,38 @@ public class CjhPointDaoImpl implements CjhPointDao {
 		sqlSession.update(NAMESPACE + "usePoint", paramMap);
 	}
 
+	//	유저의 포인트 적립
+	@Override
+	public void getPoint(String u_id, int totalPrice) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("u_id", u_id);
+		paramMap.put("totalPrice", (int)(totalPrice * 0.1));
+		sqlSession.update(NAMESPACE + "getPoint", paramMap);
+	}
+	
+	//	결제시 포인트 차감
+	@Override
+	public void minusPoint(String u_id, int totalPrice) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("u_id", u_id);
+		paramMap.put("totalPrice", totalPrice);
+		sqlSession.selectOne(NAMESPACE + "minusPoint", paramMap);
+	}
+
+	//	결제시 포인트 적립
+	@Override
+	public void plusPoint(String u_id, int totalPrice) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("u_id", u_id);
+		paramMap.put("totalPrice", (int)(totalPrice * 0.1));
+		sqlSession.selectOne(NAMESPACE + "plusPoint", paramMap);
+	}
+	
+	//	총 적립 포인트
+	@Override
+	public List<CjhPointVo> getTotalPoint(String u_id) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "getTotalPoint", u_id);
+	}
+
+	
 }

@@ -24,6 +24,19 @@
 }
 </style>
 
+<c:forEach var="item" items="${list}" varStatus="status">
+	<tr class="calculation1_tbody_tr1" style="height: 90px; background-color: #fff; display:none;" >
+	<td>dddddddddddddd</td>
+<%-- 		<td style="border-left: none; border-right: none;">${item.point_num}</td> --%>
+		
+<%-- 		<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.point_content}</td> --%>
+		
+<%-- 		<td><span id="point_value" style="padding-left: 10px;">${item.point_value}</span>원</td> --%>
+		
+<%-- 		<td><span name="point_date" style="padding-left: 10px;">${item.point_date}</span></td> --%>
+	</tr>
+</c:forEach>
+
 
 <div class="bg-light py-3">
 	<div class="container">

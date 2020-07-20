@@ -20,9 +20,10 @@ public interface CjhUserDao {
 	public void updateUser(CjhUserVo userVo) throws Exception;
 	
 	//	포인트 정보 불러오기
-	public CjhPointVo getPoint(String u_id) throws Exception;
+	public List<CjhPointVo> getPoint(String u_id) throws Exception;
 	
 	//	유저의 포인트값 불러오기
 	public int getUserPoint(String u_id) throws Exception;
 	
+
 }
