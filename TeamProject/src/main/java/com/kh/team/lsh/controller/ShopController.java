@@ -21,10 +21,13 @@ public class ShopController {
 	private LSH_BoardService boardService;
 	
 	@RequestMapping(value="/shop", method = RequestMethod.GET)
-	public String shop(LshBoardDto LshBoardDto, Model model, String p_main, String p_serve) throws Exception {
-		List<LshBoardVo> list = boardService.list(LshBoardDto, p_main, p_serve);
+	public String shop(LshBoardDto lshBoardDto, Model model, String p_main, String p_serve) throws Exception {
+		lshBoardDto.setPageInfo();
+		int totalCount = boardService.getCount(lshBoardDto, p_main, p_serve);
+		lshBoardDto.setTotalCount(totalCount);
+		List<LshBoardVo> list = boardService.list(lshBoardDto, p_main, p_serve);
 		model.addAttribute("list", list);
-		model.addAttribute("LshBoardDto", LshBoardDto);
+		model.addAttribute("lshBoardDto", lshBoardDto);
 		model.addAttribute("p_main", p_main);
 		model.addAttribute("p_serve", p_serve);
 		return "lsh/shop";
@@ -35,8 +38,8 @@ public class ShopController {
 	
 	@RequestMapping(value="/shop_single", method = RequestMethod.GET)
 	public void shop_single(int p_num, Model model) throws Exception {
-		LshBoardVo LshBoardVo = boardService.single(p_num);
-		model.addAttribute("LshBoardVo", LshBoardVo);
+		LshBoardVo lshBoardVo = boardService.single(p_num);
+		model.addAttribute("lshBoardVo", lshBoardVo);
 	}
 	
 	@RequestMapping(value="/cart")

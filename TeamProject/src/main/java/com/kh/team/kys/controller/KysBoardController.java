@@ -40,13 +40,9 @@ public class KysBoardController {
 	@RequestMapping(value="/normal_list",method = RequestMethod.GET)
 	public void normal_list(Kys_BoardDto boardDto, Model model) throws Exception{
 		boardDto.setPageInfo();
-//		List<Kys_BoardVo> list = boardService.boardList(boardDto);
 		int totalCount = boardService.getCount(boardDto);
-		
 		boardDto.setTotalCount(totalCount);
-	
 		List<Kys_BoardVo> pageList = boardService.pageList(boardDto);
-//		model.addAttribute("list",list);
 		model.addAttribute("pageList",pageList);
 		model.addAttribute("boardDto",boardDto);
 		
@@ -69,8 +65,10 @@ public class KysBoardController {
 	//상품 1개 검색
 	@RequestMapping(value="oenSelect", method = RequestMethod.GET)
 	public void oenSelect(Model model, int p_num) throws Exception {
+		List<Kys_BoardVo> listImg = boardService.imgSelectBy(p_num);
 		Kys_BoardVo boardVo = boardService.boardSelectBy(p_num);
 		model.addAttribute("boardVo",boardVo);
+		model.addAttribute("listImg",listImg);
 		
 	}
 	//상품 수정 처리

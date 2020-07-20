@@ -5,6 +5,8 @@
 
 <script>
 $(function() {
+	
+	// 게시물 클릭
 	$("a.title").click(function(e) {
 		e.preventDefault();
 		var p_num = $(this).attr("data-p_num");
@@ -13,20 +15,22 @@ $(function() {
 		$("#singlePage").submit();
 	});
 	
+	// 가격순으로 정렬
 	$("#price").change(function() {
 		var priceType = $("select[name=priceType]").val();
-		if (${p_main != null}) {
+		if ("${p_main}" != "") {
 			$("#mainPage > input[name=priceType]").val(priceType);
 			$("#mainPage").submit();
-		} else if (${p_serve != null}) {
+		} else if ("${p_serve}" != "") {
 			$("#servePage > input[name=priceType]").val(priceType);
 			$("#servePage").submit();
-		} else {
+		} else { 
 			$("#shop > input[name=priceType]").val(priceType);
 			$("#shop").submit();
 		}
 	});
 	
+	// 메인 메뉴 클릭
 	$(".main").click(function(e) {
 		e.preventDefault();
 		var length =$(this).attr("href").length;
@@ -35,6 +39,7 @@ $(function() {
 		$("#mainPage").submit();
 	});
 	
+	// 서브 메뉴 클릭
 	$(".serve > li > a").click(function(e) {
 		e.preventDefault();  
 		var length = $(this).attr("href").length;
@@ -42,25 +47,35 @@ $(function() {
 		$("#servePage > input[name=p_serve]").val(p_serve); 
 		$("#servePage").submit();
 	}); 
+	
+	// 현재 페이지 액티브
+	$("a.page").each(function() {
+		var page = $(this).attr("href");
+		if (page == "${lshBoardDto.page}") {
+			$(this).parent().addClass("active");
+			return;
+		}
+	});
+	
+	// 쪽번호 클릭
+	$("a.page").click(function(e) {
+		e.preventDefault();
+		var page = $(this).attr("href").trim();
+		if ("${p_main}" != "") {
+			$("#mainPage > input[name=page]").val(page);
+			$("#mainPage").submit();
+		} else if ("${p_serve}" != "") {
+			$("#servePage > input[name=page]").val(page);
+			$("#servePage").submit();
+		} else { 
+			$("#shop > input[name=page]").val(page);
+			$("#shop").submit();
+		}
+	});
 });
 </script>
-<form id="singlePage" action="/lsh/shop" method="get">
-	<input type="hidden" name="p_num" value="${LshBoardVo.p_num}"/>
-</form>
 
-<form id="mainPage" action="/lsh/shop" method="get">
-	<input type="hidden" name="p_main" value="${p_main}"/>
-	<input type="hidden" name="priceType" value="${LshBoardDto.priceType}"/>
-</form>
-
-<form id="servePage" action="/lsh/shop" method="get">
-	<input type="hidden" name="p_serve" value="${p_serve}"/> 
-	<input type="hidden" name="priceType" value="${LshBoardDto.priceType}"/>
-</form>
-
-<form id="shop" action="/lsh/shop" method="get">
-	<input type="hidden" name="priceType" value="${LshBoardDto.priceType}"/>
-</form>
+<%@ include file="frmPage.jsp" %>
 
     <div class="bg-light py-3">
       <div class="container">
@@ -83,15 +98,15 @@ $(function() {
             <div class="row">
               <div class="col-md-12 mb-5">
                 <div class="float-md-left mb-4"><h2 class="text-black h5">Shop</h2></div>
-                <div class="d-flex">
+                <div class="d-flex"> 
                   <div class="dropdown mr-1 ml-md-auto">
-                    
                     <select name="priceType" id="price">
+                    	<option>가격순</option>
                     	<option value="L" 
-                    		<c:if test="${LshBoardDto.priceType == 'L'}">selected</c:if>
+                    		<c:if test="${lshBoardDto.priceType == 'L'}">selected</c:if>
                     	>낮은 가격순</option>
                     	<option value="H" 
-                    	    <c:if test="${LshBoardDto.priceType == 'H'}">selected</c:if>
+                    	    <c:if test="${lshBoardDto.priceType == 'H'}">selected</c:if>
                     	>높은 가격순</option>
                     </select>
                     
@@ -101,20 +116,46 @@ $(function() {
             </div>
             
             <div class="row mb-5">
-			  <c:forEach items="${list}" var="LshBoardVo">
+			  <c:forEach items="${list}" var="lshBoardVo">
 	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
 	                  <figure class="block-4-image">
-	                    <a href="shop_single" class="title" data-p_num="${LshBoardVo.p_num}"><img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
+	                    <a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}"><img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
 	                  </figure>
 	                  <div class="block-4-text p-4">
-	                    <h3><a href="shop_single" class="title" data-p_num="${LshBoardVo.p_num}">${LshBoardVo.p_name}</a></h3>
-	                    <p class="mb-0">${LshBoardVo.p_content}</p>
-	                    <p class="text-primary font-weight-bold">${LshBoardVo.p_price}원</p>
+	                    <h3><a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}">${lshBoardVo.p_name}</a></h3>
+	                    <p class="mb-0">${lshBoardVo.p_content}</p>
+	                    <p class="text-primary font-weight-bold">${lshBoardVo.p_price}원</p>
 	                  </div>
 	                </div>
 	              </div>
               </c:forEach>
+            </div>
+            
+            <div class="row" data-aos="fade-up">
+              <div class="col-md-12 text-center">
+                <div class="site-block-27">
+                  <ul>
+                  	<c:if test="${lshBoardDto.startPage != 1}">
+	                    <li>
+	                    	<a class="page" href="${lshBoardDto.startPage - 1}">&lt;</a>
+	                    </li>
+                  	</c:if>
+                  	
+                  	<c:forEach begin="${lshBoardDto.startPage}" end="${lshBoardDto.endPage}" var="v">
+                    	<li>
+                    		<a class="page" href="${v}">${v}</a>
+                    	</li>
+                    </c:forEach>
+                    
+                    <c:if test="${lshBoardDto.endPage < lshBoardDto.totalPage}">
+	                    <li>
+	                    	<a class="page" href="${lshBoardDto.endPage + 1}">&gt;</a>
+	                    </li>
+                    </c:if>
+                  </ul>
+                </div>
+              </div>
             </div>
             
           </div>

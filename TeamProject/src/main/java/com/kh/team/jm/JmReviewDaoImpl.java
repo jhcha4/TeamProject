@@ -36,4 +36,17 @@ public class JmReviewDaoImpl implements JmReviewDao {
 		
 	}
 
+	@Override
+	public void updateReview(JmReviewVo jmReviewVo) throws Exception {
+		
+		sqlSession.update(NAMESPACE+"updateReview",jmReviewVo);
+		
+	}
+
+	@Override
+	public void deleteReview(int r_info) throws Exception {
+		sqlSession.delete(NAMESPACE+"deleteReview",r_info);
+		
+	}
+
 }

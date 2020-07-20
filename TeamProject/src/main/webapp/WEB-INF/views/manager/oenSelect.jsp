@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
     
-    
+<%@ include file="../include/main_style.jsp" %>
 <%@ include file="../include/head.jsp" %>
 <script type="text/javascript" >
 $(function() {
@@ -28,25 +28,29 @@ $(function() {
 	
 });
 </script>
-
+<%@ include file="../include/main_style.jsp" %>
 <%@ include file="../include/main_bar.jsp" %>
-
+${listImg}
 <div class="site-section">
 
 	<div class="container">
-		<div class="row">
 
-			<div class="col-md-4">
-				<img src="../../resources/images/cloth_1.jpg" alt="Image"
-					class="img-fluid">
-			</div>
-			<form id="formSubmit" role="form" action="/manager/productUpdate" method="post">
-			<input type="hidden" name="p_num" value="${boardVo.p_num}"/>
-				<div class="col-md-4">
+		<form id="formSubmit" role="form" action="/manager/productUpdate"
+			method="post">
+			<input type="hidden" name="p_num" value="${boardVo.p_num}" />
+			<div class="row">
+				<div class="col-md-6">
+					<img src="../../resources/images/cloth_1.jpg" alt="Image"
+						class="img-fluid">
+				</div>
+
+
+				<div class="col-md-6">
 
 					<!-- 상품 등록 상세 메뉴 select 바-->
 					<div>
-						<label>main : </label> <select name="p_main" id="mainOption" disabled="disabled">
+						<label>main : </label> <select name="p_main" id="mainOption"
+							disabled="disabled">
 							<option value="T" selected="selected">상의
 							<option value="P">하의
 							<option value="A">악세사리
@@ -55,7 +59,7 @@ $(function() {
 					</div>
 					<div>
 						<label>serve : </label> <select name="p_serve" id="serveOption">
-						<c:if test="${boardVo.p_main == 'T' }">
+							<c:if test="${boardVo.p_main == 'T' }">
 								<option value="TH">반팔
 								<option value="TL">긴팔
 								<option value="TS">셔츠
@@ -85,18 +89,21 @@ $(function() {
 
 
 					<h2 class="text-black">
-						상품이름:<input type="text" id="p_name" name="p_name" value="${boardVo.p_name}">
+						상품이름:<input type="text" id="p_name" name="p_name"
+							value="${boardVo.p_name}">
 					</h2>
 					<p id="p_content" name="p_content">상품 설명</p>
 					<textarea rows="" cols="" id="p_content" name="p_content">${boardVo.p_content}</textarea>
 					<p class="mb-4">상품 설명2</p>
 					<p>
-						<strong class="text-primary h4">
-						 가격:<input type="text" id="p_price" name="p_price" value="${boardVo.p_price}">
+						<strong class="text-primary h4"> 가격:<input type="text"
+							id="p_price" name="p_price" value="${boardVo.p_price}">
 						</strong>
 					</p>
-					<p>상품 코드 
-					<input type="text" value="${boardVo.p_main}${boardVo.p_serve}${boardVo.p_num}" disabled="disabled"/>
+					<p>
+						상품 코드 <input type="text"
+							value="${boardVo.p_main}${boardVo.p_serve}${boardVo.p_num}"
+							disabled="disabled" />
 					</p>
 					<!-- 채크 리스트 -->
 					<div class="mb-1 d-flex">
@@ -121,26 +128,22 @@ $(function() {
 								type="checkbox" id="option-xl" name="shop-sizes"></span> <span
 							class="d-inline-block text-black"> Extra Large</span>
 						</label>
+						</div>
+						<div>
+							<!-- 상품 등록 버튼 -->
+							<button type="submit" class="btn btn-sm btn-primary">상품수정하기</button>
+						</div>
 					</div>
-					<div class="mb-5">
-
-
-
-
-
-
-
-						<!-- 상품 등록 버튼 -->
-					</div>
-					<button type="submit" class="btn btn-sm btn-primary">상품수정하기</button>
-
 				</div>
-			</form>
-
-		</div>
+				<div class="col-md-12">
+					<label>상품 이미지</label>
+					<div id="imgDiv">
+						<div id="imgFileDrop" class="btn btn-primary" style="margin-buttom: 10px;"></div>
+					</div>
+				</div>
+		</form>
 	</div>
 </div>
-
 
 
 

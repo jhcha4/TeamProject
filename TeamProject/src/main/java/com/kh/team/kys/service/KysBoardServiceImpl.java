@@ -1,10 +1,12 @@
 package com.kh.team.kys.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
@@ -24,21 +26,27 @@ public class KysBoardServiceImpl implements KysBoardService {
 	//등록
 	@Override
 	public void boardInsert(Kys_BoardVo boardVo) throws Exception {
+		int p_num = boardDao.getNextVal();
+		boardVo.setP_num(p_num);
 		boardDao.boardInsert(boardVo);
+		System.out.println("p_file : "+boardVo.getP_files());
 		
+		String[] files = boardVo.getP_files();
+		for (String file_name : files) {
+			boardDao.imgFile(file_name, p_num);
+		}
 	}
-
+	//수정 처리
 	@Override
 	public void boardUpdate(Kys_BoardVo boardVo) throws Exception {
 		boardDao.boardUpdate(boardVo);
-		
 	}
 
 	@Override
 	public void boardDelete(int p_num) throws Exception {
 		boardDao.boardDelete(p_num);
 	}
-
+	//게시물 1개 불러오기
 	@Override
 	public Kys_BoardVo boardSelectBy(int p_num) throws Exception {
 			return boardDao.boardSelectBy(p_num);
@@ -68,10 +76,16 @@ public class KysBoardServiceImpl implements KysBoardService {
 		boardDao.boardRestoration(p_num);
 		
 	}
+	
 	@Override
 	public void delete(int p_num) throws Exception {
 		boardDao.delete(p_num);
 		
+	}
+	@Override
+	public List<Kys_BoardVo> imgSelectBy(int p_num) throws Exception {
+		List<Kys_BoardVo> listImg = boardDao.imgSelectBy(p_num);
+		return listImg;
 	}
 	
 }

@@ -6,14 +6,22 @@
 <mapper namespace="mappers.lshboard-mapper">
 
 	<select id="list" resultType="LshBoardVo">
-		select * from tbl_product_board
-		<include refid="type"/>
-		order by <include refid="price"/>p_num desc
+		select *
+		from (select rownum rnum, a.*
+		    from (select * from tbl_product_board
+		        <include refid="type"/>
+		        order by <include refid="price"/>p_num desc) a)
+				where rnum between #{lshBoardDto.startRow} and #{lshBoardDto.endRow}
 	</select>
 	
 	<select id="single" resultType="LshBoardVo">
 		select * from tbl_product_board
 		where p_num = #{p_num}
+	</select>
+	
+	<select id="getCount" resultType="int">
+		select count(*) from tbl_product_board
+		<include refid="type"/>
 	</select>
 	
 	<sql id="price">

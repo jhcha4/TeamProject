@@ -11,5 +11,6 @@ public interface LSH_BoardDao {
 	
 	public LshBoardVo single(int p_num) throws Exception;
 	
+	public int getCount(LshBoardDto lshBoardDto, String p_main, String p_serve) throws Exception;
 }
 
