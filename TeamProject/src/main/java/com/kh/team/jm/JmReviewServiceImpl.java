@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmReviewVo;
 
 @Service
@@ -52,6 +53,22 @@ public class JmReviewServiceImpl implements JmReviewService {
 	public void deleteReview(int r_info) throws Exception {
 		jmReviewDao.deleteReview(r_info);
 		
+	}
+
+
+
+	@Override
+	public List<JmReviewVo> selectPaging(JmPagingDto jmPagingDto) throws Exception {
+		List<JmReviewVo> list = jmReviewDao.selectPaging(jmPagingDto);
+		return list;
+	}
+
+
+
+	@Override
+	public int selectCount(JmPagingDto jmPagingDto) throws Exception {
+		
+		return jmReviewDao.selectCount(jmPagingDto);
 	}
 
 }

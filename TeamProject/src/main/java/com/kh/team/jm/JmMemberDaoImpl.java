@@ -10,7 +10,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kh.team.domain.JmMemberVo;
+import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmPwEmailDto;
+import com.kh.team.domain.JmReviewVo;
 
 @Repository
 public class JmMemberDaoImpl implements JmMemberDao {
@@ -78,5 +80,6 @@ public class JmMemberDaoImpl implements JmMemberDao {
 		
 		return SqlSession.selectOne(NAMESPACE+"selectId",u_id);
 	}
+	
 
 }

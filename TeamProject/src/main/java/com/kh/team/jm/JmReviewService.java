@@ -2,6 +2,7 @@ package com.kh.team.jm;
 
 import java.util.List;
 
+import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmReviewVo;
 
 public interface JmReviewService {
@@ -21,4 +22,13 @@ public interface JmReviewService {
 	
 	//리뷰 게시판 삭제기능
 	public void deleteReview(int r_info)throws Exception;
+	
+	//글목록 페이징
+	public List<JmReviewVo> selectPaging(JmPagingDto jmPagingDto)throws Exception;
+	
+	//게시글 수 조회
+	public int selectCount(JmPagingDto jmPagingDto)throws Exception;
+	
+	
+	
 }

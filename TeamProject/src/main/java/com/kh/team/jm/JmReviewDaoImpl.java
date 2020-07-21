@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmReviewVo;
 
 @Repository
@@ -47,6 +48,20 @@ public class JmReviewDaoImpl implements JmReviewDao {
 	public void deleteReview(int r_info) throws Exception {
 		sqlSession.delete(NAMESPACE+"deleteReview",r_info);
 		
+	}
+
+	@Override
+	public List<JmReviewVo> selectPaging(JmPagingDto jmPagingDto) throws Exception {
+		System.out.println(jmPagingDto);
+		List<JmReviewVo> list = sqlSession.selectList(NAMESPACE+"selectPaging",jmPagingDto);
+		System.out.println("Dao, list:" + list);
+		return list;
+	}
+
+	@Override
+	public int selectCount(JmPagingDto jmPagingDto) throws Exception {
+		
+		return sqlSession.selectOne(NAMESPACE+"selectCount",jmPagingDto);
 	}
 
 }

@@ -3,7 +3,9 @@ package com.kh.team.jm;
 import java.util.List;
 
 import com.kh.team.domain.JmMemberVo;
+import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmPwEmailDto;
+import com.kh.team.domain.JmReviewVo;
 
 public interface JmMemberDao {
 
@@ -35,6 +37,7 @@ public interface JmMemberDao {
 	
 	//아이디중복체크
 	public String selectId(String u_id)throws Exception;
+	
 	
 	
 	
