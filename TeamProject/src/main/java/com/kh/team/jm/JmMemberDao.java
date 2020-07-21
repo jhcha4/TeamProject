@@ -39,6 +39,12 @@ public interface JmMemberDao {
 	public String selectId(String u_id)throws Exception;
 	
 	
+	//글 목록 페이징
+	public List<JmMemberVo>selectUserPaging(JmPagingDto jmPagingDto)throws Exception; 
+	
+	
+	//게시글 수 조회
+	public int selectUserCount(JmPagingDto jmPagingDto)throws Exception;
 	
 	
 }
