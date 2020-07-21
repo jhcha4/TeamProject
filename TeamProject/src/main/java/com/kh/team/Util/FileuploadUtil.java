@@ -11,6 +11,7 @@ import org.imgscalr.Scalr;
 import org.springframework.util.FileCopyUtils;
 
 public class FileuploadUtil {
+	
 	public static String uploadFile(String uploadPath,String originalName,byte[] fileData) throws Exception{
 		UUID uuid = UUID.randomUUID();
 		System.out.println("uuid:"+uuid);
