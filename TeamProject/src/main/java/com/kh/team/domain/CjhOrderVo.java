@@ -9,13 +9,14 @@ public class CjhOrderVo {
 	private int o_status;
 	private Timestamp o_date;
 	private int p_count;
+	private String p_size;
 	
 	public CjhOrderVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CjhOrderVo(int p_num, String u_id, int o_num, int o_status, Timestamp o_date, int p_count) {
+	public CjhOrderVo(int p_num, String u_id, int o_num, int o_status, Timestamp o_date, int p_count, String p_size) {
 		super();
 		this.p_num = p_num;
 		this.u_id = u_id;
@@ -23,6 +24,7 @@ public class CjhOrderVo {
 		this.o_status = o_status;
 		this.o_date = o_date;
 		this.p_count = p_count;
+		this.p_size = p_size;
 	}
 
 	public int getP_num() {
@@ -72,11 +74,19 @@ public class CjhOrderVo {
 	public void setP_count(int p_count) {
 		this.p_count = p_count;
 	}
+	
+	public String getP_size() {
+		return p_size;
+	}
+
+	public void setP_size(String p_size) {
+		this.p_size = p_size;
+	}
 
 	@Override
 	public String toString() {
 		return "CjhOrderVo [p_num=" + p_num + ", u_id=" + u_id + ", o_num=" + o_num + ", o_status=" + o_status
-				+ ", o_date=" + o_date + ", p_count=" + p_count + "]";
+				+ ", o_date=" + o_date + ", p_count=" + p_count + ", p_size=" + p_size + "]";
 	}
 	
 }

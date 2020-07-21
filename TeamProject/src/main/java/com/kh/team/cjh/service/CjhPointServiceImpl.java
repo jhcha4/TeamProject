@@ -55,20 +55,19 @@ public class CjhPointServiceImpl implements CjhPointService {
 
 	//	유저의 포인트 목록
 	@Override
-	public List<CjhPointVo> listPoint(String u_id) throws Exception {
-		List<CjhPointVo> list= pointDao.listPoint(u_id);
+	public List<CjhPointVo> listPoint(String u_id, int point_code) throws Exception {
+		List<CjhPointVo> list= pointDao.listPoint(u_id, point_code);
 		return list;
 	}
 	
-//	//	유저의 포인트 목록
+	//	유저의 포인트 목록
 //	@Override
 //	public List<CjhPointVo> listPoint(String u_id, CjhPagingDto pagingDto) throws Exception {
-//		System.out.println("pagingDto : " + pagingDto);
 //		List<CjhPointVo> list= pointDao.listPoint(u_id, pagingDto);
 //		return list;
 //	}
 
-	// 유저의 
+	// 유저의 포인트
 	@Override
 	public int getUserPoint(String u_id) throws Exception {
 		return pointDao.getUserPoint(u_id);

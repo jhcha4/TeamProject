@@ -20,8 +20,16 @@ $(document).ready(function() {
 	});
 	
 	$("#pointType").change(function() {
-		var pointType = $(this).val();
-		console.log("pointType : " + pointType);
+		var point_code = $(this).val();
+		console.log("point_code : " + point_code);
+		$("select option").each(function() {
+			if ($(this).val() == point_code) {
+				$(this).attr("selected");
+			} else {
+				$(this).removeAttr("selected");
+				console.log($(this).val());
+			}
+		});
 		location.href="/cjh/myPoint?u_id=${u_id}&point_code=" + point_code;
 	});
 });
@@ -52,9 +60,12 @@ ${list}
 							<div class="d-flex"> 
 								<div class="dropdown mr-1 ml-md-auto">
 								<select id="pointType" id="pointType">
-									<option value="0">전체</option>
-									<option value="1001">받은 포인트</option>
-									<option value="1002">사용 포인트</option>
+									<option value=1002
+										<c:if test="${point_code == 1002}">selected</c:if>
+									>받은 포인트</option>
+									<option value=1003
+										<c:if test="${point_code == 1003}">selected</c:if>
+									>사용 포인트</option>
 								</select>
 								</div>
 							</div>

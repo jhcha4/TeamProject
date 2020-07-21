@@ -28,15 +28,19 @@ public class CjhMyInfoController {
 	private CjhUserService userService;
 	@Inject
 	private CjhPointService pointService;
+	@Inject
+	private CjhCartService cartService;
 	
 	@RequestMapping(value="/home")
-	public String home() throws Exception {
-		return "redirect:/home";
+	public String home(HttpSession session, Model model) throws Exception {
+		int count = (int)session.getAttribute("count");
+		model.addAttribute("count", count);
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/index")
 	public String index() throws Exception {
-		return "cjh/index";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/about")
@@ -73,15 +77,18 @@ public class CjhMyInfoController {
 	
 //	로그인 처리 폼
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPost(String u_id, String u_pw, Model model,
+	public String loginPost(String u_id, String u_pw,
 							HttpSession session, RedirectAttributes rttr) throws Exception {
 //		System.out.println("u_id : " + u_id);
 //		System.out.println("u_pw : " + u_pw);
 		boolean result = userService.login(u_id, u_pw);
+		int count = cartService.getCountCart(u_id); 
 		if (result == true) {
 			//	해당 사용자가 있다면 아이디를 세션에 저장
 			
 			session.setAttribute("u_id", u_id);
+			session.setAttribute("count", count);
+			System.out.println("count;" + count);
 			String targetLocation = (String)session.getAttribute("targetLocation");
 			if (targetLocation != null && !targetLocation.equals("")) {
 				session.removeAttribute("targetLocation");
@@ -131,16 +138,18 @@ public class CjhMyInfoController {
 	
 	//	적립금 페이지
 	@RequestMapping(value="/myPoint", method = RequestMethod.GET)
-	public void myPoint(String u_id,  Model model) throws Exception {
-		List<CjhPointVo> list= pointService.listPoint(u_id);
+	public void myPoint(String u_id, int point_code, Model model) throws Exception {
+		List<CjhPointVo> list = pointService.listPoint(u_id, point_code);
 		model.addAttribute("list", list);
+		model.addAttribute("point_code", point_code);
 	}
 	
-//	//	적립금 페이지
+	//	적립금 페이지
 //	@RequestMapping(value="/myPoint", method = RequestMethod.GET)
 //	public void myPoint(String u_id, CjhPagingDto pagingDto, Model model) throws Exception {
-////		System.out.println("pagingDto : " + pagingDto);
-//		List<CjhPointVo> list= pointService.listPoint(u_id, pagingDto);
+//		List<CjhPointVo> list = pointService.listPoint(u_id, pagingDto);
 //		model.addAttribute("list", list);
+//		model.addAttribute("pagingDto", pagingDto);
 //	}
+	
 }

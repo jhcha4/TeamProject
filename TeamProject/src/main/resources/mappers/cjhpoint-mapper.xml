@@ -52,18 +52,21 @@
 		order by point_num desc
 	</select>
 	
-	<sql id="point">
-		<if test="CjhPagingDto.point_code != ''">
-			<choose>
-				<when test='CjhPagingDto.point_code = 0'>
-				</when>
-				<when test='CjhPagingDto.point_code = 1002'>
-					and p.point_code = 1002
-				</when>
-				<when test='CjhPagingDto.point_code = 1003'>
-					and p.point_code = 1003
-				</when>
-			</choose>
-		</if>
-	</sql>
+<!-- 	<sql id="point"> -->
+<!-- 		<if test="point_code != null"> -->
+<!-- 			<choose> -->
+<!-- 				<when test='point_code = 1002'> -->
+<!-- 					and p -->
+<!-- 					and p.point_code = 1002 -->
+<!-- 				</when> -->
+<!-- 				<when test='CjhPagingDto.point_code = 1002'> -->
+<!-- 					and p.point_code = 1002 -->
+<!-- 				</when> -->
+<!-- 				<when test='CjhPagingDto.point_code = 1003'> -->
+<!-- 					and p.point_code = 1003 -->
+<!-- 				</when> -->
+<!-- 			</choose> -->
+<!-- 		</if> -->
+<!-- 	</sql> -->
+
 </mapper>

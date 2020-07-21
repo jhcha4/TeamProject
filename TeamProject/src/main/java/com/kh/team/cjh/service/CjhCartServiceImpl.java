@@ -53,6 +53,7 @@ public class CjhCartServiceImpl implements CjhCartService {
 		return cartDao.getOrder(u_id);
 	}
 
+	//	장바구니 갯수 불러오기
 	@Override
 	public int getCountCart(String u_id) throws Exception {
 		return cartDao.getCountCart(u_id);

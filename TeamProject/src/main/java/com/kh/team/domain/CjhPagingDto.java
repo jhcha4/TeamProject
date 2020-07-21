@@ -12,7 +12,7 @@ public class CjhPagingDto {
 	private int startPage;			//	페이지 블럭에서 시작 페이지
 	private int endPage;			//	페이지 블럭에서 끝 페이지
 	private final int PAGE_BLOCK = 10;		//	페이지 블럭 수
-	private int point_code = 0;
+	private int point_code = 1002;
 	
 	public void setPageInfo() {
 		this.endRow = page * perPage;
