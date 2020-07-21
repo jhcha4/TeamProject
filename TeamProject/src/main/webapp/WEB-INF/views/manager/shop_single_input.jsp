@@ -25,6 +25,41 @@ $(function() {
 			$("#serveOption").append(options[12]).append(options[13]).append(options[14]).append(options[15]).append(selected);
 	});
 	//이미지 파일 드롭
+	//타이틀 이미지
+<%@ include file="../include/main_ImgFile.jsp" %>
+	$("#titleImg").on("dragenter dragover", function(e){
+		e.preventDefault();
+	});
+	
+	$("#titleImg").on("drop",function(e){
+		e.preventDefault();
+		$(this).css("height", "auto");
+		var file = e.originalEvent.dataTransfer.files[0];
+		var formData = new FormData();
+		formData.append("file",file);
+		var url= "/upload/imgFile";
+		$.ajax({
+			"processData" : false,
+			"contentType" : false,
+			"type" : "post",
+			"url" : url,
+			"data" :formData,
+			"success" : function(rData) {
+				console.log(rData)
+				var slashIndex = rData.lastIndexOf("/");
+				var front = rData.substring(0, slashIndex +1);
+				var rear = rData.substring(slashIndex +1);
+				var thumbnailName = front +"sm_"+ rear;
+				var originalFilename = rData.substring(rData.indexOf("_")+1);
+				var html ="<div data-filename='"+rData+"'>";
+					html += "<img class='img-rounded' src='/upload/displayFile?fileName="+thumbnailName+"' /><br>";
+					html += "<span>"+originalFilename+"</span>";
+					html +="<a href='"+rData+"' class='attach-del'><span class='pull-rigth'>X</span></a>";
+					html +="</div>";
+					$("#titleImg").append(html);
+			}
+		});
+	});
 	$("#imgFileDrop").on("dragenter dragover", function(e){
 		e.preventDefault();
 	});
@@ -48,24 +83,40 @@ $(function() {
 				var front = rData.substring(0, slashIndex +1);
 				var rear = rData.substring(slashIndex +1);
 				var thumbnailName = front + rear;
-// 				var thumbnailName = front +"sm_"+ rear;
-				
 				var originalFilename = rData.substring(rData.indexOf("_")+1);
-				
 				var html ="<div data-filename='"+rData+"'>";
-					html += "<img class='img-rounded' src='/upload/displayFile?fileName="+thumbnailName+"' /> ";
+					html += "<img class='img-rounded' src='/upload/displayFile?fileName="+thumbnailName+"' /><br>";
 					html += "<span>"+originalFilename+"</span>";
 					html +="<a href='"+rData+"' class='attach-del'><span class='pull-rigth'>X</span></a>";
 					html +="</div>";
 					$("#imgFileDrop").append(html);
-
+			}
+		});
+	});
+	//타이틀 이미지 삭제 
+	$("#titleImg").on("click",".attach-del", function(e){
+		e.preventDefault();
+		$(this).css("height", "200px");
+		var that = $(this);
+		
+		var filename = $(this).attr("href");
+		var url= "/upload/deleteFile";
+		var sendData= {"filename" : filename};
+		$.ajax({
+			"type" : "get",
+			"url" : url,
+			"data" : sendData,
+			"success" : function(rData){
+				that.parent().remove();
 			}
 		});
 	});
 	//삭제 버튼
 	$("#imgFileDrop").on("click",".attach-del", function(e){
 		e.preventDefault();
+		$(this).css("height", "200px");
 		var that = $(this);
+		
 		var filename = $(this).attr("href");
 		var url= "/upload/deleteFile";
 		var sendData= {"filename" : filename};
@@ -81,12 +132,20 @@ $(function() {
 	
 	$("#formSubmit").submit(function(){
 		var upDiv = $("#imgFileDrop > div");
+		var titleDiv = $("#titleImg > div");
 		console.log("upDiv:"+upDiv);
 		upDiv.each(function(index){
 			var filename = $(this).attr("data-filename");
-			console.log("submit filename:"+filename);
-			console.log("formsubmit/filename:"+filename);
+// 			console.log("submit filename:"+filename);
+// 			console.log("formsubmit/filename:"+filename);
 			var hiddenInput = "<input type='hidden' name='p_files["+index+"]' value='"+filename+"'/>";
+			$("#formSubmit").prepend(hiddenInput);
+		});
+		titleDiv.each(function(index){
+			var filename = $(this).attr("data-filename");
+// 			console.log("submit filename:"+filename);
+// 			console.log("formsubmit/filename:"+filename);
+			var hiddenInput = "<input type='hidden' name='title_name' value='"+filename+"'/>";
 			$("#formSubmit").prepend(hiddenInput);
 		});
 		
@@ -105,7 +164,11 @@ $(function() {
 			<div class="row">
 
 				<div class="col-md-6">
-					<div id="subImg"></div>
+					<div >
+						<div id="titleImg" class="btn btn-primary imgDrop" style="margin-button: 10px;">
+						
+						</div>
+					</div>
 				
 				</div>
 				
@@ -179,7 +242,7 @@ $(function() {
 					</div>
 					<!-- 사이즈 끝 -->
 
-					<button type="submit" class="btn btn-sm btn-primary">상품
+					<button type="submit" class="btn btn-sm btn-primary imgDrop">상품
 						등록하기</button>
 				</div>
 

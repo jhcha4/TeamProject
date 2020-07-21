@@ -32,8 +32,8 @@ $(function() {
           </div>
         </div>
       </div>
-    </div>  
-
+    </div> 
+    
     <div class="site-section">
       <div class="container">
         <div class="row">
@@ -45,6 +45,30 @@ $(function() {
             <p>${lshBoardVo.p_content}</p>
             <p><strong class="text-primary h4">${lshBoardVo.p_price}원</strong></p>
             <div class="mb-1 d-flex">
+              <label for="option-sm" class="d-flex mr-3 mb-3">
+                <span class="d-inline-block mr-2" style="top:-2px; position: relative;">
+                	<input type="radio" id="option-sm" name="shop-sizes">
+	                <span class="d-inline-block text-black">Small</span>
+                </span>
+              </label>
+              <label for="option-md" class="d-flex mr-3 mb-3">
+                <span class="d-inline-block mr-2" style="top:-2px; position: relative;">
+                	<input type="radio" id="option-md" name="shop-sizes">
+	                <span class="d-inline-block text-black">Medium</span>
+                </span> 
+              </label>
+              <label for="option-lg" class="d-flex mr-3 mb-3">
+                <span class="d-inline-block mr-2" style="top:-2px; position: relative;">
+                	<input type="radio" id="option-lg" name="shop-sizes">
+	                <span class="d-inline-block text-black">Large</span>
+                </span> 
+              </label>
+              <label for="option-xl" class="d-flex mr-3 mb-3">
+                <span class="d-inline-block mr-2" style="top:-2px; position: relative;">
+                	<input type="radio" id="option-xl" name="shop-sizes">
+	                <span class="d-inline-block text-black"> Extra Large</span>
+                </span> 
+              </label>
             </div>
             <div class="mb-6">
               <div class="input-group mb-3" style="max-width: 120px;"> 
@@ -55,7 +79,7 @@ $(function() {
 <!--               <div class="input-group-append"> -->
 <!--                 <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button> -->
 <!--               </div> -->
-            </div>
+              </div>
 
             </div>
             <p><a id="insertCart" class="buy-now btn btn-sm btn-primary">장바구니에 담기</a></p>
@@ -75,69 +99,26 @@ $(function() {
         <div class="row">
           <div class="col-md-12">
             <div class="nonloop-block-3 owl-carousel">
+            
+            <c:forEach items="${MostList}" var="lshBoardVo">
               <div class="item">
                 <div class="block-4 text-center">
-                  <figure class="block-4-image">
+                  <figure class="block-4-image title" >
                     <img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Tank Top</a></h3>
-                    <p class="mb-0">Finding perfect t-shirt</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="shop_single?p_num=${lshBoardVo.p_num}" class="title">${lshBoardVo.p_name}</a></h3>
+                    <p class="mb-0">${lshBoardVo.p_content}</p>
+                    <p class="text-primary font-weight-bold">${lshBoardVo.p_price}원</p>
                   </div>
                 </div>
               </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="../../resources/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="../../resources/images/cloth_2.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Polo Shirt</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="../../resources/images/cloth_3.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">T-Shirt Mockup</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="../../resources/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
+             </c:forEach>
+              
             </div>
           </div>
         </div>
+        
       </div>
     </div>
 

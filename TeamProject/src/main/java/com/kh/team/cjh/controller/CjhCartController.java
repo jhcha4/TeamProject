@@ -39,7 +39,7 @@ public class CjhCartController {
 		LshBoardVo boardVo = boardService.single(p_num);
 		System.out.println("boardVo : " + boardVo);
 		cartService.insertCart(u_id, p_count, boardVo); 
-		return "redirect:/cjh/cart?u_id=" + u_id;
+		return "redirect:/cjh/cart?u_id=" + u_id; 
 	}
 	
 	//	장바구니 목록보기
@@ -71,16 +71,21 @@ public class CjhCartController {
 	public String checkout(String u_id, Model model) throws Exception {
 //		System.out.println("u_id : " + u_id);
 		List<CjhCartVo> list = cartService.getCart(u_id);
-		int userPoint = userService.getUserPoint(u_id);
+		int userPoint = pointService.getUserPoint(u_id);
 		model.addAttribute("userPoint", userPoint);
 		model.addAttribute("list", list);
 		return "cjh/checkout";
 	}
 	
 	//	결제 처리
+	@Transactional
 	@RequestMapping(value="/order", method = RequestMethod.GET)
 	public String order(String u_id, int totalPrice) throws Exception {
+		pointService.minusPoint(u_id, totalPrice);
+		pointService.plusPoint(u_id, totalPrice);
 		pointService.usePoint(u_id, totalPrice);
+		pointService.getPoint(u_id, totalPrice);
+		
 		cartService.orderCartUpdate(u_id);
 		return "/cjh/thankyou";
 	}

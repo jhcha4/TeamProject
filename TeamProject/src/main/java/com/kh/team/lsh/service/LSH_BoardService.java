@@ -12,4 +12,6 @@ public interface LSH_BoardService {
 	public LshBoardVo single(int p_num) throws Exception;
 
 	public int getCount(LshBoardDto lshBoardDto, String p_main, String p_serve) throws Exception;
+	
+	public List<LshBoardVo> MostList() throws Exception;
 }

@@ -13,7 +13,7 @@ public class Kys_BoardVo {
 	private int viewcnt;
 	
 	private String[] p_files;
-	
+	private String title_name;
 	public Kys_BoardVo() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -111,16 +111,31 @@ public class Kys_BoardVo {
 
 
 
+	
+
+
+
+
+
+	public String getTitle_name() {
+		return title_name;
+	}
+
+
+
+	public void setTitle_name(String title_name) {
+		this.title_name = title_name;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Kys_BoardVo [p_num=" + p_num + ", p_name=" + p_name + ", p_content=" + p_content + ", p_price="
 				+ p_price + ", p_main=" + p_main + ", p_serve=" + p_serve + ", p_deleted=" + p_deleted + ", viewcnt="
-				+ viewcnt + ", p_files=" + Arrays.toString(p_files) + "]";
+				+ viewcnt + ", p_files=" + Arrays.toString(p_files) + ", title_name=" + title_name + "]";
 	}
 
-	
-
-	
 
 
 

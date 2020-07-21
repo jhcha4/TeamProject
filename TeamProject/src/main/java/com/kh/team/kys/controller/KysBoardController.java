@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
+import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.domain.Kys_MainVo;
 import com.kh.team.domain.Kys_ServeVo;
 import com.kh.team.kys.service.KysBoardService;
@@ -65,7 +66,8 @@ public class KysBoardController {
 	//상품 1개 검색
 	@RequestMapping(value="oenSelect", method = RequestMethod.GET)
 	public void oenSelect(Model model, int p_num) throws Exception {
-		List<Kys_BoardVo> listImg = boardService.imgSelectBy(p_num);
+		
+		List<Kys_ImgVo> listImg = boardService.imgSelectBy(p_num);
 		Kys_BoardVo boardVo = boardService.boardSelectBy(p_num);
 		model.addAttribute("boardVo",boardVo);
 		model.addAttribute("listImg",listImg);

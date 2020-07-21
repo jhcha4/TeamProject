@@ -24,6 +24,7 @@ public class LSH_BoardServiceImpl implements LSH_BoardService {
 	
 	@Override
 	public LshBoardVo single(int p_num) throws Exception {
+		boardDao.updateViewCnt(p_num);
 		LshBoardVo boardVo = boardDao.single(p_num);
 		return boardVo;
 	}
@@ -31,6 +32,11 @@ public class LSH_BoardServiceImpl implements LSH_BoardService {
 	@Override
 	public int getCount(LshBoardDto lshBoardDto, String p_main, String p_serve) throws Exception {
 		return boardDao.getCount(lshBoardDto, p_main, p_serve);
+	}
+
+	@Override
+	public List<LshBoardVo> MostList() throws Exception {
+		return boardDao.MostList();
 	}
 
 }

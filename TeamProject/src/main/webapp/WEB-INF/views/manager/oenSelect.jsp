@@ -24,7 +24,28 @@ $(function() {
 		if(main == "A")                                                       
 			$("#serveOption").append(options[12]).append(options[13]).append(options[14]).append(options[15]);
 	});
+	//이미지 삭제 버튼
+	$("#imgFileDrop").on("click",".attach-del", function(e){
+		e.preventDefault();
+		var that = $(this);
+		var filename = $(this).attr("href");
+		var url = "/upload/deleteFile";
+		var sendData = {"filename" : filename};
+		$.ajax({
+			"type" : "GET",
+			"url" : url,
+			"data" : sendData,
+			"success" : function(rData){
+				console.log(rData);
+				that.parent().remove();
+			}
+		});
+	});
 	
+	$("#imgFileDrop").ready(function(e){
+		console.log(e);
+		$("#imgFileDrop").css("height", "auto");
+	});
 	
 });
 </script>
@@ -138,7 +159,14 @@ ${listImg}
 				<div class="col-md-12">
 					<label>상품 이미지</label>
 					<div id="imgDiv">
-						<div id="imgFileDrop" class="btn btn-primary" style="margin-buttom: 10px;"></div>
+						<div id="imgFileDrop" class="btn btn-primary" style="margin-buttom: 10px;">
+						 <c:forEach items="${listImg}" var="imgVo">
+							 <div data-filename="${imgVo.file_name}">
+								 <img class='img-rounded' src="/upload/displayFile?fileName=${imgVo.file_name}" > <br>
+								 <a href="${imgVo.file_name}" class="attach-del" ><span class="attach-del">X</span></a>
+							 </div>
+						 </c:forEach>
+						</div>
 					</div>
 				</div>
 		</form>

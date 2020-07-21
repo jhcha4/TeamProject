@@ -10,4 +10,63 @@
 					   where u_id = #{u_id}) - #{totalPrice}
 		where u_id = #{u_id}
 	</update>
+	
+	<update id="getPoint">
+		update tbl_usertest set
+			u_point = (select u_point from tbl_usertest
+					   where u_id = #{u_id}) + #{totalPrice}
+		where u_id = #{u_id}
+	</update>
+	
+	<insert id="plusPoint">
+		insert into tbl_point (point_num, point_code, u_id, point_value)
+		values (seq_point_num.nextval, 1002, #{u_id}, #{totalPrice})
+	</insert>
+	
+	<insert id="minusPoint">
+		insert into tbl_point (point_num, point_code, u_id, point_value)
+		values (seq_point_num.nextval, 1003, #{u_id}, #{totalPrice})
+	</insert>
+	
+	<select id="getUserPoint" resultType="int">
+		select u_point from tbl_usertest
+		where u_id = #{u_id}
+	</select>
+	
+	<select id="getTotalPoint" resultType="CjhPointVo">
+		select * from tbl_point
+		where u_id = #{u_id} and point_code = 1002
+	</select>
+	
+	<select id="getUsePoint" resultType="CjhPointVo">
+		select * from tbl_point
+		where u_id = #{u_id} and point_code = 1003
+	</select>
+	
+	<select id="listPoint" resultType="CjhPointVo">
+		select p.point_num, p.point_code, p.u_id, p.point_value, c.point_content, p.point_date
+		from tbl_point p, tbl_point_code c
+		where u_id = #{u_id}
+		and p.point_code = c.point_code
+<!-- 		<include refid="point"/> -->
+		order by point_num desc
+	</select>
+	
+<!-- 	<sql id="point"> -->
+<!-- 		<if test="point_code != null"> -->
+<!-- 			<choose> -->
+<!-- 				<when test='point_code = 1002'> -->
+<!-- 					and p -->
+<!-- 					and p.point_code = 1002 -->
+<!-- 				</when> -->
+<!-- 				<when test='CjhPagingDto.point_code = 1002'> -->
+<!-- 					and p.point_code = 1002 -->
+<!-- 				</when> -->
+<!-- 				<when test='CjhPagingDto.point_code = 1003'> -->
+<!-- 					and p.point_code = 1003 -->
+<!-- 				</when> -->
+<!-- 			</choose> -->
+<!-- 		</if> -->
+<!-- 	</sql> -->
+
 </mapper>

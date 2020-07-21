@@ -15,17 +15,17 @@ $(function() {
 		$("#singlePage").submit();
 	});
 	
-	// 가격순으로 정렬
-	$("#price").change(function() {
-		var priceType = $("select[name=priceType]").val();
+	// 정렬 하기
+	$("#type").change(function() {
+		var type = $("select[name=type]").val();
 		if ("${p_main}" != "") {
-			$("#mainPage > input[name=priceType]").val(priceType);
+			$("#mainPage > input[name=type]").val(type);
 			$("#mainPage").submit();
 		} else if ("${p_serve}" != "") {
-			$("#servePage > input[name=priceType]").val(priceType);
+			$("#servePage > input[name=type]").val(type);
 			$("#servePage").submit();
 		} else { 
-			$("#shop > input[name=priceType]").val(priceType);
+			$("#shop > input[name=type]").val(type);
 			$("#shop").submit();
 		}
 	});
@@ -36,6 +36,8 @@ $(function() {
 		var length =$(this).attr("href").length;
 		var p_main = $(this).attr("href").substring(length-1);
 		$("#mainPage > input[name=p_main]").val(p_main);
+		$("#mainPage > input[name=type]").val("L");  
+		$("#mainPage > input[name=page]").val("1");
 		$("#mainPage").submit();
 	});
 	
@@ -44,7 +46,9 @@ $(function() {
 		e.preventDefault();  
 		var length = $(this).attr("href").length;
 		var p_serve = $(this).attr("href").substring(length-2);
-		$("#servePage > input[name=p_serve]").val(p_serve); 
+		$("#servePage > input[name=p_serve]").val(p_serve);
+		$("#servePage > input[name=type]").val("L");
+		$("#servePage > input[name=page]").val("1");
 		$("#servePage").submit();
 	}); 
 	
@@ -100,14 +104,16 @@ $(function() {
                 <div class="float-md-left mb-4"><h2 class="text-black h5">Shop</h2></div>
                 <div class="d-flex"> 
                   <div class="dropdown mr-1 ml-md-auto">
-                    <select name="priceType" id="price">
-                    	<option>가격순</option>
+                    <select name="type" id="type">
                     	<option value="L" 
-                    		<c:if test="${lshBoardDto.priceType == 'L'}">selected</c:if>
+                    		<c:if test="${lshBoardDto.type == 'L'}">selected</c:if>
                     	>낮은 가격순</option>
                     	<option value="H" 
-                    	    <c:if test="${lshBoardDto.priceType == 'H'}">selected</c:if>
+                    	    <c:if test="${lshBoardDto.type == 'H'}">selected</c:if>
                     	>높은 가격순</option>
+                    	<option value="C" 
+                    	    <c:if test="${lshBoardDto.type == 'C'}">selected</c:if>
+                    	>조회 높은순</option>
                     </select>
                     
                   </div>
@@ -120,12 +126,17 @@ $(function() {
 	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
 	                  <figure class="block-4-image">
-	                    <a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}"><img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
+	                    <a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}">
+	                    	<img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
+	                    </a>
 	                  </figure>
 	                  <div class="block-4-text p-4">
 	                    <h3><a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}">${lshBoardVo.p_name}</a></h3>
 	                    <p class="mb-0">${lshBoardVo.p_content}</p>
 	                    <p class="text-primary font-weight-bold">${lshBoardVo.p_price}원</p>
+	                  </div>
+	                  <div class="block-4-text right">
+	                    <p>조회수 : ${lshBoardVo.p_viewCnt}</p>
 	                  </div>
 	                </div>
 	              </div>
@@ -163,7 +174,7 @@ $(function() {
           <div class="col-md-3 order-1 mb-5 mb-md-0">
             <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
-              <h2 class="mb-3 h6  text-black d-block"><a href="shop">전체 상품</a></h2>
+              <h2 class="mb-3 h6  text-black d-block"><a href="shop?type=L">전체 상품</a></h2>
               
            		<a href="shop?p_main=T" class="main">상의</a>
            		<ul class="dropdown serve"> 
