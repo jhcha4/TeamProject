@@ -67,7 +67,7 @@ public class CjhPointServiceImpl implements CjhPointService {
 //		return list;
 //	}
 
-	// 유저의 
+	// 유저의 포인트
 	@Override
 	public int getUserPoint(String u_id) throws Exception {
 		return pointDao.getUserPoint(u_id);
