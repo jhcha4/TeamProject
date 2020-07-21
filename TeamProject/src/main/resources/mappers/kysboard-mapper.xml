@@ -13,10 +13,20 @@
 		insert into tbl_attach(file_name,p_num)
 		values (#{file_name},#{p_num})
 	</insert>
+	<!-- 타이틀 이미지 -->
+	<insert id="titleImgFile">
+		insert into tbl_title_attach(title_name,p_num)
+		values (#{title_name},#{p_num})
+	</insert>
+	<!-- 수정 이미지 삭제 -->
+	<delete id="fileImgDelete">
+		delete from tbl_attach
+		where file_name = #{filename}
+	</delete>
 	<!-- 이미지 불러오기 -->
-	
-	<select id="imgSelectBy" resultType="Kys_BoardVo">
-		select * from tbl_attach where p_num= #{p_num}
+	<select id="imgSelectBy" resultType="Kys_ImgVo">
+		select * from tbl_attach 
+		where p_num= #{p_num}
 	</select>
 	
 	<!-- 리스트 -->
