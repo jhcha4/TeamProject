@@ -78,7 +78,7 @@ $(function() {
 	});
 });
 </script>
-
+<img src=/upload/displayFile?fileName="${LshImgVo.file_name}">
 <%@ include file="frmPage.jsp" %>
 
     <div class="bg-light py-3">
