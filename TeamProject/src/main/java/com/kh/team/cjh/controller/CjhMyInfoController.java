@@ -130,17 +130,17 @@ public class CjhMyInfoController {
 	}
 	
 	//	적립금 페이지
-	@RequestMapping(value="/myPoint", method = RequestMethod.GET)
-	public void myPoint(String u_id,  Model model) throws Exception {
-		List<CjhPointVo> list= pointService.listPoint(u_id);
-		model.addAttribute("list", list);
-	}
-	
-//	//	적립금 페이지
 //	@RequestMapping(value="/myPoint", method = RequestMethod.GET)
-//	public void myPoint(String u_id, CjhPagingDto pagingDto, Model model) throws Exception {
-////		System.out.println("pagingDto : " + pagingDto);
-//		List<CjhPointVo> list= pointService.listPoint(u_id, pagingDto);
+//	public void myPoint(String u_id,  Model model) throws Exception {
+//		List<CjhPointVo> list= pointService.listPoint(u_id);
 //		model.addAttribute("list", list);
 //	}
+	
+	//	적립금 페이지
+	@RequestMapping(value="/myPoint", method = RequestMethod.GET)
+	public void myPoint(String u_id, int point_code, Model model) throws Exception {
+		List<CjhPointVo> list = pointService.listPoint(u_id, point_code);
+		model.addAttribute("list", list);
+		model.addAttribute("point_code", point_code);
+	}
 }

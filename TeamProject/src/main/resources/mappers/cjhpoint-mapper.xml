@@ -48,22 +48,29 @@
 		from tbl_point p, tbl_point_code c
 		where u_id = #{u_id}
 		and p.point_code = c.point_code
-<!-- 		<include refid="point"/> -->
+		and p.point_code = #{point_code}
+		<include refid="point"/>
 		order by point_num desc
 	</select>
 	
+<!-- 	<sql id="point"> -->
+<!-- 		<if test="CjhPagingDto.point_code != null and CjhPagingDto.point_code !=''"> -->
+<!-- 			<choose> -->
+<!-- 				<when test='CjhPagingDto.point_code = 0'> -->
+<!-- 				</when> -->
+<!-- 				<when test='CjhPagingDto.point_code = 1002'> -->
+<!-- 					and p.point_code = 1002 -->
+<!-- 				</when> -->
+<!-- 				<when test='CjhPagingDto.point_code = 1003'> -->
+<!-- 					and p.point_code = 1003 -->
+<!-- 				</when> -->
+<!-- 			</choose> -->
+<!-- 		</if> -->
+<!-- 	</sql> -->
+
 	<sql id="point">
-		<if test="CjhPagingDto.point_code != ''">
-			<choose>
-				<when test='CjhPagingDto.point_code = 0'>
-				</when>
-				<when test='CjhPagingDto.point_code = 1002'>
-					and p.point_code = 1002
-				</when>
-				<when test='CjhPagingDto.point_code = 1003'>
-					and p.point_code = 1003
-				</when>
-			</choose>
+		<if test="#{point_code} == '1002'">
+			and p.point_code = 1002
 		</if>
 	</sql>
 </mapper>
