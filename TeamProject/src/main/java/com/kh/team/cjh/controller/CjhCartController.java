@@ -58,6 +58,13 @@ public class CjhCartController {
 		return "redirect:/cjh/cart?u_id=" + u_id;
 	}
 	
+	//	선택한 장바구니 삭제
+	@RequestMapping(value="deleteCheckedCart", method = RequestMethod.GET)
+	public String deleteCheckedCart(String u_id, String c_num) throws Exception {
+		cartService.deleteCheckedCart(u_id, c_num);
+		return "redirect:/cjh/cart?u_id=" + u_id;
+	}
+	
 	//	장바구니 수정
 	@RequestMapping(value="updateCart", method = RequestMethod.GET)
 	public String updateCart(String u_id, int p_count, int c_num) throws Exception {
