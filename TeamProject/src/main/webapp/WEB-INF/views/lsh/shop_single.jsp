@@ -38,7 +38,11 @@ $(function() {
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <img src="../../resources/images/cloth_1.jpg" alt="Image" class="img-fluid">
+			<c:forEach items="${imgList}" var="Kys_ImgVo">
+				 <figure class="block-4-image">
+				 	<img src="/upload/displayFile?fileName=${Kys_ImgVo.file_name}">
+				 </figure>
+			 </c:forEach>
           </div>
           <div class="col-md-6">
             <h2 class="text-black">${lshBoardVo.p_name}</h2>

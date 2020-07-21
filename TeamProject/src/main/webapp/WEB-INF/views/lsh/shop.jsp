@@ -78,9 +78,7 @@ $(function() {
 	});
 });
 </script>
-<img src=/upload/displayFile?fileName="${LshImgVo.file_name}">
 <%@ include file="frmPage.jsp" %>
-
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
@@ -125,11 +123,13 @@ $(function() {
 			  <c:forEach items="${list}" var="lshBoardVo">
 	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
-	                  <figure class="block-4-image">
-	                    <a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}">
-	                    	<img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
-	                    </a>
-	                  </figure>
+	                
+<%-- 	                 <c:forEach items="${imgList}" var="Kys_ImgVo"> --%>
+						 <figure class="block-4-image">
+						 	<img src="/upload/displayFile?fileName=${LshBoardVo.p_files}">
+						 </figure>
+<%-- 					 </c:forEach> --%>
+					 
 	                  <div class="block-4-text p-4">
 	                    <h3><a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}">${lshBoardVo.p_name}</a></h3>
 	                    <p class="mb-0">${lshBoardVo.p_content}</p>

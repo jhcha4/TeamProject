@@ -2,6 +2,7 @@ package com.kh.team.lsh.persistence;
 
 import java.util.List;
 
+import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.domain.LshBoardDto;
 import com.kh.team.domain.LshBoardVo;
 
@@ -21,5 +22,9 @@ public interface LSH_BoardDao {
 	
 	// 주요 상품 리스트
 	public List<LshBoardVo> MostList() throws Exception;
+	
+	// 이미지 불러오기
+	public List<Kys_ImgVo> getImg(int p_num) throws Exception;
+	
 }
 
