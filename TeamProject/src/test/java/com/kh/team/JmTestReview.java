@@ -2,6 +2,8 @@ package com.kh.team;
 
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.junit.Test;
@@ -10,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.kh.team.domain.JmMemberVo;
+import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmReviewVo;
 import com.kh.team.jm.JmReviewDao;
 import com.kh.team.jm.JmReviewService;
@@ -89,9 +92,26 @@ public class JmTestReview {
 		
 		
 		
-	//삭제 service
+		//삭제 service
 		@Test
 		public void deleteReviewService()throws Exception{
 			jmReviewService.deleteReview(31);
 		}
+		
+		
+		//글목록 페이징
+		@Test
+		public void selectPaging()throws Exception{
+			
+			JmPagingDto jmPagingDto = new JmPagingDto();
+			jmPagingDto.setSearchType("r_contents");
+			
+			
+			
+		}
+		
+		
+		
+		
+		
 }

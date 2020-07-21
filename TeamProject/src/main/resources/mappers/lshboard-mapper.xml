@@ -42,6 +42,12 @@
 			where rnum between 1 and 7
 	</select>
 	
+	<!-- 이미지 한개 불러오기 -->
+	<select id="getImg" resultType="Kys_ImgVo">
+		select * from tbl_attach 
+		where p_num= #{p_num}
+	</select>
+	
 	<sql id="type">
 		<if test="lshBoardDto.type != null">
 			<choose>

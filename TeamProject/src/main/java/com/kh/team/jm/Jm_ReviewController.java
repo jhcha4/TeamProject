@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.taglibs.standard.lang.jstl.test.PageContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmReviewVo;
 
 @Controller
@@ -21,11 +23,24 @@ public class Jm_ReviewController {
 	private JmReviewService jmReviewService;
 	
 	
-	//리뷰 게시판 리스트 
+	//리뷰 게시판 리스트 -페이징 
 	@RequestMapping(value="/jm_reviewForm" ,method=RequestMethod.GET)
-	public String jmReviewForm(Model model) throws Exception{
-		List<JmReviewVo> list = jmReviewService.selectReviewList();
+	public String jmReviewForm(JmPagingDto jmPagingDto,  Model model) throws Exception{
+		
+		jmPagingDto.setPageInfo();
+		
+		int totalCount = jmReviewService.selectCount(jmPagingDto);
+		
+		jmPagingDto.setTotalCount(totalCount);
+		
+		List<JmReviewVo> list = jmReviewService.selectPaging(jmPagingDto);
+		System.out.println("jm_reviewForm, list:" + list);
 		model.addAttribute("list",list);
+		System.out.println(jmPagingDto);
+		
+		
+		
+		model.addAttribute("jmPagingDto",jmPagingDto);
 		return "jm/jm_reviewForm";
 		
 	}
@@ -78,6 +93,13 @@ public class Jm_ReviewController {
 		
 		return "redirect:/jm/jm_reviewForm";
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

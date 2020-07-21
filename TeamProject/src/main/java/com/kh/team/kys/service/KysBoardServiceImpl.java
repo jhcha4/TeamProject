@@ -1,5 +1,6 @@
 package com.kh.team.kys.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
+import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.kys.dao.KysBoardDao;
 
 @Service
@@ -29,7 +31,8 @@ public class KysBoardServiceImpl implements KysBoardService {
 		int p_num = boardDao.getNextVal();
 		boardVo.setP_num(p_num);
 		boardDao.boardInsert(boardVo);
-		System.out.println("p_file : "+boardVo.getP_files());
+		String title_name = boardVo.getTitle_name();
+			boardDao.titleImgFile(title_name, p_num);
 		
 		String[] files = boardVo.getP_files();
 		for (String file_name : files) {
@@ -83,9 +86,14 @@ public class KysBoardServiceImpl implements KysBoardService {
 		
 	}
 	@Override
-	public List<Kys_BoardVo> imgSelectBy(int p_num) throws Exception {
-		List<Kys_BoardVo> listImg = boardDao.imgSelectBy(p_num);
+	public List<Kys_ImgVo> imgSelectBy(int p_num) throws Exception {
+		List<Kys_ImgVo> listImg = boardDao.imgSelectBy(p_num);
 		return listImg;
+	}
+	@Override
+	public void fileImgDelete(String filename) throws Exception {
+		 boardDao.fileImgDelete(filename);
+		
 	}
 	
 }

@@ -3,6 +3,7 @@ package com.kh.team.kys.dao;
 import java.util.List;
 
 import com.kh.team.domain.Kys_BoardVo;
+import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.domain.Kys_BoardDto;
 
 
@@ -43,6 +44,9 @@ public interface KysBoardDao {
 	public int getDeleteCount(Kys_BoardDto boardDto) throws Exception;
 	//이미지 파일 저장
 	public void imgFile(String file_name,int p_num) throws Exception;
+	public void titleImgFile(String title_name,int p_num) throws Exception;
 	//이미지 보기
-	public List<Kys_BoardVo> imgSelectBy(int p_num) throws Exception;
+	public List<Kys_ImgVo> imgSelectBy(int p_num) throws Exception;
+	//이미지 삭제
+	public void fileImgDelete(String filename) throws Exception;
 }

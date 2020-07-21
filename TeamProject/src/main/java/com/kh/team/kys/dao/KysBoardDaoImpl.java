@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
+import com.kh.team.domain.Kys_ImgVo;
 
 
 @Repository
@@ -94,7 +95,7 @@ public class KysBoardDaoImpl implements KysBoardDao {
 			sqlSession.delete(NAMESPACE+"delete",p_num);
 			
 		}
-
+		//이미지 파일 저장
 		@Override
 		public void imgFile(String file_name, int p_num) throws Exception {
 			Map<String,Object> paramMap = new HashMap<>();
@@ -105,11 +106,24 @@ public class KysBoardDaoImpl implements KysBoardDao {
 		}
 
 		@Override
-		public List<Kys_BoardVo> imgSelectBy(int p_num) throws Exception {
-			List<Kys_BoardVo> list = sqlSession.selectList(NAMESPACE+"imgSelectBy",p_num);
-			
-			System.out.println("imgDao list : " + list);
+		public List<Kys_ImgVo> imgSelectBy(int p_num) throws Exception {
+			List<Kys_ImgVo> list = sqlSession.selectList(NAMESPACE+"imgSelectBy",p_num);
 			return list;
+		}
+
+		@Override
+		public void fileImgDelete(String filename) throws Exception {
+			sqlSession.delete(NAMESPACE+"fileImgDelete",filename);
+			
+		}
+		//타이틀 이미지
+		
+		@Override
+		public void titleImgFile(String title_name, int p_num) throws Exception {
+			Map<String, Object> paramMap= new HashMap<>();
+			paramMap.put("title_name", title_name);
+			paramMap.put("p_num", p_num);
+			sqlSession.insert(NAMESPACE+"titleImgFile",paramMap);
 		}
 
 

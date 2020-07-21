@@ -1,9 +1,11 @@
 package com.kh.team.kys.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
+import com.kh.team.domain.Kys_ImgVo;
 
 
 public interface KysBoardService {
@@ -32,5 +34,7 @@ public interface KysBoardService {
 		//완전 삭제
 		public void delete(int p_num) throws Exception;
 		//이미지 보기
-		public List<Kys_BoardVo> imgSelectBy(int p_num) throws Exception;
+		public List<Kys_ImgVo> imgSelectBy(int p_num) throws Exception;
+		//수정 이미지 삭제
+		public void fileImgDelete(String filename) throws Exception;
 }
