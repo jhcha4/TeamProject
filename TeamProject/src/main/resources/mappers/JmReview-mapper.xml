@@ -44,5 +44,48 @@
 		
 		</delete>
 		
+	<!-- 검색 -->	
+	<sql id="search">
+	
+	<if test="searchType !=null">
+		<choose>
+			<when test='searchType == "r_subject"'>
+				where r_subject like '%' || #{keyword}|| '%'
+			</when>
+
+			<when test='searchType == "r_id"'>
+				where r_id like '%' || #{keyword}|| '%'
+			</when>
+		</choose>
+	</if>	
+	</sql>	
+		
+	
+	<!-- 페이징 -->
+	<select id="selectPaging" resultType="JmReviewVo">
+		select *
+		from(select rownum rnum,a.*
+		from(select * from tbl_review
+		<include refid="search"></include>
+		order by r_info desc)a)
+		where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	<!--  게시글 수 조회 -->
+	<select id="selectCount" resultType="int">
+		select count(*) from tbl_review
+		<include refid="search"></include>
+	
+	</select>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 </mapper>
