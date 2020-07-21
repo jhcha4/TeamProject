@@ -34,6 +34,16 @@ public class CjhCartServiceImpl implements CjhCartService {
 	public void deleteCart(String u_id, int c_num) throws Exception {
 		cartDao.deleteCart(u_id, c_num);
 	}
+	
+	//	선택된 장바구니 삭제
+	@Override
+	public void deleteCheckedCart(String u_id, String c_num) throws Exception {
+		String[] c_nums = c_num.toString().split(",");
+		for (int i=0; i<c_nums.length; i++) {
+//			System.out.println("c_nums[i] : " + c_nums[i]);
+		    cartDao.deleteCart(u_id, Integer.parseInt(c_nums[i]));
+		}
+	}
 
 	//	장바구니 갱신
 	@Override
@@ -58,6 +68,7 @@ public class CjhCartServiceImpl implements CjhCartService {
 	public int getCountCart(String u_id) throws Exception {
 		return cartDao.getCountCart(u_id);
 	}
+
 
 
 }

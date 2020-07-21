@@ -16,6 +16,9 @@ public interface CjhCartService {
 	//	장바구니 목록 삭제
 	public void deleteCart(String u_id, int c_num) throws Exception;
 	
+	//	선택된 장바구니 삭제
+	public void deleteCheckedCart(String u_id, String c_num) throws Exception;
+	
 	//	장바구니 갯수 불러오기
 	public int getCountCart(String u_id) throws Exception;
 	
