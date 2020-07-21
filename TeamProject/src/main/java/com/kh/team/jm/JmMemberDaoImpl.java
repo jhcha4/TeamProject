@@ -80,6 +80,19 @@ public class JmMemberDaoImpl implements JmMemberDao {
 		
 		return SqlSession.selectOne(NAMESPACE+"selectId",u_id);
 	}
+	//페이징 게시판
+	@Override
+	public List<JmMemberVo> selectUserPaging(JmPagingDto jmPagingDto) throws Exception {
+		List<JmMemberVo> list =  SqlSession.selectList(NAMESPACE+"selectUserPaging",jmPagingDto);
+		return list;
+	}
+	
+	//총 유저수 카운트
+	@Override
+	public int selectUserCount(JmPagingDto jmPagingDto) throws Exception {
+		
+		return SqlSession.selectOne(NAMESPACE+"selectUserCount",jmPagingDto);
+	}
 	
 
 }

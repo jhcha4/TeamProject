@@ -3,6 +3,7 @@ package com.kh.team.jm;
 import java.util.List;
 
 import com.kh.team.domain.JmMemberVo;
+import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmPwEmailDto;
 
 public interface JmMemberService {
@@ -34,5 +35,16 @@ public interface JmMemberService {
 		
 		//아이디중복체크
 		public String selectId(String u_id)throws Exception;
+		
+		
+		//글 목록 페이징
+		public List<JmMemberVo>selectUserPaging(JmPagingDto jmPagingDto)throws Exception; 
+		
+		
+		//게시글 수 조회
+		public int selectUserCount(JmPagingDto jmPagingDto)throws Exception;
+		
+		
+		
 		
 }

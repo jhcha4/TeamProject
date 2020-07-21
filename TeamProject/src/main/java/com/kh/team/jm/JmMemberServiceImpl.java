@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.kh.team.domain.JmMemberVo;
+import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmPwEmailDto;
 
 @Service
@@ -70,6 +71,17 @@ public class JmMemberServiceImpl implements JmMemberService {
 	public String selectId(String u_id) throws Exception {
 		
 		return jmMemberDao.selectId(u_id);
+	}
+	
+	@Override
+	public List<JmMemberVo> selectUserPaging(JmPagingDto jmPagingDto) throws Exception {
+		List<JmMemberVo> list = jmMemberDao.selectUserPaging(jmPagingDto);
+		return list;
+	}
+	@Override
+	public int selectUserCount(JmPagingDto jmPagingDto) throws Exception {
+		
+		return jmMemberDao.selectUserCount(jmPagingDto);
 	}
 	
 

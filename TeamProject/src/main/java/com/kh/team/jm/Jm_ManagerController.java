@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kh.team.domain.JmMemberVo;
+import com.kh.team.domain.JmPagingDto;
 
 @Controller
 @RequestMapping("/jm")
@@ -20,10 +21,17 @@ public class Jm_ManagerController {
 	
 	
 	
-		// 관리자 페이지- 일반회원 리스트 조회
+		// 관리자 페이지- 일반회원 리스트 조회 - 페이징 기능 추가
 		@RequestMapping(value = "/jm_userList", method = RequestMethod.GET)
-		public String selectList(Model model) throws Exception {
-			List<JmMemberVo> list = jmMemberService.selectList();
+		public String selectList(JmPagingDto jmPagingDto, Model model) throws Exception {
+			
+			jmPagingDto.setPageInfo();
+			
+			int totalCount = jmMemberService.selectUserCount(jmPagingDto);
+			
+			jmPagingDto.setTotalCount(totalCount);
+			
+			List<JmMemberVo> list = jmMemberService.selectUserPaging(jmPagingDto);
 			model.addAttribute("list", list);
 			return "jm/jm_userList";
 		}
