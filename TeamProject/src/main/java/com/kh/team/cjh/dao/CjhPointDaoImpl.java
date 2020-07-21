@@ -68,13 +68,6 @@ public class CjhPointDaoImpl implements CjhPointDao {
 		return sqlSession.selectList(NAMESPACE + "getUsePoint", u_id);
 	}
 
-	//	유저 포인트 목록
-//	@Override
-//	public List<CjhPointVo> listPoint(String u_id) throws Exception {
-//		List<CjhPointVo> list= sqlSession.selectList(NAMESPACE + "listPoint", u_id);
-//		return list;
-//	}
-	
 //	유저 포인트 목록
 	@Override
 	public List<CjhPointVo> listPoint(String u_id, int point_code) throws Exception {
@@ -84,6 +77,16 @@ public class CjhPointDaoImpl implements CjhPointDao {
 		List<CjhPointVo> list = sqlSession.selectList(NAMESPACE + "listPoint", paramMap);
 		return list;
 	}
+	
+//	유저 포인트 목록
+//	@Override
+//	public List<CjhPointVo> listPoint(String u_id, CjhPagingDto pagingDto) throws Exception {
+//		Map<String, Object> paramMap = new HashMap<>();
+//		paramMap.put("u_id", u_id);
+//		paramMap.put("pagingDto", pagingDto);
+//		List<CjhPointVo> list = sqlSession.selectList(NAMESPACE + "listPoint", paramMap);
+//		return list;
+//	}
 
 	//	유저 포인트 목록
 	@Override
