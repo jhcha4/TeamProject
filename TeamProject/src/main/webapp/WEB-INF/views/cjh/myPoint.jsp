@@ -60,10 +60,13 @@ ${list}
 							<div class="d-flex"> 
 								<div class="dropdown mr-1 ml-md-auto">
 								<select id="pointType" id="pointType">
-									<option value=1002
-										<c:if test="${point_code == 1002}">selected</c:if>
-									>받은 포인트</option>
-									<option value=1003
+									<option value=1
+										<c:if test="${point_code == 1}">selected</c:if>
+										>포인트 목록</option>
+										<option value=1002
+											<c:if test="${point_code == 1002}">selected</c:if>
+										>받은 포인트</option>
+										<option value=1003
 										<c:if test="${point_code == 1003}">selected</c:if>
 									>사용 포인트</option>
 								</select>
