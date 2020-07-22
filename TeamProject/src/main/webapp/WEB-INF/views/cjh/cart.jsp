@@ -117,17 +117,18 @@ ${list}
 				<div class="site-blocks-table">
 					<table class="table table-bordered">
 						<thead style="height: 10px">
-							<tr bgcolor="#eeeeee"><th colspan="7" style="text-align: Left;">장바구니 목록</th></tr>
+							<tr bgcolor="#eeeeee"><th colspan="8" style="text-align: Left;">장바구니 목록</th></tr>
 							<tr>
 								<th style="width: 5%">
 									<input type="checkbox" id="allcheck" name="allcheck"/>
 								</th>
-								<th style="width: 15%" class="product-thumbnail">상품이미지</th>
+								<th style="width: 12%" class="product-thumbnail">이미지</th>
 								<th style="width: 25%" class="product-name">상품내용</th>
+								<th style="width: 10%" class="product-name">SIZE</th>
 								<th style="width: 15%" class="product-price">가격</th>
-								<th style="width: 15%" class="product-quantity">수량</th>
-								<th style="width: 15%" class="product-total">총가격</th>
-								<th style="width: 10%" class="product-remove">삭제</th>
+								<th style="width: 10%" class="product-quantity">수량</th>
+								<th style="width: 13%" class="product-total">총가격</th>
+								<th style="width: 15%" class="product-remove">삭제</th>
 							</tr>
 						</thead>
 						
@@ -145,6 +146,7 @@ ${list}
 										<td style="border-left: none; border-right: none;"><img style="width:150px;" src="/resources/images/cloth_1.jpg"></td>
 										
 										<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.p_name}</td>
+										<td style="text-align:center; padding-left: 10px; border-left: none; font-weight: bold;">${item.p_size}</td>
 											<input type="hidden" id="p_num" value="${item.p_num}">
 										<td><a name="p_price" style="padding-left: 10px;" class="p_price${status.index}">${item.p_price}</a></td>
 										
@@ -176,7 +178,7 @@ ${list}
 							</c:if>
 							
 							<tr bgcolor="#eeeeee">
-								<th colspan="7" style="text-align: Right;">
+								<th colspan="8" style="text-align: Right;">
 									선택항목 삭제 <button id="btnDelete" type="button" class="btn btn-basic btn-sm">X</button>
 								</th>
 							</tr>
