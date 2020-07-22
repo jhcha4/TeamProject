@@ -1,13 +1,10 @@
 package com.kh.team.kys.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
@@ -42,7 +39,17 @@ public class KysBoardServiceImpl implements KysBoardService {
 	//수정 처리
 	@Override
 	public void boardUpdate(Kys_BoardVo boardVo) throws Exception {
+		int p_num = boardVo.getP_num();
 		boardDao.boardUpdate(boardVo);
+		String title_name = boardVo.getTitle_name();
+		System.out.println("update / service / title :"+title_name);
+		boardDao.titleImgFile(title_name, p_num);
+	
+		String[] files = boardVo.getP_files();
+		System.out.println("update / service / file : "+files);
+		for (String file_name : files) {
+			boardDao.imgFile(file_name, p_num);
+	}
 	}
 
 	@Override

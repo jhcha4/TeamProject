@@ -121,14 +121,13 @@ $(function() {
             
             <div class="row mb-5">
 			  <c:forEach items="${list}" var="lshBoardVo">
+			  
 	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
 	                
-<%-- 	                 <c:forEach items="${imgList}" var="Kys_ImgVo"> --%>
-						 <figure class="block-4-image">
-						 	<img src="/upload/displayFile?fileName=${LshBoardVo.p_files}">
-						 </figure>
-<%-- 					 </c:forEach> --%>
+					 <figure class="block-4-image">
+					 	<img src="/upload/displayFile?fileName=${lshBoardVo.file_name}">
+					 </figure>
 					 
 	                  <div class="block-4-text p-4">
 	                    <h3><a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}">${lshBoardVo.p_name}</a></h3>

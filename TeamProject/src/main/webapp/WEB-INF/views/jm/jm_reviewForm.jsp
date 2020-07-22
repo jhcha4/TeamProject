@@ -187,11 +187,11 @@ $(function(){
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-3">
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<nav>
-				<ul class="pagination">
+				<ul class="pagination" style="">
 				
 					<c:if test="${jmPagingDto.startPage !=1}">
 				
@@ -213,7 +213,7 @@ $(function(){
 				</ul>
 			</nav>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-3">
 		</div>
 	</div>
 </div>

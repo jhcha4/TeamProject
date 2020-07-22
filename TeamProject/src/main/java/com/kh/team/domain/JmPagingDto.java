@@ -4,7 +4,7 @@ public class JmPagingDto {
 
 	
 	private int page = 1; //페이지 수
-	private int PerPage = 10;//한페이지 안에서 나오는 게시물 수 시작행
+	private int perPage = 10;//한페이지 안에서 나오는 게시물 수 시작행
 	private int startRow = 1;// 페이지 처음 번호//게시물수6		끝행
 	private int endRow = 10;// 페이지 끝 번호//게시물수10
 	private String searchType;
@@ -17,8 +17,8 @@ public class JmPagingDto {
 	
 	
 	public void setPageInfo() {
-		this.endRow = page*PerPage;   //15 *10    150
-		this.startRow = this.endRow - this.PerPage+1;  //141
+		this.endRow = page*perPage;   //15 *10    150
+		this.startRow = this.endRow - this.perPage+1;  //141
 							
 							//소수점 이하 올림(ceil) ceil(15/10)*10 =20
 		this.endPage=(int)Math.ceil((double)page/PAGE_BLOAK)*PAGE_BLOAK;
@@ -45,12 +45,12 @@ public class JmPagingDto {
 
 
 	public int getPerPage() {
-		return PerPage;
+		return perPage;
 	}
 
 
 	public void setPerPage(int perPage) {
-		PerPage = perPage;
+		this.perPage = perPage;
 	}
 
 
@@ -103,7 +103,7 @@ public class JmPagingDto {
 		this.totalCount = totalCount;
 		
 		//총 페이지								ceil(152/10) = 16
-		this.totalPage=(int)Math.ceil((double)totalCount/PerPage);
+		this.totalPage=(int)Math.ceil((double)totalCount/perPage);
 		
 		if(endPage>totalPage) {
 			endPage=totalPage;
@@ -149,7 +149,7 @@ public class JmPagingDto {
 
 	@Override
 	public String toString() {
-		return "JmPagingDto [page=" + page + ", PerPage=" + PerPage + ", startRow=" + startRow + ", endRow=" + endRow
+		return "JmPagingDto [page=" + page + ", perPage=" + perPage + ", startRow=" + startRow + ", endRow=" + endRow
 				+ ", searchType=" + searchType + ", keyword=" + keyword + ", totalCount=" + totalCount + ", totalPage="
 				+ totalPage + ", startPage=" + startPage + ", endPage=" + endPage + ", PAGE_BLOAK=" + PAGE_BLOAK + "]";
 	}

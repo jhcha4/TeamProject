@@ -28,6 +28,13 @@ public class ShopController {
 		int totalCount = boardService.getCount(lshBoardDto, p_main, p_serve);
 		lshBoardDto.setTotalCount(totalCount);
 		List<LshBoardVo> list = boardService.list(lshBoardDto, p_main, p_serve);
+		for (LshBoardVo vo : list) {
+			String file_name = vo.getFile_name();
+			String front = file_name.substring(0, file_name.lastIndexOf("/") + 1);
+			String rear = file_name.substring(file_name.lastIndexOf("/") + 1);
+			String smName = front + "sm_" + rear;
+			vo.setFile_name(smName);
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("lshBoardDto", lshBoardDto);
 		model.addAttribute("p_main", p_main);
