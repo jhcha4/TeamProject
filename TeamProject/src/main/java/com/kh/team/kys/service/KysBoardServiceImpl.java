@@ -35,6 +35,16 @@ public class KysBoardServiceImpl implements KysBoardService {
 		for (String file_name : files) {
 			boardDao.imgFile(file_name, p_num);
 		}
+		
+		
+//		boardDao.insertProductCount(p_size, p_count, p_num);
+		for(int i = 0 ; i < 4 ; i++ ) {
+			String[] p_size = boardVo.getP_size();
+			int[] p_count = boardVo.getP_count();
+			System.out.println("service / insert / p_size : " + p_size);
+			System.out.println("service / insert / p_count : " + p_count);
+			boardDao.insertProductCount(p_size[i], p_count[i], p_num);
+		}
 	}
 	//수정 처리
 	@Override
