@@ -18,7 +18,7 @@
 	<select id="getOrder" resultType="CjhCartVo">
 <!-- 		select * from tbl_cart -->
 <!-- 		where u_id = #{u_id} and p_status != 1001 -->
-		select c.c_num, c.p_image, c.p_name, c.p_count, c.p_price, c.p_date, o.o_status
+		select c.c_num, c.p_image, c.p_name, c.p_count, c.p_price, c.p_date, o.o_status, c.p_size
 		from tbl_cart c, tbl_order_code o
 		where u_id = #{u_id}
 		and c.p_status = o.o_code

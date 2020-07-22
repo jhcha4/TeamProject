@@ -44,6 +44,7 @@ $(document).ready(function() {
 					<tr>
 						<th>주문번호</th>
 						<th colspan="2">상품정보</th>
+						<th>SIZE</th>
 						<th>수량</th>
 						<th>주문금액</th>
 						<th>주문날짜</th>
@@ -61,6 +62,9 @@ $(document).ready(function() {
 								<td style="border-right: none;"><img style="width:150px; " src="/resources/images/cloth_1.jpg"></td>
 								<td style="border-left: none;">${item.p_name}</td>
 								
+								<td style="text-align:center; font-weight: bold;">
+									${item.p_size}
+								</td>
 								<td style="text-align:center; font-weight: bold;">
 									${item.p_count}
 								</td>
