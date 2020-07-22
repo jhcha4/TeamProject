@@ -126,5 +126,7 @@ public class KysBoardDaoImpl implements KysBoardDao {
 			sqlSession.insert(NAMESPACE+"titleImgFile",paramMap);
 		}
 
+	
+
 
 }
