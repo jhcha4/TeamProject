@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <style>
- #titleImg{
- 	width : 100%;
- 	height : 100px;
-    margin : auto ;
- }
+
  
  input[type=text]{
   width : 100%;
@@ -19,17 +15,19 @@
  
  #imgFileDrop{
 	width : 100%;
-	height :  100px;
+	height : 600px;
 	background-color : white;
+	color : black;
 	margin : auto;
-	border : 1px solid blue;
+	border : 1px solid red;
 	}
  #titleImg{
 	width : 100%;
-	height :  100px;
+	height : 600px;
 	background-color : white;
+	color : black;
 	margin : auto;
-	border : 1px solid blue;
+	border : 1px solid red;
 	}
 img{
 	width : 100%;

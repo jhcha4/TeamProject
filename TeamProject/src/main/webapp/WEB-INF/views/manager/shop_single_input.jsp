@@ -49,7 +49,7 @@ $(function() {
 				var slashIndex = rData.lastIndexOf("/");
 				var front = rData.substring(0, slashIndex +1);
 				var rear = rData.substring(slashIndex +1);
-				var thumbnailName = front +"sm_"+ rear;
+				var thumbnailName = front + rear;
 				var originalFilename = rData.substring(rData.indexOf("_")+1);
 				var html ="<div data-filename='"+rData+"'>";
 					html += "<img class='img-rounded' src='/upload/displayFile?fileName="+thumbnailName+"' /><br>";
@@ -93,26 +93,9 @@ $(function() {
 			}
 		});
 	});
-	//타이틀 이미지 삭제 
-	$("#titleImg").on("click",".attach-del", function(e){
-		e.preventDefault();
-		$(this).css("height", "200px");
-		var that = $(this);
-		
-		var filename = $(this).attr("href");
-		var url= "/upload/deleteFile";
-		var sendData= {"filename" : filename};
-		$.ajax({
-			"type" : "get",
-			"url" : url,
-			"data" : sendData,
-			"success" : function(rData){
-				that.parent().remove();
-			}
-		});
-	});
+	
 	//삭제 버튼
-	$("#imgFileDrop").on("click",".attach-del", function(e){
+	$(".imgDrop").on("click",".attach-del", function(e){
 		e.preventDefault();
 		$(this).css("height", "200px");
 		var that = $(this);
@@ -130,29 +113,28 @@ $(function() {
 		});
 	});
 	
-	$("#formSubmit").submit(function(){
-		var upDiv = $("#imgFileDrop > div");
-		var titleDiv = $("#titleImg > div");
-		console.log("upDiv:"+upDiv);
-		upDiv.each(function(index){
-			var filename = $(this).attr("data-filename");
-// 			console.log("submit filename:"+filename);
-// 			console.log("formsubmit/filename:"+filename);
-			var hiddenInput = "<input type='hidden' name='p_files["+index+"]' value='"+filename+"'/>";
-			$("#formSubmit").prepend(hiddenInput);
-		});
-		titleDiv.each(function(index){
-			var filename = $(this).attr("data-filename");
-// 			console.log("submit filename:"+filename);
-// 			console.log("formsubmit/filename:"+filename);
-			var hiddenInput = "<input type='hidden' name='title_name' value='"+filename+"'/>";
-			$("#formSubmit").prepend(hiddenInput);
-		});
+// 	$("#formSubmit").submit(function(){
+// 		var upDiv = $("#imgFileDrop > div");
+// 		var titleDiv = $("#titleImg > div");
+// 		console.log("upDiv:"+upDiv);
+// 		upDiv.each(function(index){
+// 			var filename = $(this).attr("data-filename");
+// 			var hiddenInput = "<input type='hidden' name='p_files["+index+"]' value='"+filename+"'/>";
+// 			$("#formSubmit").prepend(hiddenInput);
+// 		});
+// 		titleDiv.each(function(index){
+// 			var filename = $(this).attr("data-filename");
+// // 			console.log("submit filename:"+filename);
+// // 			console.log("formsubmit/filename:"+filename);
+// 			var hiddenInput = "<input type='hidden' name='title_name' value='"+filename+"'/>";
+// 			$("#formSubmit").prepend(hiddenInput);
+// 		});
 		
-	});
-	
+// 	});
+	<%@ include file="../include/main_ImgFile.jsp" %>
 });
 </script>
+
 <%@ include file="../include/main_style.jsp" %>
 <%@ include file="../include/main_bar.jsp" %>
 
@@ -250,7 +232,7 @@ $(function() {
 			<div class="col-md-12">
 				<label>상품 이미지</label>
 				<div id="imgDiv">
-					<div id="imgFileDrop" class="btn btn-primary"
+					<div id="imgFileDrop" class="btn btn-primary imgDrop"
 						style="margin-buttom: 10px;"></div>
 
 				</div>

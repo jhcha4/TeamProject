@@ -2,6 +2,7 @@ package com.kh.team.jm;
 
 import java.util.List;
 
+import com.kh.team.domain.JmMemberVo;
 import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmReviewVo;
 
@@ -28,6 +29,11 @@ public interface JmReviewService {
 	
 	//게시글 수 조회
 	public int selectCount(JmPagingDto jmPagingDto)throws Exception;
+	
+	
+	
+	
+	
 	
 	
 	

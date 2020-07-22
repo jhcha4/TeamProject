@@ -76,6 +76,48 @@
 		</select>
 	
 	
+	<!-- 검색 -->
+		<sql id="searchUser">
+		
+			<if test= "searchType !=null">
+			<choose>
+				<when test='searchType =="u_id"'>
+					where u_id like '%'||#{keyword}||'%'
+				</when>
+				
+				<when test='searchType =="u_grade"'>
+					where u_grade like '%'||#{keyword}||'%'
+				
+				</when>
+				
+					
+			</choose>
+			</if>
+		</sql>
+	
+	<!-- 페이징 -->
+		<select id="selectUserPaging" resultType="JmMemberVo">
+			select * 
+			from(select rownum rnum,a.*
+			from(select * from tbl_user
+			<include refid="searchUser"></include>
+			order by u_info desc)a)
+			where rnum between #{startRow} and #{endRow}
+		</select>
+		
+		
+	<!-- 게시글 수 조회 -->
+		<select id="selectUserCount" resultType="int">
+			select count(*) from tbl_user
+			<include refid="searchUser"></include>
+		
+		</select>	
+	
+	
+	
+	
+	
+	
 	
 </mapper>
 

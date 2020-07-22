@@ -25,7 +25,7 @@ $(function() {
 			$("#serveOption").append(options[12]).append(options[13]).append(options[14]).append(options[15]);
 	});
 	//이미지 삭제 버튼
-	$("#imgFileDrop").on("click",".attach-del", function(e){
+	$(".imgDrop").on("click",".attach-del", function(e){
 		e.preventDefault();
 		var that = $(this);
 		var filename = $(this).attr("href");
@@ -41,28 +41,115 @@ $(function() {
 			}
 		});
 	});
-	
+	$("#titleImg").on("dragenter dragover", function(e){e.preventDefault(); });
+	$("#titleImg").on("drop",function(e){
+		e.preventDefault();
+		$("#titleImgFile").remove();
+		$(this).css("height", "auto");
+		var file = e.originalEvent.dataTransfer.files[0];
+		var formData = new FormData();
+		formData.append("file",file);
+		var url="/upload/imgFile";
+		$.ajax({
+			"processData" :false,
+			"contentType" : false,
+			"type" : "post",
+			"url" : url,
+			"data" : formData,
+			"success" :function(rData) {
+				console.log(rData);
+				var slashIndex = rData.lastIndexOf("/");
+				var front =rData.substring(0, slashIndex +1);
+				var rear = rData.substring(slashIndex +1);
+				var thumbnailName = front + rear;
+				var originalFilename = rData.substring(rData.indexOf("_")+1);
+				var html ="<div data-filename='"+rData+"'>";
+					html += "<img class='img-rounded' src='/upload/displayFile?fileName="+thumbnailName+"' /><br>";
+					html += "<span>"+originalFilename+"</span>";
+					html +="<a href='"+rData+"' class='attach-del'><span class='pull-rigth'>X</span></a>";
+					html +="</div>";
+					$("#titleImg").append(html);
+			}
+		});
+	});
+	// 광고 사진
+	$("#imgFileDrop").on("dragenter dragover", function(e){e.preventDefault(); });
+	$("#imgFileDrop").on("drop",function(e){
+		e.preventDefault();
+		$(this).css("height", "auto");
+		var file = e.originalEvent.dataTransfer.files[0];
+		var formData = new FormData();
+		formData.append("file",file);
+		var url= "/upload/imgFile";
+		$.ajax({
+			"processData" : false,
+			"contentType" : false,
+			"type" : "post",
+			"url" : url,
+			"data" :formData,
+			"success" : function(rData) {
+				console.log(rData)
+				var slashIndex = rData.lastIndexOf("/");
+				var front = rData.substring(0, slashIndex +1);
+				var rear = rData.substring(slashIndex +1);
+				var thumbnailName = front + rear;
+				var originalFilename = rData.substring(rData.indexOf("_")+1);
+				var html ="<div data-filename='"+rData+"'>";
+					html += "<img class='img-rounded' src='/upload/displayFile?fileName="+thumbnailName+"' /><br>";
+					html += "<span>"+originalFilename+"</span>";
+					html +="<a href='"+rData+"' class='attach-del'><span class='pull-rigth'>X</span></a>";
+					html +="</div>";
+					$("#update").append(html);
+			}
+		});
+	});
 	$("#imgFileDrop").ready(function(e){
 		console.log(e);
 		$("#imgFileDrop").css("height", "auto");
 	});
-	
+	$("#formSubmit").submit(function(){
+		var upDiv = $("#update >div ");
+		var titleDiv = $("#titleImg > div");
+		console.log("upDiv:"+upDiv);
+		upDiv.each(function(index){
+			var filename = $(this).attr("data-filename");
+			var hiddenInput = "<input type='hidden' name='p_files["+index+"]' value='"+filename+"'/>";
+			$("#formSubmit").prepend(hiddenInput);
+		});
+		titleDiv.each(function(index){
+			var filename = $(this).attr("data-filename");
+			console.log("submit filename:"+filename);
+			console.log("formsubmit/filename:"+filename);
+			var hiddenInput = "<input type='hidden' name='title_name' value='"+filename+"'/>";
+			$("#formSubmit").prepend(hiddenInput);
+		});
+// 		return false;
+	});
+
 });
 </script>
 <%@ include file="../include/main_style.jsp" %>
 <%@ include file="../include/main_bar.jsp" %>
-${listImg}
+
 <div class="site-section">
 
 	<div class="container">
-
-		<form id="formSubmit" role="form" action="/manager/productUpdate"
-			method="post">
+	<!-- title img -->
+		<form id="formSubmit" role="form" action="/manager/productUpdate"	method="post">
 			<input type="hidden" name="p_num" value="${boardVo.p_num}" />
 			<div class="row">
 				<div class="col-md-6">
-					<img src="../../resources/images/cloth_1.jpg" alt="Image"
-						class="img-fluid">
+					<div >
+						<div id="titleImg" class="btn btn-primary imgDrop" style="margin-button: 10px;">
+							<c:forEach items="${listImg}" begin="0" end="0" var="img">
+							 <div data-filename="${img.title_name}" id="titleImgFile">
+								 <img class='img-rounded' src="/upload/displayFile?fileName=${img.title_name}" > <br>
+								 <a href="${imgVo.title_name}" class="attach-del" ><span class="attach-del">X</span></a>
+							 </div>
+						</c:forEach>
+						</div>
+					</div>
+				
 				</div>
 
 
@@ -159,13 +246,16 @@ ${listImg}
 				<div class="col-md-12">
 					<label>상품 이미지</label>
 					<div id="imgDiv">
-						<div id="imgFileDrop" class="btn btn-primary" style="margin-buttom: 10px;">
+						<div id="imgFileDrop" class="btn btn-primary imgDrop" style="margin-buttom: 10px;">
 						 <c:forEach items="${listImg}" var="imgVo">
 							 <div data-filename="${imgVo.file_name}">
 								 <img class='img-rounded' src="/upload/displayFile?fileName=${imgVo.file_name}" > <br>
 								 <a href="${imgVo.file_name}" class="attach-del" ><span class="attach-del">X</span></a>
 							 </div>
 						 </c:forEach>
+						 <div id="update">
+						 
+						 </div>
 						</div>
 					</div>
 				</div>

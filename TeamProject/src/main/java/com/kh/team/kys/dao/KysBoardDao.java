@@ -49,4 +49,5 @@ public interface KysBoardDao {
 	public List<Kys_ImgVo> imgSelectBy(int p_num) throws Exception;
 	//이미지 삭제
 	public void fileImgDelete(String filename) throws Exception;
+
 }

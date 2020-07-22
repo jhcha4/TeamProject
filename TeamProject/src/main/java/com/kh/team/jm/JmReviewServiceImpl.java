@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.team.domain.JmMemberVo;
 import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmReviewVo;
 
@@ -70,5 +71,9 @@ public class JmReviewServiceImpl implements JmReviewService {
 		
 		return jmReviewDao.selectCount(jmPagingDto);
 	}
+
+
+
+	
 
 }

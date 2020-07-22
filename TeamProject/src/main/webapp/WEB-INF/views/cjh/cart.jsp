@@ -12,6 +12,8 @@
 </style>
 <script>
 $(document).ready(function() {
+	
+	//	쪽지 전체 선택
 	$("#allcheck").click(function() {
 		if($("#allcheck").prop("checked")) {
 			$("input[name=checkbox]").prop("checked", true);
@@ -20,6 +22,7 @@ $(document).ready(function() {
 		}
 	});
 	
+	//	주문전 가격 확인
 	$("#updateCart").click(function() {
 		var totalPrice = 0;
 		$(".sumPrice").each(function(index, element) {
@@ -32,6 +35,7 @@ $(document).ready(function() {
 		$("#btnCheckOut").attr("disabled", false);
 	});
 	
+	//	수량 변경
 	$("input[name=p_count]").change(function() {
 // 		console.log($(this).val());
 		var p_num = $(this).parent().parent().prev().prev().val();
@@ -46,9 +50,49 @@ $(document).ready(function() {
 		$(this).parent().parent().next().children().text(count * p_price);
 	});
 	
+	//	결제하러가기
 	$("#btnCheckOut").click(function(e) {
 		e.preventDefault();
 		location.href = "/cjh/checkout?u_id=${u_id}";
+	});
+	
+	//	선택된 쪽지 삭제
+	
+	
+	$("#btnDelete").click(function() {
+		var sc_num = "";
+		var c_num = "";
+		$("input[name=checkbox]:checked").each(function() {
+// 			var sc_nums = $("td[name=c_num]").text();
+			var sc_nums = $(this).parent().next().next().next().next().next().next().next().next().text();
+			sc_num += sc_nums+",";
+			console.log("sc_num : " + sc_num);
+		});
+		var u_id = $("#u_id").val();
+		var c_num = sc_num.substring(0, sc_num.length - 1);
+		console.log(c_num);
+		location.href="/cjh/deleteCheckedCart?u_id="+u_id+"&c_num="+c_num;
+
+
+
+// //		맨끝에 있는 콤마(,) 빼내기
+// 		var nums = memo_nums.substring(0, memo_nums.length - 1);
+// 		console.log(nums);
+// 		var url = "memo_delete_checked.board";
+// 		var sendData = { "nums" : nums };
+// 		$.get(url, sendData, function(receivedData) {
+// 			console.log(receivedData);
+// 			var rData = receivedData.trim();
+// 			if (rData == "true") {
+// 				//	체크된 박스들
+// 				checkedList.each(function() {
+// 					//	체크박스가있는 tr 태그
+// 					$(this).parent().parent().hide(1000);
+// 				});
+// 			} else {
+// 				alert("쪽지 삭제 실패");
+// 			}
+// 		});
 	});
 });
 </script>
@@ -94,6 +138,7 @@ ${list}
 										<td style="text-align: Left; text-align:center; border-right:none; width:10px">
 											<input type="checkbox" id="checkbox" name="checkbox"/>
 											<input type="hidden" class="buypd${status.index}" value="${item.p_num}">
+											<input type="hidden" id="u_id" value="${u_id}">
 										</td>
 										
 <%-- 										<td style="border-left: none; border-right: none;"><img style="width:15px;" src="/resources/images/${item.p_image}"></td> --%>
@@ -132,7 +177,7 @@ ${list}
 							
 							<tr bgcolor="#eeeeee">
 								<th colspan="7" style="text-align: Right;">
-									선택항목 삭제 <a href="#" class="btn btn-basic btn-sm">X</a>
+									선택항목 삭제 <button id="btnDelete" type="button" class="btn btn-basic btn-sm">X</button>
 								</th>
 							</tr>
 							

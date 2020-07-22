@@ -82,7 +82,7 @@ public class CjhMyInfoController {
 //		System.out.println("u_id : " + u_id);
 //		System.out.println("u_pw : " + u_pw);
 		boolean result = userService.login(u_id, u_pw);
-		int count = cartService.getCountCart(u_id); 
+		int count = cartService.getCountCart(u_id);
 		if (result == true) {
 			//	해당 사용자가 있다면 아이디를 세션에 저장
 			
