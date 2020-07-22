@@ -24,7 +24,7 @@ public class Jm_ManagerController {
 		// 관리자 페이지- 일반회원 리스트 조회 - 페이징 기능 추가
 		@RequestMapping(value = "/jm_userList", method = RequestMethod.GET)
 		public String selectList(JmPagingDto jmPagingDto, Model model) throws Exception {
-			
+			System.out.println("/jm_userList, jmPagingDto:" + jmPagingDto);
 			jmPagingDto.setPageInfo();
 			
 			int totalCount = jmMemberService.selectUserCount(jmPagingDto);

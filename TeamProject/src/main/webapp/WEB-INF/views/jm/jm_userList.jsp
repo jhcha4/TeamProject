@@ -3,10 +3,6 @@
 <%@ include file="../include/head.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 
-
-
-
-
  ${jmPagingDto}
 
  <p>관리자 유저정보 관리 페이지 입니다</p>
@@ -16,15 +12,44 @@
 <script>
 $(function(){
 	
+	//몇개씩 보기
+	$("select[name=perPage]").change(function(){
+		console.log($(this).val());
+		$("#formPage > input[name=perPage]").val($(this).val());
+		    $("#formPage").submit();   
+	});
 	
 	
+	//페이지 번호
+	$("a.page-link").click(function(e){
+		e.preventDefault();
+		
+		var page = $(this).attr("href").trim();
+		
+		$("#formPage >input[name=page]").val(page);
+		$("#formPage").submit();	
+	});
 	
+	//검색 버튼
+	$("#btnSearch").click(function(){
+		
+		var searchType = $("select[name=searchType]").val();
+		var keyword = $("#keyword").val();
+		
+		$("#formPage >input[name=searchType]").val(searchType);
+		$("#formPage >input[name=keyword]").val(keyword);
+		$("#formPage").submit();	
+	});
 	
-	
+	//현재 페이지 액티브
+	$("a.page-link").each(function(){
+		var page = $(this).attr("href");
+		if(page =="${jmPagingDto.page}"){
+			$(this).parent().addClass("active");
+			return;
+		}	
+	});
 });
-
-
-
 
 </script>
 
@@ -45,7 +70,7 @@ $(function(){
  
  
  <!-- 페이지 링크 -->
- <form id="frmPage" action="/jm/jm_userList" method="get">
+ <form id="formPage" action="/jm/jm_userList" method="get">
  	<input type="hidden" name="u_info" value="${jmMemberVo.u_info}">
  	<input type="hidden" name="page" value="${jmPagingDto.page}">
  	<input type="hidden" name="perPage" value="${jmPagingDto.perPage}">
@@ -59,7 +84,7 @@ $(function(){
 	<select name="perPage">
 		<c:forEach begin="5" end="30" step="5" var="i">
 			<option value="${i}"
-				<c:if test="${i==jmPaingDto.perPage}">selected</c:if>
+				<c:if test="${i==jmPagingDto.perPage}">selected</c:if>
 			>${i}줄씩 보기</option>
 		</c:forEach>
 	</select> 
@@ -158,9 +183,9 @@ $(function(){
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-3">
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<nav>
 						<ul class="pagination">
 						
@@ -177,12 +202,13 @@ $(function(){
 						<c:if test="${jmPagingDto.endPage <jmPagingDto.totalPage}">
 							<li class="page-item">
 								<a class="page-link" href="${jmPagingDto.endPage+1 }">&raquo;</a>
+							</li>	
 						</c:if>		
-							</li>
+							
 						</ul>
 					</nav>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 				</div>
 			</div>
 		</div>
