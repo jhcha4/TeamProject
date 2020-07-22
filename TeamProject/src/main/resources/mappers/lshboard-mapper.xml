@@ -8,10 +8,14 @@
 	<!-- 상품 리스트 -->
 	<select id="list" resultType="LshBoardVo">
 		select *
-		from (select rownum rnum, a.*
-		    from (select * from tbl_product_board
+		from (select rownum rnum, c.*
+		    from (select b.p_num, b.p_name, b.p_content, b.p_price, b.p_main, b.p_serve, b.p_deleted, b.p_size, b.p_viewcnt, a.file_name
+		          from tbl_product_board b, tbl_attach a
+		          <where>
+		          	b.p_num = a.p_num
+		          </where>
 		        <include refid="item"/>
-		        order by <include refid="type"/>p_num desc) a)
+		        order by <include refid="type"/>p_num desc) c)
 				where rnum between #{lshBoardDto.startRow} and #{lshBoardDto.endRow}
 	</select>
 	
@@ -66,10 +70,14 @@
 	
 	<sql id="item">
 		<if test="p_main != null">
-			where p_main = #{p_main}
+			<where>
+			p_main = #{p_main}
+			</where> 
 		</if>
 		<if test="p_serve != null">
-			where p_serve = #{p_serve}
+			<where>
+			p_serve = #{p_serve}
+			</where>
 		</if>
 	</sql>
 	
