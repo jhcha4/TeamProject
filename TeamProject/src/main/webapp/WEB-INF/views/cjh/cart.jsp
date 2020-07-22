@@ -64,7 +64,7 @@ $(document).ready(function() {
 		var c_num = "";
 		$("input[name=checkbox]:checked").each(function() {
 // 			var sc_nums = $("td[name=c_num]").text();
-			var sc_nums = $(this).parent().next().next().next().next().next().next().next().next().text();
+			var sc_nums = $(this).parent().next().next().next().next().next().next().next().next().next().text();
 			sc_num += sc_nums+",";
 			console.log("sc_num : " + sc_num);
 		});
