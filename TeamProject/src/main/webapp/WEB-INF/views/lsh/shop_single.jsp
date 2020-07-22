@@ -43,11 +43,9 @@ $(function() {
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-			<c:forEach items="${imgList}" var="Kys_ImgVo">
 				 <figure class="block-4-image">
-				 	<img src="/upload/displayFile?fileName=${Kys_ImgVo.file_name}">
+				 	<img src="/upload/displayFile?fileName=${lshBoardVo.title_name}">
 				 </figure>
-			 </c:forEach>
           </div>
           <div class="col-md-6">
             <h2 class="text-black">${lshBoardVo.p_name}</h2>
@@ -71,8 +69,13 @@ $(function() {
             </div>
             
             <p><a id="insertCart" class="buy-now btn btn-sm btn-primary">장바구니에 담기</a></p>
-
+			
           </div>
+          
+          <c:forEach items="${imgList}" var="Kys_ImgVo">
+				<img src="/upload/displayFile?fileName=${Kys_ImgVo.file_name}">
+		  </c:forEach>
+			
         </div>
       </div>
     </div>
@@ -91,8 +94,8 @@ $(function() {
             <c:forEach items="${MostList}" var="lshBoardVo">
               <div class="item">
                 <div class="block-4 text-center">
-                  <figure class="block-4-image title" >
-                    <img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
+                  <figure class="block-4 title" >
+                    <img src="/upload/displayFile?fileName=${lshBoardVo.title_name}">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="shop_single?p_num=${lshBoardVo.p_num}" class="title">${lshBoardVo.p_name}</a></h3>

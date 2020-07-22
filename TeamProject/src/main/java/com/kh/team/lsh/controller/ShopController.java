@@ -29,11 +29,11 @@ public class ShopController {
 		lshBoardDto.setTotalCount(totalCount);
 		List<LshBoardVo> list = boardService.list(lshBoardDto, p_main, p_serve);
 		for (LshBoardVo vo : list) {
-			String file_name = vo.getFile_name();
-			String front = file_name.substring(0, file_name.lastIndexOf("/") + 1);
-			String rear = file_name.substring(file_name.lastIndexOf("/") + 1);
-			String smName = front + "sm_" + rear;
-			vo.setFile_name(smName);
+			String title_name = vo.getTitle_name();
+			String front = title_name.substring(0, title_name.lastIndexOf("/") + 1);
+			String rear = title_name.substring(title_name.lastIndexOf("/") + 1);
+			String smTitle = front + "sm_" + rear;
+			vo.setTitle_name(smTitle);
 		}
 		model.addAttribute("list", list);
 		model.addAttribute("lshBoardDto", lshBoardDto);
@@ -48,6 +48,15 @@ public class ShopController {
 		LshBoardVo lshBoardVo = boardService.single(p_num);
 		List<LshBoardVo> MostList = boardService.MostList();
 		List<Kys_ImgVo> imgList = boardService.getImg(p_num);
+		
+		for (LshBoardVo vo : MostList) {
+			String title_name = vo.getTitle_name();
+			String front = title_name.substring(0, title_name.lastIndexOf("/") + 1);
+			String rear = title_name.substring(title_name.lastIndexOf("/") + 1);
+			String smTitle = front + "sm_" + rear;
+			vo.setTitle_name(smTitle);
+		}
+		
 		model.addAttribute("MostList",MostList);
 		model.addAttribute("lshBoardVo", lshBoardVo);
 		model.addAttribute("imgList", imgList);
