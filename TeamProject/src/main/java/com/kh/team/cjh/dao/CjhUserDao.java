@@ -18,8 +18,5 @@ public interface CjhUserDao {
 	
 	//	내정보 수정
 	public void updateUser(CjhUserVo userVo) throws Exception;
-	
-
-	
 
 }

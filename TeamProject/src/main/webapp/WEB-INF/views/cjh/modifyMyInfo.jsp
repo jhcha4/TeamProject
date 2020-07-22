@@ -93,7 +93,7 @@ $(document).ready(function() {
 								<table class="table">
 									<thead>
 										<tr>
-					                        <th scope="row">user</th>
+					                        <th scope="row">아이디</th>
 					                        <td colspan="2">
 												<input type="text" class="form-control" id="u_id" name="u_id"
 														value="${userVo.u_id}" readonly/>
@@ -153,7 +153,7 @@ $(document).ready(function() {
 												<input type="button"  onclick="sample6_execDaumPostcode()" value="내 주소 찾기"><br>
 												<input type="text" class="form-control" id="mainAddress" placeholder="주소"><br>
 												<input type="text" class="form-control" id="detailAddress" placeholder="상세주소">
-												<input type="text" class="form-control" name="u_address" id="myAddress" placeholder="주소" readonly>
+												<input type="text" class="form-control" value="${userVo.u_address}" name="u_address" id="myAddress" placeholder="주소" readonly>
 											</td>
 										</tr>
 									</thead>
