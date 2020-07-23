@@ -6,7 +6,6 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.domain.LshBoardDto;
 import com.kh.team.domain.LshBoardVo;
 import com.kh.team.lsh.persistence.LSH_BoardDao;
@@ -41,8 +40,8 @@ public class LSH_BoardServiceImpl implements LSH_BoardService {
 	}
 
 	@Override
-	public List<Kys_ImgVo> getImg(int p_num) throws Exception {
-		List<Kys_ImgVo> getImgList = boardDao.getImg(p_num);
+	public List<LshBoardVo> getImg(int p_num) throws Exception {
+		List<LshBoardVo> getImgList = boardDao.getImg(p_num);
 		return getImgList;
 	}
 

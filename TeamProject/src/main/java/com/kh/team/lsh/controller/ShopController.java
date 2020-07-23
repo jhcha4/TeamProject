@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.domain.LshBoardDto;
 import com.kh.team.domain.LshBoardVo;
 import com.kh.team.lsh.service.LSH_BoardService;
@@ -47,7 +46,7 @@ public class ShopController {
 	public void shop_single(int p_num, Model model) throws Exception {
 		LshBoardVo lshBoardVo = boardService.single(p_num);
 		List<LshBoardVo> MostList = boardService.MostList();
-		List<Kys_ImgVo> imgList = boardService.getImg(p_num);
+		List<LshBoardVo> imgList = boardService.getImg(p_num);
 		
 		for (LshBoardVo vo : MostList) {
 			String title_name = vo.getTitle_name();

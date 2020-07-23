@@ -5,6 +5,16 @@
 
 <script>
 $(function() {
+	var arrSize = [];
+	function checkSize(size) {
+		for (var v = 0; v < arrSize.length; v++) {
+			if (size == arrSize[v]) {
+				return true;
+			}
+		}
+		arrSize.push(size);
+		return false;
+	}
 	$("input[name=p_count]").change(function() {
 		var p_count = $(this).val();
 		$(this).val(p_count);
@@ -18,9 +28,54 @@ $(function() {
 		location.href="/cjh/insertCart?u_id=${u_id}&p_num=${lshBoardVo.p_num}&p_count="+p_count;
 	});
 	$("#size").change(function() {
-		$(".mb-6").attr("style", "display:block");
 		var size = $("#size").val();
-		$("#name").append("[" + size + "]");
+		var isChecked = checkSize(size);
+		console.log(isChecked);
+		if (isChecked == true) {
+			return;
+		}
+		var html = "<div class='input-group mb-3' style='max-width: 400px;'>";
+		html += "<h5 id='name'>${lshBoardVo.p_name}["+size+"]</h5>";
+		html += "<input name='p_count' type='number' min='1' class='form-control text-center' value='1'>";
+		html += "<a href='#'class='delete'><h3>x</h3></a>"
+		html += "<h5 class='sumPrice'>${lshBoardVo.p_price}</h5><h5>원</h5>"
+		html += "</div>";
+		
+		$("#hidden").append(html);
+		
+		var totalPrice = 0;
+		var count = $(this).val();
+		var price = $(".h4").text();
+		$(this).next().next().text(count*price);
+		$(".sumPrice").each(function(index, element) {
+			var tPrice = $(this).text();
+			var nPrice = Number(tPrice);
+			totalPrice += nPrice;
+		});
+		$("#total").text(totalPrice);
+		
+	});
+	$("#hidden").on("click", ".delete", function(e) {
+		e.preventDefault();
+		var that = $(this);
+		var sumPrice = $(this).next().text();
+		var nPrice = Number(sumPrice);
+		var total = $("#total").text();
+		var totalPrice = Number(total);
+		$("#total").text(totalPrice - nPrice);
+		that.parent().remove();
+	});
+	$("#hidden").on("change", "input[name=p_count]", function() {
+		var totalPrice = 0;
+		var count = $(this).val();
+		var price = $(".h4").text();
+		$(this).next().next().text(count*price);
+		$(".sumPrice").each(function(index, element) {	
+			var tPrice = $(this).text();
+			var nPrice = Number(tPrice);
+			totalPrice += nPrice;
+		});
+		$("#total").text(totalPrice);
 	});
 });
 </script>
@@ -50,11 +105,11 @@ $(function() {
           <div class="col-md-6">
             <h2 class="text-black">${lshBoardVo.p_name}</h2>
             <p>${lshBoardVo.p_content}</p>
-            <p><strong class="text-primary h4">${lshBoardVo.p_price}원</strong></p>
+            <p><strong class="text-primary h4">${lshBoardVo.p_price}</strong>원</p>
             <div class="mb-1 d-flex">
-	            <h4>사이즈:</h4>
+	            <h4>Size:</h4>
 	            <select id="size">
-	            		<option>사이즈를 선택해주세요</option>
+	            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
 		               	<option value="S">S</option>
 		               	<option value="M">M</option>
 		               	<option value="L">L</option>
@@ -62,9 +117,14 @@ $(function() {
 	            </select>
             </div>
             
+            <div id="hidden">
+            </div>
+            <h2>가격 :<span id="total">0</span>원</h2>
+            
             <div class="mb-6" style="display:none">
               <div class="input-group mb-3" style="max-width: 250px;">
-         		   <h4 id="name">${lshBoardVo.p_name}</h4><input name="p_count" type="number" min="1" class="form-control text-center" value="1">
+         		   <h4 id="name">${lshBoardVo.p_name}</h4>
+         		   <input name="p_count" type="number" min="1" class="form-control text-center" value="1">
               </div>
             </div>
             
@@ -72,8 +132,8 @@ $(function() {
 			
           </div>
           
-          <c:forEach items="${imgList}" var="Kys_ImgVo">
-				<img src="/upload/displayFile?fileName=${Kys_ImgVo.file_name}">
+          <c:forEach items="${imgList}" var="lshBoardVo">
+				<img src="/upload/displayFile?fileName=${lshBoardVo.file_name}">
 		  </c:forEach>
 			
         </div>
