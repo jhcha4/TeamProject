@@ -112,7 +112,8 @@ $(document).ready(function() {
 			    
 				<div>
 			        <li>
-			        <h3><a href="/cjh/modifyMyInfo?u_id=${u_id}">내정보</a></h3>
+<%-- 			        <h3><a href="/cjh/modifyMyInfo?u_id=${u_id}">내정보 수정</a></h3> --%>
+			        <h3><a href="/cjh/pwCheck">내정보 수정</a></h3>
 			        </li>
 			    </div>
 			    

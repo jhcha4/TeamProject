@@ -50,6 +50,15 @@ public class CjhCartController {
 	public String cart(String u_id, Model model) throws Exception {
 	//		System.out.println("u_id : " + u_id);
 		List<CjhCartVo> list = cartService.getCart(u_id);
+		
+		for (CjhCartVo vo : list) {
+			String title_name = vo.getTitle_name();
+			String front = title_name.substring(0, title_name.lastIndexOf("/") + 1);
+			String rear = title_name.substring(title_name.lastIndexOf("/") + 1);
+			String smTitle = front + "sm_" + rear;
+			vo.setTitle_name(smTitle);
+		}
+		
 		model.addAttribute("list", list);
 		return "/cjh/cart";
 	}
@@ -114,6 +123,15 @@ public class CjhCartController {
 //		System.out.println("u_id : " + u_id);
 		List<CjhCartVo> list = cartService.getOrder(u_id);
 //		System.out.println("list : " + list);
+		
+		for (CjhCartVo vo : list) {
+			String title_name = vo.getTitle_name();
+			String front = title_name.substring(0, title_name.lastIndexOf("/") + 1);
+			String rear = title_name.substring(title_name.lastIndexOf("/") + 1);
+			String smTitle = front + "sm_" + rear;
+			vo.setTitle_name(smTitle);
+		}
+		
 		model.addAttribute("list", list);
 		return "cjh/myOrder";
 	}

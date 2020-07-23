@@ -108,7 +108,7 @@ ${list}
 		</div>
 	</div>
 </div>
-
+ 
 <div class="site-section">
 	<div class="container">
 		<div class="row mb-5">
@@ -122,12 +122,12 @@ ${list}
 								<th style="width: 5%">
 									<input type="checkbox" id="allcheck" name="allcheck"/>
 								</th>
-								<th style="width: 15%" class="product-thumbnail">상품이미지</th>
+								<th style="width: 15%" class="product-thumbnail">이미지</th>
 								<th style="width: 25%" class="product-name">상품내용</th>
-								<th style="width: 15%" class="product-price">가격</th>
-								<th style="width: 15%" class="product-quantity">수량</th>
+								<th style="width: 20%" class="product-price">가격</th>
+								<th style="width: 10%" class="product-quantity">수량</th>
 								<th style="width: 15%" class="product-total">총가격</th>
-								<th style="width: 10%" class="product-remove">삭제</th>
+								<th style="width: 15%" class="product-remove">삭제</th>
 							</tr>
 						</thead>
 						
@@ -141,10 +141,11 @@ ${list}
 											<input type="hidden" id="u_id" value="${u_id}">
 										</td>
 										
-<%-- 										<td style="border-left: none; border-right: none;"><img style="width:15px;" src="/resources/images/${item.p_image}"></td> --%>
-										<td style="border-left: none; border-right: none;"><img style="width:150px;" src="/resources/images/cloth_1.jpg"></td>
-										
-										<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.p_name}</td>
+<%-- 										<td style="border-left: none; border-right: none;"><img style="width:15px;" src="/resources/images/${item.title_name}"></td> --%>
+<!-- 										<td style="border-left: none; border-right: none;"><img style="width:150px;" src="/resources/images/cloth_1.jpg"></td> -->
+										<td style="border-left: none; border-right: none;"><img src="/upload/displayFile?fileName=${item.title_name}"></td>
+											
+										<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.p_name} - ${item.p_size}</td>
 											<input type="hidden" id="p_num" value="${item.p_num}">
 										<td><a name="p_price" style="padding-left: 10px;" class="p_price${status.index}">${item.p_price}</a></td>
 										
