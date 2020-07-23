@@ -64,4 +64,10 @@ public class JmReviewDaoImpl implements JmReviewDao {
 		return sqlSession.selectOne(NAMESPACE+"selectCount",jmPagingDto);
 	}
 
+	@Override
+	public void updateViewCount(int r_info) throws Exception {
+		 sqlSession.selectOne(NAMESPACE+"updateViewCount",r_info);
+		
+	}
+
 }

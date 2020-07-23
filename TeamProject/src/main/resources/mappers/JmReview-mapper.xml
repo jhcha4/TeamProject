@@ -78,8 +78,15 @@
 	
 	</select>
 		
-		
-		
+	<!-- 조회수 증가 -->	
+	<update id="updateViewCount">
+		update tbl_review set
+		r_viewcnt = r_viewcnt+1
+		where r_info = #{r_info}
+	
+	
+	</update>
+	
 		
 		
 		

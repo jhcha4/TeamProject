@@ -35,11 +35,9 @@ public class Jm_ReviewController {
 		
 		List<JmReviewVo> list = jmReviewService.selectPaging(jmPagingDto);
 		System.out.println("jm_reviewForm, list:" + list);
-		model.addAttribute("list",list);
 		System.out.println(jmPagingDto);
 		
-		
-		
+		model.addAttribute("list",list);
 		model.addAttribute("jmPagingDto",jmPagingDto);
 		return "jm/jm_reviewForm";
 		

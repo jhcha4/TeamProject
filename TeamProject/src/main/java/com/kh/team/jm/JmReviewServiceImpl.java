@@ -29,6 +29,9 @@ public class JmReviewServiceImpl implements JmReviewService {
 	@Override
 	public JmReviewVo selectReviewInfo(int r_info) throws Exception {
 		JmReviewVo jmReviewVo = jmReviewDao.selectReviewInfo(r_info);
+		
+		jmReviewDao.updateViewCount(r_info);
+		
 		return jmReviewVo;
 	}
 
@@ -71,6 +74,10 @@ public class JmReviewServiceImpl implements JmReviewService {
 		
 		return jmReviewDao.selectCount(jmPagingDto);
 	}
+
+
+
+	
 
 
 
