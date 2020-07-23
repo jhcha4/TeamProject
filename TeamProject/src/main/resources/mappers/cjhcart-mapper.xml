@@ -30,7 +30,8 @@
 		where u_id = #{u_id}
 		and c.p_status = o.o_code
 		and c.p_num = a.p_num
-		and c.p_status != 1001
+<!-- 		and c.p_status != 1001 -->
+		<include refid="status"/>
 	</select>
 	
 	<delete id="deleteCart">
@@ -62,4 +63,29 @@
 		p_date = sysdate
 		where u_id = #{u_id} and p_status = 1001
 	</delete>
+	
+	<sql id="status">
+		<if test="#{p_status} != null">
+			<choose>
+				<when test='p_status == 1'>
+					and c.p_status != 1001
+				</when>
+				<when test='p_status == 1002'>
+					and c.p_status = 1002
+				</when>
+				<when test='p_status == 1003'>
+					and c.p_status = 1003
+				</when>
+				<when test='p_status == 1004'>
+					and c.p_status = 1004
+				</when>
+				<when test='p_status == 1005'>
+					and c.p_status = 1005
+				</when>
+				<when test='p_status == 1006'>
+					and c.p_status = 1006
+				</when>
+			</choose>
+		</if>
+	</sql>
 </mapper>

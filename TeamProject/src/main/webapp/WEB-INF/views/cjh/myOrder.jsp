@@ -20,10 +20,24 @@ $(document).ready(function() {
 		console.log("sp_date : " + sp_date);
 		$(this).text(sp_date);
 	});
+	
+	$("#p_status").change(function() {
+		var p_status = $(this).val();
+		console.log("p_status : " + p_status);
+		$("select option").each(function() {
+			if ($(this).val() == p_status) {
+				$(this).attr("selected");
+			} else {
+				$(this).removeAttr("selected");
+				console.log($(this).val());
+			}
+		});
+		location.href="/cjh/myOrder?u_id=${u_id}&p_status=" + p_status;
+	});
 });
 </script>
 
-{list}
+${list}
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -39,6 +53,24 @@ $(document).ready(function() {
 	<div class="container">
 		<div class="title"><h1>ORDER</h1></div>
 		<div class="site-blocks-table">
+		
+			<div class="row">
+				<div class="col-md-12 mb-5">
+					<div class="d-flex"> 
+						<div class="dropdown mr-1 ml-md-auto">
+						<select id="p_status" id="p_status">
+							<option value=1 <c:if test="${p_status == 1}">selected</c:if>>주문목록</option>
+							<option value=1002 <c:if test="${p_status == 1002}">selected</c:if>>주문접수</option>
+							<option value=1003 <c:if test="${p_status == 1003}">selected</c:if>>출고</option>
+							<option value=1004 <c:if test="${p_status == 1004}">selected</c:if>>배송중</option>
+							<option value=1005 <c:if test="${p_status == 1005}">selected</c:if>>배송완료</option>
+							<option value=1006 <c:if test="${p_status == 1006}">selected</c:if>>구매확정</option>
+						</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		
 			<table class="table table-bordered">
 				<thead>
 					<tr>

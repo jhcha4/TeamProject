@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.domain.LshBoardDto;
 import com.kh.team.domain.LshBoardVo;
 
@@ -60,7 +59,7 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 
 
 	@Override
-	public List<Kys_ImgVo> getImg(int p_num) throws Exception {
+	public List<LshBoardVo> getImg(int p_num) throws Exception {
 		return sqlSession.selectList(NAMESPACE + "getImg", p_num);
 	}
 
