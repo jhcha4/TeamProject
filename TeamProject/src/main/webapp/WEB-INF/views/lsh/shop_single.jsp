@@ -156,13 +156,6 @@ $(function() {
             </div>
             <h2>가격 :<span id="total">0</span>원</h2>
             
-<!--             <div class="mb-6" style="display:none"> -->
-<!--               <div class="input-group mb-3" style="max-width: 250px;"> -->
-<%--          		   <h4 id="name">${lshBoardVo.p_name}</h4> --%>
-<!--          		   <input name="p_count" type="number" min="1" class="form-control text-center" value="1"> -->
-<!--               </div> -->
-<!--             </div> -->
-            
             <p><button type="button" id="insertCart" class="buy-now btn btn-sm btn-primary" disabled>장바구니에 담기</button></p>
 			
           </div>
@@ -179,7 +172,7 @@ $(function() {
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>주요 상품</h2>
+            <h2>인기 상품</h2>
           </div>
         </div>
         <div class="row">
