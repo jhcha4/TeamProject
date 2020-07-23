@@ -28,5 +28,7 @@ public interface JmReviewDao {
 	//게시글 수 조회
 	public int selectCount(JmPagingDto jmPagingDto)throws Exception;
 	
+	//게시판 조회수 증가
+	public void updateViewCount(int r_info)throws Exception;
 	
 }

@@ -49,9 +49,17 @@ $(function(){
 		if(page =="${jmPagingDto.page}"){
 			$(this).parent().addClass("active");
 			return;
-		}
-		
+		}	
 	});
+	
+	//조회수
+$("a.review_title").click(function(e){
+		console.log(e);
+ 
+	
+	
+});
+	
 	
 	
 	
@@ -150,6 +158,10 @@ $(function(){
 						<th>
 							평점
 						</th>
+						<th>
+							조회수
+						</th>
+						
 					</tr>
 					
 				</thead>
@@ -157,7 +169,7 @@ $(function(){
 				<c:forEach items="${list}" var="jmReviewVo">
 					<tr class="table-warning">
 						<td>
-						<a href="/jm/jm_reviewInfo/${jmReviewVo.r_info}" class="btn btn-sm btn-danger">${jmReviewVo.r_info}</a>
+						<a href="/jm/jm_reviewInfo/${jmReviewVo.r_info}"  class="review_title btn btn-sm btn-danger">${jmReviewVo.r_info}</a>
 						</td>
 						<td>
 							${jmReviewVo.r_id}
@@ -173,6 +185,9 @@ $(function(){
 						</td>
 						<td>
 							${jmReviewVo.r_star}
+						</td>
+						<td>
+							${jmReviewVo.r_viewcnt}
 						</td>
 					</tr>
 					

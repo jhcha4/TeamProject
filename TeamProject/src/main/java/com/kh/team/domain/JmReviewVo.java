@@ -11,6 +11,7 @@ public class JmReviewVo {
 	private Timestamp r_time;
 	private int r_star;
 	private int r_item;
+	private int r_viewcnt;
 	
 	public JmReviewVo() {
 		super();
@@ -73,10 +74,19 @@ public class JmReviewVo {
 		this.r_item = r_item;
 	}
 
+	public int getR_viewcnt() {
+		return r_viewcnt;
+	}
+
+	public void setR_viewcnt(int r_viewcnt) {
+		this.r_viewcnt = r_viewcnt;
+	}
+
 	@Override
 	public String toString() {
 		return "JmReviewVo [r_info=" + r_info + ", r_id=" + r_id + ", r_subject=" + r_subject + ", r_contents="
-				+ r_contents + ", r_time=" + r_time + ", r_star=" + r_star + ", r_item=" + r_item + "]";
+				+ r_contents + ", r_time=" + r_time + ", r_star=" + r_star + ", r_item=" + r_item + ", r_viewcnt="
+				+ r_viewcnt + "]";
 	}
 	
 	
