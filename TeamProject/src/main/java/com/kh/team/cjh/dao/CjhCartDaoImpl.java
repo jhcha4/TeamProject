@@ -86,8 +86,11 @@ public class CjhCartDaoImpl implements CjhCartDao {
 
 	//	주문목록 불러오기
 	@Override
-	public List<CjhCartVo> getOrder(String u_id) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "getOrder", u_id);
+	public List<CjhCartVo> getOrder(String u_id, int p_status) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("u_id", u_id);
+		paramMap.put("p_status", p_status);
+		return sqlSession.selectList(NAMESPACE + "getOrder", paramMap);
 	}
 
 

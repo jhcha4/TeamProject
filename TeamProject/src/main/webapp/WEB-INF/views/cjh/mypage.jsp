@@ -106,7 +106,7 @@ $(document).ready(function() {
 				
 				<div>
 			        <li>
-			        <h3><a href="/cjh/myOrder?u_id=${u_id}">주문내역</a></h3>
+			        <h3><a href="/cjh/myOrder?u_id=${u_id}&p_status=1">주문내역</a></h3>
 			        </li>
 			    </div>
 			    

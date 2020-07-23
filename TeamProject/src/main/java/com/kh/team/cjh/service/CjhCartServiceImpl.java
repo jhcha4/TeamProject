@@ -59,8 +59,8 @@ public class CjhCartServiceImpl implements CjhCartService {
 
 	//	주문목록 불러오기
 	@Override
-	public List<CjhCartVo> getOrder(String u_id) throws Exception {
-		return cartDao.getOrder(u_id);
+	public List<CjhCartVo> getOrder(String u_id, int p_status) throws Exception {
+		return cartDao.getOrder(u_id, p_status);
 	}
 
 	//	장바구니 갯수 불러오기
