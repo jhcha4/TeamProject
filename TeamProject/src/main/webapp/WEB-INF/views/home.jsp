@@ -9,7 +9,7 @@
           <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
             <h1 class="mb-2" style="color:red">최고의 상품을 만나보세요</h1>
             <div class="intro-text text-center text-md-left">
-              <p class="mb-4"style="color:red">최고의 품격과 멋을 만들어줄 품목들을 선사 해드립니다</p>
+              <p class="mb-4"style="color:red">최고의 품격과 멋을 만들어 드릴수 있는 품목들을 선사 해드립니다</p>
               <p>
                 <a href="/lsh/shop?p_main=T&type=L&page=1" class="btn btn-sm btn-info">상품 둘러보기</a>
               </p>

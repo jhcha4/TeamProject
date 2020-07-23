@@ -55,10 +55,10 @@
 
             <div class="block-7">
               <form action="#" method="post">
-                <label for="email_subscribe" class="footer-heading">Subscribe</label>
+                <label for="email_subscribe" class="footer-heading">Q&A</label>
                 <div class="form-group">
-                  <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
-                  <input type="submit" class="btn btn-sm btn-primary" value="Send">
+                 <p>E-mail 보내기</p>
+                  <a href="/jm/jm_contact" class="btn btn-sm btn-primary" >send</a>
                 </div>
               </form>
             </div>

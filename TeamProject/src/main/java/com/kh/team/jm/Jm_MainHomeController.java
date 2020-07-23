@@ -8,10 +8,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/jm")
 public class Jm_MainHomeController {
 
+	//about
 	@RequestMapping(value="/jm_about" ,method=RequestMethod.GET)
 	public void jm_About() throws Exception {
-		
-
 	}
 
+	
+	//contact
+	@RequestMapping(value="/jm_contact" ,method=RequestMethod.GET)
+	public void jm_contact()throws Exception{
+	}
 }

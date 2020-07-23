@@ -176,7 +176,7 @@
             
             <li><a href="#">Catalogue</a></li>
             <li><a href="#">New Arrivals</a></li>
-            <li><a href="/cjh/contact">Contact</a></li>
+            <li><a href="/jm/jm_contact">Contact</a></li>
             <li><a href="/jm/jm_reviewForm">review</a></li>
           </ul>
           

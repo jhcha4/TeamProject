@@ -103,8 +103,19 @@ $(function(){
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-3">
+					</div>
+						<div class="col-md-6">
+		
+		
 			<form id="joinForm" role="form" action="/jm/jm_signUpRun" method="post">
-				<div class="form-group">
+				<div class="p-3 p-lg-5 border">
+					<div class ="text-center">
+						<h3>회원가입</h3>
+					</div>
+					
+				<div class="form-group ">
 					 
 					<label for="u_id">
 						아이디
@@ -226,7 +237,15 @@ $(function(){
 					가입하기
 				</button>
 				
+				</div>
+				
 			</form>
+			
+			
+			<div class="col-md-3">
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
