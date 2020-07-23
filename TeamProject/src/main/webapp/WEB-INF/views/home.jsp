@@ -79,7 +79,7 @@
             </a>
           </div>
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-            <a class="block-2-item" href="#">
+            <a class="block-2-item" href="lsh/shop?p_serve=TH&type=L&page=1">
               <figure class="image">
                 <img src="../../resources/images/SubBmp3.bmp" alt="" class="img-fluid">
               </figure>
@@ -97,7 +97,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Featured Products</h2>
+            <h2>인기 상품</h2>
           </div>
         </div>
         <div class="row">
@@ -106,60 +106,60 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="../../resources/images/popular5.bmp" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Tank Top</a></h3>
-                    <p class="mb-0">Finding perfect t-shirt</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">르띠아노 바지</a></h3>
+                    <p class="mb-0">이태리 최고급 원단 정장 바지</p>
+                    <p class="text-primary font-weight-bold">200,000원</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="../../resources/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="../../resources/images/popular1.bmp" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">까무세라 수트</a></h3>
+                    <p class="mb-0">이탈리아 최고급 장인들의 수트</p>
+                    <p class="text-primary font-weight-bold">500,000원</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="../../resources/images/cloth_2.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="../../resources/images/popular2.bmp" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Polo Shirt</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">다이노르 수트 세트</a></h3>
+                    <p class="mb-0">영국 최고의 품질과 장인정신이 살아있는 세트</p>
+                    <p class="text-primary font-weight-bold">750,000원</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="../../resources/images/cloth_3.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="../../resources/images/popular3.bmp" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">T-Shirt Mockup</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">미세르 수트</a></h3>
+                    <p class="mb-0">이탈리아 고급 원단의 수트</p>
+                    <p class="text-primary font-weight-bold">190,000원</p>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="../../resources/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
+                    <img src="../../resources/images/popular4.bmp" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
+                    <h3><a href="#">발랑모르 로퍼</a></h3>
+                    <p class="mb-0">이태리 직수입 한정판</p>
+                    <p class="text-primary font-weight-bold">130,000원</p>
                   </div>
                 </div>
               </div>
@@ -173,18 +173,18 @@
       <div class="container">
         <div class="row justify-content-center  mb-5">
           <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Big Sale!</h2>
+            <h2>카드 할부 안내</h2>
           </div>
         </div>
         <div class="row align-items-center">
           <div class="col-md-12 col-lg-7 mb-5">
-            <a href="#"><img src="../../resources/images/blog_1.jpg" alt="Image placeholder" class="img-fluid rounded"></a>
+            <a href="#"><img src="../../resources/images/CardBmp.bmp" alt="Image placeholder" class="img-fluid rounded"></a>
           </div>
           <div class="col-md-12 col-lg-5 text-center pl-md-5">
-            <h2><a href="#">50% less in all items</a></h2>
-            <p class="post-meta mb-4">By <a href="#">Carl Smith</a> <span class="block-8-sep">&bullet;</span> September 3, 2018</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam iste dolor accusantium facere corporis ipsum animi deleniti fugiat. Ex, veniam?</p>
-            <p><a href="#" class="btn btn-primary btn-sm">Shop Now</a></p>
+            <h2><a href="#">최대 12개월 무이자 할부 가능</a></h2>
+            <p class="post-meta mb-4">By <a href="#">J.M</a> <span class="block-8-sep">&bullet;</span> July 23, 2020 이후 부터 12개월 할부 보장 </p>
+            <p>모든 상품 10만원 이상 구매시 전품목 최대 12개월 무이자 할부 가능 합니다 ★당신의 선택을 기다리고 있습니다</p>
+            <p><a href="#" class="btn btn-primary btn-sm">지금 구매하세요</a></p>
           </div>
         </div>
       </div>
