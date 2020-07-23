@@ -132,7 +132,7 @@ public class CjhCartController {
 			String smTitle = front + "sm_" + rear;
 			vo.setTitle_name(smTitle);
 		}
-		model.addAttribute("p_status", p_status);
+		model.addAttribute("p_status", p_status); 
 		model.addAttribute("list", list);
 //		return "cjh/myOrder";
 	}
