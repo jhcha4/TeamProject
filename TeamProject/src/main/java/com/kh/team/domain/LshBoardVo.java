@@ -10,6 +10,7 @@ public class LshBoardVo {
 	private int p_viewCnt;
 
 	private String title_name;
+	private String file_name;
 
 	public int getP_num() {
 		return p_num;
@@ -75,11 +76,19 @@ public class LshBoardVo {
 		this.title_name = title_name;
 	}
 
+	public String getFile_name() {
+		return file_name;
+	}
+
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
+	}
+
 	@Override
 	public String toString() {
 		return "LshBoardVo [p_num=" + p_num + ", p_name=" + p_name + ", p_content=" + p_content + ", p_price=" + p_price
 				+ ", p_main=" + p_main + ", p_serve=" + p_serve + ", p_viewCnt=" + p_viewCnt + ", title_name="
-				+ title_name + "]";
+				+ title_name + ", file_name=" + file_name + "]";
 	}
 
 }

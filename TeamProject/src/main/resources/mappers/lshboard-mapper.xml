@@ -56,7 +56,7 @@
 	</select>
 	
 	<!-- 이미지 한개 불러오기 -->
-	<select id="getImg" resultType="Kys_ImgVo">
+	<select id="getImg" resultType="LshBoardVo">
 		select * from tbl_attach 
 		where p_num= #{p_num}
 	</select>
