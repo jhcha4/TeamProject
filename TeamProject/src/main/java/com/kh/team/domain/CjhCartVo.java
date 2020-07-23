@@ -11,7 +11,7 @@ public class CjhCartVo {
 	private int p_price;
 	private String p_content;
 	private int p_count;
-	private String p_image;
+	private String title_name;
 	private int p_status;
 	private Timestamp p_date;
 	private String o_status;
@@ -23,7 +23,7 @@ public class CjhCartVo {
 	}
 
 	public CjhCartVo(int c_num, String u_id, int p_num, String p_name, int p_price, String p_content, int p_count,
-			String p_image, int p_status, Timestamp p_date, String o_status, String p_size) {
+			String title_name, int p_status, Timestamp p_date, String o_status, String p_size) {
 		super();
 		this.c_num = c_num;
 		this.u_id = u_id;
@@ -32,7 +32,7 @@ public class CjhCartVo {
 		this.p_price = p_price;
 		this.p_content = p_content;
 		this.p_count = p_count;
-		this.p_image = p_image;
+		this.title_name = title_name;
 		this.p_status = p_status;
 		this.p_date = p_date;
 		this.o_status = o_status;
@@ -95,12 +95,12 @@ public class CjhCartVo {
 		this.p_count = p_count;
 	}
 
-	public String getP_image() {
-		return p_image;
+	public String getTitle_name() {
+		return title_name;
 	}
 
-	public void setP_image(String p_image) {
-		this.p_image = p_image;
+	public void setTitle_name(String title_name) {
+		this.title_name = title_name;
 	}
 
 	public int getP_status() {
@@ -138,9 +138,11 @@ public class CjhCartVo {
 	@Override
 	public String toString() {
 		return "CjhCartVo [c_num=" + c_num + ", u_id=" + u_id + ", p_num=" + p_num + ", p_name=" + p_name + ", p_price="
-				+ p_price + ", p_content=" + p_content + ", p_count=" + p_count + ", p_image=" + p_image + ", p_status="
-				+ p_status + ", p_date=" + p_date + ", o_status=" + o_status + ", p_size=" + p_size + "]";
+				+ p_price + ", p_content=" + p_content + ", p_count=" + p_count + ", title_name=" + title_name
+				+ ", p_status=" + p_status + ", p_date=" + p_date + ", o_status=" + o_status + ", p_size=" + p_size
+				+ "]";
 	}
+	
 
 
 }

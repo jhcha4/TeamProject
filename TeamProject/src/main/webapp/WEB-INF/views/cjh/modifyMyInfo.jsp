@@ -121,8 +121,6 @@ $(document).ready(function() {
 										</tr>
 									</thead>
 									
-									
-									
 									<thead>
 										
 										<tr id="email-area">

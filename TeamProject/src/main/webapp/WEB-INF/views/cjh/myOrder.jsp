@@ -58,7 +58,7 @@ $(document).ready(function() {
 									${item.c_num}
 								</td>
 								
-								<td style="border-right: none;"><img style="width:150px; " src="/resources/images/cloth_1.jpg"></td>
+								<td style="border-right: none;"><img src="/upload/displayFile?fileName=${item.title_name}"></td>
 								<td style="border-left: none;">${item.p_name} - ${item.p_size}</td>
 								
 								<td style="text-align:center; font-weight: bold;">

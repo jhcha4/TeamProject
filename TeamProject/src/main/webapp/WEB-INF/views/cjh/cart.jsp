@@ -141,9 +141,10 @@ ${list}
 											<input type="hidden" id="u_id" value="${u_id}">
 										</td>
 										
-<%-- 										<td style="border-left: none; border-right: none;"><img style="width:15px;" src="/resources/images/${item.p_image}"></td> --%>
-										<td style="border-left: none; border-right: none;"><img style="width:150px;" src="/resources/images/cloth_1.jpg"></td>
-										
+<%-- 										<td style="border-left: none; border-right: none;"><img style="width:15px;" src="/resources/images/${item.title_name}"></td> --%>
+<!-- 										<td style="border-left: none; border-right: none;"><img style="width:150px;" src="/resources/images/cloth_1.jpg"></td> -->
+										<td style="border-left: none; border-right: none;"><img src="/upload/displayFile?fileName=${item.title_name}"></td>
+											
 										<td style="text-align:Left; padding-left: 10px; border-left: none; font-weight: bold;">${item.p_name} - ${item.p_size}</td>
 											<input type="hidden" id="p_num" value="${item.p_num}">
 										<td><a name="p_price" style="padding-left: 10px;" class="p_price${status.index}">${item.p_price}</a></td>
