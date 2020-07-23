@@ -107,8 +107,8 @@ public class CjhMyInfoController {
 	//	비밀번호 확인 처리
 	@RequestMapping(value = "/pwCheck", method = RequestMethod.POST)
 	public String pwCheckPost(String u_id, String u_pw, Model model, RedirectAttributes rttr) throws Exception {
-		System.out.println("u_id : " + u_id);
-		System.out.println("u_pw : " + u_pw);
+//		System.out.println("u_id : " + u_id);
+//		System.out.println("u_pw : " + u_pw);
 		boolean result = userService.login(u_id, u_pw);
 		if (result == true) {
 			CjhUserVo userVo = userService.selectUser(u_id);
@@ -124,9 +124,9 @@ public class CjhMyInfoController {
 	@RequestMapping(value="/modifyMyInfo", method = RequestMethod.GET)
 	public void modifyMyInfoGet(String u_id, Model model) throws Exception {
 //		System.out.println("u_id : " + u_id);
-//		CjhUserVo userVo = userService.selectUser(u_id);
+		CjhUserVo userVo = userService.selectUser(u_id);
 //		System.out.println("userVo : " + userVo);
-//		model.addAttribute("userVo", userVo);
+		model.addAttribute("userVo", userVo);
 	}
 	
 	//	회원정보 수정처리

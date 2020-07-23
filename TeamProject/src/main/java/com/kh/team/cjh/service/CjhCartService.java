@@ -29,5 +29,5 @@ public interface CjhCartService {
 	public void orderCartUpdate(String u_id) throws Exception;
 	
 	//	주문목록 불러오기
-	public List<CjhCartVo> getOrder(String u_id) throws Exception;
+	public List<CjhCartVo> getOrder(String u_id, int p_status) throws Exception;
 }

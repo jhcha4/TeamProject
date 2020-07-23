@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
+import com.kh.team.domain.Kys_productCountVo;
 
 
 @Repository
@@ -124,6 +125,23 @@ public class KysBoardDaoImpl implements KysBoardDao {
 			paramMap.put("title_name", title_name);
 			paramMap.put("p_num", p_num);
 			sqlSession.insert(NAMESPACE+"titleImgFile",paramMap);
+		}
+
+		@Override
+		public void insertProductCount(String p_size,int p_count,int p_num) throws Exception {
+			Map<String,Object> parammap = new HashMap<>();
+			parammap.put("p_size", p_size);
+			parammap.put("p_count", p_count);
+			parammap.put("p_num", p_num);
+			sqlSession.insert(NAMESPACE+"insertProductCount",parammap);
+			
+			
+		}
+
+		@Override
+		public List<Kys_productCountVo> selectProductCount(int p_num) throws Exception {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
 	

@@ -4,6 +4,15 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mappers.kysboard-mapper">
+	<!--사이즈 등록-->
+	<insert id="insertProductCount">
+		insert into tbl_product_count(p_size,p_count,p_num)
+		values(#{p_size},#{p_count},#{p_num})
+	</insert>
+	<select id="selectProductCount" resultType="Kys_productCountVo">
+		select * from tbl_product_count
+		where p_num = #{p_num}
+	</select>
 	<!-- nextval 값 얻기 -->
 	<select id="getNextVal" resultType="int">
 		select seq_p_num.nextval from dual
@@ -81,8 +90,6 @@
 		select * from tbl_product_board 
 		where p_main = #{p_main} and p_serve = #{p_serve}  
 	</select>
-	
-	
 	
 	<!-- 게시글 페이징 -->
 	<select id="boardListPage" resultType="Kys_BoardVo">

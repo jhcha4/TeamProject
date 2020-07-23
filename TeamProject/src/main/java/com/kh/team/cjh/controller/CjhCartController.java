@@ -50,6 +50,15 @@ public class CjhCartController {
 	public String cart(String u_id, Model model) throws Exception {
 	//		System.out.println("u_id : " + u_id);
 		List<CjhCartVo> list = cartService.getCart(u_id);
+		
+		for (CjhCartVo vo : list) {
+			String title_name = vo.getTitle_name();
+			String front = title_name.substring(0, title_name.lastIndexOf("/") + 1);
+			String rear = title_name.substring(title_name.lastIndexOf("/") + 1);
+			String smTitle = front + "sm_" + rear;
+			vo.setTitle_name(smTitle);
+		}
+		
 		model.addAttribute("list", list);
 		return "/cjh/cart";
 	}
@@ -110,11 +119,21 @@ public class CjhCartController {
 	
 	//	주문목록 불러오기
 	@RequestMapping(value="/myOrder", method = RequestMethod.GET)
-	public String getOrder(String u_id, Model model) throws Exception {
+	public void getOrder(String u_id, int p_status, Model model) throws Exception {
 //		System.out.println("u_id : " + u_id);
-		List<CjhCartVo> list = cartService.getOrder(u_id);
+//		System.out.println("p_status : " + p_status);
+		List<CjhCartVo> list = cartService.getOrder(u_id, p_status);
 //		System.out.println("list : " + list);
+		
+		for (CjhCartVo vo : list) {
+			String title_name = vo.getTitle_name();
+			String front = title_name.substring(0, title_name.lastIndexOf("/") + 1);
+			String rear = title_name.substring(title_name.lastIndexOf("/") + 1);
+			String smTitle = front + "sm_" + rear;
+			vo.setTitle_name(smTitle);
+		}
+		model.addAttribute("p_status", p_status);
 		model.addAttribute("list", list);
-		return "cjh/myOrder";
+//		return "cjh/myOrder";
 	}
 }

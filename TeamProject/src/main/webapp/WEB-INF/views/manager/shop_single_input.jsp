@@ -26,7 +26,7 @@ $(function() {
 	});
 	//이미지 파일 드롭
 	//타이틀 이미지
-<%@ include file="../include/main_ImgFile.jsp" %>
+
 	$("#titleImg").on("dragenter dragover", function(e){
 		e.preventDefault();
 	});
@@ -113,25 +113,24 @@ $(function() {
 		});
 	});
 	
-// 	$("#formSubmit").submit(function(){
-// 		var upDiv = $("#imgFileDrop > div");
-// 		var titleDiv = $("#titleImg > div");
-// 		console.log("upDiv:"+upDiv);
-// 		upDiv.each(function(index){
-// 			var filename = $(this).attr("data-filename");
-// 			var hiddenInput = "<input type='hidden' name='p_files["+index+"]' value='"+filename+"'/>";
-// 			$("#formSubmit").prepend(hiddenInput);
-// 		});
-// 		titleDiv.each(function(index){
-// 			var filename = $(this).attr("data-filename");
-// // 			console.log("submit filename:"+filename);
-// // 			console.log("formsubmit/filename:"+filename);
-// 			var hiddenInput = "<input type='hidden' name='title_name' value='"+filename+"'/>";
-// 			$("#formSubmit").prepend(hiddenInput);
-// 		});
+
+	$("#formSubmit").submit(function(){
+		var upDiv = $("#imgFileDrop > div");
+		var titleDiv = $("#titleImg > div");
+		upDiv.each(function(index){
+			var filename = $(this).attr("data-filename");
+			var hiddenInput = "<input type='hidden' name='p_files["+index+"]' value='"+filename+"'/>";
+			$("#formSubmit").prepend(hiddenInput);
+		});
+		titleDiv.each(function(index){
+			var filename = $(this).attr("data-filename");
+			var hiddenInput = "<input type='hidden' name='title_name' value='"+filename+"'/>";
+			$("#formSubmit").prepend(hiddenInput);
+		});
 		
-// 	});
-	<%@ include file="../include/main_ImgFile.jsp" %>
+	});
+
+
 });
 </script>
 
@@ -185,7 +184,9 @@ $(function() {
 						</select>
 
 					</div>
-
+	<c:if test="${p_deleted == 'd' }">
+		<samp></samp>
+	</c:if>
 					<h2 class="text-black">
 						상품이름<input type="text" id="p_name" name="p_name">
 					</h2>
@@ -200,41 +201,46 @@ $(function() {
 					</p>
 					<!-- 사이즈 -->
 					<div class="mb-1 d-flex">
-						<label for="option-sm" class="d-flex mr-3 mb-3"> <span
-							class="d-inline-block mr-2"
-							style="top: -2px; position: relative;"> <input
-								type="checkbox" id="option-sm" name="shop-sizes"></span> <span
-							class="d-inline-block text-black">Small</span>
-						</label> <label for="option-md" class="d-flex mr-3 mb-3"> <span
-							class="d-inline-block mr-2"
-							style="top: -2px; position: relative;"> <input
-								type="checkbox" id="option-md" name="shop-sizes"></span> <span
-							class="d-inline-block text-black">Medium</span>
-						</label> <label for="option-lg" class="d-flex mr-3 mb-3"> <span
-							class="d-inline-block mr-2"
-							style="top: -2px; position: relative;"> <input
-								type="checkbox" id="option-lg" name="shop-sizes"></span> <span
-							class="d-inline-block text-black">Large</span>
-						</label> <label for="option-xl" class="d-flex mr-3 mb-3"> <span
-							class="d-inline-block mr-2"
-							style="top: -2px; position: relative;"> <input
-								type="checkbox" id="option-xl" name="shop-sizes"></span> <span
-							class="d-inline-block text-black"> Extra Large</span>
+						<label for="option-sm" class="d-flex mr-3 mb-3"> 
+							<span class="d-inline-block mr-2" style="top: -2px; position: relative;"> 
+								<input	type="checkbox" id="p_size" name="p_size" value="S" style="margin: 10px;"> 
+								<input type="text" id="p_count" name="p_count" value="0">
+							</span>
+							<span class="d-inline-block text-black">Small</span>
+						</label> 
+						<label for="option-md" class="d-flex mr-3 mb-3"> 
+							<span	class="d-inline-block mr-2" style="top: -2px; position: relative;">
+								<input	type="checkbox" id="p_size" name="p_size" value="M" style="margin: 10px;">
+								<input type="text" id="p_count" name="p_count" value="0">
+							</span> 
+							<span class="d-inline-block text-black">Medium</span>
+						</label> 
+						<label for="option-lg" class="d-flex mr-3 mb-3"> 
+							<span class="d-inline-block mr-2" style="top: -2px; position: relative;"> 
+								<input	type="checkbox" id="option-lg" name="p_size" value="L" style="margin: 10px;">
+								<input type="text" id="p_count" name="p_count" value="0">
+							</span>
+							<span class="d-inline-block text-black">Large</span>
+						</label> 
+						<label for="option-xl" class="d-flex mr-3 mb-3">
+							<span class="d-inline-block mr-2" style="top: -2px; position: relative;"> 
+						 		<input	type="checkbox" id="option-xl" name="p_size" value="XL" style="margin: 10px;">
+						 		<input type="text" id="p_count" name="p_count" value="0">
+						 	</span>
+						    <span class="d-inline-block text-black"> Extra Large</span>
 						</label>
 					</div>
 					<!-- 사이즈 끝 -->
 
-					<button type="submit" class="btn btn-sm btn-primary imgDrop">상품
-						등록하기</button>
+					<button type="submit" class="btn btn-sm btn-primary imgDrop">상품 등록하기</button>
 				</div>
 
 			</div>
 			<div class="col-md-12">
 				<label>상품 이미지</label>
 				<div id="imgDiv">
-					<div id="imgFileDrop" class="btn btn-primary imgDrop"
-						style="margin-buttom: 10px;"></div>
-
+					<div id="imgFileDrop" class="btn btn-primary imgDrop" style="margin-buttom: 10px;">
+					</div>
 				</div>
 			</div>
 		</form>
@@ -243,81 +249,7 @@ $(function() {
 
 </div>
 
-<div class="site-section block-3 site-blocks-2 bg-light">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Featured Products</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="nonloop-block-3 owl-carousel">
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="../../resources/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Tank Top</a></h3>
-                    <p class="mb-0">Finding perfect t-shirt</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="../../resources/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="../../resources/images/cloth_2.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Polo Shirt</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="../../resources/images/cloth_3.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">T-Shirt Mockup</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="../../resources/images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
 
 <%@ include file="../include/foot.jsp" %>

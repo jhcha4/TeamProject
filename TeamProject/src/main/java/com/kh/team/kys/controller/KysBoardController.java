@@ -14,6 +14,7 @@ import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.domain.Kys_MainVo;
 import com.kh.team.domain.Kys_ServeVo;
+import com.kh.team.domain.Kys_productCountVo;
 import com.kh.team.kys.service.KysBoardService;
 import com.kh.team.kys.service.KysServeService;
 
@@ -26,6 +27,8 @@ public class KysBoardController {
 	
 	@Inject
 	private KysServeService serveService;
+	
+
 	
 	//관리자 메인 화면
 	@RequestMapping(value="/manager_main",method = RequestMethod.GET)
@@ -57,8 +60,9 @@ public class KysBoardController {
 	}
 	//등록 처리 
 	@RequestMapping(value="/shop_single_input", method = RequestMethod.POST)
-	public String shop_single_input(Kys_BoardVo boardVo) throws Exception{
+	public String shop_single_input(Kys_BoardVo boardVo,Kys_productCountVo productCountVo) throws Exception{
 		System.out.println("shop : "+boardVo);
+		System.out.println("pc_:"+productCountVo);
 		boardService.boardInsert(boardVo);
 		
 		return "redirect:/manager/manager_main";
