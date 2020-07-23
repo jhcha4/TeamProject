@@ -36,29 +36,29 @@
             </div>
           </div>
           <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-            <h3 class="footer-heading mb-4">Promo</h3>
+            <h3 class="footer-heading mb-4">모든 상품은 직수입 정품입니다</h3>
             <a href="#" class="block-6">
-              <img src="../../resources/images/hero_1.jpg" alt="Image placeholder" class="img-fluid rounded mb-4">
-              <h3 class="font-weight-light  mb-0">Finding Your Perfect Shoes</h3>
-              <p>Promo from  nuary 15 &mdash; 25, 2019</p>
+              <img src="../../resources/images/footBmp.bmp" alt="Image placeholder" class="img-fluid rounded mb-4">
+              <h3 class="font-weight-light  mb-0">통관 관세는 물건값에 포함이 되어 있습니다</h3>
+              <p>배송비 무료 & 추가비용은 없습니다</p>
             </a>
           </div>
           <div class="col-md-6 col-lg-3">
             <div class="block-5 mb-5">
-              <h3 class="footer-heading mb-4">Contact Info</h3>
+              <h3 class="footer-heading mb-4">company</h3>
               <ul class="list-unstyled">
-                <li class="address">203 Fake St. Mountain View, San Francisco, California, USA</li>
-                <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                <li class="email">emailaddress@domain.com</li>
+                <li class="address">19-3 Banpo-dong, Seocho-gu, Seoul</li>
+                <li class="phone"><a href="tel://02-1234-1234">02-1234-1234</a></li>
+                <li class="email">aoyamamin@gmail.com</li>
               </ul>
             </div>
 
             <div class="block-7">
               <form action="#" method="post">
-                <label for="email_subscribe" class="footer-heading">Subscribe</label>
+                <label for="email_subscribe" class="footer-heading">Q&A</label>
                 <div class="form-group">
-                  <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
-                  <input type="submit" class="btn btn-sm btn-primary" value="Send">
+                 <p>E-mail 보내기</p>
+                  <a href="/jm/jm_contact" class="btn btn-sm btn-primary" >send</a>
                 </div>
               </form>
             </div>
