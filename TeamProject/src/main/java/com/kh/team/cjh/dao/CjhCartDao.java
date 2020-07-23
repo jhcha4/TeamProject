@@ -1,5 +1,6 @@
 package com.kh.team.cjh.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.kh.team.domain.CjhCartVo;
@@ -8,7 +9,7 @@ import com.kh.team.domain.LshBoardVo;
 public interface CjhCartDao {
 	
 	//	장바구니에 추가
-	public void insertCart(String u_id, int p_count, LshBoardVo boardVo) throws Exception;
+	public void insertCart(String u_id, LshBoardVo boardVo, int p_count, String p_size) throws Exception;
 
 	//	장바구니 불러오기
 	public List<CjhCartVo> getCart(String u_id) throws Exception;
