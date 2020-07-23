@@ -184,7 +184,7 @@
             <h2><a href="#">최대 12개월 무이자 할부 가능</a></h2>
             <p class="post-meta mb-4">By <a href="#">J.M</a> <span class="block-8-sep">&bullet;</span> July 23, 2020 이후 부터 12개월 할부 보장 </p>
             <p>모든 상품 10만원 이상 구매시 전품목 최대 12개월 무이자 할부 가능 합니다 ★당신의 선택을 기다리고 있습니다</p>
-            <p><a href="#" class="btn btn-primary btn-sm">지금 구매하세요</a></p>
+            <p><a href="#" class="btn btn-info btn-sm">지금 구매하세요</a></p>
           </div>
         </div>
       </div>

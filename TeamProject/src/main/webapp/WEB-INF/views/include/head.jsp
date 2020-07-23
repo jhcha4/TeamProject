@@ -46,7 +46,7 @@
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="/cjh/index" class="js-logo-clone">Shoppers</a>
+                <a href="/cjh/index" class="js-logo-clone">Limo Moe</a>
               </div>
             </div>
 
@@ -115,13 +115,13 @@
                 </li>
               </ul>
             </li>
-            <li class="has-children">
-              <a href="/cjh/about">About</a>
-              <ul class="dropdown">
+            <li>
+              <a href="/jm/jm_about">About</a>
+              <!-- <ul class="dropdown">
                 <li><a href="#">Menu One</a></li>
                 <li><a href="#">Menu Two</a></li>
                 <li><a href="#">Menu Three</a></li>
-              </ul>
+              </ul> -->
             </li>
             
             <li class="has-children">
