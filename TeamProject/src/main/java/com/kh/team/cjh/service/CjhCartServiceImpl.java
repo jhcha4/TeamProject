@@ -1,5 +1,6 @@
 package com.kh.team.cjh.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -18,8 +19,10 @@ public class CjhCartServiceImpl implements CjhCartService {
 	private CjhCartDao cartDao;
 	
 	@Override
-	public void insertCart(String u_id, int p_count, LshBoardVo boardVo) throws Exception {
-		cartDao.insertCart(u_id, p_count, boardVo);
+	public void insertCart(String u_id, LshBoardVo boardVo, int[] countArr, String[] sizeArr) throws Exception {
+		for (int i = 0; i<countArr.length; i++) {
+			cartDao.insertCart(u_id, boardVo, countArr[i], sizeArr[i]);
+		}
 	}
 
 	//	장바구니 불러오기

@@ -6,8 +6,8 @@
 <mapper namespace="mappers.cjhcart-mapper">
 	
 	<insert id="insertCart">
-		insert into tbl_cart (c_num, u_id, p_num, p_name, p_price, p_content, p_count)
-		values (seq_c_num.nextval, #{u_id}, #{p_num}, #{p_name}, #{p_price}, #{p_content}, #{p_count})
+		insert into tbl_cart (c_num, u_id, p_num, p_name, p_price, p_content, p_count, p_size)
+		values (seq_c_num.nextval, #{u_id}, #{p_num}, #{p_name}, #{p_price}, #{p_content}, #{p_count}, #{p_size})
 	</insert>
 
 <!-- 	<select id="getCart" resultType="CjhCartVo"> -->

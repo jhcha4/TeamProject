@@ -23,19 +23,52 @@ $(function() {
 	
 	$("#insertCart").click(function(e) {
 		e.preventDefault();
-		var p_count = $("input[name=p_count]").val();
-// 		console.log(p_count);
-		location.href="/cjh/insertCart?u_id=${u_id}&p_num=${lshBoardVo.p_num}&p_count="+p_count;
+		var countArr = new Array();
+		var sizeArr = new Array();
+		$("input[name=p_count]").each(function() {
+// 			console.log($(this).val());
+			countArr.push(Number($(this).val()));
+		});
+		$("h5[name=size]").each(function() {
+// 			console.log($(this).text());
+			sizeArr.push($(this).text());
+		});
+		console.log("countArr : " + countArr);
+		console.log("sizeArr : " + sizeArr);
+		
+		var url = "/cjh/insertCart";
+		var sendData = {
+				"p_num"		:	${lshBoardVo.p_num},
+				"countArr"	:	countArr,
+				"sizeArr"	:	sizeArr
+		};
+		$.ajax({
+			"type"		:	"POST",
+			"url"		:	url,
+			"dataType"	:	"text",
+// 			"contentType" :   "application/x-www-form-urlencoded; charset=UTF-8",
+			"async"		:	true,
+			"data"		:	sendData
+			,
+			"success"		:	function() {
+				alert("장바구니에 추가했습니다");
+				location.href="/cjh/cart?u_id=${u_id}";
+			}
+		});
+		
+		
 	});
+	
 	$("#size").change(function() {
 		var size = $("#size").val();
 		var isChecked = checkSize(size);
 		console.log(isChecked);
 		if (isChecked == true) {
+			alert("이미 선택되어있는 옵션입니다.");
 			return;
 		}
 		var html = "<div class='input-group mb-3' style='max-width: 400px;'>";
-		html += "<h5 id='name'>${lshBoardVo.p_name}["+size+"]</h5>";
+		html += "<h5 id='name'>${lshBoardVo.p_name}[</h5><h5 name='size'>"+size+"</h5><h5>]</h5>";
 		html += "<input name='p_count' type='number' min='1' class='form-control text-center' value='1'>";
 		html += "<a href='#'class='delete'><h3>x</h3></a>"
 		html += "<h5 class='sumPrice'>${lshBoardVo.p_price}</h5><h5>원</h5>"
@@ -53,6 +86,8 @@ $(function() {
 			totalPrice += nPrice;
 		});
 		$("#total").text(totalPrice);
+		
+		$("#insertCart").attr("disabled", false);
 		
 	});
 	$("#hidden").on("click", ".delete", function(e) {
@@ -121,14 +156,14 @@ $(function() {
             </div>
             <h2>가격 :<span id="total">0</span>원</h2>
             
-            <div class="mb-6" style="display:none">
-              <div class="input-group mb-3" style="max-width: 250px;">
-         		   <h4 id="name">${lshBoardVo.p_name}</h4>
-         		   <input name="p_count" type="number" min="1" class="form-control text-center" value="1">
-              </div>
-            </div>
+<!--             <div class="mb-6" style="display:none"> -->
+<!--               <div class="input-group mb-3" style="max-width: 250px;"> -->
+<%--          		   <h4 id="name">${lshBoardVo.p_name}</h4> --%>
+<!--          		   <input name="p_count" type="number" min="1" class="form-control text-center" value="1"> -->
+<!--               </div> -->
+<!--             </div> -->
             
-            <p><a id="insertCart" class="buy-now btn btn-sm btn-primary">장바구니에 담기</a></p>
+            <p><button type="button" id="insertCart" class="buy-now btn btn-sm btn-primary" disabled>장바구니에 담기</button></p>
 			
           </div>
           
