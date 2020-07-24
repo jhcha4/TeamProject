@@ -49,7 +49,7 @@ public class CjhCartController {
 		cartService.insertCart(u_id, boardVo, countArr, sizeArr);
 		int count = cartService.getCountCart(u_id);
 		session.setAttribute("count", count);
-		return "/cjh/cart";
+		return "/cjh/cart"; 
 	}
 	
 	//	장바구니 목록보기
