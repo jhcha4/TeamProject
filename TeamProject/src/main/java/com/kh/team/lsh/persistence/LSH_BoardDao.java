@@ -19,8 +19,8 @@ public interface LSH_BoardDao {
 	// 조회수 얻기
 	public void updateViewCnt(int p_num) throws Exception;
 	
-	// 인기 상품 리스트
-	public List<LshBoardVo> MostList() throws Exception;
+	// 관련 상품 리스트
+	public List<LshBoardVo> MostList(String p_serve, int p_num) throws Exception;
 	
 	// 이미지 불러오기
 	public List<LshBoardVo> getImg(int p_num) throws Exception;

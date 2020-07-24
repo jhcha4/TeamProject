@@ -45,18 +45,18 @@
 		where p_num = #{p_num}
 	</update>
 	
-	<!-- 주요상품 리스트 -->
+	<!-- 현재 페이지의 상품을 제외한 관련 상품 리스트 -->
 	<select id="MostList" resultType="LshBoardVo">
 		select * 
         from (select rownum rnum, c.*
-		    from (select b.p_num, b.p_name, b.p_content, b.p_price, b.p_viewcnt, a.title_name
+		    from (select b.p_num, b.p_name, b.p_content, b.p_price, b.p_viewcnt, b.p_serve, a.title_name
                 from tbl_product_board b, tbl_title_attach a
-                where b.p_num = a.p_num
-                order by p_viewcnt desc) c)
+                where b.p_num = a.p_num and p_serve = #{p_serve} and b.p_num not in (#{p_num})
+                order by p_num desc) c)
                 where rnum between 1 and 7
 	</select>
 	
-	<!-- 이미지 한개 불러오기 -->
+	<!-- 이미지 불러오기 -->
 	<select id="getImg" resultType="LshBoardVo">
 		select * from tbl_attach 
 		where p_num= #{p_num}

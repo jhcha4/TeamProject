@@ -20,7 +20,7 @@ public class ShopController {
 	@Inject
 	private LSH_BoardService boardService;
 	
-	// 리스트
+	// 상품 메인 화면
 	@RequestMapping(value="/shop", method = RequestMethod.GET)
 	public String shop(LshBoardDto lshBoardDto, Model model, String p_main, String p_serve) throws Exception {
 		lshBoardDto.setPageInfo();
@@ -43,9 +43,9 @@ public class ShopController {
 	
 	// 상품클릭 화면
 	@RequestMapping(value="/shop_single", method = RequestMethod.GET)
-	public void shop_single(int p_num, Model model) throws Exception {
+	public void shop_single(String p_serve, int p_num, Model model) throws Exception {
 		LshBoardVo lshBoardVo = boardService.single(p_num);
-		List<LshBoardVo> MostList = boardService.MostList();
+		List<LshBoardVo> MostList = boardService.MostList(p_serve, p_num);
 		List<LshBoardVo> imgList = boardService.getImg(p_num);
 		
 		for (LshBoardVo vo : MostList) {
