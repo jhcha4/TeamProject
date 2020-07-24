@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ include file="../include/head.jsp" %>
+<%@ include file="../include/head.jsp" %> 
 
     <div class="bg-light py-3">
       <div class="container">
