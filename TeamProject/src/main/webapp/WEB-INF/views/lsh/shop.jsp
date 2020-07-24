@@ -226,7 +226,7 @@ $(function() {
                   <div class="col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
                     <a class="block-2-item" href="shop?p_main=T">
                       <figure class="image">
-                        <img src="../../resources/images/Top.jpg" alt="" class="img-fluid">
+                        <img src="../../resources/images/Top1.jpg" alt="" class="img-fluid">
                       </figure>
                       <div class="text">
                         <span class="text-uppercase">Collections</span>
