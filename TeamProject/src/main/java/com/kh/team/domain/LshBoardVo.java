@@ -9,8 +9,8 @@ public class LshBoardVo {
 	private String p_serve;
 	private int p_viewCnt;
 
-	private String title_name;
-	private String file_name;
+	private String title_name;// 메인 파일 이미지
+	private String file_name;// 서브 파일 이미지
 
 	public int getP_num() {
 		return p_num;

@@ -4,14 +4,14 @@ public class LshBoardDto {
 	private String type = "L";
 
 	private int page = 1;
-	private int perPage = 15;
+	private int perPage = 15; // 한 페이지의 상품 개수
 	private int startRow = 1;
 	private int endRow = 15;
 	private int totalCount;
 	private int totalPage;
 	private int startPage;
 	private int endPage;
-	private final int PAGE_BOLOCK = 5;
+	private final int PAGE_BOLOCK = 5; // 페이지 블럭수
 
 	private String p_main;
 	private String p_serve;
