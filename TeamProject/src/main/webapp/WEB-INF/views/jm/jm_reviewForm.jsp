@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 
-${jmPagingDto}
+<%-- ${jmPagingDto} --%>
 
 
 <script>
@@ -93,7 +93,15 @@ $("a.review_title").click(function(e){
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<a href="/jm/jm_insertReviewForm" class="btn btn-info">후기 작성</a>
+		
+			<c:choose>
+				<c:when test="${not empty sessionScope.u_id}">
+					<a href="/jm/jm_insertReviewForm" class="btn btn-info">후기 작성</a>
+				</c:when>
+				<c:otherwise>
+					<button class="btn btn-danger">후기작성은 로그인시 작성 가능</button>  
+				</c:otherwise>
+			</c:choose>
 		
 		
 		<select name="perPage">

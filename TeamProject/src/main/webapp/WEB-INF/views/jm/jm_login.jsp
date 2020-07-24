@@ -4,7 +4,7 @@
 
 
 
- <style>
+<!--  <style>
 .form-control { 
   
  padding: 20px; 
@@ -18,7 +18,7 @@
   
   
 } 
-</style> 
+</style>  -->
 
 
 
@@ -40,14 +40,14 @@
 				<div class="form-group " >
 					 
 					<label for="user_id">
-						아이디
+						아이디 <span class="text-danger">*</span>
 					</label>
 					<input type="text" class="form-control" id="user_id"  name="u_id" required />
 				</div>
 				<div class="form-group">
 					 
 					<label for="user_pw">
-						비밀번호
+						비밀번호 <span class="text-danger">*</span>
 					</label>
 					<input type="password" class="form-control" id="user_pw" name="u_pw" required  />
 				</div>

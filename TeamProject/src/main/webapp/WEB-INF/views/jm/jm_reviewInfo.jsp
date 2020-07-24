@@ -78,8 +78,20 @@
 				
 				
 				<a href="/jm/jm_reviewForm" class="btn btn-danger">목록으로 가기</a>
-				<a href="/jm/jm_updateReview/?r_info=${jmReviewVo.r_info}" class="btn btn-info">수정하기</a>
-				<a href="/jm/jm_deleteReview/${jmReviewVo.r_info}" class="btn btn-warning">삭제하기</a>
+				
+				<c:choose>
+					<c:when test="${sessionScope.u_id == jmReviewVo.r_id}">
+						<a href="/jm/jm_updateReview/?r_info=${jmReviewVo.r_info}" class="btn btn-info">수정하기</a>
+						<a href="/jm/jm_deleteReview/${jmReviewVo.r_info}" class="btn btn-warning">삭제하기</a>
+					</c:when>
+					<c:otherwise>
+					<button type="button" class="btn btn-info">댓글 수정과 삭제는 로그인시 가능  </button>
+					
+					</c:otherwise>
+				
+				
+				</c:choose>
+				
 			</form>
 		</div>
 	</div>

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ include file="include/head.jsp" %>
+<%@ include file="../include/head.jsp" %>
 
-    <div class="site-blocks-cover" style="background-image: url(/upload/displayFile?fileName=JmMainPic/mainbmp.jpg)"; data-aos="fade">
+    <div class="site-blocks-cover" style="background-image: url(../../resources/images/mainbmp.bmp);" data-aos="fade">
       <div class="container">
         <div class="row align-items-start align-items-md-center justify-content-end">
           <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
@@ -190,4 +190,4 @@
       </div>
     </div>
 
-<%@ include file="include/foot.jsp" %>
+<%@ include file="../include/foot.jsp" %>
