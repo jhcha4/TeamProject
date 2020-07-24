@@ -17,7 +17,7 @@
           <div class="col-md-6">
             <div class="block-16">
               <figure>
-                <img src="../../resources/images/aboutBmp.bmp" alt="Image placeholder" class="img-fluid rounded">
+                <img src="../../resources/images/aboutBmp.jpg" alt="Image placeholder" class="img-fluid rounded">
                 <a href="#" class="play-button popup-vimeo"><span class="ion-md-play"></span></a>
 
               </figure>
