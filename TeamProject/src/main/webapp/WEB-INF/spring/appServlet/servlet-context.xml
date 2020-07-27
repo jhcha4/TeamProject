@@ -44,11 +44,12 @@
 		<interceptor>
 			<mapping path="/cjh/**/*"/>
 			<exclude-mapping path="/cjh/index"/>
-			<exclude-mapping path="/*"/>
-			<exclude-mapping path="/cjh/log*"/>
-			<exclude-mapping path="/lsh/shop"/>
-			<exclude-mapping path="/lsh/shop_single"/>
+			<exclude-mapping path="/cjh/login"/>
+			<exclude-mapping path="/cjh/logout"/>
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 	</interceptors>
+	
+	
+	
 </beans:beans>

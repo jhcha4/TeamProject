@@ -85,7 +85,6 @@ public class CjhMyInfoController {
 		int count = cartService.getCountCart(u_id);
 		if (result == true) {
 			//	해당 사용자가 있다면 아이디를 세션에 저장
-			
 			session.setAttribute("u_id", u_id);
 			session.setAttribute("count", count);
 			String targetLocation = (String)session.getAttribute("targetLocation");
