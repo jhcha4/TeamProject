@@ -103,4 +103,14 @@ public class KysBoardController {
 		model.addAttribute("list",list);
 		model.addAttribute("deleteListDto",deleteListDto);
 	}
+	//차트
+	@RequestMapping(value="/NewFile", method = RequestMethod.GET)
+	public void chart() throws Exception{
+		
+	}
+	//막대 차트
+	@RequestMapping(value = "/rodChart", method= RequestMethod.GET)
+	public void rodChart() throws Exception{
+		
+	}
 }

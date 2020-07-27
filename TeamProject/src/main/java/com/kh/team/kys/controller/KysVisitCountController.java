@@ -25,6 +25,6 @@ public class KysVisitCountController {
 //		int totalcnt = all.getTotalCnt();
 		System.out.println(totalcnt);
 		session.setAttribute("totalcnt", totalcnt);
-		
 	}
+	
 }
