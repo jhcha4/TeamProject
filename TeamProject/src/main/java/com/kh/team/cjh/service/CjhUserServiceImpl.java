@@ -23,6 +23,7 @@ public class CjhUserServiceImpl implements CjhUserService {
 	@Override
 	public boolean login(String u_id, String u_pw) throws Exception {
 		CjhUserVo vo = userDao.selectMemberByIdAndPw(u_id, u_pw);
+		System.out.println("vo : " + vo);
 		if (vo != null) {
 			return true;
 		}

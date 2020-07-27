@@ -60,8 +60,8 @@ public class CjhCartController {
 	
 	//	장바구니 목록보기
 	@RequestMapping(value="/cart", method = RequestMethod.GET)
-	public String cart(String u_id, Model model) throws Exception {
-	//		System.out.println("u_id : " + u_id);
+	public String cart(Model model, HttpSession session) throws Exception {
+		String u_id = (String)session.getAttribute("u_id");
 		List<CjhCartVo> list = cartService.getCart(u_id);
 		
 		for (CjhCartVo vo : list) {
@@ -78,7 +78,8 @@ public class CjhCartController {
 	
 	//	장바구니 삭제
 	@RequestMapping(value="/deleteCart", method = RequestMethod.GET)
-	public String deleteCart(String u_id, int c_num, HttpSession session) throws Exception {
+	public String deleteCart(int c_num, HttpSession session) throws Exception {
+		String u_id = (String)session.getAttribute("u_id");
 		cartService.deleteCart(u_id, c_num);
 		int count = cartService.getCountCart(u_id);
 		session.setAttribute("count", count);
@@ -87,7 +88,8 @@ public class CjhCartController {
 	
 	//	선택한 장바구니 삭제
 	@RequestMapping(value="deleteCheckedCart", method = RequestMethod.GET)
-	public String deleteCheckedCart(String u_id, String c_num, HttpSession session) throws Exception {
+	public String deleteCheckedCart(String c_num, HttpSession session) throws Exception {
+		String u_id = (String)session.getAttribute("u_id");
 		cartService.deleteCheckedCart(u_id, c_num);
 		int count = cartService.getCountCart(u_id);
 		session.setAttribute("count", count);
@@ -96,15 +98,16 @@ public class CjhCartController {
 	
 	//	장바구니 수정
 	@RequestMapping(value="updateCart", method = RequestMethod.GET)
-	public String updateCart(String u_id, int p_count, int c_num) throws Exception {
+	public String updateCart(int p_count, int c_num, HttpSession session) throws Exception {
+		String u_id = (String)session.getAttribute("u_id");
 		cartService.updateCart(u_id, p_count, c_num);
 		return "redirect:/cjh/cart?u_id="+u_id;
 	}
 	
 	//	결제 폼
 	@RequestMapping(value="/checkout", method = RequestMethod.GET)
-	public String checkout(String u_id, Model model) throws Exception {
-//		System.out.println("u_id : " + u_id);
+	public String checkout(Model model, HttpSession session) throws Exception {
+		String u_id = (String)session.getAttribute("u_id");
 		List<CjhCartVo> list = cartService.getCart(u_id);
 		int userPoint = pointService.getUserPoint(u_id);
 		model.addAttribute("userPoint", userPoint);
@@ -114,7 +117,8 @@ public class CjhCartController {
 	
 	//	결제 처리
 	@RequestMapping(value="/order", method = RequestMethod.GET)
-	public String order(String u_id, int totalPrice, HttpSession session) throws Exception {
+	public String order(int totalPrice, HttpSession session) throws Exception {
+		String u_id = (String)session.getAttribute("u_id");
 		pointService.minusPoint(u_id, totalPrice);
 		pointService.plusPoint(u_id, totalPrice);
 		pointService.usePoint(u_id, totalPrice);
@@ -128,7 +132,8 @@ public class CjhCartController {
 	
 	//	주문목록 불러오기
 	@RequestMapping(value="/myOrder", method = RequestMethod.GET)
-	public void getOrder(String u_id, int p_status, Model model) throws Exception {
+	public void getOrder(int p_status, HttpSession session, Model model) throws Exception {
+		String u_id = (String)session.getAttribute("u_id");
 //		System.out.println("u_id : " + u_id);
 //		System.out.println("p_status : " + p_status);
 		List<CjhCartVo> list = cartService.getOrder(u_id, p_status);

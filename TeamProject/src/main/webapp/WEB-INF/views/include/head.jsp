@@ -77,10 +77,10 @@
 		              	<a href="/cjh/login" class="btn btn-basic btn-flat">login</a>
 		            </c:otherwise>
 		          </c:choose>
-                  <li><a href="/cjh/mypage?u_id=${u_id}"><span class="icon icon-person"></span></a></li>
+                  <li><a href="/cjh/mypage"><span class="icon icon-person"></span></a></li>
                   <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                   <li>
-                    <a href="/cjh/cart?u_id=${u_id}" class="site-cart">
+                    <a href="/cjh/cart" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
                       <c:if test="${not empty sessionScope.u_id}">
                       	<span class="count">${count}</span>
