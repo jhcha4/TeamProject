@@ -52,9 +52,11 @@ public class Jm_UploadController {
 	@RequestMapping(value="/jmDeleteFile",method=RequestMethod.GET)
 	public String deleteFile(String filename)throws Exception{
 		String front = filename.substring(0,filename.lastIndexOf("/"));
+		System.out.println("front:::"+front);
 		String rear = filename.substring(filename.lastIndexOf("/")+1);
-		String jmServerPath = uploadPath+File.separator+front+"_jm"+rear;
-		
+		System.out.println("rear:::"+rear);
+		String jmServerPath = uploadPath+File.separator+front+"jm_"+rear;
+		System.out.println("jmServerPath:"+jmServerPath);
 		String serverPath = uploadPath+File.separator+filename;
 		
 		File f = new File(serverPath);

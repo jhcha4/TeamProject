@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/head.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<script src ="/resources/js/jm_Script.js" ></script>
 
  <style>
 .form-control { 
@@ -56,23 +56,55 @@ $(function(){
 			"url" : url,
 			"data" : formData,
 			"success": function(rData){
-				/* console.log(rData); */
+				/*  console.log(rData);  */
 				
-				var slashIndex = rData.lastIndexof("/");
-				var front= 
+				var slashIndex = rData.lastIndexOf("/");
+				var front= rData.substring(0,slashIndex+1);
+				var rear = rData.substring(slashIndex+1);
+				var thumbnailName = front+"jm_"+rear;
 				
+				var originalName = rData.substring(rData.indexOf("_")+1);
 				
+				var html = "<div data-filename='"+rData+"'>";
+				var result = isImage(originalName);
+				console.log(result);
+			 	
+				  if (result ==true){
+					html+="<img class = 'img-tumbnail' src = '/upload/displayFile?fileName="+thumbnailName+"'/>";
+				}else{
+					html+="<img class = 'img-tumbnail' src = '/resources/images/noImage.jpg'/>"
+				}
 				
+				html+="<span>" +originalName + "</span>"
+				html+="<a href='"+rData+"' class='attach-del'><spen class=pull-right>[x]<span></a>"
+				html+="</div>"
+				
+				console.log(html); 
+				$("#uploadList").append(html);
 				
 			}	
 			
-		});
+		});   
 	
 	});
 	
+	$("#uploadList").on("click",".attach-del",function(e){
+		e.preventDefault();
+		
+		var that = $(this);
+		console.log("클릭함");
+		var filename = $(this).attr("href");
+		var url = "/jm/jmDeleteFile";
+		var sendData = {"filename" :filename}
+		
+		$.get(url,sendData,function(rData){
+			that.parent().remove(); 
+				
+		}); 
+		
+	});
 	
-	
-	
+	/* $("#insertReviewForm") */
 	
 	
 	
@@ -110,7 +142,7 @@ $(function(){
 						<div class="col-md-6">
 						
 						
-			<form role="form" action="/jm/jm_insertReviewRun" method="post">
+			<form id="insertReviewForm"  role="form" action="/jm/jm_insertReviewRun" method="post">
 				<div class="form-group">
 					 
 					<label for="r_id">
@@ -122,13 +154,13 @@ $(function(){
 				<div class="form-group">
 					 
 					<label for="r_subject">
-						제목
+						제목 <span class="text-danger">*</span> 
 					</label>
-					<input type="text" class="form-control" id="r_subject" name="r_subject" />
+					<input type="text" class="form-control" id="r_subject" name="r_subject" required />
 				</div>
 					
 				<div class="form-group">	
-						내용
+						내용 <span class="text-danger">*</span>
 				</div> 
 					
 				<div class="form-group">
@@ -136,15 +168,15 @@ $(function(){
 					<label for="r_subject">
 						
 					</label>
-					<textarea rows="10" cols="50" id="r_contents" name="r_contents"></textarea>
+					<textarea rows="10" cols="50" id="r_contents" name="r_contents" required></textarea>
 				</div>
 				
 				<div class="form-group">
 					 
 					<label for="r_star">
-						평점
+						평점 <span class="text-danger">*</span>
 					</label>
-					<input type="text" class="form-control" id="r_star" name="r_star" />
+					<input type="text" class="form-control" id="r_star" name="r_star" min="0" max="100"  required/>
 				</div>
 				
 				<div>

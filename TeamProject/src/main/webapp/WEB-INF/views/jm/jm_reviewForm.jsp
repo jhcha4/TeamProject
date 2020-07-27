@@ -192,7 +192,24 @@ $("a.review_title").click(function(e){
 							${jmReviewVo.r_item}
 						</td>
 						<td>
-							${jmReviewVo.r_star}
+						<c:choose>
+						<c:when test="${0 <= jmReviewVo.r_star && jmReviewVo.r_star <=20}">
+							★
+						</c:when>
+						<c:when test="${20 <= jmReviewVo.r_star && jmReviewVo.r_star <=40}">
+							★★
+						</c:when>
+						<c:when test="${40<= jmReviewVo.r_star && jmReviewVo.r_star <=60}">
+							★★★
+						</c:when>
+						<c:when test="${60<= jmReviewVo.r_star && jmReviewVo.r_star <=80}">
+							★★★★
+						</c:when>
+						<c:otherwise>
+						★★★★★
+						</c:otherwise>
+						</c:choose>
+							(${jmReviewVo.r_star})
 						</td>
 						<td>
 							${jmReviewVo.r_viewcnt}
