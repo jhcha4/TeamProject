@@ -40,22 +40,26 @@ public class CjhCartController {
 							 @RequestParam(value="countArr") int[] countArr,
 							 @RequestParam(value="sizeArr") String[] sizeArr,
 							 HttpSession session, Model model) throws Exception {
-		System.out.println("p_num : " + p_num); 
-		for (int count : countArr) {
-			System.out.println("count : " + count);
-		}
-		for (String size : sizeArr) {
-			System.out.println("size : " + size);
-		}
+//		System.out.println("p_num : " + p_num); 
+//		for (int count : countArr) {
+//			System.out.println("count : " + count);
+//		}
+//		for (String size : sizeArr) {
+//			System.out.println("size : " + size);
+//		}
 		LshBoardVo boardVo = boardService.single(p_num); 
-		System.out.println("boardVo : " + boardVo);
-		String u_id = (String)session.getAttribute("u_id");
-		model.addAttribute("u_id", u_id);
-		System.out.println("u_id : " + u_id);
-		cartService.insertCart(u_id, countArr, sizeArr, boardVo);
-		int count = cartService.getCountCart(u_id);
-		session.setAttribute("count", count);
-		return "success";
+//		System.out.println("boardVo : " + boardVo);
+		if (session.getAttribute("u_id") == null) {
+			return "fail";
+		} else {
+			String u_id = (String)session.getAttribute("u_id");
+			model.addAttribute("u_id", u_id);
+	//		System.out.println("u_id : " + u_id);
+			cartService.insertCart(u_id, countArr, sizeArr, boardVo);
+			int count = cartService.getCountCart(u_id);
+			session.setAttribute("count", count);
+			return "success";
+		}
 	}
 	
 	//	장바구니 목록보기

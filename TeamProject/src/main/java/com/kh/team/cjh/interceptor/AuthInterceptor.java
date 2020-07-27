@@ -21,7 +21,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 			String uri = request.getRequestURI();				//	/board/selectBybno
 			String queryString = request.getQueryString();		//	bno=1&page=1&perpage=10
 			String targetLocation = uri;
-			System.out.println("queryString : " +queryString);
+//			System.out.println("queryString : " +queryString);
 			if (queryString != null) {
 				targetLocation += "?" + queryString;
 			}

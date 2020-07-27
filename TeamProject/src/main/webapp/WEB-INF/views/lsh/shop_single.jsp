@@ -57,16 +57,19 @@ $(function() {
 // 		    type        : "POST",
 // 		    url         : url,
 // 		    contentType :'application/json; charset=UTF-8',
-// 		    dataType 	: "text",
-// 		    data        : JSON.stringify(sendData),
+// 		    data        : sendData,
 // 		    traditional : true,
 // 		    success : function (data){
-// 		    	console.log(data);
+// 		    	location.href="/cjh/cart";
 // 		    }
 // 		});
 
 		$.post(url, sendData, function(data) {
-			location.href="/cjh/cart?u_id=${u_id}";
+			var p_num = $("#p_num").text();
+			var p_serve = $("#p_serve").text();
+			console.log($("#u_id").text());
+// 			location.href="/lsh/shop_single?p_num="+p_num+"&p_serve="+p_serve;
+// 			location.href="/cjh/cart";
 		});
 		
 	});
@@ -176,6 +179,8 @@ $(function() {
             <h2>가격 :<span id="total">0</span>원</h2>
             
             <div id="p_num" style="display:none">${lshBoardVo.p_num}</div>
+            <div id="p_serve" style="display:none">${lshBoardVo.p_serve}</div>
+            <div id="u_id" style="display:none">${u_id}</div>
             
             <p><button id="insertCart" class="buy-now btn btn-sm btn-primary" disabled>장바구니에 담기</button></p>
 			
