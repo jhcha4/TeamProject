@@ -148,7 +148,7 @@ public class CjhMyInfoController {
 	//	마이페이지
 	@RequestMapping(value="/mypage", method = RequestMethod.GET)
 	public void mypage(Model model, HttpSession session) throws Exception {
-		String u_id = (String) session.getAttribute("u_id");
+		String u_id = (String)session.getAttribute("u_id");
 		int u_point = pointService.getUserPoint(u_id);
 		List<CjhPointVo> getList = pointService.getTotalPoint(u_id);
 		List<CjhPointVo> useList = pointService.getUsePoint(u_id);
@@ -159,7 +159,8 @@ public class CjhMyInfoController {
 	
 	//	적립금 페이지
 	@RequestMapping(value="/myPoint", method = RequestMethod.GET)
-	public void myPoint(String u_id, int point_code, Model model) throws Exception {
+	public void myPoint(int point_code, Model model, HttpSession session) throws Exception {
+		String u_id = (String)session.getAttribute("u_id");
 		List<CjhPointVo> list = pointService.listPoint(u_id, point_code);
 		model.addAttribute("list", list);
 		model.addAttribute("point_code", point_code);

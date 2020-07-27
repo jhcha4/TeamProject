@@ -32,7 +32,7 @@ $(document).ready(function() {
 				console.log($(this).val());
 			}
 		});
-		location.href="/cjh/myOrder?u_id=${u_id}&p_status=" + p_status;
+		location.href="/cjh/myOrder?p_status=" + p_status;
 	});
 });
 </script>
