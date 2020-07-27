@@ -93,7 +93,7 @@ public class CjhMyInfoController {
 				session.removeAttribute("targetLocation");
 				return "redirect:" + targetLocation;
 			}
-			return "redirect:/cjh/index";
+			return "redirect:/";
 		}
 		rttr.addFlashAttribute("msg", "fail");
 		return "redirect:/cjh/login";
