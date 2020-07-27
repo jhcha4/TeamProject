@@ -23,11 +23,55 @@ $(function() {
 	
 	$("#insertCart").click(function(e) {
 		e.preventDefault();
-		var p_count = $("input[name=p_count]").val();
-// 		console.log(p_count);
-		location.href="/cjh/insertCart?u_id=${u_id}&p_num=${lshBoardVo.p_num}&p_count="+p_count;
+		p_num = $("#p_num").text();
+		console.log("p_num : " + p_num);
+		var countArr = new Array();
+		var sizeArr = new Array();
+		$("h5[name=p_size]").each(function() {
+			var size = $(this).text();
+			sizeArr.push(size);
+		});
+		$("input[name=p_count]").each(function() {
+			var count = $(this).val();
+			countArr.push(count);
+		});
+		
+		var sendData = {
+			"p_num"			:	p_num,
+		    "countArr"	:	countArr,
+		    "sizeArr"		:	sizeArr
+		};
+
+// 		var sendData = {
+// 				"p_num" : 1450,
+// 				"sizeArr" : ["S", "M"],
+// 				"countArr" : ["1", "2"]
+// 		};
+		
+		var strSendData = JSON.stringify(sendData);
+		console.log("strSendData", strSendData);
+		console.log('sendData', sendData);
+		var url = "/cjh/insertCart";
+		$.ajaxSettings.traditional = true;
+// 		$.ajax({
+// 		    type        : "POST",
+// 		    url         : url,
+// 		    contentType :'application/json; charset=UTF-8',
+// 		    dataType 	: "text",
+// 		    data        : JSON.stringify(sendData),
+// 		    traditional : true,
+// 		    success : function (data){
+// 		    	console.log(data);
+// 		    }
+// 		});
+
+		$.post(url, sendData, function(data) {
+			location.href="/cjh/cart?u_id=${u_id}";
+		});
+		
 	});
 	$("#size").change(function() {
+		$("#insertCart").attr("disabled", false);
 		var size = $("#size").val();
 		var isChecked = checkSize(size);
 		console.log(isChecked);
@@ -35,7 +79,7 @@ $(function() {
 			return;
 		}
 		var html = "<div class='input-group mb-3' style='max-width: 400px;'>";
-		html += "<h5 id='name'>${lshBoardVo.p_name}["+size+"]</h5>";
+		html += "<h5 id='name'>${lshBoardVo.p_name}[</h5><h5 name=p_size>"+size+"</h5><h5>]</h5>";
 		html += "<input name='p_count' type='number' min='1' class='form-control text-center' value='1'>";
 		html += "<a href='#'class='delete'><h3>x</h3></a>"
 		html += "<h5 class='sumPrice'>${lshBoardVo.p_price}</h5><h5>원</h5>"
@@ -121,14 +165,15 @@ $(function() {
             </div>
             <h2>가격 :<span id="total">0</span>원</h2>
             
-            <div class="mb-6" style="display:none">
-              <div class="input-group mb-3" style="max-width: 250px;">
-         		   <h4 id="name">${lshBoardVo.p_name}</h4>
-         		   <input name="p_count" type="number" min="1" class="form-control text-center" value="1">
-              </div>
-            </div>
+            <div id="p_num" style="display:none">${lshBoardVo.p_num}</div>
+<!--             <div class="mb-6" style="display:none"> -->
+<!--               <div class="input-group mb-3" style="max-width: 250px;"> -->
+<%--          		   <h4 id="name">${lshBoardVo.p_name}</h4> --%>
+<!--          		   <input name="p_count" type="number" min="1" class="form-control text-center" value="1"> -->
+<!--               </div> -->
+<!--             </div> -->
             
-            <p><a id="insertCart" class="buy-now btn btn-sm btn-primary">장바구니에 담기</a></p>
+            <p><button id="insertCart" class="buy-now btn btn-sm btn-primary" disabled>장바구니에 담기</button></p>
 			
           </div>
           

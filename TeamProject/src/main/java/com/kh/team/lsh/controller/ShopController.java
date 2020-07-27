@@ -43,9 +43,9 @@ public class ShopController {
 	
 	// 상품클릭 화면
 	@RequestMapping(value="/shop_single", method = RequestMethod.GET)
-	public void shop_single(int p_num, Model model) throws Exception {
+	public void shop_single(int p_num, Model model, String p_serve) throws Exception {
 		LshBoardVo lshBoardVo = boardService.single(p_num);
-		List<LshBoardVo> MostList = boardService.MostList();
+		List<LshBoardVo> MostList = boardService.MostList(p_num, p_serve);
 		List<LshBoardVo> imgList = boardService.getImg(p_num);
 		
 		for (LshBoardVo vo : MostList) {

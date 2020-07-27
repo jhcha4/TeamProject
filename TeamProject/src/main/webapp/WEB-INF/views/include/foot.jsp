@@ -39,7 +39,7 @@
             <h3 class="footer-heading mb-4">모든 상품은 직수입 정품입니다</h3>
             <a href="#" class="block-6">
               <img src="../../resources/images/footBmp.jpg" alt="Image placeholder" class="img-fluid rounded mb-4">
-              <h3 class="font-weight-light  mb-0">통관 관세는 물건값에 포함이 되어 있습니다</h3>
+              <h3 class="font-weight-light  mb-0">통관의 관세는 물건 가격에 포함이 되어 있습니다</h3>
               <p>배송비 무료 & 추가비용은 없습니다</p>
             </a>
           </div>
