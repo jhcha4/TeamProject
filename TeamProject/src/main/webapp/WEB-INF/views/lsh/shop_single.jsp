@@ -78,7 +78,7 @@ $(function() {
 		if (isChecked == true) {
 			return;
 		}
-		var html = "<div class='input-group mb-3' style='max-width: 400px;'>";
+		var html = "<div class='input-group mb-3' style='max-width: 450px;'>";
 		html += "<h5 id='name'>${lshBoardVo.p_name}[</h5><h5 name=p_size>"+size+"</h5><h5>]</h5>";
 		html += "<input name='p_count' type='number' min='1' class='form-control text-center' value='1'>";
 		html += "<a href='#'class='delete'><h3>x</h3></a>"
@@ -121,9 +121,19 @@ $(function() {
 		});
 		$("#total").text(totalPrice);
 	});
+	
+	$("a.title").click(function(e) {
+		e.preventDefault();
+		var p_num = $(this).attr("data-p_num");
+		var p_serve = $(this).attr("data-p_serve")
+		$("#singlePage > input[name=p_num]").val(p_num);
+		$("#singlePage > input[name=p_serve]").val(p_serve);
+		$("#singlePage").attr("action", $(this).attr("href"));
+		$("#singlePage").submit();
+	});
 });
 </script>
-
+<%@ include file="frmPage.jsp" %>
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
@@ -166,12 +176,6 @@ $(function() {
             <h2>가격 :<span id="total">0</span>원</h2>
             
             <div id="p_num" style="display:none">${lshBoardVo.p_num}</div>
-<!--             <div class="mb-6" style="display:none"> -->
-<!--               <div class="input-group mb-3" style="max-width: 250px;"> -->
-<%--          		   <h4 id="name">${lshBoardVo.p_name}</h4> --%>
-<!--          		   <input name="p_count" type="number" min="1" class="form-control text-center" value="1"> -->
-<!--               </div> -->
-<!--             </div> -->
             
             <p><button id="insertCart" class="buy-now btn btn-sm btn-primary" disabled>장바구니에 담기</button></p>
 			
@@ -189,21 +193,23 @@ $(function() {
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>주요 상품</h2>
+            <h2>관련 상품</h2>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <div class="nonloop-block-3 owl-carousel">
             
-            <c:forEach items="${MostList}" var="lshBoardVo">
+            <c:forEach items="${relationList}" var="lshBoardVo">
               <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4 title" >
+                <div class="block-4 text-center" >
+                  <a class="block-4 title" href="shop_single" data-p_num="${lshBoardVo.p_num}" data-p_serve="${lshBoardVo.p_serve}">
                     <img src="/upload/displayFile?fileName=${lshBoardVo.title_name}">
-                  </figure>
+                  </a>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop_single?p_num=${lshBoardVo.p_num}" class="title">${lshBoardVo.p_name}</a></h3>
+                    <h3><a href="shop_single" data-p_num="${lshBoardVo.p_num}" data-p_serve="${lshBoardVo.p_serve}">
+                    	${lshBoardVo.p_name}</a>
+                    </h3>
                     <p class="mb-0">${lshBoardVo.p_content}</p>
                     <p class="text-primary font-weight-bold">${lshBoardVo.p_price}원</p>
                   </div>

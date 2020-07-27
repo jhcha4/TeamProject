@@ -10,7 +10,9 @@ $(function() {
 	$("a.title").click(function(e) {
 		e.preventDefault();
 		var p_num = $(this).attr("data-p_num");
+		var p_serve = $(this).attr("data-p_serve")
 		$("#singlePage > input[name=p_num]").val(p_num);
+		$("#singlePage > input[name=p_serve]").val(p_serve);
 		$("#singlePage").attr("action", $(this).attr("href"));
 		$("#singlePage").submit();
 	});
@@ -125,12 +127,12 @@ $(function() {
 	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
 	                
-	                <a class="block-4 title" href="shop_single" data-p_num="${lshBoardVo.p_num}">
+	                <a class="block-4 title" href="shop_single" data-p_num="${lshBoardVo.p_num}" data-p_serve="${lshBoardVo.p_serve}">
 					 	<img src="/upload/displayFile?fileName=${lshBoardVo.title_name}">
 					</a>
 					
 	                  <div class="block-4-text p-4">
-	                    <h3><a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}">${lshBoardVo.p_name}</a></h3>
+	                    <h3><a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}" data-p_serve="${lshBoardVo.p_serve}">${lshBoardVo.p_name}</a></h3>
 	                    <p class="mb-0">${lshBoardVo.p_content}</p>
 	                    <p class="text-primary font-weight-bold">${lshBoardVo.p_price}원</p>
 	                  </div>

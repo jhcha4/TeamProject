@@ -45,18 +45,9 @@ public class ShopController {
 	@RequestMapping(value="/shop_single", method = RequestMethod.GET)
 	public void shop_single(int p_num, Model model, String p_serve) throws Exception {
 		LshBoardVo lshBoardVo = boardService.single(p_num);
-		List<LshBoardVo> MostList = boardService.MostList(p_num, p_serve);
+		List<LshBoardVo> relationList = boardService.relationList(p_num, p_serve);
 		List<LshBoardVo> imgList = boardService.getImg(p_num);
-		
-		for (LshBoardVo vo : MostList) {
-			String title_name = vo.getTitle_name();
-			String front = title_name.substring(0, title_name.lastIndexOf("/") + 1);
-			String rear = title_name.substring(title_name.lastIndexOf("/") + 1);
-			String smTitle = front + "sm_" + rear;
-			vo.setTitle_name(smTitle);
-		}
-		
-		model.addAttribute("MostList",MostList);
+		model.addAttribute("relationList",relationList);
 		model.addAttribute("lshBoardVo", lshBoardVo);
 		model.addAttribute("imgList", imgList);
 	}
