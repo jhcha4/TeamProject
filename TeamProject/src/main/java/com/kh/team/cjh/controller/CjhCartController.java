@@ -43,7 +43,7 @@ public class CjhCartController {
 		System.out.println("p_num : " + p_num);
 		System.out.println("countArr : " + countArr);
 		System.out.println("sizeArr : " + sizeArr);
-		LshBoardVo boardVo = boardService.single(p_num);
+		LshBoardVo boardVo = boardService.single(p_num); 
 		System.out.println("boardVo : " + boardVo);
 		String u_id = (String)session.getAttribute("u_id");
 		cartService.insertCart(u_id, boardVo, countArr, sizeArr);
