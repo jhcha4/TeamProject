@@ -21,8 +21,8 @@
 		
 	<!-- 리뷰 게시판 글쓰기 -->
 		<insert id="insertReview">
-		insert into tbl_review(r_info,r_id,r_subject,r_contents,r_star,r_item)
-		values (seq_review.nextval,#{r_id},#{r_subject},#{r_contents},#{r_star},#{r_item})
+		insert into tbl_review(r_info,r_id,r_subject,r_contents,r_star)
+		values (seq_review.nextval,#{r_id},#{r_subject},#{r_contents},#{r_star})
 		
 		</insert>
 		

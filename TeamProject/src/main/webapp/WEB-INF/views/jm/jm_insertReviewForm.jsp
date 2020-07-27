@@ -59,8 +59,20 @@ $(function(){
 				/* console.log(rData); */
 				
 				var slashIndex = rData.lastIndexof("/");
-				var front= 
+				var front= rData.substring(0,slashIndex+1);
+				var rear = rData.substring(slashIndex+1);
+				var thumbnailName = front+"jm_"+rear;
 				
+				var originalName = rData.substring(rData.indexOf("_")+1);
+				
+				var html = "<div data-filename='"+rData+"'>";
+				var result = isImage(originalFileName);
+				
+				if (result ==true){
+					html+="<img class = 'img-tumbnail' src = '/upload/displayFile?fileName="+thumbnailName+"'/>";
+				}else{
+					html+=
+				}
 				
 				
 				
@@ -122,13 +134,13 @@ $(function(){
 				<div class="form-group">
 					 
 					<label for="r_subject">
-						제목
+						제목 <span class="text-danger">*</span> 
 					</label>
-					<input type="text" class="form-control" id="r_subject" name="r_subject" />
+					<input type="text" class="form-control" id="r_subject" name="r_subject" required />
 				</div>
 					
 				<div class="form-group">	
-						내용
+						내용 <span class="text-danger">*</span>
 				</div> 
 					
 				<div class="form-group">
@@ -136,15 +148,15 @@ $(function(){
 					<label for="r_subject">
 						
 					</label>
-					<textarea rows="10" cols="50" id="r_contents" name="r_contents"></textarea>
+					<textarea rows="10" cols="50" id="r_contents" name="r_contents" required></textarea>
 				</div>
 				
 				<div class="form-group">
 					 
 					<label for="r_star">
-						평점
+						평점 <span class="text-danger">*</span>
 					</label>
-					<input type="text" class="form-control" id="r_star" name="r_star" />
+					<input type="text" class="form-control" id="r_star" name="r_star" min="0" max="100"  required/>
 				</div>
 				
 				<div>
