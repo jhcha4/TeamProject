@@ -40,7 +40,7 @@ public class CjhCartController {
 							 @RequestParam(value="countArr") int[] countArr,
 							 @RequestParam(value="sizeArr") String[] sizeArr,
 							 HttpSession session, Model model) throws Exception {
-		System.out.println("p_num : " + p_num);
+		System.out.println("p_num : " + p_num); 
 		for (int count : countArr) {
 			System.out.println("count : " + count);
 		}
@@ -77,7 +77,6 @@ public class CjhCartController {
 	}
 	
 	//	장바구니 삭제
-	@Transactional
 	@RequestMapping(value="/deleteCart", method = RequestMethod.GET)
 	public String deleteCart(String u_id, int c_num, HttpSession session) throws Exception {
 		cartService.deleteCart(u_id, c_num);
@@ -87,7 +86,6 @@ public class CjhCartController {
 	}
 	
 	//	선택한 장바구니 삭제
-	@Transactional
 	@RequestMapping(value="deleteCheckedCart", method = RequestMethod.GET)
 	public String deleteCheckedCart(String u_id, String c_num, HttpSession session) throws Exception {
 		cartService.deleteCheckedCart(u_id, c_num);
@@ -104,7 +102,6 @@ public class CjhCartController {
 	}
 	
 	//	결제 폼
-	@Transactional
 	@RequestMapping(value="/checkout", method = RequestMethod.GET)
 	public String checkout(String u_id, Model model) throws Exception {
 //		System.out.println("u_id : " + u_id);
@@ -116,7 +113,6 @@ public class CjhCartController {
 	}
 	
 	//	결제 처리
-	@Transactional
 	@RequestMapping(value="/order", method = RequestMethod.GET)
 	public String order(String u_id, int totalPrice, HttpSession session) throws Exception {
 		pointService.minusPoint(u_id, totalPrice);
