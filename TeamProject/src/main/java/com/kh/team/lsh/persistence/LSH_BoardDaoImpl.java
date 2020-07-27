@@ -53,8 +53,11 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 
 
 	@Override
-	public List<LshBoardVo> MostList() throws Exception {
-		return sqlSession.selectList(NAMESPACE + "MostList");
+	public List<LshBoardVo> MostList(int p_num, String p_serve) throws Exception {
+		Map<Object, Object> paramMap = new HashMap<>();
+		paramMap.put("p_num", p_num);
+		paramMap.put("p_serve", p_serve);
+		return sqlSession.selectList(NAMESPACE + "MostList", paramMap);
 	}
 
 

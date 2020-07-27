@@ -126,11 +126,12 @@ $(function() {
 // 		return false;
 	});
 
+
 });
 </script>
 <%@ include file="../include/main_style.jsp" %>
 <%@ include file="../include/main_bar.jsp" %>
-
+${prodcutCountList }
 <div class="site-section">
 
 	<div class="container">
@@ -213,30 +214,43 @@ $(function() {
 							value="${boardVo.p_main}${boardVo.p_serve}${boardVo.p_num}"
 							disabled="disabled" />
 					</p>
-					<!-- 채크 리스트 -->
-					<div class="mb-1 d-flex">
-						<label for="option-sm" class="d-flex mr-3 mb-3"> <span
-							class="d-inline-block mr-2"
-							style="top: -2px; position: relative;"> <input
-								type="checkbox" id="option-sm" name="shop-sizes"></span> <span
-							class="d-inline-block text-black">Small</span>
-						</label> <label for="option-md" class="d-flex mr-3 mb-3"> <span
-							class="d-inline-block mr-2"
-							style="top: -2px; position: relative;"> <input
-								type="checkbox" id="option-md" name="shop-sizes"></span> <span
-							class="d-inline-block text-black">Medium</span>
-						</label> <label for="option-lg" class="d-flex mr-3 mb-3"> <span
-							class="d-inline-block mr-2"
-							style="top: -2px; position: relative;"> <input
-								type="checkbox" id="option-lg" name="shop-sizes"></span> <span
-							class="d-inline-block text-black">Large</span>
-						</label> <label for="option-xl" class="d-flex mr-3 mb-3"> <span
-							class="d-inline-block mr-2"
-							style="top: -2px; position: relative;"> <input
-								type="checkbox" id="option-xl" name="shop-sizes"></span> <span
-							class="d-inline-block text-black"> Extra Large</span>
-						</label>
-						</div>
+					<!-- 사이즈 -->
+					<div class="mb-1 d-flex sizeinsert">
+					<c:forEach items="${prodcutCountList}" var="PC_vo">
+					<label for="option-sm" class="d-flex mr-3 mb-3"> 
+							<span class="d-inline-block mr-2" style="top: -2px; position: relative;"> 
+								<input	type="text" id="p_size" name="p_size" value="${PC_vo.p_size}" 
+								style="margin: 10px;" disabled="disabled"> 
+								<input type="text" id="p_count" name="p_count" value="${PC_vo.p_count}">
+							</span>
+							<span class="d-inline-block text-black">${PC_vo.p_size}</span>
+						</label> 
+					</c:forEach>
+					
+<!-- 						<label for="option-md" class="d-flex mr-3 mb-3">  -->
+<!-- 							<span	class="d-inline-block mr-2" style="top: -2px; ;
+position: relative;"> -->
+<!-- 								<input	type="checkbox" id="p_size" name="p_size" value="M" style="margin: 10px;"> -->
+<!-- 								<input type="text" id="p_count" name="p_count" value="0"> -->
+<!-- 							</span>  -->
+<!-- 							<span class="d-inline-block text-black">Medium</span> -->
+<!-- 						</label>  -->
+<!-- 						<label for="option-lg" class="d-flex mr-3 mb-3">  -->
+<!-- 							<span class="d-inline-block mr-2" style="top: -2px; position: relative;">  -->
+<!-- 								<input	type="checkbox" id="option-lg" name="p_size" value="L" style="margin: 10px;"> -->
+<!-- 								<input type="text" id="p_count" name="p_count" value="0"> -->
+<!-- 							</span> -->
+<!-- 							<span class="d-inline-block text-black">Large</span> -->
+<!-- 						</label>  -->
+<!-- 						<label for="option-xl" class="d-flex mr-3 mb-3"> -->
+<!-- 							<span class="d-inline-block mr-2" style="top: -2px; position: relative;">  -->
+<!-- 						 		<input	type="checkbox" id="option-xl" name="p_size" value="XL" style="margin: 10px;"> -->
+<!-- 						 		<input type="text" id="p_count" name="p_count" value="0"> -->
+<!-- 						 	</span> -->
+<!-- 						    <span class="d-inline-block text-black"> Extra Large</span> -->
+<!-- 						</label> -->
+					</div>
+					<!-- 사이즈 끝 -->
 						<div>
 							<!-- 상품 등록 버튼 -->
 							<button type="submit" class="btn btn-sm btn-primary">상품수정하기</button>
@@ -246,7 +260,7 @@ $(function() {
 				<div class="col-md-12">
 					<label>상품 이미지</label>
 					<div id="imgDiv">
-						<div id="imgFileDrop" class="btn btn-primary imgDrop" style="margin-buttom: 10px;">
+						<div id="imgFileDrop" class="btn btn-primary imgDrop" style="margin-buttom: 10px; height : auto;">
 						 <c:forEach items="${listImg}" var="imgVo">
 							 <div data-filename="${imgVo.file_name}">
 								 <img class='img-rounded' src="/upload/displayFile?fileName=${imgVo.file_name}" > <br>
