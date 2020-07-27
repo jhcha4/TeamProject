@@ -147,7 +147,8 @@ public class CjhMyInfoController {
 	
 	//	마이페이지
 	@RequestMapping(value="/mypage", method = RequestMethod.GET)
-	public void mypage(String u_id, Model model) throws Exception {
+	public void mypage(Model model, HttpSession session) throws Exception {
+		String u_id = (String) session.getAttribute("u_id");
 		int u_point = pointService.getUserPoint(u_id);
 		List<CjhPointVo> getList = pointService.getTotalPoint(u_id);
 		List<CjhPointVo> useList = pointService.getUsePoint(u_id);

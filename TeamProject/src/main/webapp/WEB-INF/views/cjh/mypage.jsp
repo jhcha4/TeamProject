@@ -56,6 +56,10 @@ $(document).ready(function() {
 });
 </script>
 
+<script type="text/javascript">
+     history.replaceState({}, null, location.pathname);
+</script>
+
 <c:forEach var="item" items="${getList}" varStatus="status">
 	<tr class="getPoints" style="height: 90px; background-color: #fff;" >
 		<td><input style="display:none;" name="getPoints" value = "${item.point_value}"/></td>
