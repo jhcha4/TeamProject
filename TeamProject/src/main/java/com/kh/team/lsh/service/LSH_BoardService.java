@@ -13,7 +13,7 @@ public interface LSH_BoardService {
 
 	public int getCount(LshBoardDto lshBoardDto, String p_main, String p_serve) throws Exception;
 	
-	public List<LshBoardVo> MostList(int p_num, String p_serve) throws Exception;
+	public List<LshBoardVo> relationList(int p_num, String p_serve) throws Exception;
 	
 	public List<LshBoardVo> getImg(int p_num) throws Exception;
 	

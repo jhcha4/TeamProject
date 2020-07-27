@@ -46,7 +46,7 @@
 	</update>
 	
 	<!-- 관련 상품 리스트 -->
-	<select id="MostList" resultType="LshBoardVo">
+	<select id="relationList" resultType="LshBoardVo">
 		select * 
         from (select rownum rnum, a.*
 		    from (select b.p_num, b.p_name, b.p_content, b.p_price, b.p_viewcnt, b.p_serve, a.title_name

@@ -42,7 +42,7 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 		paramMap.put("lshBoardDto", lshBoardDto);
 		paramMap.put("p_main", p_main);
 		paramMap.put("p_serve", p_serve);
-		return sqlSession.selectOne(NAMESPACE + "getCount", lshBoardDto);
+		return sqlSession.selectOne(NAMESPACE + "getCount", paramMap);
 	}
 
 
@@ -53,11 +53,11 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 
 
 	@Override
-	public List<LshBoardVo> MostList(int p_num, String p_serve) throws Exception {
+	public List<LshBoardVo> relationList(int p_num, String p_serve) throws Exception {
 		Map<Object, Object> paramMap = new HashMap<>();
 		paramMap.put("p_num", p_num);
 		paramMap.put("p_serve", p_serve);
-		return sqlSession.selectList(NAMESPACE + "MostList", paramMap);
+		return sqlSession.selectList(NAMESPACE + "relationList", paramMap);
 	}
 
 

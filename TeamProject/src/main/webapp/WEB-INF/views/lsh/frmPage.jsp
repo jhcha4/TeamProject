@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <form id="singlePage" action="/lsh/shop" method="get">
 	<input type="hidden" name="p_num" value="${lshBoardVo.p_num}"/>
+	<input type="hidden" name="p_serve" value="${lshBoardVo.p_serve}"/>
 </form>
 
 <form id="mainPage" action="/lsh/shop" method="get">
