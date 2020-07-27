@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
+import com.kh.team.domain.Kys_productCountVo;
 import com.kh.team.kys.dao.KysBoardDao;
 
 @Service
@@ -35,10 +36,8 @@ public class KysBoardServiceImpl implements KysBoardService {
 		for (String file_name : files) {
 			boardDao.imgFile(file_name, p_num);
 		}
-		
-		
-//		boardDao.insertProductCount(p_size, p_count, p_num);
-		for(int i = 0 ; i < 4 ; i++ ) {
+		String[] p = boardVo.getP_size();
+		for(int i = 0 ; i < p.length ; i++ ) {
 			String[] p_size = boardVo.getP_size();
 			int[] p_count = boardVo.getP_count();
 			System.out.println("service / insert / p_size : " + p_size);
@@ -111,6 +110,11 @@ public class KysBoardServiceImpl implements KysBoardService {
 	public void fileImgDelete(String filename) throws Exception {
 		 boardDao.fileImgDelete(filename);
 		
+	}
+	@Override
+	public List<Kys_productCountVo> selectProductCount(int p_num) throws Exception {
+		 List<Kys_productCountVo> prodcutCountList = boardDao.selectProductCount(p_num);
+		return prodcutCountList;
 	}
 	
 }

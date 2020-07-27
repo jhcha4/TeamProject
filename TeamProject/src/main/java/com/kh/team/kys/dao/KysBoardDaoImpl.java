@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.team.domain.KysVisitCountVo;
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
@@ -140,8 +141,7 @@ public class KysBoardDaoImpl implements KysBoardDao {
 
 		@Override
 		public List<Kys_productCountVo> selectProductCount(int p_num) throws Exception {
-			// TODO Auto-generated method stub
-			return null;
+			return 	sqlSession.selectList(NAMESPACE+"selectProductCount",p_num);
 		}
 
 	

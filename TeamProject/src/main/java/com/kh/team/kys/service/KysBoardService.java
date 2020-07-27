@@ -6,6 +6,7 @@ import java.util.Map;
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
+import com.kh.team.domain.Kys_productCountVo;
 
 
 public interface KysBoardService {
@@ -37,4 +38,6 @@ public interface KysBoardService {
 		public List<Kys_ImgVo> imgSelectBy(int p_num) throws Exception;
 		//수정 이미지 삭제
 		public void fileImgDelete(String filename) throws Exception;
+		//사이즈 수량 가져오기
+		public List<Kys_productCountVo> selectProductCount(int p_num) throws Exception;
 }

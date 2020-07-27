@@ -42,7 +42,7 @@ public class UploadController {
 	//업로드한 파일을 다시 가져와서 보여줌
 	@RequestMapping(value = "/displayFile",method = RequestMethod.GET)
 	public byte[] displayFile(String fileName) throws Exception{
-		System.out.println("Controller/fileName:"+fileName);
+		
 		String filePath = uploadPath + File.separator+fileName;
 		String rFilePath = filePath.replace("/", "\\");
 		FileInputStream fis = new FileInputStream(rFilePath);

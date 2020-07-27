@@ -34,6 +34,10 @@
   <div class="site-wrap">
     <header class="site-navbar" role="banner">
       <div class="site-navbar-top">
+      <div class="" style="float:left;">
+    		<a>총 방문객 : <%= session.getAttribute("visitAll") %></a><br>
+   			<a>오늘 방문객 : <%= session.getAttribute("visitNow") %></a>
+   	  </div>
         <div class="container">
           <div class="row align-items-center">
 

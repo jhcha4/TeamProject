@@ -7,9 +7,11 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.kh.team.domain.KysVisitCountVo;
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.kys.dao.KysBoardDao;
+import com.kh.team.kys.dao.VisitCountDao;
 
 
 
@@ -19,12 +21,12 @@ public class KysDaoTest {
 	
 	@Inject
 	private KysBoardDao boardDao;
+	
+	@Inject
+	private VisitCountDao visitDao; 
 	  
 	//게시물 리스트
-	@Test
-	public void boardList(Kys_BoardDto boardDto) throws Exception{
-		boardDao.boardList(boardDto);
-	}
+	
 	
 	//등록 처리 폼
 	@Test
@@ -69,6 +71,11 @@ public class KysDaoTest {
 	@Test
 	public void selectByTow() throws Exception{
 		boardDao.selectByTow("S", "SR");
+	}
+	@Test
+	public void visitAll() throws Exception{
+	
+		visitDao.visitAll();
 	}
 
 }
