@@ -203,31 +203,36 @@ $(function() {
 					<div class="mb-1 d-flex">
 						<label for="option-sm" class="d-flex mr-3 mb-3"> 
 							<span class="d-inline-block mr-2" style="top: -2px; position: relative;"> 
-								<input	type="checkbox" id="p_size" name="p_size" value="S" style="margin: 10px;"> 
+								<input	type="text" id="p_size" name="p_size" value="S" style="margin: 10px;" disabled="disabled"> 
 								<input type="text" id="p_count" name="p_count" value="0">
 							</span>
-							<span class="d-inline-block text-black">Small</span>
 						</label> 
 						<label for="option-md" class="d-flex mr-3 mb-3"> 
 							<span	class="d-inline-block mr-2" style="top: -2px; position: relative;">
-								<input	type="checkbox" id="p_size" name="p_size" value="M" style="margin: 10px;">
+								<input	type="text" id="p_size" name="p_size" value="M" style="margin: 10px;" disabled="disabled">
 								<input type="text" id="p_count" name="p_count" value="0">
 							</span> 
-							<span class="d-inline-block text-black">Medium</span>
 						</label> 
 						<label for="option-lg" class="d-flex mr-3 mb-3"> 
 							<span class="d-inline-block mr-2" style="top: -2px; position: relative;"> 
-								<input	type="checkbox" id="option-lg" name="p_size" value="L" style="margin: 10px;">
+								<input	type="text" id="option-lg" name="p_size" value="L" style="margin: 10px;" disabled="disabled">
 								<input type="text" id="p_count" name="p_count" value="0">
 							</span>
-							<span class="d-inline-block text-black">Large</span>
+							
 						</label> 
 						<label for="option-xl" class="d-flex mr-3 mb-3">
 							<span class="d-inline-block mr-2" style="top: -2px; position: relative;"> 
-						 		<input	type="checkbox" id="option-xl" name="p_size" value="XL" style="margin: 10px;">
+						 		<input	type="text" id="option-xl" name="p_size" value="XL" style="margin: 10px;" disabled="disabled">
 						 		<input type="text" id="p_count" name="p_count" value="0">
 						 	</span>
-						    <span class="d-inline-block text-black"> Extra Large</span>
+						</label>
+							<label for="option-xl" class="d-flex mr-3 mb-3">
+							<span class="d-inline-block mr-2" style="top: -2px; position: relative;"> 
+						 		<input	type="checkbox" id="option-xl" name="p_size" value="freeSize" style="margin: 10px;">
+						 		<span class="d-inline-block text-black"> Free Size</span></input>
+						 		<input type="text" id="p_count" name="p_count" value="0">
+						 		
+						 	</span>
 						</label>
 					</div>
 					<!-- 사이즈 끝 -->
