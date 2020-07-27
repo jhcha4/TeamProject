@@ -1,6 +1,5 @@
 package com.kh.team.cjh.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -11,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.team.cjh.service.CjhCartService;
 import com.kh.team.cjh.service.CjhPointService;
@@ -33,24 +31,30 @@ public class CjhCartController {
 	@Inject
 	private LSH_BoardService boardService;
 	
-	//	장바구니에 추가
-	@Transactional
-	@RequestMapping(value="/insertCart", method = RequestMethod.POST)
-	public String insertCart(@RequestParam(value="p_num") int p_num,
-							 @RequestParam(value="countArr[]") int[] countArr,
-							 @RequestParam(value="sizeArr[]") String[] sizeArr,
-							 HttpSession session) throws Exception {
-		System.out.println("p_num : " + p_num);
-		System.out.println("countArr : " + countArr);
-		System.out.println("sizeArr : " + sizeArr);
-		LshBoardVo boardVo = boardService.single(p_num); 
-		System.out.println("boardVo : " + boardVo);
-		String u_id = (String)session.getAttribute("u_id");
-		cartService.insertCart(u_id, boardVo, countArr, sizeArr);
-		int count = cartService.getCountCart(u_id);
-		session.setAttribute("count", count);
-		return "/cjh/cart"; 
-	}
+//	//	장바구니에 추가
+//	@Transactional
+//	@RequestMapping(value="/insertCart", method = RequestMethod.POST)
+//	public String insertCart(@RequestParam(value="p_num") int p_num,
+//							 @RequestParam(value="countArr[]") int[] countArr,
+//							 @RequestParam(value="sizeArr[]") String[] sizeArr,
+//							 HttpSession session) throws Exception {
+//		System.out.println("p_num : " + p_num);
+//		System.out.println("countArr : " + countArr);
+//		System.out.println("sizeArr : " + sizeArr);
+//		LshBoardVo boardVo = boardService.single(p_num); 
+//=======
+//	@RequestMapping(value="/insertCart", method = RequestMethod.GET)
+//	public String insertCart(String u_id, int p_num, int p_count, HttpSession session) throws Exception {
+////		System.out.println("u_id : " + u_id);
+////		System.out.println("p_num : " + p_num);
+//		LshBoardVo boardVo = boardService.single(p_num);
+//>>>>>>> branch 'master' of https://github.com/jhcha4/TeamProject.git
+//		System.out.println("boardVo : " + boardVo);
+//		cartService.insertCart(u_id, p_count, boardVo);
+//		int count = cartService.getCountCart(u_id);
+//		session.setAttribute("count", count);
+//		return "redirect:/cjh/cart?u_id=" + u_id; 
+//	}
 	
 	//	장바구니 목록보기
 	@RequestMapping(value="/cart", method = RequestMethod.GET)

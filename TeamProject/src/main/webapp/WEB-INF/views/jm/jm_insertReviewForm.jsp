@@ -18,7 +18,85 @@
   
   
 } 
-</style> 
+
+
+#fileDrop{
+	width: 20%;
+	height: 7%;
+	background-color: pink;
+	margin: auto;
+	border: 1px dashed read;
+	margin: 10px;	
+}
+</style>
+
+
+<script>
+$(function(){
+	
+	$("#fileDrop").on("dragenter dragover",function(e){
+		e.preventDefault();	
+	});
+	
+	$("#fileDrop").on("drop",function(e){
+		e.preventDefault();
+		
+		var file = e.originalEvent.dataTransfer.files[0];
+		/* console.log(file); */
+		
+		var formData = new FormData();
+		formData.append("file",file);
+		var url = "/jm/jmUploadAjex";
+		
+		$.ajax({
+			
+			"processData" : false,
+			"contentType" : false,
+			"type" :"post",
+			"url" : url,
+			"data" : formData,
+			"success": function(rData){
+				/* console.log(rData); */
+				
+				var slashIndex = rData.lastIndexof("/");
+				var front= 
+				
+				
+				
+				
+			}	
+			
+		});
+	
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+});
+	
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -26,13 +104,19 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-3">
+					</div>
+						<div class="col-md-6">
+						
+						
 			<form role="form" action="/jm/jm_insertReviewRun" method="post">
 				<div class="form-group">
 					 
 					<label for="r_id">
-						아이디
+						
 					</label>
-					<input type="text" class="form-control" id="r_id" name="r_id"  />
+					<input type="hidden" class="form-control" id="r_id" name="r_id" value="${sessionScope.u_id}" readonly />
 				</div>
 				
 				<div class="form-group">
@@ -63,13 +147,14 @@
 					<input type="text" class="form-control" id="r_star" name="r_star" />
 				</div>
 				
-				<div class="form-group">
-					 
-					<label for="r_item">
-						상품
-					</label>
-					<input type="text" class="form-control" id="r_item" name="r_item" />
+				<div>
+					<label> 첨부할 파일을 드래그 하세요</label>
+					<div id="fileDrop"></div>
 				</div>
+				
+				<div id="uploadList"></div>
+				<div id="btnDiv"></div>
+				
 				
 				
 				
@@ -77,6 +162,11 @@
 					작성 완료
 				</button>
 			</form>
+			
+						<div class="col-md-3">
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

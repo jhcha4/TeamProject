@@ -3,7 +3,7 @@
 
 <%@ include file="include/head.jsp" %>
 
-    <div class="site-blocks-cover" style="background-image: url(../../resources/images/mainbmp.bmp);" data-aos="fade">
+    <div class="site-blocks-cover" style="background-image:url(../../resources/images/mainbmp.jpg)" data-aos="fade">
       <div class="container">
         <div class="row align-items-start align-items-md-center justify-content-end">
           <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
@@ -59,7 +59,7 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
             <a class="block-2-item" href="lsh/shop?p_serve=TS&type=L&page=1">
               <figure class="image">
-                <img src="../../resources/images/SubBmp1.bmp" alt="" class="img-fluid">
+                <img src="../../resources/images/SubBmp1.jpg" alt="" class="img-fluid">
               </figure>
               <div class="text">
                 <span class="text-uppercase">Collections</span>
@@ -70,7 +70,7 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
             <a class="block-2-item" href="lsh/shop?p_serve=PM&type=L&page=1">
               <figure class="image">
-                <img src="../../resources/images/SubBmp2.bmp" alt="" class="img-fluid">
+                <img src="../../resources/images/SubBmp2.jpg" alt="" class="img-fluid">
               </figure>
               <div class="text">
                 <span class="text-uppercase">Collections</span>
@@ -81,7 +81,7 @@
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
             <a class="block-2-item" href="lsh/shop?p_serve=TH&type=L&page=1">
               <figure class="image">
-                <img src="../../resources/images/SubBmp3.bmp" alt="" class="img-fluid">
+                <img src="../../resources/images/SubBmp3.jpg" alt="" class="img-fluid">
               </figure>
               <div class="text">
                 <span class="text-uppercase">Collections</span>
@@ -106,7 +106,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="../../resources/images/popular5.bmp" alt="Image placeholder" class="img-fluid">
+                    <img src="../../resources/images/popular5.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">르띠아노 바지</a></h3>
@@ -118,7 +118,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="../../resources/images/popular1.bmp" alt="Image placeholder" class="img-fluid">
+                    <img src="../../resources/images/popular1.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">까무세라 수트</a></h3>
@@ -130,7 +130,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="../../resources/images/popular2.bmp" alt="Image placeholder" class="img-fluid">
+                    <img src="../../resources/images/popular2.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">다이노르 수트 세트</a></h3>
@@ -142,7 +142,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="../../resources/images/popular3.bmp" alt="Image placeholder" class="img-fluid">
+                    <img src="../../resources/images/popular3.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">미세르 수트</a></h3>
@@ -154,7 +154,7 @@
               <div class="item">
                 <div class="block-4 text-center">
                   <figure class="block-4-image">
-                    <img src="../../resources/images/popular4.bmp" alt="Image placeholder" class="img-fluid">
+                    <img src="../../resources/images/popular4.jpg" alt="Image placeholder" class="img-fluid">
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">발랑모르 로퍼</a></h3>
@@ -178,7 +178,7 @@
         </div>
         <div class="row align-items-center">
           <div class="col-md-12 col-lg-7 mb-5">
-            <a href="#"><img src="../../resources/images/CardBmp.bmp" alt="Image placeholder" class="img-fluid rounded"></a>
+            <a href="#"><img src="../../resources/images/CardBmp.jpg" alt="Image placeholder" class="img-fluid rounded"></a>
           </div>
           <div class="col-md-12 col-lg-5 text-center pl-md-5">
             <h2><a href="#">최대 12개월 무이자 할부 가능</a></h2>

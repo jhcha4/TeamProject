@@ -1,6 +1,5 @@
 package com.kh.team.cjh.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +22,7 @@ public class CjhCartDaoImpl implements CjhCartDao {
 	
 	//	장바구니 추가하기
 	@Override
-	public void insertCart(String u_id, LshBoardVo boardVo, int p_count, String p_size) throws Exception {
+	public void insertCart(String u_id, int p_count, LshBoardVo boardVo) throws Exception {
 		int p_num = boardVo.getP_num();
 		String p_name = boardVo.getP_name();
 		String p_content = boardVo.getP_content();
@@ -35,7 +34,6 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		paramMap.put("p_content", p_content);
 		paramMap.put("p_price", p_price);
 		paramMap.put("p_count", p_count);
-		paramMap.put("p_size", p_size);
 		sqlSession.insert(NAMESPACE + "insertCart", paramMap);
 	}
 

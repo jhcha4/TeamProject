@@ -125,7 +125,7 @@ $(function() {
 	              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
 	                <div class="block-4 text-center border">
 	                
-	                <a class="block-4 title" href="shop_single" data-p_num="${lshBoardVo.p_num}" data-p_serve="${lshBoardVo.p_serve}">
+	                <a class="block-4 title" href="shop_single" data-p_num="${lshBoardVo.p_num}">
 					 	<img src="/upload/displayFile?fileName=${lshBoardVo.title_name}">
 					</a>
 					

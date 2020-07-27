@@ -118,7 +118,7 @@ $(function(){
 				<div class="form-group ">
 					 
 					<label for="u_id">
-						아이디
+						아이디 <span class="text-danger">*</span>
 					</label>
 					<input type="text" class="form-control" id="u_id" name="u_id" required />
 				</div>
@@ -134,7 +134,7 @@ $(function(){
 				<div class="form-group">
 					 
 					<label for="user_pw">
-						비밀번호
+						비밀번호 <span class="text-danger">*</span>
 					</label>
 					<input type="password" class="form-control" id="u_pw" name="u_pw"  required/>
 				</div>
@@ -159,14 +159,14 @@ $(function(){
 				
 				<div class="form-group">
 				<label for="u_name">
-						이름
+						이름 <span class="text-danger">*</span>
 					</label>
 					<input type="text" class="form-control" id="u_name" name="u_name"  required/>
 				</div>
 				
 				 <div class="form-group">
 				<label for="user_gender">
-						성별
+						성별 
 					</label>
 					<select id="u_gender" name="u_gender">
 						<option>m</option>
@@ -176,7 +176,7 @@ $(function(){
 
 				<div class="form-group">
 				<label for="u_email">
-						메일주소
+						메일주소 <span class="text-danger">*</span>
 					</label>
 					<input type="email" class="form-control" id="u_email" name="u_email"  required/>
 				</div>
@@ -184,7 +184,7 @@ $(function(){
 				
 				<div class="form-group">
 				<label for="u_address">
-						주소
+						주소 <span class="text-danger">*</span>
 					</label>
 					<input type="text" class="form-control" id="u_address" name="u_address" required />
 				</div>
@@ -193,7 +193,7 @@ $(function(){
 				
 				<div class="form-group">
 				<label for="u_phone">
-						핸드폰번호
+						핸드폰번호 <span class="text-danger">*</span>
 					</label>
 					<input type="text" class="form-control" id="u_phone" name="u_phone" required />
 				</div>
