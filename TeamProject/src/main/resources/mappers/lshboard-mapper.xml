@@ -55,7 +55,7 @@
                 where rnum between 1 and 7
 	</select>
 	
-	<!-- 이미지 한개 불러오기 -->
+	<!-- 서브 이미지 여러개 불러오기 -->
 	<select id="getImg" resultType="LshBoardVo">
 		select * from tbl_attach 
 		where p_num= #{p_num}
