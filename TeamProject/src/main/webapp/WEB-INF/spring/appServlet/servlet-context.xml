@@ -37,19 +37,18 @@
 <!-- 		<beans:constructor-arg value="D:\upload"></beans:constructor-arg>  -->
 	</beans:bean>
 	
-	
-	
-	
 <!-- 	인터셉터 빈 -->
-<!-- 	<beans:bean id="authInterceptor" class="com.kh.team.cjh.interceptor.AuthInterceptor"></beans:bean> -->
+	<beans:bean id="authInterceptor" class="com.kh.team.cjh.interceptor.AuthInterceptor"></beans:bean>
 	
-<!-- 	<interceptors> -->
-<!-- 		<interceptor> -->
-<!-- 			<mapping path="/cjh/**/*"/> -->
-<!-- 			<exclude-mapping path="/cjh/index"/> -->
-<!-- 			<beans:ref bean="authInterceptor"/> -->
-<!-- 		</interceptor> -->
-<!-- 	</interceptors> -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/cjh/**/*"/>
+			<exclude-mapping path="/cjh/index"/>
+			<exclude-mapping path="/cjh/login"/>
+			<exclude-mapping path="/cjh/logout"/>
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	
 	

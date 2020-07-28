@@ -57,21 +57,25 @@ $(document).ready(function() {
 	});
 	
 	//	선택된 쪽지 삭제
-	
-	
 	$("#btnDelete").click(function() {
 		var sc_num = "";
 		var c_num = "";
-		$("input[name=checkbox]:checked").each(function() {
-// 			var sc_nums = $("td[name=c_num]").text();
-			var sc_nums = $(this).parent().next().next().next().next().next().next().next().next().text();
-			sc_num += sc_nums+",";
-			console.log("sc_num : " + sc_num);
-		});
-		var u_id = $("#u_id").val();
-		var c_num = sc_num.substring(0, sc_num.length - 1);
-		console.log(c_num);
-		location.href="/cjh/deleteCheckedCart?u_id="+u_id+"&c_num="+c_num;
+		var ischecked = $("input[name=checkbox]:checked").length;
+		if (ischecked != 0) {
+			$("input[name=checkbox]:checked").each(function() {
+//	 			var sc_nums = $("td[name=c_num]").text();
+				var sc_nums = $(this).parent().next().next().next().next().next().next().next().next().text();
+				sc_num += sc_nums+",";
+				console.log("sc_num : " + sc_num);
+			});
+			var u_id = $("#u_id").val();
+			var c_num = sc_num.substring(0, sc_num.length - 1);
+			console.log(c_num);
+	 		location.href="/cjh/deleteCheckedCart?u_id="+u_id+"&c_num="+c_num;
+		} else {
+			alert("삭제할 항목을 체크해주세요");
+		}
+		
 
 
 
@@ -193,11 +197,11 @@ ${list}
 			<div class="col-md-6">
 				<div class="row mb-5">
 					<div class="col-md-6 mb-3 mb-md-0">
-						<button type="button" onclick="location.href='/lsh/shop'" class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
+						<button type="button" onclick="location.href='/lsh/shop'" class="btn btn-outline-primary btn-sm btn-block">쇼핑 계속하기</button>
 					</div>
 					<div class="col-md-6">
 						<c:if test="${not empty list}">
-							<button id="updateCart" class="btn btn-primary btn-sm btn-block">Update Cart</button>
+							<button id="updateCart" class="btn btn-primary btn-sm btn-block">장바구니 항목 결제하기</button>
 						</c:if>
 					</div>
 				</div>

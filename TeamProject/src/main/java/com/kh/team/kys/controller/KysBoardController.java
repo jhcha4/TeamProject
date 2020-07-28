@@ -3,12 +3,15 @@ package com.kh.team.kys.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kh.team.domain.KysVisitCountVo;
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
@@ -17,6 +20,7 @@ import com.kh.team.domain.Kys_ServeVo;
 import com.kh.team.domain.Kys_productCountVo;
 import com.kh.team.kys.service.KysBoardService;
 import com.kh.team.kys.service.KysServeService;
+import com.kh.team.kys.service.VisitCountService;
 
 @Controller
 @RequestMapping("/manager")
@@ -28,15 +32,20 @@ public class KysBoardController {
 	@Inject
 	private KysServeService serveService;
 	
+	@Inject
+	private VisitCountService visitService;
+	
 
 	
-	//관리자 메인 화면
+	//관리자 메인 화면.
 	@RequestMapping(value="/manager_main",method = RequestMethod.GET)
 	public String manager_main(Model model) throws Exception {
 		 List<Kys_MainVo> mainList = serveService.mainList();
 			List<Kys_ServeVo> serveList = serveService.serveList();
+			
 			 model.addAttribute("mainList",mainList);
 			 model.addAttribute("serveList",serveList);
+
 		return "manager/manager_main";
 	}
 	
@@ -61,8 +70,7 @@ public class KysBoardController {
 	//등록 처리 
 	@RequestMapping(value="/shop_single_input", method = RequestMethod.POST)
 	public String shop_single_input(Kys_BoardVo boardVo,Kys_productCountVo productCountVo) throws Exception{
-		System.out.println("shop : "+boardVo);
-		System.out.println("pc_:"+productCountVo);
+		
 		boardService.boardInsert(boardVo);
 		
 		return "redirect:/manager/manager_main";
@@ -73,8 +81,10 @@ public class KysBoardController {
 		
 		List<Kys_ImgVo> listImg = boardService.imgSelectBy(p_num);
 		Kys_BoardVo boardVo = boardService.boardSelectBy(p_num);
+		 List<Kys_productCountVo> prodcutCountList = boardService.selectProductCount(p_num);
 		model.addAttribute("boardVo",boardVo);
 		model.addAttribute("listImg",listImg);
+		model.addAttribute("prodcutCountList",prodcutCountList);
 		
 	}
 	//상품 수정 처리
@@ -92,5 +102,15 @@ public class KysBoardController {
 		List<Kys_BoardVo> list = boardService.deleteList(deleteListDto);
 		model.addAttribute("list",list);
 		model.addAttribute("deleteListDto",deleteListDto);
+	}
+	//차트
+	@RequestMapping(value="/NewFile", method = RequestMethod.GET)
+	public void chart() throws Exception{
+		
+	}
+	//막대 차트
+	@RequestMapping(value = "/rodChart", method= RequestMethod.GET)
+	public void rodChart() throws Exception{
+		
 	}
 }

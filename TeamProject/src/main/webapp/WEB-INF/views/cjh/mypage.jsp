@@ -56,6 +56,10 @@ $(document).ready(function() {
 });
 </script>
 
+<script type="text/javascript">
+     history.replaceState({}, null, location.pathname);
+</script>
+
 <c:forEach var="item" items="${getList}" varStatus="status">
 	<tr class="getPoints" style="height: 90px; background-color: #fff;" >
 		<td><input style="display:none;" name="getPoints" value = "${item.point_value}"/></td>
@@ -72,7 +76,7 @@ $(document).ready(function() {
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 mb-0"><a href="/cjh/index">Home</a> <span class="mx-2 mb-0">/</span>
-				<a href="/cjh/mypage?u_id=${u_id}">My Page</a>  <span class="mx-2 mb-0"></span>
+				<a href="/cjh/mypage">My Page</a>  <span class="mx-2 mb-0"></span>
 			</div>
 		</div>
 	</div>
@@ -106,7 +110,7 @@ $(document).ready(function() {
 				
 				<div>
 			        <li>
-			        <h3><a href="/cjh/myOrder?u_id=${u_id}&p_status=1">주문내역</a></h3>
+			        <h3><a href="/cjh/myOrder?p_status=1">주문내역</a></h3>
 			        </li>
 			    </div>
 			    
@@ -119,13 +123,13 @@ $(document).ready(function() {
 			    
 				<div>
 			        <li>
-			        <h3><a href="/cjh/cart?u_id=${u_id}">장바구니</a></h3>
+			        <h3><a href="/cjh/cart">장바구니</a></h3>
 			        </li>
 			    </div>
 			    
 				<div>
 			        <li>
-			        <h3><a href="/cjh/myPoint?u_id=${u_id}&point_code=1">적립금</a></h3>
+			        <h3><a href="/cjh/myPoint?point_code=1">적립금</a></h3>
 			        </li>
 			    </div>
 				

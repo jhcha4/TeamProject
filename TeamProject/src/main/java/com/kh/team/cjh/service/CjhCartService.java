@@ -8,7 +8,7 @@ import com.kh.team.domain.LshBoardVo;
 public interface CjhCartService {
 	
 	//	장바구니에 추가
-	public void insertCart(String u_id, int p_count, LshBoardVo boardVo) throws Exception;
+	public void insertCart(String u_id, int[] countArr, String[] sizeArr, LshBoardVo boardVo) throws Exception;
 
 	//	장바구니 불러오기
 	public List<CjhCartVo> getCart(String u_id) throws Exception;

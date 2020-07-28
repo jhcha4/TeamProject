@@ -35,8 +35,8 @@ public class LSH_BoardServiceImpl implements LSH_BoardService {
 	}
 
 	@Override
-	public List<LshBoardVo> MostList() throws Exception {
-		return boardDao.MostList();
+	public List<LshBoardVo> relationList(int p_num, String p_serve) throws Exception {
+		return boardDao.relationList(p_num, p_serve);
 	}
 
 	@Override

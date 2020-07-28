@@ -20,7 +20,7 @@ public interface LSH_BoardDao {
 	public void updateViewCnt(int p_num) throws Exception;
 	
 	// 주요 상품 리스트
-	public List<LshBoardVo> MostList() throws Exception;
+	public List<LshBoardVo> relationList(int p_num, String p_serve) throws Exception;
 	
 	// 이미지 불러오기
 	public List<LshBoardVo> getImg(int p_num) throws Exception;
