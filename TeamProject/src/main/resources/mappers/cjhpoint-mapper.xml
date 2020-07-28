@@ -52,6 +52,12 @@
 		order by point_num desc
 	</select>
 	
+	<select id="getPointCount" resultType="int">
+		select count(*) from tbl_point
+		where u_id = #{u_id}
+		and point_code = #{point_code}
+	</select>
+	
 	<sql id="point">
 		<if test="#{point_code} != null">
 			<choose>

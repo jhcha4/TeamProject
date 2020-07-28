@@ -73,4 +73,9 @@ public class CjhPointServiceImpl implements CjhPointService {
 		return pointDao.getUserPoint(u_id);
 	}
 
+	@Override
+	public int getPointCount(String u_id, int point_code) throws Exception {
+		return pointDao.getPointCount(u_id, point_code);
+	}
+
 }
