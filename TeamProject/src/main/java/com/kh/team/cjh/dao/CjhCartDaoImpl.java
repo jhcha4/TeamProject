@@ -78,6 +78,17 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		paramMap.put("c_num", c_num);
 		sqlSession.update(NAMESPACE + "updateCart", paramMap);
 	}
+	
+	//	장바구니 중복시 갱신
+	@Override
+	public void updateDupCart(String u_id, int p_count, String p_size, int p_num) {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("u_id", u_id);
+		paramMap.put("p_count", p_count);
+		paramMap.put("p_size", p_size);
+		paramMap.put("p_num", p_num);
+		sqlSession.update(NAMESPACE + "updateDupCart", paramMap);
+	}
 
 	//	주문후 장바구니 상태변경
 	@Override
@@ -93,6 +104,17 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		paramMap.put("p_status", p_status);
 		return sqlSession.selectList(NAMESPACE + "getOrder", paramMap);
 	}
+
+	//	장바구니 상품확인
+	@Override
+	public int checkCart(String u_id, String p_size, int p_num) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("u_id", u_id);
+		paramMap.put("p_size", p_size);
+		paramMap.put("p_num", p_num);
+		return sqlSession.selectOne(NAMESPACE + "checkCart", paramMap);
+	}
+
 
 
 }

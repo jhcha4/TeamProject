@@ -71,7 +71,9 @@ public class CjhMyInfoController {
 	
 	//	로그인 폼
 	@RequestMapping(value="/login", method = RequestMethod.GET)
-	public void loginget() throws Exception {
+	public void loginget(String targetLocation, HttpSession session) throws Exception {
+		System.out.println("targetLocation:" + targetLocation);
+		session.setAttribute("targetLocation", targetLocation);
 //		System.out.println("dd");
 	}
 	
@@ -92,7 +94,6 @@ public class CjhMyInfoController {
 				session.removeAttribute("targetLocation");
 				return "redirect:" + targetLocation;
 			}
-			System.out.println("dd");
 			return "redirect:/";
 		}
 		rttr.addFlashAttribute("msg", "fail");

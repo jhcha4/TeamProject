@@ -31,4 +31,10 @@ public interface JmReviewDao {
 	//게시판 조회수 증가
 	public void updateViewCount(int r_info)throws Exception;
 	
+	//리뷰게시판 시퀀스
+	public int getNextVal()throws Exception;
+	
+	//리뷰게시판 이미지 시퀀스 구하기
+	public void insertReviewAttach(String r_filenames, int r_files) throws Exception;
+	
 }

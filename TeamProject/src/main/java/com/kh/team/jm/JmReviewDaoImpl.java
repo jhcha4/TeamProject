@@ -1,6 +1,8 @@
 package com.kh.team.jm;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -32,6 +34,11 @@ public class JmReviewDaoImpl implements JmReviewDao {
 
 	@Override
 	public void insertReview(JmReviewVo jmReviewVo) throws Exception {
+		System.out.println("Dao, jmReviewVo:" + jmReviewVo);
+		
+		if (jmReviewVo.getR_files() != null && jmReviewVo.getR_files()[0] != null) {
+			jmReviewVo.setR_file(jmReviewVo.getR_files()[0]);
+		}
 		
 		sqlSession.insert(NAMESPACE+"insertReview",jmReviewVo);
 		
@@ -68,6 +75,24 @@ public class JmReviewDaoImpl implements JmReviewDao {
 	public void updateViewCount(int r_info) throws Exception {
 		 sqlSession.selectOne(NAMESPACE+"updateViewCount",r_info);
 		
+	}
+
+	@Override
+	public void insertReviewAttach(String r_filenames, int r_files) throws Exception {
+		
+		Map<String, Object> pramMap = new HashMap<>();
+		
+		pramMap.put("r_filenames", r_filenames);
+		pramMap.put("r_files", r_files);
+		
+		sqlSession.insert(NAMESPACE+"insertReviewAttach",pramMap);
+		
+	}
+
+	@Override
+	public int getNextVal() throws Exception {
+		
+		return sqlSession.selectOne(NAMESPACE+"getNextVal");
 	}
 
 }
