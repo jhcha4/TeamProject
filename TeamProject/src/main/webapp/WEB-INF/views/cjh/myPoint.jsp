@@ -30,7 +30,7 @@ $(document).ready(function() {
 				console.log($(this).val());
 			}
 		});
-		location.href="/cjh/myPoint?u_id=${u_id}&point_code=" + point_code;
+		location.href="/cjh/myPoint?point_code=" + point_code;
 	});
 });
 </script>

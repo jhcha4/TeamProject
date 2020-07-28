@@ -85,7 +85,6 @@ public class CjhMyInfoController {
 		int count = cartService.getCountCart(u_id);
 		if (result == true) {
 			//	해당 사용자가 있다면 아이디를 세션에 저장
-			
 			session.setAttribute("u_id", u_id);
 			session.setAttribute("count", count);
 			String targetLocation = (String)session.getAttribute("targetLocation");
@@ -93,7 +92,7 @@ public class CjhMyInfoController {
 				session.removeAttribute("targetLocation");
 				return "redirect:" + targetLocation;
 			}
-			return "redirect:/cjh/index";
+			return "redirect:/";
 		}
 		rttr.addFlashAttribute("msg", "fail");
 		return "redirect:/cjh/login";
@@ -147,7 +146,8 @@ public class CjhMyInfoController {
 	
 	//	마이페이지
 	@RequestMapping(value="/mypage", method = RequestMethod.GET)
-	public void mypage(String u_id, Model model) throws Exception {
+	public void mypage(Model model, HttpSession session) throws Exception {
+		String u_id = (String)session.getAttribute("u_id");
 		int u_point = pointService.getUserPoint(u_id);
 		List<CjhPointVo> getList = pointService.getTotalPoint(u_id);
 		List<CjhPointVo> useList = pointService.getUsePoint(u_id);
@@ -158,7 +158,8 @@ public class CjhMyInfoController {
 	
 	//	적립금 페이지
 	@RequestMapping(value="/myPoint", method = RequestMethod.GET)
-	public void myPoint(String u_id, int point_code, Model model) throws Exception {
+	public void myPoint(int point_code, Model model, HttpSession session) throws Exception {
+		String u_id = (String)session.getAttribute("u_id");
 		List<CjhPointVo> list = pointService.listPoint(u_id, point_code);
 		model.addAttribute("list", list);
 		model.addAttribute("point_code", point_code);

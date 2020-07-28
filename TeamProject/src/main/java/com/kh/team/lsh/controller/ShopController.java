@@ -3,6 +3,7 @@ package com.kh.team.lsh.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,10 +44,12 @@ public class ShopController {
 	
 	// 상품클릭 화면
 	@RequestMapping(value="/shop_single", method = RequestMethod.GET)
-	public void shop_single(int p_num, Model model, String p_serve) throws Exception {
+	public void shop_single(int p_num, Model model, String p_serve, HttpSession session) throws Exception {
 		LshBoardVo lshBoardVo = boardService.single(p_num);
 		List<LshBoardVo> relationList = boardService.relationList(p_num, p_serve);
 		List<LshBoardVo> imgList = boardService.getImg(p_num);
+		String u_id = (String) session.getAttribute("u_id");
+		model.addAttribute("u_id", u_id);
 		model.addAttribute("relationList",relationList);
 		model.addAttribute("lshBoardVo", lshBoardVo);
 		model.addAttribute("imgList", imgList);
