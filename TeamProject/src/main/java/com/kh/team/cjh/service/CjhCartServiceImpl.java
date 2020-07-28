@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.team.cjh.dao.CjhCartDao;
 import com.kh.team.domain.CjhCartVo;
@@ -18,6 +19,7 @@ public class CjhCartServiceImpl implements CjhCartService {
 	private CjhCartDao cartDao;
 	
 	//	장바구니 추가하기
+	@Transactional
 	@Override
 	public void insertCart(String u_id, int[] countArr, String[] sizeArr, LshBoardVo boardVo) throws Exception {
 		for (int i=0; i<countArr.length; i++) {

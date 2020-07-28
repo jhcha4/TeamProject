@@ -23,12 +23,16 @@ $(function() {
 	
 	$("#insertCart").click(function(e) {
 		e.preventDefault();
-		var u_id = $("#u_id").text();
+		var u_id = "${sessionScope.u_id}";
+		
+		
+// 		var u_id = $("#u_id").text();
 		if (u_id == null || u_id == "") {
 			if(confirm("로그인후 이용가능합니다. 로그인 하시겠습니까?")) {
 				var p_num = $("#p_num").text();
 				var p_serve = $("#p_serve").text();
-			    location.href = "/cjh/login";
+			    var targetLocation = "/lsh/shop_single?p_num="+p_num+"&p_serve="+p_serve;
+			    location.href = "/cjh/login?targetLocation=" + targetLocation;
 // 				location.href="/lsh/shop_single?p_num="+p_num+"&p_serve="+p_serve;
 			}
 		} else {
@@ -216,7 +220,6 @@ $(function() {
             
             <div id="p_num" style="display:none">${lshBoardVo.p_num}</div>
             <div id="p_serve" style="display:none">${lshBoardVo.p_serve}</div>
-            <div id="u_id" style="display:none">${u_id}</div>
             
             <p><button id="insertCart" class="buy-now btn btn-sm btn-primary">장바구니에 담기</button></p>
 			

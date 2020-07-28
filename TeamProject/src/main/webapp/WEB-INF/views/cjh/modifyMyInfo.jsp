@@ -59,12 +59,27 @@
 $(document).ready(function() {
 	$("#btnModify").click(function(e) {
 		e.preventDefault();
+		var u_pw = $("#u_pw").val();
+		var u_pwCheck = $("#u_pwCheck").val();
+		
+		if (u_pw != u_pwCheck || u_pw == "" || u_pwCheck == "") {
+			alert("비밀번호를 확인해주세요");
+			$("#u_pw").css("background-color", "#f2f2f2");
+			$("#u_pwCheck").css("background-color", "#f2f2f2");
+			$("#u_pwCheck").focus();
+			return;
+		}
+		
 		var mainAddress = $("#mainAddress").val();
 		var detailAddress = $("#detailAddress").val();
 		var myAddress = mainAddress +" "+ detailAddress;
 		$("#myAddress").val(myAddress);
 // 		console.log("myAddress : " + myAddress);
-		$("#modifyForm").submit();
+// 		$("#modifyForm").submit();
+	});
+	
+	$("#btnCancel").click(function() {
+		location.href="/cjh/mypage";
 	});
 });
 </script>
@@ -105,7 +120,17 @@ $(document).ready(function() {
 					                        <th scope="row">비밀번호</th>
 					                        <td colspan="2">
 												<input type="password" class="form-control" id="u_pw" name="u_pw"
-														value="${userVo.u_pw}" required/>
+														value="" required/>
+											</td>
+					                    </tr>
+	
+									</thead>
+									<thead>
+										<tr id="passwordCheck-area" style="">
+					                        <th scope="row">비밀번호 확인</th>
+					                        <td colspan="2">
+												<input type="password" class="form-control" id="u_pwCheck" name="u_pwCheck"
+														value="" required/>
 											</td>
 					                    </tr>
 	
@@ -157,6 +182,7 @@ $(document).ready(function() {
 									</thead>
 								</table>
 							</div>
+							<button id="btnCancel" type="button" class="btn btn-basic">취소</button>
 							<button id="btnModify" type="button" class="btn btn-default">정보 수정 완료</button>
 						</div>
 					</div>
