@@ -44,8 +44,9 @@ public class ShopController {
 	
 	// 상품클릭 화면
 	@RequestMapping(value="/shop_single", method = RequestMethod.GET)
-	public void shop_single(int p_num, Model model, String p_serve, HttpSession session) throws Exception {
+	public void shop_single(int p_num, Model model, HttpSession session) throws Exception {
 		LshBoardVo lshBoardVo = boardService.single(p_num);
+		String p_serve = boardService.getServe(p_num);
 		List<LshBoardVo> relationList = boardService.relationList(p_num, p_serve);
 		List<LshBoardVo> imgList = boardService.getImg(p_num);
 		String u_id = (String) session.getAttribute("u_id");

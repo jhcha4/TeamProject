@@ -45,4 +45,9 @@ public class LSH_BoardServiceImpl implements LSH_BoardService {
 		return getImgList;
 	}
 
+	@Override
+	public String getServe(int p_num) throws Exception {
+		return boardDao.getServe(p_num);
+	}
+
 }

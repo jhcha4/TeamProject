@@ -23,66 +23,82 @@ $(function() {
 	
 	$("#insertCart").click(function(e) {
 		e.preventDefault();
-		p_num = $("#p_num").text();
-		console.log("p_num : " + p_num);
-		var countArr = new Array();
-		var sizeArr = new Array();
-		$("h5[name=p_size]").each(function() {
-			var size = $(this).text();
-			sizeArr.push(size);
-		});
-		$("input[name=p_count]").each(function() {
-			var count = $(this).val();
-			countArr.push(count);
-		});
+		var u_id = "${sessionScope.u_id}";
 		
-		var sendData = {
-			"p_num"			:	p_num,
-		    "countArr"	:	countArr,
-		    "sizeArr"		:	sizeArr
-		};
+		
+// 		var u_id = $("#u_id").text();
+		if (u_id == null || u_id == "") {
+			if(confirm("로그인후 이용가능합니다. 로그인 하시겠습니까?")) {
+				var p_num = $("#p_num").text();
+				var p_serve = $("#p_serve").text();
+			    var targetLocation = "/lsh/shop_single?p_num="+p_num+"&p_serve="+p_serve;
+			    location.href = "/cjh/login?targetLocation=" + targetLocation;
+// 				location.href="/lsh/shop_single?p_num="+p_num+"&p_serve="+p_serve;
+			}
+		} else {
+			p_num = $("#p_num").text();
+			console.log("p_num : " + p_num);
+			var countArr = new Array();
+			var sizeArr = new Array();
+			$("h5[name=p_size]").each(function() {
+				var size = $(this).text();
+				sizeArr.push(size);
+			});
+			if ((sizeArr).length == 0) {
+				sizeArr.push(" ");
+			}
+			console.log("sizeArr : " + sizeArr);
+			$("input[name=p_count]").each(function() {
+				var count = $(this).val();
+				countArr.push(count);
+			});
+			
+			var sendData = {
+				"p_num"			:	p_num,
+			    "countArr"	:	countArr,
+			    "sizeArr"		:	sizeArr
+			};
 
-// 		var sendData = {
-// 				"p_num" : 1450,
-// 				"sizeArr" : ["S", "M"],
-// 				"countArr" : ["1", "2"]
-// 		};
-		
-		var strSendData = JSON.stringify(sendData);
-		console.log("strSendData", strSendData);
-		console.log('sendData', sendData);
-		var url = "/cjh/insertCart";
-		$.ajaxSettings.traditional = true;
-// 		$.ajax({
-// 		    type        : "POST",
-// 		    url         : url,
-// 		    contentType :'application/json; charset=UTF-8',
-// 		    data        : sendData,
-// 		    traditional : true,
-// 		    success : function (data){
-// 		    	location.href="/cjh/cart";
-// 		    }
-// 		});
+//	 		var sendData = {
+//	 				"p_num" : 1450,
+//	 				"sizeArr" : ["S", "M"],
+//	 				"countArr" : ["1", "2"]
+//	 		};
+			
+			var strSendData = JSON.stringify(sendData);
+			console.log("strSendData", strSendData);
+			console.log('sendData', sendData);
+			var url = "/cjh/insertCart";
+			$.ajaxSettings.traditional = true;
+//	 		$.ajax({
+//	 		    type        : "POST",
+//	 		    url         : url,
+//	 		    contentType :'application/json; charset=UTF-8',
+//	 		    data        : sendData,
+//	 		    traditional : true,
+//	 		    success : function (data){
+//	 		    	location.href="/cjh/cart";
+//	 		    }
+//	 		});
 
-		$.post(url, sendData, function(data) {
-			var p_num = $("#p_num").text();
-			var p_serve = $("#p_serve").text();
-			console.log($("#u_id").text());
-// 			location.href="/lsh/shop_single?p_num="+p_num+"&p_serve="+p_serve;
-// 			location.href="/cjh/cart";
-		});
-		
+			$.post(url, sendData, function(data) {
+				var p_num = $("#p_num").text();
+				var p_serve = $("#p_serve").text();
+	 			location.href="/cjh/cart";
+			});
+		}
 	});
 	$("#size").change(function() {
-		$("#insertCart").attr("disabled", false);
+// 		$("#insertCart").attr("disabled", false);
 		var size = $("#size").val();
 		var isChecked = checkSize(size);
 		console.log(isChecked);
 		if (isChecked == true) {
 			return;
 		}
-		var html = "<div class='input-group mb-3' style='max-width: 450px;'>";
+		var html = "<div class='input-group mb-3' style='max-width: auto;'>";
 		html += "<h5 id='name'>${lshBoardVo.p_name}[</h5><h5 name=p_size>"+size+"</h5><h5>]</h5>";
+		html += "<h5>&nbsp&nbsp| 수량 :</h5>"
 		html += "<input name='p_count' type='number' min='1' class='form-control text-center' value='1'>";
 		html += "<a href='#'class='delete'><h3>x</h3></a>"
 		html += "<h5 class='sumPrice'>${lshBoardVo.p_price}</h5><h5>원</h5>"
@@ -100,6 +116,8 @@ $(function() {
 			totalPrice += nPrice;
 		});
 		$("#total").text(totalPrice);
+		
+		$(this).find("option:first").prop("selected", true);
 		
 	});
 	$("#hidden").on("click", ".delete", function(e) {
@@ -165,24 +183,45 @@ $(function() {
             <p><strong class="text-primary h4">${lshBoardVo.p_price}</strong>원</p>
             <div class="mb-1 d-flex">
 	            <h4>Size:</h4>
-	            <select id="size">
-	            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
-		               	<option value="S">S</option>
-		               	<option value="M">M</option>
-		               	<option value="L">L</option>
-		               	<option value="XL">XL</option>	
-	            </select>
+	            <c:if test="${lshBoardVo.p_main == 'T' || lshBoardVo.p_main == 'P' || lshBoardVo.p_main == 'S'}">
+		            <select id="size">
+		            	<c:if test="${lshBoardVo.p_main == 'T' || lshBoardVo.p_main == 'P'}">
+		            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
+			               	<option value="S">S</option>
+			               	<option value="M">M</option>
+			               	<option value="L">L</option>
+			               	<option value="XL">XL</option>
+			            </c:if>
+			            
+			            <c:if test="${lshBoardVo.p_main == 'S'}">
+		            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
+			               	<option value="S">250</option>
+			               	<option value="M">260</option>
+			               	<option value="L">270</option>
+			               	<option value="XL">280</option>
+			            </c:if>
+		            </select>
+	            </c:if>
+	            
             </div>
             
             <div id="hidden">
+            	<c:if test="${lshBoardVo.p_main == 'A'}">
+	            	<div class='input-group mb-3' style='max-width: auto;'>
+		            	<h5 id="name">${lshBoardVo.p_name}</h5>
+		            	<h5>&nbsp&nbsp| 수량 :</h5>
+		            	<input name='p_count' type='number' min='1' class='form-control text-center' value='1'>
+		            	<a></a>
+		            	<h5 class='sumPrice'>${lshBoardVo.p_price}</h5><h5>원</h5>
+		            </div>
+	            </c:if>
             </div>
             <h2>가격 :<span id="total">0</span>원</h2>
             
             <div id="p_num" style="display:none">${lshBoardVo.p_num}</div>
             <div id="p_serve" style="display:none">${lshBoardVo.p_serve}</div>
-            <div id="u_id" style="display:none">${u_id}</div>
             
-            <p><button id="insertCart" class="buy-now btn btn-sm btn-primary" disabled>장바구니에 담기</button></p>
+            <p><button id="insertCart" class="buy-now btn btn-sm btn-primary">장바구니에 담기</button></p>
 			
           </div>
           
@@ -208,11 +247,11 @@ $(function() {
             <c:forEach items="${relationList}" var="lshBoardVo">
               <div class="item">
                 <div class="block-4 text-center" >
-                  <a class="block-4 title" href="shop_single" data-p_num="${lshBoardVo.p_num}" data-p_serve="${lshBoardVo.p_serve}">
+                  <a class="block-4 title" href="shop_single" data-p_num="${lshBoardVo.p_num}">
                     <img src="/upload/displayFile?fileName=${lshBoardVo.title_name}">
                   </a>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop_single" data-p_num="${lshBoardVo.p_num}" data-p_serve="${lshBoardVo.p_serve}">
+                    <h3><a href="shop_single" data-p_num="${lshBoardVo.p_num}">
                     	${lshBoardVo.p_name}</a>
                     </h3>
                     <p class="mb-0">${lshBoardVo.p_content}</p>

@@ -8,7 +8,7 @@ import com.kh.team.domain.LshBoardVo;
 public interface CjhCartDao {
 	
 	//	장바구니에 추가
-	public void insertCart(String u_id, int p_count, String size, LshBoardVo boardVo) throws Exception;
+	public void insertCart(String u_id, int p_count, String p_size, LshBoardVo boardVo) throws Exception;
 
 	//	장바구니 불러오기
 	public List<CjhCartVo> getCart(String u_id) throws Exception;
@@ -25,10 +25,16 @@ public interface CjhCartDao {
 	//	장바구니 갱신
 	public void updateCart(String u_id, int p_count, int c_num) throws Exception;
 	
+	//	장바구니 중복시 갱신
+	public void updateDupCart(String u_id, int p_count, String p_size, int p_num);
+	
 	//	장바구니 주문후 상태변경
 	public void orderCartUpdate(String u_id) throws Exception;
 	
 	//	주문목록 불러오기
 	public List<CjhCartVo> getOrder(String u_id, int p_status) throws Exception;
+	
+	//	장바구니 상품 확인
+	public int checkCart(String u_id, String p_size, int p_num) throws Exception;
 	
 }
