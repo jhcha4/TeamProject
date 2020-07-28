@@ -92,7 +92,6 @@ public class CjhMyInfoController {
 				session.removeAttribute("targetLocation");
 				return "redirect:" + targetLocation;
 			}
-			System.out.println("dd");
 			return "redirect:/";
 		}
 		rttr.addFlashAttribute("msg", "fail");

@@ -26,7 +26,10 @@ $(function() {
 		var u_id = $("#u_id").text();
 		if (u_id == null || u_id == "") {
 			if(confirm("로그인후 이용가능합니다. 로그인 하시겠습니까?")) {
+				var p_num = $("#p_num").text();
+				var p_serve = $("#p_serve").text();
 			    location.href = "/cjh/login";
+// 				location.href="/lsh/shop_single?p_num="+p_num+"&p_serve="+p_serve;
 			}
 		} else {
 			p_num = $("#p_num").text();
