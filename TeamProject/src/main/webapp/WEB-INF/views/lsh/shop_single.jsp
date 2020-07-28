@@ -245,7 +245,7 @@ $(function() {
                     <img src="/upload/displayFile?fileName=${lshBoardVo.title_name}">
                   </a>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop_single" data-p_num="${lshBoardVo.p_num}">
+                    <h3><a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}">
                     	${lshBoardVo.p_name}</a>
                     </h3>
                     <p class="mb-0">${lshBoardVo.p_content}</p>
