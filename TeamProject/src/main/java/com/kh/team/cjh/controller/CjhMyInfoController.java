@@ -166,7 +166,7 @@ public class CjhMyInfoController {
 		String u_id = (String)session.getAttribute("u_id");
 		int totalCount = pointService.getPointCount(u_id, point_code);
 		pagingDto.setTotalCount(totalCount);
-		List<CjhPointVo> list = pointService.listPoint(u_id, point_code);
+		List<CjhPointVo> list = pointService.listPoint(u_id, point_code, pagingDto);
 		model.addAttribute("list", list);
 		model.addAttribute("point_code", point_code);
 	}

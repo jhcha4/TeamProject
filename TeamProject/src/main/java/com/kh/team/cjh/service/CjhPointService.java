@@ -26,7 +26,7 @@ public interface CjhPointService {
 	public List<CjhPointVo> getUsePoint(String u_id) throws Exception;
 	
 	//	포인트 정보 불러오기
-	public List<CjhPointVo> listPoint(String u_id, int point_code) throws Exception;
+	public List<CjhPointVo> listPoint(String u_id, int point_code, CjhPagingDto pagingDto) throws Exception;
 	
 	//	포인트 정보 불러오기
 //	public List<CjhPointVo> listPoint(String u_id, CjhPagingDto pagingDto) throws Exception;

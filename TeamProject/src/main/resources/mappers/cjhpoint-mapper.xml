@@ -44,13 +44,26 @@
 	</select>
 	
 	<select id="listPoint" resultType="CjhPointVo">
-		select p.point_num, p.point_code, p.u_id, p.point_value, c.point_content, p.point_date
+		select *
+<!-- 		p.point_num, p.point_code, p.u_id, p.point_value, c.point_content, p.point_date -->
 		from tbl_point p, tbl_point_code c
 		where u_id = #{u_id}
 		and p.point_code = c.point_code
 		<include refid="point"/>
 		order by point_num desc
 	</select>
+	
+<!-- 	<select id="listPoint" resultType="CjhPointVo"> -->
+<!-- 		select *  -->
+<!-- 			from (select rownum rnum, a.* -->
+<!-- 				from (select p.point_num, p.point_code, p.u_id, p.point_value, c.point_content, p.point_date -->
+<!-- 					from tbl_point p, tbl_point_code c -->
+<!-- 					where u_id = #{u_id} -->
+<!-- 					and p.point_code = c.point_code -->
+<!-- 					<include refid="point"/> -->
+<!-- 					order by point_num desc) a) -->
+<!-- 		where rnum between #{startRow} and #{endRow} -->
+<!-- 	</select> -->
 	
 	<select id="getPointCount" resultType="int">
 		select count(*) from tbl_point
