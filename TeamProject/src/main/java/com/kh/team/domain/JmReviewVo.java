@@ -1,6 +1,7 @@
 package com.kh.team.domain;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 
 public class JmReviewVo {
 
@@ -12,6 +13,10 @@ public class JmReviewVo {
 	private int r_star;
 	private int r_item;
 	private int r_viewcnt;
+	private String r_file;
+	
+
+	private String[] r_files;
 	
 	public JmReviewVo() {
 		super();
@@ -81,14 +86,34 @@ public class JmReviewVo {
 	public void setR_viewcnt(int r_viewcnt) {
 		this.r_viewcnt = r_viewcnt;
 	}
+	
+	public String getR_file() {
+		return r_file;
+	}
+
+	public void setR_file(String r_file) {
+		this.r_file = r_file;
+	}
+
+	public String[] getR_files() {
+		return r_files;
+	}
+
+	public void setR_files(String[] r_files) {
+		this.r_files = r_files;
+	}
 
 	@Override
 	public String toString() {
 		return "JmReviewVo [r_info=" + r_info + ", r_id=" + r_id + ", r_subject=" + r_subject + ", r_contents="
 				+ r_contents + ", r_time=" + r_time + ", r_star=" + r_star + ", r_item=" + r_item + ", r_viewcnt="
-				+ r_viewcnt + "]";
+				+ r_viewcnt + ", r_file=" + r_file + ", r_files=" + Arrays.toString(r_files) + "]";
 	}
+
 	
+	
+	
+
 	
 	
 	

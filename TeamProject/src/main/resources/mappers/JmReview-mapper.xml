@@ -6,6 +6,24 @@
 
 <mapper namespace="mappers.review-mapper">
 
+
+	<!-- 시퀀스 값 얻기 -->
+		<select id="getNextVal" resultType="int">
+			select seq_review.nextVal from dual
+		
+		</select>
+
+
+	<!-- 이미지 이름 넣기 -->
+		<insert id="insertReviewAttach">
+			insert into tbl_review_attach(r_filenames,r_files)
+			values (#{r_filenames} , #{r_files})
+		
+		
+		</insert>
+
+
+
 	<!-- 리뷰게시판 리스트 조회 -->
 		<select id="selectReviewList" resultType="JmReviewVo">
 			select * from  tbl_review order by r_info desc
@@ -21,8 +39,8 @@
 		
 	<!-- 리뷰 게시판 글쓰기 -->
 		<insert id="insertReview">
-		insert into tbl_review(r_info,r_id,r_subject,r_contents,r_star)
-		values (seq_review.nextval,#{r_id},#{r_subject},#{r_contents},#{r_star})
+		insert into tbl_review(r_info, r_id,r_subject,r_contents,r_star, r_file)
+		values (#{r_info}, #{r_id},#{r_subject},#{r_contents},#{r_star}, #{r_file})
 		
 		</insert>
 		

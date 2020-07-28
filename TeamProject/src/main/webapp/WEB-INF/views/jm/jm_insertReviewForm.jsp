@@ -112,14 +112,26 @@ $(function(){
 			var filename = $(this).attr("data-filename");
 			console.log("filename:"+filename);
 			
-			var hiddenInput = "<input type='hidden' name='file["+index+"]' value='"+filename+"' />";
+			var slashIndex = filename.lastIndexOf("/");
+			var front= filename.substring(0,slashIndex+1);
+			var rear = filename.substring(slashIndex+1);
+			var thumbnailName = front+"jm_"+rear;
+			
+			
+			
+			
+			
+			var hiddenInput = "<input type='hidden' name='r_files["+index+"]' value='"+thumbnailName+"' />";
+			console.log("hiddenInput:" + hiddenInput);
 			$("#insertReviewForm").prepend(hiddenInput);
 				
 			
 			
 		});
 		
-		return false;
+// 		return false;
+		
+		
 		
 	}); 
 	
@@ -188,11 +200,11 @@ $(function(){
 					<label for="r_star">
 						평점 <span class="text-danger">*</span>
 					</label>
-					<input type="text" class="form-control" id="r_star" name="r_star" min="0" max="100"  required/>
+					<input type="number" class="form-control" id="r_star" name="r_star" min="0" max="100"  required/>
 				</div>
 				
 				<div>
-					<label> 첨부할 파일을 드래그 하세요</label>
+					<label > 첨부할 파일을 드래그 하세요</label>
 					<div id="fileDrop"></div>
 				</div>
 				
