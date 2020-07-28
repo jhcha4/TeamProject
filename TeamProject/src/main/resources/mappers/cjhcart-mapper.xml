@@ -64,6 +64,20 @@
 		where u_id = #{u_id} and p_status = 1001
 	</delete>
 	
+	<select id="checkCart" resultType="int">
+		select count(*) from tbl_cart
+		where u_id = #{u_id}
+		and p_num = #{p_num}
+		and p_status = 1001
+		and p_size = #{p_size}
+	</select>
+	
+	<update id="updateDupCart">
+		update tbl_cart set
+		p_count = p_count + #{p_count}
+		where u_id = #{u_id} and p_size = #{p_size} and p_num = #{p_num}
+	</update>
+	
 	<sql id="status">
 		<if test="#{p_status} != null">
 			<choose>
