@@ -163,11 +163,22 @@ $(function() {
             <div class="mb-1 d-flex">
 	            <h4>Size:</h4>
 	            <select id="size">
+	            	<c:if test="${lshBoardVo.p_main == 'T'}">
 	            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
 		               	<option value="S">S</option>
 		               	<option value="M">M</option>
 		               	<option value="L">L</option>
-		               	<option value="XL">XL</option>	
+		               	<option value="XL">XL</option>
+		            </c:if>
+		            
+		            <c:if test="${lshBoardVo.p_main == 'S'}">
+	            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
+		               	<option value="S">250</option>
+		               	<option value="M">260</option>
+		               	<option value="L">270</option>
+		               	<option value="XL">280</option>
+		            </c:if>	
+		            
 	            </select>
             </div>
             
