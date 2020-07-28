@@ -39,7 +39,27 @@ public class JmReviewServiceImpl implements JmReviewService {
 
 	@Override
 	public void insertReview(JmReviewVo jmReviewVo) throws Exception {
+		
+		int r_info = jmReviewDao.getNextVal();
+		
+		jmReviewVo.setR_info(r_info);
+		
+		System.out.println("jmReviewVo:"+jmReviewVo);
 		jmReviewDao.insertReview(jmReviewVo);
+		
+		//attach 에 insert
+		
+		String[] files = jmReviewVo.getR_files();
+		for(String file : files) {
+			
+			System.out.println("file:"+file);
+			System.out.println("r_info:"+ r_info);
+			
+			jmReviewDao.insertReviewAttach(file, r_info);
+			
+			
+			
+		}
 		
 	}
 

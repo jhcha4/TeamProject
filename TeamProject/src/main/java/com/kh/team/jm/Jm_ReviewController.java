@@ -60,7 +60,11 @@ public class Jm_ReviewController {
 	//리뷰 게시판 글쓰기 작업
 	@RequestMapping(value="/jm_insertReviewRun",method=RequestMethod.POST)
 	public String insertReviewRun(JmReviewVo jmReviewVo, Model model)throws Exception{
-		
+		System.out.println("jm_insertReviewRun, jmReviewVo:" + jmReviewVo);
+		/*String[] r_files = jmReviewVo.getR_files();
+		for (String file : r_files) {
+			System.out.println(file);
+		}*/
 			jmReviewService.insertReview(jmReviewVo);
 			model.addAttribute("jmReviewVo", jmReviewVo);
 		return "redirect:/jm/jm_reviewForm";

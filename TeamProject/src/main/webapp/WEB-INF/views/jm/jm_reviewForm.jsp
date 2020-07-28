@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 
-<%-- ${jmPagingDto} --%>
+ ${jmPagingDto} 
 
 
 <script>
@@ -161,7 +161,7 @@ $("a.review_title").click(function(e){
 							시간
 						</th>
 						<th>
-							상품
+							이미지
 						</th>
 						<th>
 							평점
@@ -188,8 +188,16 @@ $("a.review_title").click(function(e){
 						<td>
 							${jmReviewVo.r_time}
 						</td>
-						<td>
-							${jmReviewVo.r_item}
+						<td>	
+							<%-- <img src="/upload/displayFile?fileName=${jmReviewVo.r_file}"/> --%>
+						 <c:choose>
+							<c:when test="${not empty jmReviewVo.r_file}">
+							 	<img src="/upload/displayFile?fileName=${jmReviewVo.r_file}"/>
+							</c:when> 	
+							<c:otherwise>
+								<img src="../../resources/images/defaultImage.jpg" alt="" class="img-fluid">
+							</c:otherwise>
+						</c:choose> 
 						</td>
 						<td>
 						<c:choose>
