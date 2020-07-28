@@ -62,6 +62,12 @@
 		where p_num= #{p_num}
 	</select>
 	
+	<!-- p_num 으로 p_serve 구하기 -->
+	<select id="getServe" resultType="String">
+		select p_serve from tbl_product_board
+		where p_num = #{p_num}
+	</select>
+	
 	<sql id="type">
 		<if test="lshBoardDto.type != null">
 			<choose>

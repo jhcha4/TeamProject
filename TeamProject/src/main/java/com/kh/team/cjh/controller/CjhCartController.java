@@ -47,10 +47,11 @@ public class CjhCartController {
 //		for (String size : sizeArr) {
 //			System.out.println("size : " + size);
 //		}
-		LshBoardVo boardVo = boardService.single(p_num); 
+		LshBoardVo boardVo = boardService.single(p_num);
+		String p_serve = boardService.getServe(p_num);
 //		System.out.println("boardVo : " + boardVo);
 		if (session.getAttribute("u_id") == null) { 
-			return "fail";
+			return "redirect:/lsh/shop_single?p_num="+p_num+"&p_serve="+p_serve;
 		} else {
 			String u_id = (String)session.getAttribute("u_id");
 			model.addAttribute("u_id", u_id);

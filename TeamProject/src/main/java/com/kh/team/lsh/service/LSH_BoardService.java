@@ -17,4 +17,5 @@ public interface LSH_BoardService {
 	
 	public List<LshBoardVo> getImg(int p_num) throws Exception;
 	
+	public String getServe(int p_num) throws Exception;
 }

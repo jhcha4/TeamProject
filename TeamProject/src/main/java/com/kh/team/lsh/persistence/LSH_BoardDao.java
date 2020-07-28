@@ -25,5 +25,7 @@ public interface LSH_BoardDao {
 	// 이미지 불러오기
 	public List<LshBoardVo> getImg(int p_num) throws Exception;
 	
+	//	p_num 으로 p_serve 구하기
+	public String getServe(int p_num) throws Exception;
 }
 

@@ -31,6 +31,10 @@ $(function() {
 			var size = $(this).text();
 			sizeArr.push(size);
 		});
+		if ((sizeArr).length == 0) {
+			sizeArr.push(" ");
+		}
+		console.log("sizeArr : " + sizeArr);
 		$("input[name=p_count]").each(function() {
 			var count = $(this).val();
 			countArr.push(count);
@@ -69,12 +73,12 @@ $(function() {
 			var p_serve = $("#p_serve").text();
 			console.log($("#u_id").text());
 // 			location.href="/lsh/shop_single?p_num="+p_num+"&p_serve="+p_serve;
-// 			location.href="/cjh/cart";
+			location.href="/cjh/cart";
 		});
 		
 	});
 	$("#size").change(function() {
-		$("#insertCart").attr("disabled", false);
+// 		$("#insertCart").attr("disabled", false);
 		var size = $("#size").val();
 		var isChecked = checkSize(size);
 		console.log(isChecked);
@@ -207,7 +211,7 @@ $(function() {
             <div id="p_serve" style="display:none">${lshBoardVo.p_serve}</div>
             <div id="u_id" style="display:none">${u_id}</div>
             
-            <p><button id="insertCart" class="buy-now btn btn-sm btn-primary" disabled>장바구니에 담기</button></p>
+            <p><button id="insertCart" class="buy-now btn btn-sm btn-primary">장바구니에 담기</button></p>
 			
           </div>
           

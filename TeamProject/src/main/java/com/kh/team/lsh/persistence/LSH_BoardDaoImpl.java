@@ -66,4 +66,10 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 		return sqlSession.selectList(NAMESPACE + "getImg", p_num);
 	}
 
+
+	@Override
+	public String getServe(int p_num) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getServe", p_num);
+	}
+
 }
