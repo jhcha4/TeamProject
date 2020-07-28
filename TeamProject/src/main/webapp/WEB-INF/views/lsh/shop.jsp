@@ -10,9 +10,7 @@ $(function() {
 	$("a.title").click(function(e) {
 		e.preventDefault();
 		var p_num = $(this).attr("data-p_num");
-		var p_serve = $(this).attr("data-p_serve")
 		$("#singlePage > input[name=p_num]").val(p_num);
-		$("#singlePage > input[name=p_serve]").val(p_serve);
 		$("#singlePage").attr("action", $(this).attr("href"));
 		$("#singlePage").submit();
 	});
