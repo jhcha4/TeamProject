@@ -49,7 +49,7 @@ public class CjhCartController {
 //		}
 		LshBoardVo boardVo = boardService.single(p_num); 
 //		System.out.println("boardVo : " + boardVo);
-		if (session.getAttribute("u_id") == null) {
+		if (session.getAttribute("u_id") == null) { 
 			return "fail";
 		} else {
 			String u_id = (String)session.getAttribute("u_id");
