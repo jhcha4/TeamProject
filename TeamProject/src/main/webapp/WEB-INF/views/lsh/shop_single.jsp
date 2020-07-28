@@ -23,59 +23,63 @@ $(function() {
 	
 	$("#insertCart").click(function(e) {
 		e.preventDefault();
-		p_num = $("#p_num").text();
-		console.log("p_num : " + p_num);
-		var countArr = new Array();
-		var sizeArr = new Array();
-		$("h5[name=p_size]").each(function() {
-			var size = $(this).text();
-			sizeArr.push(size);
-		});
-		if ((sizeArr).length == 0) {
-			sizeArr.push(" ");
+		var u_id = $("#u_id").text();
+		if (u_id == null || u_id == "") {
+			if(confirm("로그인후 이용가능합니다. 로그인 하시겠습니까?")) {
+			    location.href = "/cjh/login";
+			}
+		} else {
+			p_num = $("#p_num").text();
+			console.log("p_num : " + p_num);
+			var countArr = new Array();
+			var sizeArr = new Array();
+			$("h5[name=p_size]").each(function() {
+				var size = $(this).text();
+				sizeArr.push(size);
+			});
+			if ((sizeArr).length == 0) {
+				sizeArr.push(" ");
+			}
+			console.log("sizeArr : " + sizeArr);
+			$("input[name=p_count]").each(function() {
+				var count = $(this).val();
+				countArr.push(count);
+			});
+			
+			var sendData = {
+				"p_num"			:	p_num,
+			    "countArr"	:	countArr,
+			    "sizeArr"		:	sizeArr
+			};
+
+//	 		var sendData = {
+//	 				"p_num" : 1450,
+//	 				"sizeArr" : ["S", "M"],
+//	 				"countArr" : ["1", "2"]
+//	 		};
+			
+			var strSendData = JSON.stringify(sendData);
+			console.log("strSendData", strSendData);
+			console.log('sendData', sendData);
+			var url = "/cjh/insertCart";
+			$.ajaxSettings.traditional = true;
+//	 		$.ajax({
+//	 		    type        : "POST",
+//	 		    url         : url,
+//	 		    contentType :'application/json; charset=UTF-8',
+//	 		    data        : sendData,
+//	 		    traditional : true,
+//	 		    success : function (data){
+//	 		    	location.href="/cjh/cart";
+//	 		    }
+//	 		});
+
+			$.post(url, sendData, function(data) {
+				var p_num = $("#p_num").text();
+				var p_serve = $("#p_serve").text();
+	 			location.href="/cjh/cart";
+			});
 		}
-		console.log("sizeArr : " + sizeArr);
-		$("input[name=p_count]").each(function() {
-			var count = $(this).val();
-			countArr.push(count);
-		});
-		
-		var sendData = {
-			"p_num"			:	p_num,
-		    "countArr"	:	countArr,
-		    "sizeArr"		:	sizeArr
-		};
-
-// 		var sendData = {
-// 				"p_num" : 1450,
-// 				"sizeArr" : ["S", "M"],
-// 				"countArr" : ["1", "2"]
-// 		};
-		
-		var strSendData = JSON.stringify(sendData);
-		console.log("strSendData", strSendData);
-		console.log('sendData', sendData);
-		var url = "/cjh/insertCart";
-		$.ajaxSettings.traditional = true;
-// 		$.ajax({
-// 		    type        : "POST",
-// 		    url         : url,
-// 		    contentType :'application/json; charset=UTF-8',
-// 		    data        : sendData,
-// 		    traditional : true,
-// 		    success : function (data){
-// 		    	location.href="/cjh/cart";
-// 		    }
-// 		});
-
-		$.post(url, sendData, function(data) {
-			var p_num = $("#p_num").text();
-			var p_serve = $("#p_serve").text();
-			console.log($("#u_id").text());
-// 			location.href="/lsh/shop_single?p_num="+p_num+"&p_serve="+p_serve;
-			location.href="/cjh/cart";
-		});
-		
 	});
 	$("#size").change(function() {
 // 		$("#insertCart").attr("disabled", false);
