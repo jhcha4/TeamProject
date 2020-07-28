@@ -81,8 +81,9 @@ $(function() {
 		if (isChecked == true) {
 			return;
 		}
-		var html = "<div class='input-group mb-3' style='max-width: 450px;'>";
+		var html = "<div class='input-group mb-3' style='max-width: auto;'>";
 		html += "<h5 id='name'>${lshBoardVo.p_name}[</h5><h5 name=p_size>"+size+"</h5><h5>]</h5>";
+		html += "<h5>&nbsp&nbsp| 수량 :</h5>"
 		html += "<input name='p_count' type='number' min='1' class='form-control text-center' value='1'>";
 		html += "<a href='#'class='delete'><h3>x</h3></a>"
 		html += "<h5 class='sumPrice'>${lshBoardVo.p_price}</h5><h5>원</h5>"
@@ -100,6 +101,8 @@ $(function() {
 			totalPrice += nPrice;
 		});
 		$("#total").text(totalPrice);
+		
+		$(this).find("option:first").prop("selected", true);
 		
 	});
 	$("#hidden").on("click", ".delete", function(e) {
@@ -165,27 +168,38 @@ $(function() {
             <p><strong class="text-primary h4">${lshBoardVo.p_price}</strong>원</p>
             <div class="mb-1 d-flex">
 	            <h4>Size:</h4>
-	            <select id="size">
-	            	<c:if test="${lshBoardVo.p_main == 'T'}">
-	            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
-		               	<option value="S">S</option>
-		               	<option value="M">M</option>
-		               	<option value="L">L</option>
-		               	<option value="XL">XL</option>
-		            </c:if>
-		            
-		            <c:if test="${lshBoardVo.p_main == 'S'}">
-	            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
-		               	<option value="S">250</option>
-		               	<option value="M">260</option>
-		               	<option value="L">270</option>
-		               	<option value="XL">280</option>
-		            </c:if>	
-		            
-	            </select>
+	            <c:if test="${lshBoardVo.p_main == 'T' || lshBoardVo.p_main == 'P' || lshBoardVo.p_main == 'S'}">
+		            <select id="size">
+		            	<c:if test="${lshBoardVo.p_main == 'T' || lshBoardVo.p_main == 'P'}">
+		            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
+			               	<option value="S">S</option>
+			               	<option value="M">M</option>
+			               	<option value="L">L</option>
+			               	<option value="XL">XL</option>
+			            </c:if>
+			            
+			            <c:if test="${lshBoardVo.p_main == 'S'}">
+		            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
+			               	<option value="S">250</option>
+			               	<option value="M">260</option>
+			               	<option value="L">270</option>
+			               	<option value="XL">280</option>
+			            </c:if>
+		            </select>
+	            </c:if>
+	            
             </div>
             
             <div id="hidden">
+            	<c:if test="${lshBoardVo.p_main == 'A'}">
+	            	<div class='input-group mb-3' style='max-width: auto;'>
+		            	<h5 id="name">${lshBoardVo.p_name}</h5>
+		            	<h5>&nbsp&nbsp| 수량 :</h5>
+		            	<input name='p_count' type='number' min='1' class='form-control text-center' value='1'>
+		            	<a></a>
+		            	<h5 class='sumPrice'>${lshBoardVo.p_price}</h5><h5>원</h5>
+		            </div>
+	            </c:if>
             </div>
             <h2>가격 :<span id="total">0</span>원</h2>
             
