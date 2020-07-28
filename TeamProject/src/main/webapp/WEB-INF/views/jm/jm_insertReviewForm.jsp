@@ -104,12 +104,24 @@ $(function(){
 		
 	});
 	
-	/* $("#insertReviewForm") */
-	
-	
-	
-	
-	
+	$("#insertReviewForm").submit(function(){
+		
+		var upDiv = $("#uploadList>div");
+		upDiv.each(function(index){
+			
+			var filename = $(this).attr("data-filename");
+			console.log("filename:"+filename);
+			
+			var hiddenInput = "<input type='hidden' name='file["+index+"]' value='"+filename+"' />";
+			$("#insertReviewForm").prepend(hiddenInput);
+				
+			
+			
+		});
+		
+		return false;
+		
+	}); 
 	
 	
 	
@@ -190,7 +202,7 @@ $(function(){
 				
 				
 				
-				<button type="submit" class="btn btn-primary">
+				<button id="btnbtn" type="submit" class="btn btn-primary">
 					작성 완료
 				</button>
 			</form>
