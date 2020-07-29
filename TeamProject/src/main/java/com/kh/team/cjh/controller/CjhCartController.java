@@ -27,8 +27,6 @@ public class CjhCartController {
 	@Inject
 	private CjhCartService cartService;
 	@Inject
-	private CjhUserService userService;
-	@Inject
 	private CjhPointService pointService;
 	@Inject
 	private LSH_BoardService boardService;
