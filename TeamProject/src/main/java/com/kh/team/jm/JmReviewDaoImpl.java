@@ -46,6 +46,12 @@ public class JmReviewDaoImpl implements JmReviewDao {
 
 	@Override
 	public void updateReview(JmReviewVo jmReviewVo) throws Exception {
+		System.out.println("jmReviewVo::::::::::::::update"+jmReviewVo);
+		String[] r_files = jmReviewVo.getR_files();
+		if (r_files != null && !r_files[0].equals("")) {
+			String r_file = r_files[0];
+			jmReviewVo.setR_file(r_file);
+		}
 		
 		sqlSession.update(NAMESPACE+"updateReview",jmReviewVo);
 		
@@ -78,12 +84,12 @@ public class JmReviewDaoImpl implements JmReviewDao {
 	}
 
 	@Override
-	public void insertReviewAttach(String r_filenames, int r_files) throws Exception {
+	public void insertReviewAttach(String r_files, int r_filesinfo) throws Exception {
 		
 		Map<String, Object> pramMap = new HashMap<>();
 		
-		pramMap.put("r_filenames", r_filenames);
 		pramMap.put("r_files", r_files);
+		pramMap.put("r_filesinfo", r_filesinfo);
 		
 		sqlSession.insert(NAMESPACE+"insertReviewAttach",pramMap);
 		
@@ -93,6 +99,13 @@ public class JmReviewDaoImpl implements JmReviewDao {
 	public int getNextVal() throws Exception {
 		
 		return sqlSession.selectOne(NAMESPACE+"getNextVal");
+	}
+
+	@Override
+	public List<String> selectReviewInfoImage(int r_filesinfo) throws Exception {
+		
+		List<String> strList = sqlSession.selectList(NAMESPACE+"selectReviewInfoImage",r_filesinfo);
+		return strList;
 	}
 
 }

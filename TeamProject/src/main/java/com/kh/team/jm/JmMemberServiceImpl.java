@@ -72,12 +72,13 @@ public class JmMemberServiceImpl implements JmMemberService {
 		
 		return jmMemberDao.selectId(u_id);
 	}
-	
+	//페이징
 	@Override
 	public List<JmMemberVo> selectUserPaging(JmPagingDto jmPagingDto) throws Exception {
 		List<JmMemberVo> list = jmMemberDao.selectUserPaging(jmPagingDto);
 		return list;
 	}
+	//총 게시글 수
 	@Override
 	public int selectUserCount(JmPagingDto jmPagingDto) throws Exception {
 		
