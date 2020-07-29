@@ -44,4 +44,7 @@ public interface CjhCartDao {
 	//	상품 수량 감소
 	public void minusCount(int p_num, String p_size, int p_count) throws Exception;
 	
+	//	배송완료 물품 구매확정하기
+	public void comfirmOrder(int c_num) throws Exception;
+	
 }

@@ -37,4 +37,7 @@ public interface CjhCartService {
 	
 	//	주문목록 갯수 불러오기
 	public int getCountOrder(String u_id, int p_status) throws Exception;
+	
+	//	배송완료 물품 구매확정하기
+	public void comfirmOrder(int c_num) throws Exception;
 }

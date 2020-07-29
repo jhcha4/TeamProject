@@ -87,7 +87,7 @@ public class CjhCartController {
 		cartService.deleteCart(u_id, c_num);
 		int count = cartService.getCountCart(u_id);
 		session.setAttribute("count", count);
-		return "redirect:/cjh/cart?u_id=" + u_id;
+		return "redirect:/cjh/cart";
 	}
 	
 	//	선택한 장바구니 삭제
@@ -97,7 +97,7 @@ public class CjhCartController {
 		cartService.deleteCheckedCart(u_id, c_num);
 		int count = cartService.getCountCart(u_id);
 		session.setAttribute("count", count);
-		return "redirect:/cjh/cart?u_id=" + u_id;
+		return "redirect:/cjh/cart";
 	}
 	
 	//	장바구니 수정
@@ -166,5 +166,12 @@ public class CjhCartController {
 		model.addAttribute("list", list);
 		model.addAttribute("pagingDto", pagingDto);
 //		return "cjh/myOrder";
+	}
+	
+	//	주문확정하기
+	@RequestMapping(value="/confirm", method = RequestMethod.GET)
+	public String confirm(int c_num, int p_status) throws Exception {
+		cartService.comfirmOrder(c_num);
+		return "redirect:/cjh/myOrder?p_status=" + p_status;
 	}
 }

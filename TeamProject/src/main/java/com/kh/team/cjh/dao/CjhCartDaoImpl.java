@@ -135,6 +135,11 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		sqlSession.update(NAMESPACE + "minusCount", paramMap);
 	}
 
+	@Override
+	public void comfirmOrder(int c_num) throws Exception {
+		sqlSession.update(NAMESPACE + "confirmOrder", c_num);
+	}
+
 	
 
 

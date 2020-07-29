@@ -51,8 +51,24 @@ $(document).ready(function() {
 		$("#myOrder > input[name=point_code]").val(p_status);
 		$("#myOrder").submit();
 	});
+	
+	//	구매확정시키기
+	$("button[name=btnConfirm]").click(function(e) {
+		e.preventDefault();
+		var c_num = $(this).parent().prev().prev().prev().prev().prev().prev().text().trim();
+		console.log("c_num : " + c_num);
+		var p_status = $("#p_status").val();
+		$("#confirm > input[name=c_num]").val(c_num);
+		$("#confirm > input[name=p_status]").val(p_status);
+		$("#confirm").submit();
+	});
 });
 </script>
+
+<form id="confirm" action="/cjh/confirm" method="get">
+	<input type="hidden" name="c_num" value=""/>
+	<input type="hidden" name="p_status" value=""/>
+</form>
 
 <form id="myOrder" action="/cjh/myOrder" method="get">
 	<input type="hidden" name="page" value="${pagingDto.page}"/>
@@ -125,7 +141,7 @@ $(document).ready(function() {
 								<td	style="width:15%">
 									${item.o_status}
 									<c:if test="${item.o_status == '배송완료'}">
-										<button id="btnConfirm">구매확정</button>
+										<button type="button" name="btnConfirm" class="btn btn-default">구매확정</button>
 									</c:if>
 								</td>
 								

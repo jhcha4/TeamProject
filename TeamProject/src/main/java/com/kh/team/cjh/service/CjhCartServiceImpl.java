@@ -97,6 +97,11 @@ public class CjhCartServiceImpl implements CjhCartService {
 		return cartDao.getCountOrder(u_id, p_status);
 	}
 
+	@Override
+	public void comfirmOrder(int c_num) throws Exception {
+		cartDao.comfirmOrder(c_num);
+	}
+
 
 
 }

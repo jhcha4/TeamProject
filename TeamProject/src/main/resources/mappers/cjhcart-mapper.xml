@@ -86,6 +86,12 @@
 		where u_id = #{u_id} and p_size = #{p_size} and p_num = #{p_num}
 	</update>
 	
+	<update id="confirmOrder">
+		update tbl_cart set
+		p_status = 1006
+		where c_num = #{c_num}
+	</update>
+	
 	<select id="getCountOrder" resultType="int">
 		select count(*) from tbl_cart
 		where u_id = #{u_id}
