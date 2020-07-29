@@ -169,6 +169,7 @@ public class CjhMyInfoController {
 		List<CjhPointVo> list = pointService.listPoint(u_id, point_code, pagingDto);
 		model.addAttribute("list", list);
 		model.addAttribute("point_code", point_code);
+		model.addAttribute("pagingDto", pagingDto);
 	}
 	
 	//	적립금 페이지
