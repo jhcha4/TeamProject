@@ -27,8 +27,9 @@ public class JmReviewServiceImpl implements JmReviewService {
 
 
 	@Override
-	public JmReviewVo selectReviewInfo(int r_info) throws Exception {
+	public JmReviewVo selectReviewInfo(int r_info ) throws Exception {
 		JmReviewVo jmReviewVo = jmReviewDao.selectReviewInfo(r_info);
+		
 		
 		jmReviewDao.updateViewCount(r_info);
 		
@@ -52,8 +53,8 @@ public class JmReviewServiceImpl implements JmReviewService {
 		String[] files = jmReviewVo.getR_files();
 		for(String file : files) {
 			
-			System.out.println("file:"+file);
-			System.out.println("r_info:"+ r_info);
+			System.out.println("file :"+file);
+			System.out.println("r_info :"+ r_info);
 			
 			jmReviewDao.insertReviewAttach(file, r_info);
 			
@@ -67,7 +68,22 @@ public class JmReviewServiceImpl implements JmReviewService {
 
 	@Override
 	public void updateReview(JmReviewVo jmReviewVo) throws Exception {
+		
+		int r_info = jmReviewVo.getR_info();
+		System.out.println("r_info service:"+ r_info);
+		
+		
+		
 		jmReviewDao.updateReview(jmReviewVo);
+		
+		String[] files = jmReviewVo.getR_files();
+		System.out.println("file service:"+files);
+		for(String file: files ) {
+			jmReviewDao.insertReviewAttach(file, r_info);
+		}
+		
+		
+		
 		
 	}
 
@@ -93,6 +109,14 @@ public class JmReviewServiceImpl implements JmReviewService {
 	public int selectCount(JmPagingDto jmPagingDto) throws Exception {
 		
 		return jmReviewDao.selectCount(jmPagingDto);
+	}
+
+
+
+	@Override
+	public List<String> selectReviewInfoImage(int r_filesinfo) throws Exception {
+		
+		return jmReviewDao.selectReviewInfoImage(r_filesinfo);
 	}
 
 

@@ -107,6 +107,12 @@ $(function(){
 	$("#insertReviewForm").submit(function(){
 		
 		var upDiv = $("#uploadList>div");
+		
+		if(upDiv.length == 0){
+			alert('JPG or PNG or GIF 의 후기 이미지를 첨부하세요');
+			return false;
+		}
+		
 		upDiv.each(function(index){
 			
 			var filename = $(this).attr("data-filename");
@@ -129,7 +135,8 @@ $(function(){
 			
 		});
 		
-// 		return false;
+ 		
+	
 		
 		
 		
@@ -203,8 +210,15 @@ $(function(){
 					<input type="number" class="form-control" id="r_star" name="r_star" min="0" max="100"  required/>
 				</div>
 				
+				
+				
+				
+				
+				
+				
+				
 				<div>
-					<label > 첨부할 파일을 드래그 하세요</label>
+					<label > 첨부할 파일을 드래그 하세요 <span class="text-danger">*</span> </label>
 					<div id="fileDrop"></div>
 				</div>
 				

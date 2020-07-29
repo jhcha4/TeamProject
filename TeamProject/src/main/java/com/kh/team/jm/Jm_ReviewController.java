@@ -44,9 +44,13 @@ public class Jm_ReviewController {
 	}
 	
 	//리뷰 게시판 info 조회
-	@RequestMapping(value="/jm_reviewInfo/{r_info}", method=RequestMethod.GET)
-		public String jmReviewInfo(@PathVariable("r_info")  int r_info , Model model)throws Exception{
-			JmReviewVo jmReviewVo = jmReviewService.selectReviewInfo(r_info);
+	@RequestMapping(value="/jm_reviewInfo/{r_filesinfo}", method=RequestMethod.GET)
+		public String jmReviewInfo(@PathVariable("r_filesinfo")  int r_filesinfo, Model model)throws Exception{
+			JmReviewVo jmReviewVo = jmReviewService.selectReviewInfo(r_filesinfo);
+			
+			List<String> images = jmReviewService.selectReviewInfoImage(r_filesinfo);
+			System.out.println("images: " + images);
+			model.addAttribute("images",images);
 			model.addAttribute("jmReviewVo",jmReviewVo);
 			return "/jm/jm_reviewInfo";
 	}
@@ -82,8 +86,8 @@ public class Jm_ReviewController {
 	@RequestMapping(value="/jm_updateReviewRun",method=RequestMethod.POST)
 	public String updateReviewRun(JmReviewVo jmReviewVo)throws Exception{
 		
+		System.out.println("jm_updateReviewRun, jmReviewVo:" + jmReviewVo);
 		jmReviewService.updateReview(jmReviewVo);
-		System.out.println(jmReviewVo);
 		
 		return "redirect:/jm/jm_reviewForm";
 	}
