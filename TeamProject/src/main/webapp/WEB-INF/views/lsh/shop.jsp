@@ -173,7 +173,7 @@ $(function() {
           <div class="col-md-3 order-1 mb-5 mb-md-0">
             <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
-              <h2 class="mb-3 h6  text-black d-block"><a href="shop?type=L">전체 상품</a></h2>
+              <h2 class="mb-3 h6  text-black d-block"><a href="shop">전체 상품</a></h2>
               
            		<a href="shop?p_main=T" class="main">상의</a>
            		<ul class="dropdown serve"> 

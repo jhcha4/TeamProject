@@ -129,7 +129,7 @@
             </li>
             
             <li class="has-children">
-           		<a href="/lsh/shop?type=L">Shop</a>
+           		<a href="/lsh/shop">Shop</a>
            		<ul class="dropdown">
 					<li class="has-children">
 	                  <a href="/lsh/shop?p_main=T&type=L&page=1">상의</a>
