@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ include file="../include/head.jsp" %>
 
 <style>
@@ -12,7 +11,6 @@
 </style>
 
 <script>
-
 $(document).ready(function() {
 	$("td[name=p_date]").each(function() {
 		var p_date = $(this).text();
@@ -34,10 +32,32 @@ $(document).ready(function() {
 		});
 		location.href="/cjh/myOrder?p_status=" + p_status;
 	});
+	
+	// 현재 페이지 액티브
+	$("a.page").each(function() {
+		var page = $(this).attr("href");
+		if (page == "${pagingDto.page}") {
+			$(this).parent().addClass("active");
+			return;
+		}
+	});
+	
+	// 페이지 번호 클릭
+	$("a.page").click(function(e) {
+		e.preventDefault();
+		var page = $(this).attr("href").trim();
+		var p_status = $("#p_status").val();
+		$("#myOrder > input[name=page]").val(page);
+		$("#myOrder > input[name=point_code]").val(p_status);
+		$("#myOrder").submit();
+	});
 });
 </script>
 
-${list}
+<form id="myOrder" action="/cjh/myOrder" method="get">
+	<input type="hidden" name="page" value="${pagingDto.page}"/>
+	<input type="hidden" name="p_status" value="${pagingDto.p_status}"/>
+</form>
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -121,7 +141,31 @@ ${list}
 	</div>
 </div>
 
-
+<div class="row" data-aos="fade-up">
+  <div class="col-md-12 text-center">
+    <div class="site-block-27">
+      <ul>
+      	<c:if test="${pagingDto.startPage != 1}">
+         <li>
+         	<a class="page" href="${pagingDto.startPage - 1}">&lt;</a>
+         </li>
+      	</c:if>
+      	
+      	<c:forEach begin="${pagingDto.startPage}" end="${pagingDto.endPage}" var="v">
+        	<li>
+        		<a class="page" href="${v}">${v}</a>
+        	</li>
+        </c:forEach>
+        
+        <c:if test="${pagingDto.endPage < pagingDto.totalPage}">
+         <li>
+         	<a class="page" href="${pagingDto.endPage + 1}">&gt;</a>
+         </li>
+        </c:if>
+      </ul>
+    </div>
+  </div>
+</div>
 
 
 <%@ include file="../include/foot.jsp" %>

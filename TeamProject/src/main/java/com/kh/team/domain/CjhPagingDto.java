@@ -2,15 +2,16 @@ package com.kh.team.domain;
 
 public class CjhPagingDto {
 	private int page = 1;
-	private int perPage = 10;
+	private int perPage = 5;
 	private int startRow = 1;
-	private int endRow = 10;
+	private int endRow = 5;
 	private int totalCount;			//	전체 게시글 수
 	private int totalPage;			//	전체 페이지 수
 	private int startPage;			//	페이지 블럭에서 시작 페이지
 	private int endPage;			//	페이지 블럭에서 끝 페이지
 	private final int PAGE_BLOCK = 5;		//	페이지 블럭 수
 	private int point_code = 1002;
+	private int p_status = 1;
 	
 	public void setPageInfo() {
 		this.endRow = page * perPage;
@@ -101,11 +102,21 @@ public class CjhPagingDto {
 		this.point_code = point_code;
 	}
 
+	public int getP_status() {
+		return p_status;
+	}
+
+	public void setP_status(int p_status) {
+		this.p_status = p_status;
+	}
+
 	@Override
 	public String toString() {
 		return "CjhPagingDto [page=" + page + ", perPage=" + perPage + ", startRow=" + startRow + ", endRow=" + endRow
 				+ ", totalCount=" + totalCount + ", totalPage=" + totalPage + ", startPage=" + startPage + ", endPage="
-				+ endPage + ", PAGE_BLOCK=" + PAGE_BLOCK + ", point_code=" + point_code + "]";
+				+ endPage + ", PAGE_BLOCK=" + PAGE_BLOCK + ", point_code=" + point_code + ", p_status=" + p_status
+				+ "]";
 	}
+
 	
 }
