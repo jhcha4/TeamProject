@@ -3,9 +3,39 @@
 <%@ include file="../include/head.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 
- ${jmPagingDto}
+ <style>
+.form-inline { 
+  
+  padding: 20px; 
+  width: 300px; 
+  
+  border-radius: 5px; 
+  top: 25%; 
+  left: 25%; 
+  margin: 25
+} 
 
- <p>관리자 유저정보 관리 페이지 입니다</p>
+h3{
+	color :red;
+	text-align :center;
+
+}
+
+.btn-group{
+	padding: -23px; 
+	width: 300px; 
+  
+	border-radius: 5px; 
+	top: 25%; 
+	left: 25%; 
+	margin: -10
+	
+
+}
+
+</style> 
+
+<h3>관리자 유저정보 관리 페이지 입니다</h3>
 
  <%@ include file="../include/main_bar.jsp" %>
  
@@ -80,8 +110,8 @@ $(function(){
  
  
  </form>
- 
-	<select name="perPage">
+ 	
+	<select name="perPage" class="form-inline">
 		<c:forEach begin="5" end="30" step="5" var="i">
 			<option value="${i}"
 				<c:if test="${i==jmPagingDto.perPage}">selected</c:if>
@@ -91,7 +121,8 @@ $(function(){
 	
 	
 	<select name="searchType" class="form-inline">
-		<option value="u_id"
+		
+		<option value="u_id" 
 		<c:if test="${jmPagingDto.searchType =='u_id'}">selected</c:if>
 		>아이디</option>
 		
@@ -101,8 +132,7 @@ $(function(){
 	</select>
 	
 	<input type="text" id="keyword" name="keyword" class="form-inline"
-		value="${jmPagingDto.keyword}"
-	/>
+		value="${jmPagingDto.keyword}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<button type="button" id="btnSearch" class="btn btn-info">검색</button>
 	
 	
@@ -135,6 +165,12 @@ $(function(){
 						</th>
 						<th>
 							등급
+						</th>
+						<th>
+							수정
+						</th>
+						<th>
+							삭제
 						</th>
 					</tr>
 				</thead>

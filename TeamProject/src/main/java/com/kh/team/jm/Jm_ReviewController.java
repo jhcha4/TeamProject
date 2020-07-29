@@ -79,8 +79,12 @@ public class Jm_ReviewController {
 	public void updateReviewForm(int r_info, Model model )throws Exception{
 		
 		JmReviewVo jmReviewVo = jmReviewService.selectReviewInfo(r_info);
-		model.addAttribute("jmReviewVo",jmReviewVo);
+		List<String> images = jmReviewService.selectReviewInfoImage(r_info);
 		
+		
+		
+		model.addAttribute("jmReviewVo",jmReviewVo);
+		model.addAttribute("images",images);
 	}
 	//리뷰 게시판 업데이트 런
 	@RequestMapping(value="/jm_updateReviewRun",method=RequestMethod.POST)
