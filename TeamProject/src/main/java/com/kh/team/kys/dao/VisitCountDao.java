@@ -1,5 +1,7 @@
 package com.kh.team.kys.dao;
 
+import java.util.List;
+
 import com.kh.team.domain.KysVisitCountVo;
 
 public interface VisitCountDao {
@@ -9,4 +11,6 @@ public interface VisitCountDao {
 	public int visitNow() throws Exception;
 	//총 방문자
 	public int visitAll() throws Exception;
+	//일별 데이터 가져오기
+	public List<KysVisitCountVo> rodChart() throws Exception;
 }
