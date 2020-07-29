@@ -43,26 +43,27 @@ public class CjhMyInfoController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="/about")
-	public String about() throws Exception {
-		return "cjh/about";
-	}
+//	@RequestMapping(value="/about")
+//	public String about() throws Exception {
+//		return "cjh/about";
+//	}
+//	
+//	@RequestMapping(value="/contact")
+//	public String contact() throws Exception {
+//		return "cjh/contact";
+//	}
+//	
+//	@RequestMapping(value="/shop_single")
+//	public String shop_single() throws Exception {
+//		return "cjh/shop_single";
+//	}
+//	
+//	@RequestMapping(value="/shop")
+//	public String shop() throws Exception {
+//		return "cjh/shop";
+//	}
 	
-	@RequestMapping(value="/contact")
-	public String contact() throws Exception {
-		return "cjh/contact";
-	}
-	
-	@RequestMapping(value="/shop_single")
-	public String shop_single() throws Exception {
-		return "cjh/shop_single";
-	}
-	
-	@RequestMapping(value="/shop")
-	public String shop() throws Exception {
-		return "cjh/shop";
-	}
-	
+	//	결제완료 폼
 	@RequestMapping(value="/thankyou")
 	public String thankyou() throws Exception {
 		return "cjh/thankyou";
@@ -160,11 +161,15 @@ public class CjhMyInfoController {
 	
 	//	적립금 페이지
 	@RequestMapping(value="/myPoint", method = RequestMethod.GET)
-	public void myPoint(int point_code, Model model, HttpSession session) throws Exception {
+	public void myPoint(int point_code, CjhPagingDto pagingDto, Model model, HttpSession session) throws Exception {
+		pagingDto.setPageInfo();
 		String u_id = (String)session.getAttribute("u_id");
-		List<CjhPointVo> list = pointService.listPoint(u_id, point_code);
+		int totalCount = pointService.getPointCount(u_id, point_code);
+		pagingDto.setTotalCount(totalCount);
+		List<CjhPointVo> list = pointService.listPoint(u_id, point_code, pagingDto);
 		model.addAttribute("list", list);
 		model.addAttribute("point_code", point_code);
+		model.addAttribute("pagingDto", pagingDto);
 	}
 	
 	//	적립금 페이지

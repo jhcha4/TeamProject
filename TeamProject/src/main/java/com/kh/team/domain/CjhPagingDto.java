@@ -2,9 +2,9 @@ package com.kh.team.domain;
 
 public class CjhPagingDto {
 	private int page = 1;
-	private int perPage = 10;
+	private int perPage = 5;
 	private int startRow = 1;
-	private int endRow = 10;
+	private int endRow = 5;
 	private int totalCount;			//	전체 게시글 수
 	private int totalPage;			//	전체 페이지 수
 	private int startPage;			//	페이지 블럭에서 시작 페이지

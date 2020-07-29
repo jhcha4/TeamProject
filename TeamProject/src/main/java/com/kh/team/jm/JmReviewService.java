@@ -13,7 +13,7 @@ public interface JmReviewService {
 	public List<JmReviewVo> selectReviewList() throws Exception;
 	
 	//리뷰 게시판 info 조회	
-	public JmReviewVo selectReviewInfo(int r_info) throws Exception;
+	public JmReviewVo selectReviewInfo(int r_info ) throws Exception;
 	
 	//게시판 글쓰기
 	public void insertReview(JmReviewVo jmReviewVo)throws Exception;
@@ -30,7 +30,8 @@ public interface JmReviewService {
 	//게시글 수 조회
 	public int selectCount(JmPagingDto jmPagingDto)throws Exception;
 	
-	
+	// 리뷰 게시판 info - 사진 전체 불러오기	
+	public List<String> selectReviewInfoImage(int r_filesinfo)throws Exception;
 	
 	
 	

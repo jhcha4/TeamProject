@@ -45,7 +45,8 @@ $(function() {
 				sizeArr.push(size);
 			});
 			if ((sizeArr).length == 0) {
-				sizeArr.push(" ");
+				alert("상품을 선택해주세요");
+				return;
 			}
 			console.log("sizeArr : " + sizeArr);
 			$("input[name=p_count]").each(function() {

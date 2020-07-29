@@ -64,10 +64,15 @@
 				</div>
 				
 				<div class="form-group">
-					<label for="r_item">
-						상품
+					<label for="r_files">
+						후기 사진
 					</label>
-					<input type="text" class="form-control" id="r_item" name="r_item" value="${jmReviewVo.r_item}" readonly />
+					
+					<%--  <img src="/upload/displayFile?fileName=${jmReviewVo.r_file}"/>  --%>
+					  <c:forEach items="${images}" var="fileName">
+						<img src="/upload/displayFile?fileName=${fileName}"/>
+					
+					</c:forEach>  
 				</div>
 				
 				

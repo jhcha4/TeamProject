@@ -35,6 +35,12 @@ public interface JmReviewDao {
 	public int getNextVal()throws Exception;
 	
 	//리뷰게시판 이미지 시퀀스 구하기
-	public void insertReviewAttach(String r_filenames, int r_files) throws Exception;
+	public void insertReviewAttach(String r_files, int r_filesinfo) throws Exception;
+	
+	// 리뷰 게시판 info - 사진 전체 불러오기	
+	public List<String> selectReviewInfoImage(int r_fileinfo)throws Exception;
+	
+	
+	
 	
 }

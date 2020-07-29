@@ -43,16 +43,35 @@
 		where u_id = #{u_id} and point_code = 1003
 	</select>
 	
+<!-- 	<select id="listPoint" resultType="CjhPointVo"> -->
+<!-- 		select * -->
+<!-- 		p.point_num, p.point_code, p.u_id, p.point_value, c.point_content, p.point_date -->
+<!-- 		from tbl_point p, tbl_point_code c -->
+<!-- 		where u_id = #{u_id} -->
+<!-- 		and p.point_code = c.point_code -->
+<!-- 		<include refid="ppoint"/> -->
+<!-- 		order by point_num desc -->
+<!-- 	</select> -->
+	
 	<select id="listPoint" resultType="CjhPointVo">
-		select p.point_num, p.point_code, p.u_id, p.point_value, c.point_content, p.point_date
-		from tbl_point p, tbl_point_code c
-		where u_id = #{u_id}
-		and p.point_code = c.point_code
-		<include refid="point"/>
-		order by point_num desc
+		select * 
+			from (select rownum rnum, a.*
+				from (select p.point_num, p.point_code, p.u_id, p.point_value, c.point_content, p.point_date
+					from tbl_point p, tbl_point_code c
+					where u_id = #{u_id}
+					and p.point_code = c.point_code
+					<include refid="ppoint"/>
+					order by point_num desc) a)
+		where rnum between #{pagingDto.startRow} and #{pagingDto.endRow}
 	</select>
 	
-	<sql id="point">
+	<select id="getPointCount" resultType="int">
+		select count(*) from tbl_point
+		where u_id = #{u_id}
+		<include refid="point"/>
+	</select>
+	
+	<sql id="ppoint">
 		<if test="#{point_code} != null">
 			<choose>
 				<when test='point_code == 1'>
@@ -62,6 +81,21 @@
 				</when>
 				<when test='point_code == 1003'>
 					and p.point_code = 1003
+				</when>
+			</choose>
+		</if>
+	</sql>
+	
+	<sql id="point">
+		<if test="#{point_code} != null">
+			<choose>
+				<when test='point_code == 1'>
+				</when>
+				<when test='point_code == 1002'>
+					and point_code in (1001, 1002)
+				</when>
+				<when test='point_code == 1003'>
+					and point_code = 1003
 				</when>
 			</choose>
 		</if>

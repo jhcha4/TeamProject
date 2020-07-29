@@ -16,8 +16,8 @@
 
 	<!-- 이미지 이름 넣기 -->
 		<insert id="insertReviewAttach">
-			insert into tbl_review_attach(r_filenames,r_files)
-			values (#{r_filenames} , #{r_files})
+			insert into tbl_review_attach(r_files,r_filesinfo)
+			values (#{r_files} , #{r_filesinfo})
 		
 		
 		</insert>
@@ -36,6 +36,16 @@
     	where  r_info = #{r_info} 
 		</select>
 		
+	<!-- 리뷰 게시판 info - 사진 전체 불러오기 -->	
+		<select id="selectReviewInfoImage" resultType="string">
+		
+		select r_files from tbl_review_attach
+		where r_filesinfo = #{r_filesinfo}
+		
+		</select>
+		
+		
+		
 		
 	<!-- 리뷰 게시판 글쓰기 -->
 		<insert id="insertReview">
@@ -50,7 +60,8 @@
 		update tbl_review set 
    	 		r_subject = #{r_subject},
    			r_contents = #{r_contents},
-    		r_star = #{r_star}
+    		r_star = #{r_star},
+    		r_file = #{r_file}
     	where r_info= #{r_info}
 		
 		</update>

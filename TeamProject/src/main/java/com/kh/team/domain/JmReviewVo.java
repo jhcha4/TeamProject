@@ -15,7 +15,9 @@ public class JmReviewVo {
 	private int r_viewcnt;
 	private String r_file;
 	
-
+	
+	
+	private int r_filesinfo;
 	private String[] r_files;
 	
 	public JmReviewVo() {
@@ -86,13 +88,21 @@ public class JmReviewVo {
 	public void setR_viewcnt(int r_viewcnt) {
 		this.r_viewcnt = r_viewcnt;
 	}
-	
+
 	public String getR_file() {
 		return r_file;
 	}
 
 	public void setR_file(String r_file) {
 		this.r_file = r_file;
+	}
+
+	public int getR_filesinfo() {
+		return r_filesinfo;
+	}
+
+	public void setR_filesinfo(int r_filesinfo) {
+		this.r_filesinfo = r_filesinfo;
 	}
 
 	public String[] getR_files() {
@@ -107,13 +117,11 @@ public class JmReviewVo {
 	public String toString() {
 		return "JmReviewVo [r_info=" + r_info + ", r_id=" + r_id + ", r_subject=" + r_subject + ", r_contents="
 				+ r_contents + ", r_time=" + r_time + ", r_star=" + r_star + ", r_item=" + r_item + ", r_viewcnt="
-				+ r_viewcnt + ", r_file=" + r_file + ", r_files=" + Arrays.toString(r_files) + "]";
+				+ r_viewcnt + ", r_file=" + r_file + ", r_filesinfo=" + r_filesinfo + ", r_files="
+				+ Arrays.toString(r_files) + "]";
 	}
-
 	
 	
-	
-
 	
 	
 	
