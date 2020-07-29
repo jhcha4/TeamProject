@@ -17,6 +17,7 @@ import com.kh.team.cjh.service.CjhCartService;
 import com.kh.team.cjh.service.CjhPointService;
 import com.kh.team.cjh.service.CjhUserService;
 import com.kh.team.domain.CjhCartVo;
+import com.kh.team.domain.CjhPagingDto;
 import com.kh.team.domain.LshBoardVo;
 import com.kh.team.lsh.service.LSH_BoardService;
 
@@ -134,12 +135,12 @@ public class CjhCartController {
 	
 	//	주문목록 불러오기
 	@RequestMapping(value="/myOrder", method = RequestMethod.GET)
-	public void getOrder(int p_status, HttpSession session, Model model) throws Exception {
+	public void getOrder(int p_status, CjhPagingDto pagingDto, HttpSession session, Model model) throws Exception {
+		pagingDto.setPageInfo();
 		String u_id = (String)session.getAttribute("u_id");
-//		System.out.println("u_id : " + u_id);
-//		System.out.println("p_status : " + p_status);
-		List<CjhCartVo> list = cartService.getOrder(u_id, p_status);
-//		System.out.println("list : " + list);
+		int totalCount = cartService.getCountOrder(u_id, p_status);
+		pagingDto.setTotalCount(totalCount);
+		List<CjhCartVo> list = cartService.getOrder(u_id, p_status, pagingDto);
 		
 		for (CjhCartVo vo : list) {
 			String title_name = vo.getTitle_name();
@@ -150,6 +151,7 @@ public class CjhCartController {
 		}
 		model.addAttribute("p_status", p_status); 
 		model.addAttribute("list", list);
+		model.addAttribute("pagingDto", pagingDto);
 //		return "cjh/myOrder";
 	}
 }

@@ -3,6 +3,7 @@ package com.kh.team.cjh.service;
 import java.util.List;
 
 import com.kh.team.domain.CjhCartVo;
+import com.kh.team.domain.CjhPagingDto;
 import com.kh.team.domain.LshBoardVo;
 
 public interface CjhCartService {
@@ -29,5 +30,8 @@ public interface CjhCartService {
 	public void orderCartUpdate(String u_id) throws Exception;
 	
 	//	주문목록 불러오기
-	public List<CjhCartVo> getOrder(String u_id, int p_status) throws Exception;
+	public List<CjhCartVo> getOrder(String u_id, int p_status, CjhPagingDto pagingDto) throws Exception;
+	
+	//	주문목록 갯수 불러오기
+	public int getCountOrder(String u_id, int p_status) throws Exception;
 }

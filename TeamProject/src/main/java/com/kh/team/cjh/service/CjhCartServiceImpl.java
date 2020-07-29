@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kh.team.cjh.dao.CjhCartDao;
 import com.kh.team.domain.CjhCartVo;
+import com.kh.team.domain.CjhPagingDto;
 import com.kh.team.domain.CjhUserVo;
 import com.kh.team.domain.LshBoardVo;
 
@@ -69,14 +70,19 @@ public class CjhCartServiceImpl implements CjhCartService {
 
 	//	주문목록 불러오기
 	@Override
-	public List<CjhCartVo> getOrder(String u_id, int p_status) throws Exception {
-		return cartDao.getOrder(u_id, p_status);
+	public List<CjhCartVo> getOrder(String u_id, int p_status, CjhPagingDto pagingDto) throws Exception {
+		return cartDao.getOrder(u_id, p_status, pagingDto);
 	}
 
 	//	장바구니 갯수 불러오기
 	@Override
 	public int getCountCart(String u_id) throws Exception {
 		return cartDao.getCountCart(u_id);
+	}
+
+	@Override
+	public int getCountOrder(String u_id, int p_status) throws Exception {
+		return cartDao.getCountOrder(u_id, p_status);
 	}
 
 }

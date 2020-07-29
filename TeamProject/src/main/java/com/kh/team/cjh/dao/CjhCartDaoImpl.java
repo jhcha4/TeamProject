@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kh.team.domain.CjhCartVo;
+import com.kh.team.domain.CjhPagingDto;
 import com.kh.team.domain.LshBoardVo;
 
 @Repository
@@ -98,11 +99,21 @@ public class CjhCartDaoImpl implements CjhCartDao {
 
 	//	주문목록 불러오기
 	@Override
-	public List<CjhCartVo> getOrder(String u_id, int p_status) throws Exception {
+	public List<CjhCartVo> getOrder(String u_id, int p_status, CjhPagingDto pagingDto) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("u_id", u_id);
 		paramMap.put("p_status", p_status);
+		paramMap.put("pagingDto", pagingDto);
 		return sqlSession.selectList(NAMESPACE + "getOrder", paramMap);
+	}
+	
+	//	주문목록 갯수 구하기
+	@Override
+	public int getCountOrder(String u_id, int p_status) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("u_id", u_id);
+		paramMap.put("p_status", p_status);
+		return sqlSession.selectOne(NAMESPACE + "getCountOrder", paramMap);
 	}
 
 	//	장바구니 상품확인
@@ -114,6 +125,8 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		paramMap.put("p_num", p_num);
 		return sqlSession.selectOne(NAMESPACE + "checkCart", paramMap);
 	}
+
+	
 
 
 
