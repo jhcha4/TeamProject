@@ -151,8 +151,12 @@
 	<!-- 오늘 방문자수 가져오기 -->
 	<select id="visitNow" resultType="int">
 		select count(*) as TodayCon from tbl_visitor
-		where to_date(visit_time,'YYYY-MM-DD') = to_date(sysdate, 'YYYY-MM-DD')
+		where to_date(visit_time,'YY-MM-DD') = to_date(sysdate, 'YY-MM-DD')
 	</select>
-	
+	<!-- 일별 데이터 가져오기 -->
+	<select id="rodChart" resultType="KysVisitCountVo">
+		select visit_time, count(*) as todaycon from tbl_visitor
+		group by visit_time order by visit_time
+	</select>
 	
 </mapper>

@@ -66,7 +66,7 @@
 				<div class="form-group">
 					<label for="r_files">
 						후기 사진
-					</label>
+					</label><br>
 					
 					<%--  <img src="/upload/displayFile?fileName=${jmReviewVo.r_file}"/>  --%>
 					  <c:forEach items="${images}" var="fileName">
