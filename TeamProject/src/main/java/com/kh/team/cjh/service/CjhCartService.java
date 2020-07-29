@@ -29,6 +29,9 @@ public interface CjhCartService {
 	//	주문후 장바구니 상태변경
 	public void orderCartUpdate(String u_id) throws Exception;
 	
+	//	상품 수량 감소
+	public void minusCount(int[] p_num, String[] p_size, int[] p_count) throws Exception;
+	
 	//	주문목록 불러오기
 	public List<CjhCartVo> getOrder(String u_id, int p_status, CjhPagingDto pagingDto) throws Exception;
 	

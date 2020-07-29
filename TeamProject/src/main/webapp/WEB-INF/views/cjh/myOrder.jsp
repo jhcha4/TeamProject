@@ -122,8 +122,11 @@ $(document).ready(function() {
 								
 								<td name="p_date" style="text-align:center; padding-left: 10px; font-weight: bold;">${item.p_date}</td>
 								
-								<td	style="width:10%">
+								<td	style="width:15%">
 									${item.o_status}
+									<c:if test="${item.o_status == '배송완료'}">
+										<button id="btnConfirm">구매확정</button>
+									</c:if>
 								</td>
 								
 							</tr>

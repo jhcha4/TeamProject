@@ -1,5 +1,6 @@
 package com.kh.team.cjh.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -126,7 +127,19 @@ public class CjhCartController {
 		pointService.plusPoint(u_id, totalPrice);
 		pointService.usePoint(u_id, totalPrice);
 		pointService.getPoint(u_id, totalPrice);
-		
+
+		List<CjhCartVo> list = cartService.getCart(u_id);
+		int length = list.size();
+		int[] p_numArr = new int[length];
+		String[] p_sizeArr = new String[length];
+		int[] p_countArr = new int[length];
+		for(int i=0; i<list.size(); i++) {
+			p_numArr[i] = list.get(i).getP_num();
+			p_sizeArr[i] = list.get(i).getP_size();
+			p_countArr[i] = list.get(i).getP_count();
+			System.out.println(p_sizeArr[i]);
+		}
+		cartService.minusCount(p_numArr, p_sizeArr, p_countArr);
 		cartService.orderCartUpdate(u_id);
 		int count = cartService.getCountCart(u_id);
 		session.setAttribute("count", count);

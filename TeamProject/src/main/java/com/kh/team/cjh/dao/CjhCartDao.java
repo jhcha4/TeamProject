@@ -41,4 +41,7 @@ public interface CjhCartDao {
 	//	장바구니 상품 확인
 	public int checkCart(String u_id, String p_size, int p_num) throws Exception;
 	
+	//	상품 수량 감소
+	public void minusCount(int p_num, String p_size, int p_count) throws Exception;
+	
 }
