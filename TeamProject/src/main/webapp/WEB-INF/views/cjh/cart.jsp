@@ -117,7 +117,7 @@ ${list}
 	<div class="container">
 		<div class="row mb-5">
 			<form id="frmCart" class="col-md-12" action="/cjh/updateCart" method="post">
-				<div class="title"><h1 class="tit">CART</h1></div>
+				<div class="title" style="text-align:center;"><h1 class="tit">CART</h1></div>
 				<div class="site-blocks-table">
 					<table class="table table-bordered">
 						<thead style="height: 10px">
