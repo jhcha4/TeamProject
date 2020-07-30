@@ -57,8 +57,8 @@
               <form action="#" method="post">
                 <label for="email_subscribe" class="footer-heading">Q&A</label>
                 <div class="form-group">
-                 <p>E-mail 보내기</p>
-                  <a href="/jm/jm_contact" class="btn btn-sm btn-primary" >send</a>
+                 <p>문의 하기</p>
+                  <a href="/jm/jm_contact" class="btn btn-sm btn-primary" >이동</a>
                 </div>
               </form>
             </div>

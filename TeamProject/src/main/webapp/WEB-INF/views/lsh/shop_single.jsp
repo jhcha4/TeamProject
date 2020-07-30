@@ -103,12 +103,13 @@ $(function() {
 		if (isChecked == true) {
 			return;
 		}
-		var html = "<div class='input-group mb-3' style='max-width: auto; border:1px solid blue;'>";
+		var html = "<div class='input-group mb-3' style='max-width: auto; border:3px solid black;'>";
 		html += "<h4 id='name'>${lshBoardVo.p_name}[</h4><h4 name=p_size>"+size+"</h4><h4>]</h4>";
 		html += "<h4>&nbsp&nbsp| 수량 :</h4>"
 		html += "<input name='p_count' type='number' min='1' class='form-control text-center' value='1'>";
-		html += "<a href='#'class='delete'><h3>x</h3></a>"
+		html += "<a></a>"
 		html += "<h4 class='sumPrice'>${lshBoardVo.p_price}</h4><h4>원</h4>"
+		html += "<a href='#'class='delete'><h2>x</h2></a>"
 		html += "</div>";
 		
 		$("#hidden").append(html);
@@ -130,7 +131,7 @@ $(function() {
 	$("#hidden").on("click", ".delete", function(e) {
 		e.preventDefault();
 		var that = $(this);
-		var sumPrice = $(this).next().text();
+		var sumPrice = $(this).prev().prev().text();
 		var nPrice = Number(sumPrice);
 		var total = $("#total").text();
 		var totalPrice = Number(total);
@@ -200,8 +201,8 @@ $(function() {
           </div>
           <div class="col-md-6">
             <h2 class="text-black">${lshBoardVo.p_name}</h2>
-            <p>${lshBoardVo.p_content}</p>
-            <p><strong class="text-primary h4">${lshBoardVo.p_price}</strong>원</p>
+            <h4>${lshBoardVo.p_content}</h4>
+            <h5><strong class="text-primary h4">${lshBoardVo.p_price}</strong>원</h5>
             <div class="mb-1 d-flex">
 	            <h4>Size:</h4>
 	            <c:if test="${lshBoardVo.p_main == 'T' || lshBoardVo.p_main == 'P' || lshBoardVo.p_main == 'S'}">
