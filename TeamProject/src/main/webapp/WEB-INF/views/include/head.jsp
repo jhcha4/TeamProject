@@ -103,9 +103,9 @@
       <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="has-children active">
-              <a href="/cjh/index">Home</a>
-              <ul class="dropdown">
+            <li class="has">
+              <a href="/cjh/index" >Home</a>
+             <!--  <ul class="dropdown">
                 <li><a href="#">Menu One</a></li>
                 <li><a href="#">Menu Two</a></li>
                 <li><a href="#">Menu Three</a></li>
@@ -117,7 +117,7 @@
                     <li><a href="#">Menu Three</a></li>
                   </ul>
                 </li>
-              </ul>
+              </ul> -->
             </li>
             <li>
               <a href="/jm/jm_about">About</a>
@@ -178,9 +178,9 @@
             
             
             
-            <li><a href="#">Catalogue</a></li>
-            <li><a href="#">New Arrivals</a></li>
-            <li><a href="/jm/jm_contact">Contact</a></li>
+            <!-- <li><a href="#">Catalogue</a></li>
+            <li><a href="#">New Arrivals</a></li>  -->
+            <li><a href="/jm/jm_contact">Q&A</a></li>
             <li><a href="/jm/jm_reviewForm">review</a></li>
           </ul>
           
