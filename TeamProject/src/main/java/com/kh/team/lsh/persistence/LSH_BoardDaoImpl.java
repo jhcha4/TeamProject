@@ -72,28 +72,9 @@ public class LSH_BoardDaoImpl implements LSH_BoardDao {
 		return sqlSession.selectOne(NAMESPACE + "getServe", p_num);
 	}
 
-
 	@Override
-	public String S_sizeCnt(int p_num) throws Exception {
-		return sqlSession.selectOne(NAMESPACE + "S_sizeCnt", p_num);
-	}
-
-
-	@Override
-	public String M_sizeCnt(int p_num) throws Exception {
-		return sqlSession.selectOne(NAMESPACE + "M_sizeCnt", p_num);
-	}
-
-
-	@Override
-	public String L_sizeCnt(int p_num) throws Exception {
-		return sqlSession.selectOne(NAMESPACE + "L_sizeCnt", p_num);
-	}
-
-
-	@Override
-	public String XL_sizeCnt(int p_num) throws Exception {
-		return sqlSession.selectOne(NAMESPACE + "XL_sizeCnt", p_num);
+	public List<LshBoardVo> getSize(int p_num) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "getSize", p_num);
 	}
 
 }

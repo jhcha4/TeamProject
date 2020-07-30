@@ -68,28 +68,10 @@
 		where p_num = #{p_num}
 	</select>
 	
-	<!-- S사이즈 개수 구하기 -->
-	<select id="S_sizeCnt" resultType="String">
-		select p_count from tbl_product_count
-		where p_num = #{p_num} and p_size = 'S'
-	</select>
-	
-	<!-- M사이즈 개수 구하기 -->
-	<select id="M_sizeCnt" resultType="String">
-		select p_count from tbl_product_count
-		where p_num = #{p_num} and p_size = 'M'
-	</select>
-	
-	<!-- L사이즈 개수 구하기 -->
-	<select id="L_sizeCnt" resultType="String">
-		select p_count from tbl_product_count
-		where p_num = #{p_num} and p_size = 'L'
-	</select>
-	
-	<!-- XL사이즈 개수 구하기 -->
-	<select id="XL_sizeCnt" resultType="String">
-		select p_count from tbl_product_count
-		where p_num = #{p_num} and p_size = 'XL'
+	<!-- p_size, p_count 구하기 -->
+	<select id="getSize" resultType="LshBoardVo">
+		select * from tbl_product_count
+		where p_num = #{p_num}
 	</select>
 	
 	<sql id="type">
