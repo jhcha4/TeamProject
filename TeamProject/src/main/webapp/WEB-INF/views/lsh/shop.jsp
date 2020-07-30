@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="../include/head.jsp" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <script>
 $(function() {
@@ -36,7 +37,7 @@ $(function() {
 		var length =$(this).attr("href").length;
 		var p_main = $(this).attr("href").substring(length-1);
 		$("#mainPage > input[name=p_main]").val(p_main);
-		$("#mainPage > input[name=type]").val("L");  
+		$("#mainPage > input[name=type]").val("PL");  
 		$("#mainPage > input[name=page]").val("1");
 		$("#mainPage").submit();
 	});
@@ -47,7 +48,7 @@ $(function() {
 		var length = $(this).attr("href").length;
 		var p_serve = $(this).attr("href").substring(length-2);
 		$("#servePage > input[name=p_serve]").val(p_serve);
-		$("#servePage > input[name=type]").val("L");
+		$("#servePage > input[name=type]").val("PL");
 		$("#servePage > input[name=page]").val("1");
 		$("#servePage").submit();
 	}); 
@@ -103,15 +104,18 @@ $(function() {
                 <div class="d-flex"> 
                   <div class="dropdown mr-1 ml-md-auto">
                     <select name="type" id="type">
-                    	<option value="L" 
-                    		<c:if test="${lshBoardDto.type == 'L'}">selected</c:if>
-                    	>낮은 가격순</option>
-                    	<option value="H" 
-                    	    <c:if test="${lshBoardDto.type == 'H'}">selected</c:if>
-                    	>높은 가격순</option>
-                    	<option value="C" 
-                    	    <c:if test="${lshBoardDto.type == 'C'}">selected</c:if>
+                    	<option value="PL" 
+                    		<c:if test="${lshBoardDto.type == 'PL'}">selected</c:if>
+                    	>가격 낮은순</option>
+                    	<option value="PH" 
+                    	    <c:if test="${lshBoardDto.type == 'PH'}">selected</c:if>
+                    	>가격 높은순</option>
+                    	<option value="VH" 
+                    	    <c:if test="${lshBoardDto.type == 'VH'}">selected</c:if>
                     	>조회 높은순</option>
+                    	<option value="VL" 
+                    	    <c:if test="${lshBoardDto.type == 'VL'}">selected</c:if>
+                    	>조회 낮은순</option>
                     </select>
                     
                   </div>
@@ -132,7 +136,9 @@ $(function() {
 	                  <div class="block-4-text p-4">
 	                    <h3><a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}">${lshBoardVo.p_name}</a></h3>
 	                    <p class="mb-0">${lshBoardVo.p_content}</p>
-	                    <p class="text-primary font-weight-bold">${lshBoardVo.p_price}원</p>
+	                    <p class="text-primary font-weight-bold">
+	                    <fmt:formatNumber value="${lshBoardVo.p_price}" pattern="#,###"/>원
+	                    </p>
 	                  </div>
 	                  <div class="block-4-text right">
 	                    <p>조회수 : ${lshBoardVo.p_viewCnt}</p>

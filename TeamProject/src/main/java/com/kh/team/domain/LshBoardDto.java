@@ -1,7 +1,7 @@
 package com.kh.team.domain;
 
 public class LshBoardDto {
-	private String type = "L";
+	private String type = "PL";
 
 	private int page = 1;
 	private int perPage = 15;
