@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.kh.team.cjh.service.CjhCartService;
 import com.kh.team.domain.JmEmailDto;
 import com.kh.team.domain.JmMemberVo;
 import com.kh.team.domain.JmPwEmailDto;
@@ -28,14 +27,11 @@ public class Jm_UserController {
 
 	@Inject
 	private JmMemberService jmMemberService;
-	@Inject
-	private CjhCartService cartService;
 
 	// 로그인 폼
 	@RequestMapping(value = "/jm_login", method = RequestMethod.GET)
-	public void jmLogin(String targetLocation, HttpSession session) throws Exception {
-		System.out.println("targetLocation:" + targetLocation);
-		session.setAttribute("targetLocation", targetLocation);
+	public void jmLogin() throws Exception {
+
 	}
 
 	// 로그인 처리
@@ -43,13 +39,11 @@ public class Jm_UserController {
 	public String jmLoginPost(String u_id, String u_pw, HttpSession session, RedirectAttributes rttr) throws Exception {
 
 		boolean result = jmMemberService.selectMemberUserIdPw(u_id, u_pw);
-		int count = cartService.getCountCart(u_id);
 		System.out.println("result:" + result);
 		if (result == true) {
 
 			session.setAttribute("u_id", u_id);
 			System.out.println("ssession:" + session);
-			session.setAttribute("count", count);
 			String targetLocation = (String) session.getAttribute("targetLocation");
 			System.out.println("targetLocation:" + targetLocation);
 			if (targetLocation != null && !targetLocation.equals("")) {
