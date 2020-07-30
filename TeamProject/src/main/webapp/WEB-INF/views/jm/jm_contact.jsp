@@ -71,7 +71,7 @@ $("a.review_title").click(function(e){
 
 
 
-${jmContactVo}
+
 
 
 
@@ -180,11 +180,14 @@ ${jmContactVo}
 							${jmContactVo.c_subject}
 						</td>
 						<td>
-							${jmContactVo.c_time}
+							${jmContactVo.c_time} 
 						</td>
 					
 						<td>
 							${jmContactVo.c_viewcnt}
+						</td>
+						<td>
+							<a href="#" type="button" class="btn btn-sm btn-info">관리자-답글달기</a>
 						</td>
 					</tr>
 					

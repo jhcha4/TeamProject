@@ -36,7 +36,11 @@ public class KysBoardServiceImpl implements KysBoardService {
 		for (String file_name : files) {
 			boardDao.imgFile(file_name, p_num);
 		}
+		System.out.println("boardVo insert : "+boardVo);
 		String[] p = boardVo.getP_size();
+		
+		System.out.println("p:" + p);
+		
 		for(int i = 0 ; i < p.length ; i++ ) {
 			String[] p_size = boardVo.getP_size();
 			int[] p_count = boardVo.getP_count();
@@ -56,8 +60,12 @@ public class KysBoardServiceImpl implements KysBoardService {
 	
 		String[] files = boardVo.getP_files();
 		System.out.println("update / service / file : "+files);
-		for (String file_name : files) {
-			boardDao.imgFile(file_name, p_num);
+		if(files != null || files.equals("") 	) {
+			for (String file_name : files) {
+				boardDao.imgFile(file_name, p_num);
+			return;	
+		}
+		
 	}
 	}
 

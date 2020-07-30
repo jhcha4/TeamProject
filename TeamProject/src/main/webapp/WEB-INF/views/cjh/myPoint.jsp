@@ -75,27 +75,28 @@ $(document).ready(function() {
 	<div class="container">
 		<div class="row mb-5">
 			<form class="col-md-12" method="post">
-				<div class="title"><h1 class="tit">POINT</h1></div>
-				<div class="site-blocks-table">
-					<div class="row">
-						<div class="col-md-12 mb-5">
-							<div class="d-flex"> 
-								<div class="dropdown mr-1 ml-md-auto">
-								<select id="pointType" id="pointType">
-									<option value=1
-										<c:if test="${point_code == 1}">selected</c:if>
-										>포인트 목록</option>
-										<option value=1002
-											<c:if test="${point_code == 1002}">selected</c:if>
-										>받은 포인트</option>
-										<option value=1003
-										<c:if test="${point_code == 1003}">selected</c:if>
-									>사용 포인트</option>
-								</select>
-								</div>
+				<div class="title" style="text-align:center;"><h1 class="tit">POINT</h1></div>
+				<div class="row">
+					<div class="col-md-12 mb-5">
+						<div class="d-flex"> 
+							<div class="dropdown mr-1 ml-md-auto">
+							<select id="pointType" id="pointType">
+								<option value=1
+									<c:if test="${point_code == 1}">selected</c:if>
+									>포인트 목록</option>
+									<option value=1002
+										<c:if test="${point_code == 1002}">selected</c:if>
+									>받은 포인트</option>
+									<option value=1003
+									<c:if test="${point_code == 1003}">selected</c:if>
+								>사용 포인트</option>
+							</select>
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="site-blocks-table">
+					
 					<table class="table table-bordered">
 						<thead style="height: 5px">
 							<tr bgcolor="#eeeeee"><th colspan="7" style="text-align: Left;">포인트 정보</th></tr>
