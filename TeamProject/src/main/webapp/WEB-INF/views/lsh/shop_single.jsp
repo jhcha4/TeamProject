@@ -45,16 +45,21 @@ $(function() {
 				var size = $(this).text();
 				sizeArr.push(size);
 			});
-			if ((sizeArr).length == 0) {
-				alert("상품을 선택해주세요");
-				return;
+			
+			if(sizeArr.length == 0) {
+				sizeArr.push(" ");
 			}
+			
 			console.log("sizeArr : " + sizeArr);
 			$("input[name=p_count]").each(function() {
 				var count = $(this).val();
 				countArr.push(count);
 			});
 			
+			if ((countArr).length == 0) {
+				alert("상품을 선택해주세요");
+				return;
+			}
 			var sendData = {
 				"p_num"			:	p_num,
 			    "countArr"	:	countArr,

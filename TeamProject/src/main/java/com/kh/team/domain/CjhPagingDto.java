@@ -11,6 +11,7 @@ public class CjhPagingDto {
 	private int endPage;			//	페이지 블럭에서 끝 페이지
 	private final int PAGE_BLOCK = 5;		//	페이지 블럭 수
 	private int point_code = 1002;
+	private int p_status = 1;
 	
 	public void setPageInfo() {
 		this.endRow = page * perPage;
@@ -101,11 +102,21 @@ public class CjhPagingDto {
 		this.point_code = point_code;
 	}
 
+	public int getP_status() {
+		return p_status;
+	}
+
+	public void setP_status(int p_status) {
+		this.p_status = p_status;
+	}
+
 	@Override
 	public String toString() {
 		return "CjhPagingDto [page=" + page + ", perPage=" + perPage + ", startRow=" + startRow + ", endRow=" + endRow
 				+ ", totalCount=" + totalCount + ", totalPage=" + totalPage + ", startPage=" + startPage + ", endPage="
-				+ endPage + ", PAGE_BLOCK=" + PAGE_BLOCK + ", point_code=" + point_code + "]";
+				+ endPage + ", PAGE_BLOCK=" + PAGE_BLOCK + ", point_code=" + point_code + ", p_status=" + p_status
+				+ "]";
 	}
+
 	
 }

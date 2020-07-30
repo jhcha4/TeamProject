@@ -8,28 +8,28 @@
           <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="row">
               <div class="col-md-12">
-                <h3 class="footer-heading mb-4">Navigations</h3>
+                <h3 class="footer-heading mb-4">LIMO MOE</h3>
               </div>
               <div class="col-md-6 col-lg-4">
                 <ul class="list-unstyled">
-                  <li><a href="#">Sell online</a></li>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Shopping cart</a></li>
-                  <li><a href="#">Store builder</a></li>
+                 <!--  <li><a href="#">Sell online</a></li>
+                  <li><a href="#">Features</a></li> -->
+                  <!-- <li><a href="#">Shopping cart</a></li> -->
+                 <!--  <li><a href="#">Store builder</a></li> -->
                 </ul>
               </div>
               <div class="col-md-6 col-lg-4">
                 <ul class="list-unstyled">
-                  <li><a href="#">Mobile commerce</a></li>
+                 <!--  <li><a href="#">Mobile commerce</a></li>
                   <li><a href="#">Dropshipping</a></li>
-                  <li><a href="#">Website development</a></li>
+                  <li><a href="#">Website development</a></li> -->
                 </ul>
               </div>
               <div class="col-md-6 col-lg-4">
                 <ul class="list-unstyled">
-                  <li><a href="#">Point of sale</a></li>
+                  <!-- <li><a href="#">Point of sale</a></li>
                   <li><a href="#">Hardware</a></li>
-                  <li><a href="#">Software</a></li>
+                  <li><a href="#">Software</a></li> -->
                   <li><a href="/manager/manager_main">Manager page</a></li>
                 </ul>
               </div>

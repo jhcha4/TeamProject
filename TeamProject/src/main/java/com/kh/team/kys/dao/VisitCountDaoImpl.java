@@ -2,6 +2,8 @@ package com.kh.team.kys.dao;
 
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
@@ -32,6 +34,11 @@ public class VisitCountDaoImpl implements VisitCountDao {
 		int count = sqlSession.selectOne(NAMESPACE+"visitAll");
 		return count;
 		
+	}
+	@Override
+	public List<KysVisitCountVo> rodChart() throws Exception {
+		
+		return sqlSession.selectList(NAMESPACE+"rodChart");
 	}
 
 }

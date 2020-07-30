@@ -104,13 +104,11 @@ $(function() {
 		});
 	});
 	$("#imgFileDrop").ready(function(e){
-		console.log(e);
 		$("#imgFileDrop").css("height", "auto");
 	});
 	$("#formSubmit").submit(function(){
 		var upDiv = $("#update >div ");
 		var titleDiv = $("#titleImg > div");
-		console.log("upDiv:"+upDiv);
 		upDiv.each(function(index){
 			var filename = $(this).attr("data-filename");
 			var hiddenInput = "<input type='hidden' name='p_files["+index+"]' value='"+filename+"'/>";
@@ -131,7 +129,6 @@ $(function() {
 </script>
 <%@ include file="../include/main_style.jsp" %>
 <%@ include file="../include/main_bar.jsp" %>
-${prodcutCountList }
 <div class="site-section">
 
 	<div class="container">

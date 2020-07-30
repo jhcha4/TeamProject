@@ -26,6 +26,10 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-3">
+					</div>
+						<div class="col-md-6">
 			<form id="jm_userUpdate" role="form" action="/jm/jm_userUpdate" method="post">
 				<div class="form-group">
 					 
@@ -78,6 +82,10 @@
 					수정완료
 				</button>
 			</form>
+							<div class="col-md-3">
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

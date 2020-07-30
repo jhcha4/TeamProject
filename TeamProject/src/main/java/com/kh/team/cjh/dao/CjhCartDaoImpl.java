@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kh.team.domain.CjhCartVo;
+import com.kh.team.domain.CjhPagingDto;
 import com.kh.team.domain.LshBoardVo;
 
 @Repository
@@ -90,7 +91,7 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		sqlSession.update(NAMESPACE + "updateDupCart", paramMap);
 	}
 
-	//	주문후 장바구니 상태변경
+	//	주문하기 후  장바구니 상태변경
 	@Override
 	public void orderCartUpdate(String u_id) throws Exception {
 		sqlSession.delete(NAMESPACE + "orderCartUpdate", u_id);
@@ -98,11 +99,21 @@ public class CjhCartDaoImpl implements CjhCartDao {
 
 	//	주문목록 불러오기
 	@Override
-	public List<CjhCartVo> getOrder(String u_id, int p_status) throws Exception {
+	public List<CjhCartVo> getOrder(String u_id, int p_status, CjhPagingDto pagingDto) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("u_id", u_id);
 		paramMap.put("p_status", p_status);
+		paramMap.put("pagingDto", pagingDto);
 		return sqlSession.selectList(NAMESPACE + "getOrder", paramMap);
+	}
+	
+	//	주문목록 갯수 구하기
+	@Override
+	public int getCountOrder(String u_id, int p_status) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("u_id", u_id);
+		paramMap.put("p_status", p_status);
+		return sqlSession.selectOne(NAMESPACE + "getCountOrder", paramMap);
 	}
 
 	//	장바구니 상품확인
@@ -114,6 +125,24 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		paramMap.put("p_num", p_num);
 		return sqlSession.selectOne(NAMESPACE + "checkCart", paramMap);
 	}
+
+	//	결제시 상품개수 차감
+	@Override
+	public void minusCount(int p_num, String p_size, int p_count) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("p_size", p_size);
+		paramMap.put("p_num", p_num);
+		paramMap.put("p_count", p_count);
+		sqlSession.update(NAMESPACE + "minusCount", paramMap);
+	}
+
+	//	구매확정 버튼
+	@Override
+	public void comfirmOrder(int c_num) throws Exception {
+		sqlSession.update(NAMESPACE + "confirmOrder", c_num);
+	}
+
+	
 
 
 

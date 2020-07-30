@@ -62,6 +62,8 @@ $(function(){
 				var originalName = rData.substring(rData.indexOf("_")+1);
 				
 				var html = "<div data-filename='"+rData+"'>";
+					
+					
 				var result = isImage(originalName);
 				console.log(result);
 			 	
@@ -127,7 +129,12 @@ $(function(){
 // 		return false;
 	}); // $("#updateReviewForm").submit(function
 	
+	$("#btnimage").click(function(rData){
+		console.log("클릭입니다");
+		  
+		
 	
+	});
 	
 	
 });
@@ -147,6 +154,10 @@ $(function(){
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-3">
+					</div>
+						<div class="col-md-6">
 			<form id="updateReviewForm" role="form" action="/jm/jm_updateReviewRun" method="post">
 			
 			
@@ -164,9 +175,9 @@ $(function(){
 				<div class="form-group">
 					 
 					<label for="r_id">
-						아이디
+						
 					</label>
-					<input type="text" class="form-control" id="r_id" name="r_id" value="${jmReviewVo.r_id}" readonly/>
+					<input type="hidden" class="form-control" id="r_id" name="r_id" value="${jmReviewVo.r_id}" readonly/>
 				</div>
 				
 				<div class="form-group">
@@ -200,10 +211,11 @@ $(function(){
 				<div class="form-group">
 					<label for="r_files">
 						후기 사진
-					</label>
+					</label><br>
 					
-					<img src="/upload/displayFile?fileName=${jmReviewVo.r_file}"/>
-					
+					<c:forEach items="${images}" var="filename">
+					<img src="/upload/displayFile?fileName=${filename}"/>
+					</c:forEach>
 				</div>
 				
 				
@@ -218,7 +230,13 @@ $(function(){
 					<div id="fileDrop"></div>
 				</div>
 				
-				<div id="uploadList"></div>
+				<div id="uploadList">
+				<c:forEach items="${images}" var="filename">
+					<img src="/upload/displayFile?fileName=${filename}"/>
+					
+				</c:forEach>
+				<!-- <button type="button" id="btnimage" class="btn btn-sm btn-info" >사진 수정</button> -->
+				</div>
 				<div id="btnDiv"></div>
 				
 				
@@ -228,6 +246,10 @@ $(function(){
 					수정 완료
 				</button>
 			</form>
+		<div class="col-md-3">
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -21,20 +21,21 @@ import com.kh.team.kys.service.VisitCountService;
 public class HomeController  {
 	
 	@Inject
-	private VisitCountService VCS;
+	private VisitCountService service;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpSession session) throws Exception {
-	//홈페이지 방문자 카운트
-	WebApplicationContext wac = WebApplicationContextUtils.getRequiredWebApplicationContext(session.getServletContext());
-	HttpServletRequest req =((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
-	KysVisitCountVo vo = new KysVisitCountVo();
-	vo.setVisit_ip(req.getRemoteAddr());
-	int visitAll = VCS.visitAll();
-	int visitNow = VCS.visitNow();
-	session.setAttribute("visitAll", visitAll);
-	session.setAttribute("visitNow", visitNow);
-	VCS.insertVisitor(vo);
+		//홈페이지 방문자 카운트
+				WebApplicationContext wac = WebApplicationContextUtils.getRequiredWebApplicationContext(session.getServletContext());
+				System.out.println(wac);
+				HttpServletRequest req =((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
+				KysVisitCountVo vo = new KysVisitCountVo();
+				vo.setVisit_ip(req.getRemoteAddr());
+				int visitAll = service.visitAll();
+				int visitNow = service.visitNow();
+				session.setAttribute("visitAll", visitAll);
+				session.setAttribute("visitNow", visitNow);
+				service.insertVisitor(vo);
 	
 
 	
