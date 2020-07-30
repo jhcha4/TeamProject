@@ -9,21 +9,48 @@ $(function() {
 	if(m == "T") {   
 		$("#serveOption option").remove();
 		$("#serveOption").append(options[0]).append(options[1]).append(options[2]).append(options[3]);
+		$("#code_T").show();
+		$("#code_P").hide();
+		$("#code_S").hide();
 	}
 	$("#mainOption").change(function(){
 		$("#serveOption option").remove();
 		var main = $(this).val();
 		var serve = $("#serveOption").val();
-		console.log(main);
-		if(main == "T")                                                     
-			$("#serveOption").append(options[0]).append(options[1]).append(options[2]).append(options[3]);
-		if(main == "P")                                                       
-			$("#serveOption").append(options[4]).append(options[5]).append(options[6]).append(options[7]);
+		if(main == "T")                                                  
+			$("#serveOption").append(options[0]).append(options[1]).append(options[2]).append(options[3]); 
+		if(main == "P")                                                     
+			$("#serveOption").append(options[4]).append(options[5]).append(options[6]).append(options[7]); 
 		if(main == "S")                                                       
 			$("#serveOption").append(options[8]).append(options[9]).append(options[10]).append(options[11]);
-		if(main == "A")                                                       
-			$("#serveOption").append(options[12]).append(options[13]).append(options[14]).append(options[15]).append(selected);
+		if(main == "A")                                        
+			$("#serveOption").append(options[12]).append(options[13]).append(options[14]).append(options[15]); 
+		var sendData = {"main_code" : main};
+		var url = "/ajax/dress_size";
+		$(".dress_size").children().remove();
+		$.ajax({
+			"type" : "post",
+			"url" : url,
+			"data" : sendData,
+			"success" : function(rData){
+				$.each(rData, function() {
+					var size = this.size_type;
+					if(size != null || !size.equals("")){
+						var html = "<div  style='float: left;'><label for='option-sm' class='d-flex mr-3 mb-3'>";
+						html += "<span class='d-inline-block mr-2' style='top: -2px; position: relative;''> ";
+						html += "<label  style='margin: 10px;'>"+size+"</label> ";
+						html += "<input type='hidden' name='p_size' value='"+size+"'>";
+						html +="<input type='text' id='p_count' name='p_count' value='0'></span></label></div>";
+					$(".dress_size").append(html);
+					};
+				});
+			}
+		});
 	});
+	
+		
+
+	
 	//이미지 파일 드롭
 	//타이틀 이미지
 
@@ -112,9 +139,8 @@ $(function() {
 			}
 		});
 	});
-	
-
 	$("#formSubmit").submit(function(){
+// 	$("#btnSubmit").click(function(){
 		var upDiv = $("#imgFileDrop > div");
 		var titleDiv = $("#titleImg > div");
 		upDiv.each(function(index){
@@ -127,10 +153,19 @@ $(function() {
 			var hiddenInput = "<input type='hidden' name='title_name' value='"+filename+"'/>";
 			$("#formSubmit").prepend(hiddenInput);
 		});
-		
+// 		var p_size = [];
+// 		$("label[name=p_size]").each(function() {
+// 			size = $(this).text();
+// 			p_size.push(size);
+			
+// 		});
+// 		console.log(p_size);
+// 		var size = $("label[name=p_size]").val();
+// 		console.log(size);
+		var size = $("input[name=p_size]").val();
+		console.log(size);
+// 		return false;
 	});
-
-
 });
 </script>
 
@@ -157,32 +192,20 @@ $(function() {
 
 					<!-- 상품 등록 상세 메뉴 -->
 					<div>
-						<label>main : </label> <select name="p_main" id="mainOption">
-							<option value="T" selected="selected">상의
-							<option value="P">하의
-							<option value="A">악세사리
-							<option value="S">신발
+					<!-- main title -->
+						<label>main : </label> 
+						<select name="p_main" id="mainOption">
+							<c:forEach items="${mainList}" var="mainVo">
+								<option value="${mainVo.main_code}">${mainVo.main_name}
+							</c:forEach>
 						</select>
-					
-						<label>serve : </label> <select name="p_serve" id="serveOption">
-							<option value="TH" selected="selected">반팔
-							<option value="TL">긴팔
-							<option value="TS">셔츠
-							<option value="TM">맨투맨
-							<option value="PJ">청바지
-							<option value="PM">면바지
-							<option value="PH">반바지
-							<option value="P7">7부바지
-							<option value="SD">구두
-							<option value="SU">운동화
-							<option value="SS">스릴퍼
-							<option value="SR">로퍼
-							<option value="AR">반지
-							<option value="AW">지갑
-							<option value="AC">모자
-							<option value="AB">가방
+					<!-- serve title -->
+						<label>serve : </label> 
+						<select name="p_serve" id="serveOption">
+							<c:forEach items="${serveList}" var="serveVo">
+								<option value="${serveVo.serve_code}" selected="selected">${serveVo.serve_name}
+							</c:forEach>
 						</select>
-
 					</div>
 	<c:if test="${p_deleted == 'd' }">
 		<samp></samp>
@@ -200,44 +223,14 @@ $(function() {
 						</strong>
 					</p>
 					<!-- 사이즈 -->
-					<div class="mb-1 d-flex">
-						<label for="option-sm" class="d-flex mr-3 mb-3"> 
-							<span class="d-inline-block mr-2" style="top: -2px; position: relative;"> 
-								<input	type="text" id="p_size" name="p_size" value="S" style="margin: 10px;" disabled="disabled"> 
-								<input type="text" id="p_count" name="p_count" value="0">
-							</span>
-						</label> 
-						<label for="option-md" class="d-flex mr-3 mb-3"> 
-							<span	class="d-inline-block mr-2" style="top: -2px; position: relative;">
-								<input	type="text" id="p_size" name="p_size" value="M" style="margin: 10px;" disabled="disabled">
-								<input type="text" id="p_count" name="p_count" value="0">
-							</span> 
-						</label> 
-						<label for="option-lg" class="d-flex mr-3 mb-3"> 
-							<span class="d-inline-block mr-2" style="top: -2px; position: relative;"> 
-								<input	type="text" id="option-lg" name="p_size" value="L" style="margin: 10px;" disabled="disabled">
-								<input type="text" id="p_count" name="p_count" value="0">
-							</span>
+					<div class="mb-1 d-flex dress_size">
 							
-						</label> 
-						<label for="option-xl" class="d-flex mr-3 mb-3">
-							<span class="d-inline-block mr-2" style="top: -2px; position: relative;"> 
-						 		<input	type="text" id="option-xl" name="p_size" value="XL" style="margin: 10px;" disabled="disabled">
-						 		<input type="text" id="p_count" name="p_count" value="0">
-						 	</span>
-						</label>
-							<label for="option-xl" class="d-flex mr-3 mb-3">
-							<span class="d-inline-block mr-2" style="top: -2px; position: relative;"> 
-						 		<input	type="checkbox" id="option-xl" name="p_size" value="freeSize" style="margin: 10px;">
-						 		<span class="d-inline-block text-black"> Free Size</span></input>
-						 		<input type="text" id="p_count" name="p_count" value="0">
-						 		
-						 	</span>
-						</label>
+							
+							
 					</div>
 					<!-- 사이즈 끝 -->
 
-					<button type="submit" class="btn btn-sm btn-primary imgDrop">상품 등록하기</button>
+					<button type="submit" id="btnSubmit" class="btn btn-sm btn-primary imgDrop">상품 등록하기</button>
 				</div>
 
 			</div>

@@ -2,6 +2,7 @@ package com.kh.team.kys.dao;
 
 import java.util.List;
 
+import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.KysVisitCountVo;
 
 public interface VisitCountDao {
@@ -13,4 +14,10 @@ public interface VisitCountDao {
 	public int visitAll() throws Exception;
 	//일별 데이터 가져오기
 	public List<KysVisitCountVo> rodChart() throws Exception;
+	//일일 매출 데이터
+	public List<CjhCartVo> salesList() throws Exception;
+	//주문목록 가져오기
+	public List<CjhCartVo> orderList() throws Exception;
+	
+
 }

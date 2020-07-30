@@ -9,20 +9,15 @@ import org.springframework.stereotype.Service;
 import com.kh.team.domain.Kys_MainVo;
 import com.kh.team.domain.Kys_ServeVo;
 import com.kh.team.kys.dao.KysMainDao;
-import com.kh.team.kys.dao.KysServeDao;
 
 @Service
 public class KysServeServiceImpl implements KysServeService {
-	
-	@Inject
-	private KysServeDao serveDao;
-	
 	@Inject
 	private KysMainDao mainDao;
 
 	@Override
 	public List<Kys_ServeVo> serveList() throws Exception {
-		 List<Kys_ServeVo> serveList = serveDao.serveList();
+		 List<Kys_ServeVo> serveList = mainDao.serveList();
 		return serveList;
 
 	}
@@ -43,6 +38,12 @@ public class KysServeServiceImpl implements KysServeService {
 	public Kys_MainVo OenMain(String main_code) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Kys_MainVo> dress_size(String main_code) throws Exception {
+		
+		return mainDao.dress_size(main_code);
 	}
 
 }
