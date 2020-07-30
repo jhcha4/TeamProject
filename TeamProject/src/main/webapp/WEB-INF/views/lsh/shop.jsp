@@ -37,7 +37,7 @@ $(function() {
 		var length =$(this).attr("href").length;
 		var p_main = $(this).attr("href").substring(length-1);
 		$("#mainPage > input[name=p_main]").val(p_main);
-		$("#mainPage > input[name=type]").val("L");  
+		$("#mainPage > input[name=type]").val("PL");  
 		$("#mainPage > input[name=page]").val("1");
 		$("#mainPage").submit();
 	});
@@ -48,7 +48,7 @@ $(function() {
 		var length = $(this).attr("href").length;
 		var p_serve = $(this).attr("href").substring(length-2);
 		$("#servePage > input[name=p_serve]").val(p_serve);
-		$("#servePage > input[name=type]").val("L");
+		$("#servePage > input[name=type]").val("PL");
 		$("#servePage > input[name=page]").val("1");
 		$("#servePage").submit();
 	}); 
@@ -104,15 +104,18 @@ $(function() {
                 <div class="d-flex"> 
                   <div class="dropdown mr-1 ml-md-auto">
                     <select name="type" id="type">
-                    	<option value="L" 
-                    		<c:if test="${lshBoardDto.type == 'L'}">selected</c:if>
+                    	<option value="PL" 
+                    		<c:if test="${lshBoardDto.type == 'PL'}">selected</c:if>
                     	>낮은 가격순</option>
-                    	<option value="H" 
-                    	    <c:if test="${lshBoardDto.type == 'H'}">selected</c:if>
+                    	<option value="PH" 
+                    	    <c:if test="${lshBoardDto.type == 'PH'}">selected</c:if>
                     	>높은 가격순</option>
-                    	<option value="C" 
-                    	    <c:if test="${lshBoardDto.type == 'C'}">selected</c:if>
+                    	<option value="VH" 
+                    	    <c:if test="${lshBoardDto.type == 'VH'}">selected</c:if>
                     	>조회 높은순</option>
+                    	<option value="VL" 
+                    	    <c:if test="${lshBoardDto.type == 'VL'}">selected</c:if>
+                    	>조회 낮은순</option>
                     </select>
                     
                   </div>

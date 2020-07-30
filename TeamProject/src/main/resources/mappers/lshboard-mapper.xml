@@ -95,14 +95,17 @@
 	<sql id="type">
 		<if test="lshBoardDto.type != null">
 			<choose>
-				<when test='lshBoardDto.type == "H"'>
+				<when test='lshBoardDto.type == "PH"'>
 					p_price desc,
 				</when>
-				<when test='lshBoardDto.type == "L"'>
+				<when test='lshBoardDto.type == "PL"'>
 					p_price,
 				</when>
-				<when test='lshBoardDto.type == "C"'>
+				<when test='lshBoardDto.type == "VH"'>
 					p_viewCnt desc,
+				</when>
+				<when test='lshBoardDto.type == "VL"'>
+					p_viewCnt,
 				</when>
 			</choose>
 		</if>
