@@ -16,14 +16,18 @@ public class CjhCartVo {
 	private Timestamp p_date;
 	private String o_status;
 	private String p_size;
+	private String p_main;
+	private String p_serve;
 	
 	public CjhCartVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public CjhCartVo(int c_num, String u_id, int p_num, String p_name, int p_price, String p_content, int p_count,
-			String title_name, int p_status, Timestamp p_date, String o_status, String p_size) {
+			String title_name, int p_status, Timestamp p_date, String o_status, String p_size, String p_main,
+			String p_serve) {
 		super();
 		this.c_num = c_num;
 		this.u_id = u_id;
@@ -37,7 +41,10 @@ public class CjhCartVo {
 		this.p_date = p_date;
 		this.o_status = o_status;
 		this.p_size = p_size;
+		this.p_main = p_main;
+		this.p_serve = p_serve;
 	}
+
 
 	public int getC_num() {
 		return c_num;
@@ -134,15 +141,36 @@ public class CjhCartVo {
 	public void setP_size(String p_size) {
 		this.p_size = p_size;
 	}
+	
+
+	public String getP_main() {
+		return p_main;
+	}
+
+
+	public void setP_main(String p_main) {
+		this.p_main = p_main;
+	}
+
+
+	public String getP_serve() {
+		return p_serve;
+	}
+
+
+	public void setP_serve(String p_serve) {
+		this.p_serve = p_serve;
+	}
+
 
 	@Override
 	public String toString() {
 		return "CjhCartVo [c_num=" + c_num + ", u_id=" + u_id + ", p_num=" + p_num + ", p_name=" + p_name + ", p_price="
 				+ p_price + ", p_content=" + p_content + ", p_count=" + p_count + ", title_name=" + title_name
 				+ ", p_status=" + p_status + ", p_date=" + p_date + ", o_status=" + o_status + ", p_size=" + p_size
-				+ "]";
+				+ ", p_main=" + p_main + ", p_serve=" + p_serve + "]";
 	}
-	
+
 
 
 }

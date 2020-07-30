@@ -28,6 +28,8 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		String p_name = boardVo.getP_name();
 		String p_content = boardVo.getP_content();
 		int p_price = boardVo.getP_price();
+		String p_main = boardVo.getP_main();
+		String p_serve = boardVo.getP_serve();
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("u_id", u_id);
 		paramMap.put("p_num", p_num);
@@ -36,6 +38,8 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		paramMap.put("p_price", p_price);
 		paramMap.put("p_count", p_count);
 		paramMap.put("p_size", p_size);
+		paramMap.put("p_main", p_main);
+		paramMap.put("p_serve", p_serve);
 		sqlSession.insert(NAMESPACE + "insertCart", paramMap);
 	}
 

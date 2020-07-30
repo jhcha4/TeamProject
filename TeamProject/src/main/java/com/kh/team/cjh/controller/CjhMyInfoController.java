@@ -75,7 +75,6 @@ public class CjhMyInfoController {
 	public void loginget(String targetLocation, HttpSession session) throws Exception {
 		System.out.println("targetLocation:" + targetLocation);
 		session.setAttribute("targetLocation", targetLocation);
-//		System.out.println("dd");
 	}
 	
 //	로그인 처리 폼
@@ -98,7 +97,7 @@ public class CjhMyInfoController {
 			return "redirect:/";
 		}
 		rttr.addFlashAttribute("msg", "fail");
-		return "redirect:/cjh/login";
+		return "redirect:/jm/jm_login";
 	}
 	
 	//	비밀번호 확인 폼
