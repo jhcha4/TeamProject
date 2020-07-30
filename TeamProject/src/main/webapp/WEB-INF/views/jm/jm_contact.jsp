@@ -180,7 +180,7 @@ $("a.review_title").click(function(e){
 							${jmContactVo.c_subject}
 						</td>
 						<td>
-							${jmContactVo.c_time}
+							${jmContactVo.c_time} 
 						</td>
 					
 						<td>
