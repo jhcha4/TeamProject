@@ -7,13 +7,13 @@
 <mapper namespace="mappers.contact-mapper">
 
 
-	<!-- 리뷰게시판 리스트 조회 -->
+	<!-- Contact게시판 리스트 조회 -->
 		<select id="selectContactList" resultType="JmContactVo">
 			select * from tbl_contact order by c_info desc
 		</select>
 
 	
-	<!-- 리뷰 게시판 info 조회 -->
+	<!-- Contact 게시판 info 조회 -->
 		<select id="selectContactInfo" resultType="JmContactVo">
 		select * from tbl_contact
     	where  c_info = #{c_info} 
@@ -24,20 +24,19 @@
 		
 		
 		
-	<!-- 리뷰 게시판 글쓰기 -->
+	<!-- Contact 게시판 글쓰기 -->
 		<insert id="insertContact">
-		insert into tbl_review(c_info, c_id,c_subject,c_contents)
-		values (seq_contact.nextval, #{r_id},#{r_subject},#{r_contents})
+		insert into tbl_contact(c_info, c_id,c_subject,c_contents)
+		values (seq_contact.nextval, #{c_id},#{c_subject},#{c_contents})
 		
 		</insert>
 		
-	<!-- 리뷰 게시판 업데이트 -->
+	<!-- Contact 게시판 업데이트 -->
 		<update id="updateContact" >
 		
-		update tbl_review set 
+		update tbl_Contact set 
    	 		c_subject = #{c_subject},
-   			c_contents = #{c_contents}
-    		
+   			c_contents = #{c_contents}	
     	where c_info= #{c_info}
 		
 		</update>

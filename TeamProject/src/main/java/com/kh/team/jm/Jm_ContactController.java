@@ -23,7 +23,7 @@ public class Jm_ContactController {
 	private JmContactService jmContactService;
 	
 	
-	//리뷰 게시판 리스트 -페이징 
+	//Contact 게시판 리스트 -페이징 
 	@RequestMapping(value="/jm_contact" ,method=RequestMethod.GET)
 	public String jmContact(JmPagingDto jmPagingDto,  Model model) throws Exception{
 		
@@ -43,58 +43,53 @@ public class Jm_ContactController {
 		
 	}
 	
-	/*//리뷰 게시판 info 조회
-	@RequestMapping(value="/jm_reviewInfo/{r_filesinfo}", method=RequestMethod.GET)
-		public String jmReviewInfo(@PathVariable("r_filesinfo")  int r_filesinfo, Model model)throws Exception{
-			JmReviewVo jmReviewVo = jmReviewService.selectReviewInfo(r_filesinfo);
+	//Contact 게시판 info 조회
+	@RequestMapping(value="/jm_contactInfo/{c_info}", method=RequestMethod.GET)
+		public String jmContactInfo(@PathVariable("c_info") int c_info, Model model)throws Exception{
+			JmContactVo jmContactVo = jmContactService.selectContactInfo(c_info);
 			
-			List<String> images = jmReviewService.selectReviewInfoImage(r_filesinfo);
-			System.out.println("images: " + images);
-			model.addAttribute("images",images);
-			model.addAttribute("jmReviewVo",jmReviewVo);
-			return "/jm/jm_reviewInfo";
-	}*/
+			
+			model.addAttribute("jmContactVo",jmContactVo);
+			return "/jm/jm_contactInfo";
+	}
 	
-	/*//리뷰 게시판 글쓰기 폼
-	@RequestMapping(value="/jm_insertReviewForm" ,method=RequestMethod.GET)
+	//Contact 게시판 글쓰기 폼
+	@RequestMapping(value="/jm_insertContactForm" ,method=RequestMethod.GET)
 	public void insertInfoForm()throws Exception{
 		
-	}*/
+	}
 	
-	/*//리뷰 게시판 글쓰기 작업
-	@RequestMapping(value="/jm_insertReviewRun",method=RequestMethod.POST)
-	public String insertReviewRun(JmReviewVo jmReviewVo, Model model)throws Exception{
-		System.out.println("jm_insertReviewRun, jmReviewVo:" + jmReviewVo);
-		String[] r_files = jmReviewVo.getR_files();
-		for (String file : r_files) {
-			System.out.println(file);
-		}
-			jmReviewService.insertReview(jmReviewVo);
-			model.addAttribute("jmReviewVo", jmReviewVo);
-		return "redirect:/jm/jm_reviewForm";
-	}*/
+	//Contact 게시판 글쓰기 작업
+	@RequestMapping(value="/jm_insertContactRun",method=RequestMethod.POST)
+	public String insertContactRun(JmContactVo jmContactVo, Model model)throws Exception{
+		System.out.println("jm_insertContactRun, jmContact:" + jmContactVo);
+		
+			jmContactService.insertContact(jmContactVo);
+			model.addAttribute("jmContactVo", jmContactVo);
+		return "redirect:/jm/jm_contact";
+	}
 	
-	/*//리뷰 게시판 업데이트  폼
-	@RequestMapping(value="/jm_updateReview",method=RequestMethod.GET)
-	public void updateReviewForm(int r_info, Model model )throws Exception{
+	//Contact 게시판 업데이트  폼
+	@RequestMapping(value="/jm_updateContact",method=RequestMethod.GET)
+	public void updateContactForm(int c_info, Model model )throws Exception{
 		
-		JmReviewVo jmReviewVo = jmReviewService.selectReviewInfo(r_info);
-		List<String> images = jmReviewService.selectReviewInfoImage(r_info);
+		JmContactVo jmContactVo = jmContactService.selectContactInfo(c_info);
+		
+		System.out.println("jmContactVo, contact:"+jmContactVo);
 		
 		
+		model.addAttribute("jmContactVo",jmContactVo);
 		
-		model.addAttribute("jmReviewVo",jmReviewVo);
-		model.addAttribute("images",images);
-	}*/
-	/*//리뷰 게시판 업데이트 런
-	@RequestMapping(value="/jm_updateReviewRun",method=RequestMethod.POST)
-	public String updateReviewRun(JmReviewVo jmReviewVo)throws Exception{
+	}
+	//Contact 게시판 업데이트 런
+	@RequestMapping(value="/jm_updateContactRun",method=RequestMethod.POST)
+	public String updateContactRun(JmContactVo jmContactVo)throws Exception{
 		
-		System.out.println("jm_updateReviewRun, jmReviewVo:" + jmReviewVo);
-		jmReviewService.updateReview(jmReviewVo);
+		System.out.println("jm_updateContactRun, jmContactVo:" + jmContactVo);
+		jmContactService.updateContact(jmContactVo);
 		
-		return "redirect:/jm/jm_reviewForm";
-	}*/
+		return "redirect:/jm/jm_contact";
+	}
 	
 	
 	
