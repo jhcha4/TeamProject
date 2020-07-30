@@ -91,7 +91,7 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		sqlSession.update(NAMESPACE + "updateDupCart", paramMap);
 	}
 
-	//	주문후 장바구니 상태변경
+	//	주문하기 후  장바구니 상태변경
 	@Override
 	public void orderCartUpdate(String u_id) throws Exception {
 		sqlSession.delete(NAMESPACE + "orderCartUpdate", u_id);
@@ -124,6 +124,22 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		paramMap.put("p_size", p_size);
 		paramMap.put("p_num", p_num);
 		return sqlSession.selectOne(NAMESPACE + "checkCart", paramMap);
+	}
+
+	//	결제시 상품개수 차감
+	@Override
+	public void minusCount(int p_num, String p_size, int p_count) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("p_size", p_size);
+		paramMap.put("p_num", p_num);
+		paramMap.put("p_count", p_count);
+		sqlSession.update(NAMESPACE + "minusCount", paramMap);
+	}
+
+	//	구매확정 버튼
+	@Override
+	public void comfirmOrder(int c_num) throws Exception {
+		sqlSession.update(NAMESPACE + "confirmOrder", c_num);
 	}
 
 	

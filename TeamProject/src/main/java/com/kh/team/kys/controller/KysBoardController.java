@@ -5,11 +5,13 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.team.domain.KysVisitCountVo;
 import com.kh.team.domain.Kys_BoardDto;
@@ -110,7 +112,11 @@ public class KysBoardController {
 	}
 	//막대 차트
 	@RequestMapping(value = "/rodChart", method= RequestMethod.GET)
-	public void rodChart() throws Exception{
-		
+	public ModelAndView rodChart(Model model) throws Exception{
+//		List<KysVisitCountVo> list = visitService.rodChart();
+//		System.out.println(list);
+//		model.addAttribute("list",list);
+		return new ModelAndView("manager/rodChart");
 	}
+	
 }

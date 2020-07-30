@@ -62,10 +62,22 @@ public class CjhCartServiceImpl implements CjhCartService {
 		cartDao.updateCart(u_id, p_count, c_num);
 	}
 
-	//	주문시 주문목록으로 변경
+	//	주문하기 후 주문목록으로 변경
 	@Override
 	public void orderCartUpdate(String u_id) throws Exception {
 		cartDao.orderCartUpdate(u_id);
+	}
+	
+	//	상품 수량 감소
+	@Override
+	public void minusCount(int[] p_num, String[] p_size, int[] p_count) throws Exception {
+		for (int i=0; i<p_num.length; i++) {
+			cartDao.minusCount(p_num[i], p_size[i], p_count[i]);
+			
+			System.out.println(p_num[i]);
+			System.out.println(p_size[i]);
+			System.out.println(p_count[i]);
+		}
 	}
 
 	//	주문목록 불러오기
@@ -80,9 +92,18 @@ public class CjhCartServiceImpl implements CjhCartService {
 		return cartDao.getCountCart(u_id);
 	}
 
+	//	주문목록 개수 구하기
 	@Override
 	public int getCountOrder(String u_id, int p_status) throws Exception {
 		return cartDao.getCountOrder(u_id, p_status);
 	}
+
+	//	구매확정 버튼
+	@Override
+	public void comfirmOrder(int c_num) throws Exception {
+		cartDao.comfirmOrder(c_num);
+	}
+
+
 
 }

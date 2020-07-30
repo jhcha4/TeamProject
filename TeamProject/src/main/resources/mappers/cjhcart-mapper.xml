@@ -58,12 +58,19 @@
 		where u_id = #{u_id} and c_num = #{c_num}
 	</update>
 	
-	<delete id="orderCartUpdate">
+	<update id="orderCartUpdate">
 		update tbl_cart set
 		p_status = 1002,
 		p_date = sysdate
 		where u_id = #{u_id} and p_status = 1001
-	</delete>
+	</update>
+	
+	<update id="minusCount">
+		update tbl_product_count set
+		p_count = p_count - #{p_count}
+		where p_num = #{p_num}
+		and p_size = #{p_size}
+	</update>
 	
 	<select id="checkCart" resultType="int">
 		select count(*) from tbl_cart
@@ -77,6 +84,12 @@
 		update tbl_cart set
 		p_count = p_count + #{p_count}
 		where u_id = #{u_id} and p_size = #{p_size} and p_num = #{p_num}
+	</update>
+	
+	<update id="confirmOrder">
+		update tbl_cart set
+		p_status = 1006
+		where c_num = #{c_num}
 	</update>
 	
 	<select id="getCountOrder" resultType="int">

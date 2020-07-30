@@ -77,5 +77,9 @@ public class KysDaoTest {
 	
 		visitDao.visitAll();
 	}
+	@Test
+	public void rodChart() throws Exception{
+		visitDao.rodChart();
+	}
 
 }

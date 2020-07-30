@@ -1,5 +1,6 @@
 package com.kh.team.cjh.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -86,7 +87,7 @@ public class CjhCartController {
 		cartService.deleteCart(u_id, c_num);
 		int count = cartService.getCountCart(u_id);
 		session.setAttribute("count", count);
-		return "redirect:/cjh/cart?u_id=" + u_id;
+		return "redirect:/cjh/cart";
 	}
 	
 	//	선택한 장바구니 삭제
@@ -96,7 +97,7 @@ public class CjhCartController {
 		cartService.deleteCheckedCart(u_id, c_num);
 		int count = cartService.getCountCart(u_id);
 		session.setAttribute("count", count);
-		return "redirect:/cjh/cart?u_id=" + u_id;
+		return "redirect:/cjh/cart";
 	}
 	
 	//	장바구니 수정
@@ -126,7 +127,19 @@ public class CjhCartController {
 		pointService.plusPoint(u_id, totalPrice);
 		pointService.usePoint(u_id, totalPrice);
 		pointService.getPoint(u_id, totalPrice);
-		
+
+		List<CjhCartVo> list = cartService.getCart(u_id);
+		int length = list.size();
+		int[] p_numArr = new int[length];
+		String[] p_sizeArr = new String[length];
+		int[] p_countArr = new int[length];
+		for(int i=0; i<list.size(); i++) {
+			p_numArr[i] = list.get(i).getP_num();
+			p_sizeArr[i] = list.get(i).getP_size();
+			p_countArr[i] = list.get(i).getP_count();
+			System.out.println(p_sizeArr[i]);
+		}
+		cartService.minusCount(p_numArr, p_sizeArr, p_countArr);
 		cartService.orderCartUpdate(u_id);
 		int count = cartService.getCountCart(u_id);
 		session.setAttribute("count", count);
@@ -141,7 +154,6 @@ public class CjhCartController {
 		int totalCount = cartService.getCountOrder(u_id, p_status);
 		pagingDto.setTotalCount(totalCount);
 		List<CjhCartVo> list = cartService.getOrder(u_id, p_status, pagingDto);
-		
 		for (CjhCartVo vo : list) {
 			String title_name = vo.getTitle_name();
 			String front = title_name.substring(0, title_name.lastIndexOf("/") + 1);
@@ -153,5 +165,12 @@ public class CjhCartController {
 		model.addAttribute("list", list);
 		model.addAttribute("pagingDto", pagingDto);
 //		return "cjh/myOrder";
+	}
+	
+	//	주문확정하기
+	@RequestMapping(value="/confirm", method = RequestMethod.GET)
+	public String confirm(int c_num, int p_status) throws Exception {
+		cartService.comfirmOrder(c_num);
+		return "redirect:/cjh/myOrder?p_status=" + p_status;
 	}
 }
