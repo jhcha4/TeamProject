@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.KysVisitCountVo;
 import com.kh.team.kys.dao.VisitCountDao;
 
@@ -73,6 +74,16 @@ public class VisitCountServiceImpl implements VisitCountService {
 		}
 		data.put("rows", body);
 		return data;
+	}
+	@Override
+	public JSONObject salesList() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<CjhCartVo> orderList() throws Exception {
+		
+		return dao.orderList();
 	}
 
 }

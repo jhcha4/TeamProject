@@ -17,4 +17,6 @@ public interface KysServeService {
 	
 	//소주제 항목 1개 가져오기
 	public Kys_MainVo OenMain(String main_code) throws Exception;
+	//사이즈 종류
+	public List<Kys_MainVo> dress_size(String main_code) throws Exception;
 }

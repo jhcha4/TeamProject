@@ -46,11 +46,8 @@ public class ShopController {
 	@RequestMapping(value="/shop_single", method = RequestMethod.GET)
 	public void shop_single(int p_num, Model model, HttpSession session) throws Exception {
 		LshBoardVo lshBoardVo = boardService.single(p_num);
-		String S_sizeCnt = boardService.S_sizeCnt(p_num);
-		String M_sizeCnt = boardService.M_sizeCnt(p_num);
-		String L_sizeCnt = boardService.L_sizeCnt(p_num);
-		String XL_sizeCnt = boardService.XL_sizeCnt(p_num);
 		String p_serve = boardService.getServe(p_num);
+		List<LshBoardVo> sizeList = boardService.getSize(p_num);
 		List<LshBoardVo> relationList = boardService.relationList(p_num, p_serve);
 		List<LshBoardVo> imgList = boardService.getImg(p_num);
 		String u_id = (String) session.getAttribute("u_id");
@@ -58,10 +55,7 @@ public class ShopController {
 		model.addAttribute("relationList",relationList);
 		model.addAttribute("lshBoardVo", lshBoardVo);
 		model.addAttribute("imgList", imgList);
-		model.addAttribute("S_sizeCnt", S_sizeCnt);
-		model.addAttribute("M_sizeCnt", M_sizeCnt);
-		model.addAttribute("L_sizeCnt", L_sizeCnt);
-		model.addAttribute("XL_sizeCnt", XL_sizeCnt);
+		model.addAttribute("sizeList", sizeList);
 	}
 	
 }
