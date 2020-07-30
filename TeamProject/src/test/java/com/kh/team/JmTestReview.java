@@ -11,9 +11,12 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.kh.team.domain.JmContactVo;
 import com.kh.team.domain.JmMemberVo;
 import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmReviewVo;
+import com.kh.team.jm.JmContactDao;
+import com.kh.team.jm.JmContactService;
 import com.kh.team.jm.JmReviewDao;
 import com.kh.team.jm.JmReviewService;
 
@@ -110,8 +113,23 @@ public class JmTestReview {
 			
 		}
 		
+		@Inject
+		private JmContactDao jmContactDao;
 		
+		@Inject
+		private JmContactService jmContactService;
 		
+		//contact 목록 조회
+		@Test
+		public void selectContactList() throws Exception{
+			jmContactDao.selectContactList();
+		}
+		
+		// contact 목록 조회
+		@Test
+		public void selectContactLists() throws Exception {
+			jmContactService.selectContactList();
+		}
 		
 		
 }

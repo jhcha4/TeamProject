@@ -33,7 +33,7 @@ $(function() {
 				var p_num = $("#p_num").text();
 				var p_serve = $("#p_serve").text();
 			    var targetLocation = "/lsh/shop_single?p_num="+p_num+"&p_serve="+p_serve;
-			    location.href = "/cjh/login?targetLocation=" + targetLocation;
+			    location.href = "/jm/jm_login?targetLocation=" + targetLocation;
 // 				location.href="/lsh/shop_single?p_num="+p_num+"&p_serve="+p_serve;
 			}
 		} else {

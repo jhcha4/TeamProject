@@ -57,24 +57,26 @@
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
               
-              <c:choose>
-			<c:when test="${not empty sessionScope.u_id }">
-				<p>${sessionScope.u_id}님 로그인중</p>
-				<a href="/jm/logout" class="btn btn-default btn-danger">로그아웃</a>
-			</c:when>
-			<c:otherwise>
-				<a class="btn btn-default btn-sm" href="/jm/jm_signUp">signUp</a>
-				<a class="btn btn-default btn-sm" href="/jm/jm_login">Login</a>
-			</c:otherwise>		
-		</c:choose>
+<%--               <c:choose> --%>
+<%-- 			<c:when test="${not empty sessionScope.u_id }"> --%>
+<%-- 				<p>${sessionScope.u_id}님 로그인중</p> --%>
+<!-- 				<a href="/jm/logout" class="btn btn-basic btn-flat">logout</a> -->
+<%-- 			</c:when> --%>
+<%-- 			<c:otherwise> --%>
+<!-- 				<a class="btn btn-default btn-sm" href="/jm/jm_signUp">signUp</a> -->
+<!-- 				<a class="btn btn-default btn-sm" href="/jm/jm_login">Login</a> -->
+<%-- 			</c:otherwise>		 --%>
+<%-- 		</c:choose> --%>
               
                 <ul>
                   <c:choose>
 		             <c:when test="${not empty sessionScope.u_id}">
-		              	<a href="/cjh/logout" class="btn btn-basic btn-flat">logout</a>
+		             	<a>${sessionScope.u_id}님 로그인중</a>
+		              	<a href="/jm/logout" class="btn btn-basic btn-flat">logout</a>
 		             </c:when>
 					<c:otherwise>
-		              	<a href="/cjh/login" class="btn btn-basic btn-flat">login</a>
+						<a class="btn btn-default btn-sm" href="/jm/jm_signUp">signUp</a>
+		              	<a href="/jm/jm_login" class="btn btn-basic btn-flat">login</a>
 		            </c:otherwise>
 		          </c:choose>
                   <li><a href="/cjh/mypage"><span class="icon icon-person"></span></a></li>
