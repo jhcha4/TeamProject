@@ -123,8 +123,9 @@ public class CjhMyInfoController {
 	
 	//	회원정보 수정 폼
 	@RequestMapping(value="/modifyMyInfo", method = RequestMethod.GET)
-	public void modifyMyInfoGet(String u_id, Model model) throws Exception {
+	public void modifyMyInfoGet(Model model, HttpSession session) throws Exception {
 //		System.out.println("u_id : " + u_id);
+		String u_id = (String)session.getAttribute("u_id");
 		CjhUserVo userVo = userService.selectUser(u_id);
 //		System.out.println("userVo : " + userVo);
 		model.addAttribute("userVo", userVo);

@@ -88,25 +88,24 @@ $(document).ready(function() {
 
 <div class="site-section">
 	<div class="container">
-		<div class="title"><h1>ORDER</h1></div>
-		<div class="site-blocks-table">
-		
-			<div class="row">
-				<div class="col-md-12 mb-5">
-					<div class="d-flex"> 
-						<div class="dropdown mr-1 ml-md-auto">
-						<select id="p_status" id="p_status">
-							<option value=1 <c:if test="${p_status == 1}">selected</c:if>>주문목록</option>
-							<option value=1002 <c:if test="${p_status == 1002}">selected</c:if>>주문접수</option>
-							<option value=1003 <c:if test="${p_status == 1003}">selected</c:if>>출고</option>
-							<option value=1004 <c:if test="${p_status == 1004}">selected</c:if>>배송중</option>
-							<option value=1005 <c:if test="${p_status == 1005}">selected</c:if>>배송완료</option>
-							<option value=1006 <c:if test="${p_status == 1006}">selected</c:if>>구매확정</option>
-						</select>
-						</div>
+		<div class="title" style="text-align:center;"><h1>ORDER</h1></div>
+		<div class="row">
+			<div class="col-md-12 mb-5">
+				<div class="d-flex"> 
+					<div class="dropdown mr-1 ml-md-auto">
+					<select id="p_status" id="p_status">
+						<option value=1 <c:if test="${p_status == 1}">selected</c:if>>주문목록</option>
+						<option value=1002 <c:if test="${p_status == 1002}">selected</c:if>>주문접수</option>
+						<option value=1003 <c:if test="${p_status == 1003}">selected</c:if>>출고</option>
+						<option value=1004 <c:if test="${p_status == 1004}">selected</c:if>>배송중</option>
+						<option value=1005 <c:if test="${p_status == 1005}">selected</c:if>>배송완료</option>
+						<option value=1006 <c:if test="${p_status == 1006}">selected</c:if>>구매확정</option>
+					</select>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="site-blocks-table">
 		
 			<table class="table table-bordered">
 				<thead>
