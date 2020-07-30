@@ -5,15 +5,15 @@
 
 <mapper namespace="mappers.cjhpoint-mapper">
 	<update id="usePoint">
-		update tbl_usertest set
-			u_point = (select u_point from tbl_usertest
+		update tbl_user set
+			u_point = (select u_point from tbl_user
 					   where u_id = #{u_id}) - #{totalPrice}
 		where u_id = #{u_id}
 	</update>
 	
 	<update id="getPoint">
-		update tbl_usertest set
-			u_point = (select u_point from tbl_usertest
+		update tbl_user set
+			u_point = (select u_point from tbl_user
 					   where u_id = #{u_id}) + #{totalPrice}
 		where u_id = #{u_id}
 	</update>
@@ -29,7 +29,7 @@
 	</insert>
 	
 	<select id="getUserPoint" resultType="int">
-		select u_point from tbl_usertest
+		select u_point from tbl_user
 		where u_id = #{u_id}
 	</select>
 	

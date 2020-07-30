@@ -31,7 +31,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 				} 
 			}
 			session.setAttribute("targetLocation", targetLocation);
-			response.sendRedirect("/cjh/login");
+			response.sendRedirect("/jm/jm_login");
 			return false;		//	요청을 계속 진행하지 않음
 		}
 		return true;

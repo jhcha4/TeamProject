@@ -69,14 +69,14 @@
 		</c:choose>
               
                 <ul>
-                  <c:choose>
-		             <c:when test="${not empty sessionScope.u_id}">
-		              	<a href="/cjh/logout" class="btn btn-basic btn-flat">logout</a>
-		             </c:when>
-					<c:otherwise>
-		              	<a href="/cjh/login" class="btn btn-basic btn-flat">login</a>
-		            </c:otherwise>
-		          </c:choose>
+<%--                   <c:choose> --%>
+<%-- 		             <c:when test="${not empty sessionScope.u_id}"> --%>
+<!-- 		              	<a href="/cjh/logout" class="btn btn-basic btn-flat">logout</a> -->
+<%-- 		             </c:when> --%>
+<%-- 					<c:otherwise> --%>
+<!-- 		              	<a href="/cjh/login" class="btn btn-basic btn-flat">login</a> -->
+<%-- 		            </c:otherwise> --%>
+<%-- 		          </c:choose> --%>
                   <li><a href="/cjh/mypage"><span class="icon icon-person"></span></a></li>
                   <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                   <li>

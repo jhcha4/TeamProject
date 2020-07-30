@@ -5,16 +5,16 @@
 
 <mapper namespace="mappers.cjhuser-mapper">
 	<select id="selectUser" resultType="CjhUserVo">
-		select * from tbl_usertest
+		select * from tbl_user
 		where u_id = #{u_id}
 	</select>
 	
 	<select id="selectMemberByIdAndPw" resultType="CjhUserVo">
-		select * from tbl_usertest where u_id = #{u_id} and u_pw = #{u_pw}
+		select * from tbl_user where u_id = #{u_id} and u_pw = #{u_pw}
 	</select>
 	
 	<update id="updateUser">
-		update tbl_usertest set
+		update tbl_user set
 		    u_pw = #{u_pw},
 		    u_name = #{u_name},
 		    u_email = #{u_email},
