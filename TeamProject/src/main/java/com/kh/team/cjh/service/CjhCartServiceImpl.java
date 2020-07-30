@@ -92,11 +92,13 @@ public class CjhCartServiceImpl implements CjhCartService {
 		return cartDao.getCountCart(u_id);
 	}
 
+	//	주문목록 개수 구하기
 	@Override
 	public int getCountOrder(String u_id, int p_status) throws Exception {
 		return cartDao.getCountOrder(u_id, p_status);
 	}
 
+	//	구매확정 버튼
 	@Override
 	public void comfirmOrder(int c_num) throws Exception {
 		cartDao.comfirmOrder(c_num);

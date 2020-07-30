@@ -154,7 +154,6 @@ public class CjhCartController {
 		int totalCount = cartService.getCountOrder(u_id, p_status);
 		pagingDto.setTotalCount(totalCount);
 		List<CjhCartVo> list = cartService.getOrder(u_id, p_status, pagingDto);
-		
 		for (CjhCartVo vo : list) {
 			String title_name = vo.getTitle_name();
 			String front = title_name.substring(0, title_name.lastIndexOf("/") + 1);

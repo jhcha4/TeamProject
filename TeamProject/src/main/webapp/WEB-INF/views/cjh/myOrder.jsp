@@ -56,11 +56,12 @@ $(document).ready(function() {
 	$("button[name=btnConfirm]").click(function(e) {
 		e.preventDefault();
 		var c_num = $(this).parent().prev().prev().prev().prev().prev().prev().text().trim();
-		console.log("c_num : " + c_num);
-		var p_status = $("#p_status").val();
-		$("#confirm > input[name=c_num]").val(c_num);
-		$("#confirm > input[name=p_status]").val(p_status);
-		$("#confirm").submit();
+		if(confirm("구매확정후 취소가 불가능합니다 구매확정 하시겠습니까?")) {
+			var p_status = $("#p_status").val();
+			$("#confirm > input[name=c_num]").val(c_num);
+			$("#confirm > input[name=p_status]").val(p_status);
+			$("#confirm").submit();
+		}
 	});
 });
 </script>

@@ -126,6 +126,7 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		return sqlSession.selectOne(NAMESPACE + "checkCart", paramMap);
 	}
 
+	//	결제시 상품개수 차감
 	@Override
 	public void minusCount(int p_num, String p_size, int p_count) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
@@ -135,6 +136,7 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		sqlSession.update(NAMESPACE + "minusCount", paramMap);
 	}
 
+	//	구매확정 버튼
 	@Override
 	public void comfirmOrder(int c_num) throws Exception {
 		sqlSession.update(NAMESPACE + "confirmOrder", c_num);
