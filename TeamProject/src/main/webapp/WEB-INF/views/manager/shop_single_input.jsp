@@ -224,7 +224,42 @@ $(function() {
 					</p>
 					<!-- 사이즈 -->
 					<div class="mb-1 d-flex dress_size">
-							
+						<div  style='float: left;'>
+						<label for='option-sm' class='d-flex mr-3 mb-3'>
+						<span class='d-inline-block mr-2' style='top: -2px; position: relative;''>
+						<label  style='margin: 10px;'>S</label>
+						<input type='hidden' name='p_size' value='S'>
+						<input type='text' id='p_count' name='p_count' value='0'>
+						</span>
+						</label>
+						</div>
+						<div  style='float: left;'>
+						<label for='option-sm' class='d-flex mr-3 mb-3'>
+						<span class='d-inline-block mr-2' style='top: -2px; position: relative;''>
+						<label  style='margin: 10px;'>M</label>
+						<input type='hidden' name='p_size' value='M'>
+						<input type='text' id='p_count' name='p_count' value='0'>
+						</span>
+						</label>
+						</div>
+						<div  style='float: left;'>
+						<label for='option-sm' class='d-flex mr-3 mb-3'>
+						<span class='d-inline-block mr-2' style='top: -2px; position: relative;''>
+						<label  style='margin: 10px;'>L</label>
+						<input type='hidden' name='p_size' value='L'>
+						<input type='text' id='p_count' name='p_count' value='0'>
+						</span>
+						</label>
+						</div>
+						<div  style='float: left;'>
+						<label for='option-sm' class='d-flex mr-3 mb-3'>
+						<span class='d-inline-block mr-2' style='top: -2px; position: relative;''>
+						<label  style='margin: 10px;'>XL</label>
+						<input type='hidden' name='p_size' value='XL'>
+						<input type='text' id='p_count' name='p_count' value='0'>
+						</span>
+						</label>
+						</div>
 							
 							
 					</div>
