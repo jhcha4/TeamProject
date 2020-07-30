@@ -1,80 +1,242 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ include file="../include/head.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
-    <div class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0"><a href="/cjh/index">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Contact</strong></div>
-        </div>
-      </div>
-    </div>  
 
-    <div class="site-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="h3 mb-3 text-black">Q&A</h2>
-          </div>
-          <div class="col-md-7">
+ 
 
-            <form action="#" method="post">
-              
-              <div class="p-3 p-lg-5 border">
-                <div class="form-group row">
-                  <div class="col-md-6">
-                    <label for="c_fname" class="text-black">아이디 <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="c_fname" name="c_fname">
-                  </div>
-                  
-                  <div class="col-md-6">
-                   
-                  </div>
-                  
-                </div>
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="c_email" class="text-black">Email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="c_email" name="c_email" placeholder="">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="c_subject" class="text-black">제목 </label>
-                    <input type="text" class="form-control" id="c_subject" name="c_subject">
-                  </div>
-                </div>
 
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="c_message" class="text-black">내용 </label>
-                    <textarea name="c_message" id="c_message" cols="30" rows="7" class="form-control"></textarea>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-lg-12">
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="메일 전송">
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="col-md-5 ml-auto">
-            <div class="p-4 border mb-3">
-              <span class="d-block text-primary h6 text-uppercase">Korea</span>
-              <p class="mb-0">19-3 Banpo-dong, Seocho-gu, Seoul ,Korea</p>
-            </div>
-            <div class="p-4 border mb-3">
-              <span class="d-block text-primary h6 text-uppercase">Japan</span>
-              <p class="mb-0">kitano, senkawa, Mitaka-shi, tokyo, Japan</p>
-            </div>
-            
+<script>
+$(function(){
 
-          </div>
-        </div>
-      </div>
-    </div>
+	//몇개씩 보기
+	$("select[name=perPage]").change(function(){
+		console.log($(this).val());
+		$("#frmPage >input[name=perPage]").val($(this).val());
+		$("#frmPage").submit();
+		
+	});
+	
+	
+	//페이지 번호
+	
+	$("a.page-link").click(function(e){
+		e.preventDefault();
+		var page = $(this).attr("href").trim();
+							//속성이 name이 page인것
+		$("#frmPage>input[name=page]").val(page);
+		$("#frmPage").submit();	
+	});
+	
+	
+	
+	
+	//검색 버튼
+	$("#btnSearch").click(function(){
+		var searchType = $("select[name=searchType]").val();
+		var keyword = $("#keyword").val();
+		console.log(searchType);
+		$("#frmPage >input[name=searchType]").val(searchType);
+		$("#frmPage >input[name=keyword]").val(keyword);
+		$("#frmPage").submit();	
+	});
+	
+	//현재 페이지 액티브
+	
+	$("a.page-link").each(function(){
+		var page = $(this).attr("href");
+		if(page =="${jmPagingDto.page}"){
+			$(this).parent().addClass("active");
+			return;
+		}	
+	});
+	
+	//조회수
+$("a.review_title").click(function(e){
+		console.log(e);
+ 
+	
+	
+});
+	
+	
+	
+	
+});
+
+
+</script>
+
+
+
+
+${jmContactVo}
+
+
+
+<!-- 페이지 링크 -->
+
+<form id="frmPage" action="/jm/jm_contact" method="get"> 
+	<input type="hidden" name=c_info value="${jmContactVo.c_info}"> 
+	<input type="hidden" name=page value="${jmPagingDto.page}"> 
+	<input type="hidden" name=perPage value="${jmPagingDto.perPage}"> 
+	<input type="hidden" name=searchType value="${jmPagingDto.searchType}"> 
+	<input type="hidden" name=keyword value="${jmPagingDto.keyword}"> 
+
+
+
+
+</form>
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+		
+			<c:choose>
+				<c:when test="${not empty sessionScope.u_id}">
+					<a href="/jm/jm_insertContactForm" class="btn btn-info">문의 하기</a>
+				</c:when>
+				<c:otherwise>
+					<button class="btn btn-danger">상품문의는 로그인시 가능</button>  
+				</c:otherwise>
+			</c:choose>
+		
+		
+		<select name="perPage">
+			<c:forEach begin="5" end="20" step="5" var="i">
+				<option value="${i}"
+					<c:if test="${i==jmPagingDto.perPage}">selected</c:if>
+				>${i}줄씩보기</option>
+			</c:forEach>
+		</select>
+		
+		
+		
+		
+		
+		
+		
+		<select name="searchType" class="form-inline">
+		
+		<option value="c_subject"
+		<c:if test="${jmPagingDto.searchType =='c_subject'}">selected</c:if>
+		>제목</option>
+		
+		<option value="c_id"
+		<c:if test="${jmPagingDto.searchType =='c_id'}">selected</c:if>
+		>아이디</option>
+		
+		
+		</select>
+		
+		<input type="text" id="keyword" name="keyword" class="form-inline"
+			value="${jmPagingDto.keyword}"/>
+		
+		<button type="button" id="btnSearch" class="btn btn-danger">검색</button>
+		
+		
+		
+		
+		
+		
+		
+			<table class="table">
+				
+					
+				<thead>
+					<tr>
+						<th>
+							문의 번호[내용보기]
+							
+						</th>
+						<th>
+							아이디
+						</th>
+						<th>
+							제목
+						</th>
+						<th>
+							시간
+						</th>
+						<th>
+							조회수
+						</th>
+						
+					</tr>
+					
+				</thead>
+				<tbody>
+				<c:forEach items="${list}" var="jmContactVo">
+					<tr class="table-danger">
+						<td>
+						<a href="/jm/jm_contactInfo/${jmContactVo.c_info}"  class="review_title btn btn-sm btn-danger">${jmContactVo.c_info}</a>
+						</td>
+						<td>
+							${jmContactVo.c_id}
+						</td>
+						<td>
+							${jmContactVo.c_subject}
+						</td>
+						<td>
+							${jmContactVo.c_time}
+						</td>
+					
+						<td>
+							${jmContactVo.c_viewcnt}
+						</td>
+					</tr>
+					
+					</c:forEach>	
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-6">
+			<nav>
+				<ul class="pagination" style="">
+				
+					<c:if test="${jmPagingDto.startPage !=1}">
+				
+					<li class="page-item">
+						<a class="page-link" href="${jmPagingDto.startPage-1 }">&laquo;</a>
+					</li>
+					</c:if>
+					
+					<!-- 페이지 넘버링 -->
+					<c:forEach begin="${jmPagingDto.startPage}" end="${jmPagingDto.endPage}" var="g">
+					<li class="page-item">
+						<a class="page-link" href="${g}">${g}</a>
+					</c:forEach>
+					<c:if test="${jmPagingDto.endPage <jmPagingDto.totalPage}">
+					<li class="page-item">
+						<a class="page-link" href="${jmPagingDto.endPage+1 }">&raquo;</a>
+					</li>
+					</c:if>
+				</ul>
+			</nav>
+		</div>
+		<div class="col-md-3">
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
 
 
 <%@ include file="../include/foot.jsp" %>
