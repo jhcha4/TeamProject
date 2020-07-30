@@ -13,6 +13,15 @@
 		where u_id =#{u_id} and u_pw=#{u_pw}
 
 	</select>
+	
+	<!-- 등급 세션 가져오기 -->
+	<select id="selectGrade" resultType="string">
+		select u_grade from tbl_user
+		where u_id =#{u_id}
+	
+	</select>
+	
+	
 
 	<!-- 회원가입 -->
 	

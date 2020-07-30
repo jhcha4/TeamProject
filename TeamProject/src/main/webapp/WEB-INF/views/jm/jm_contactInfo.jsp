@@ -66,7 +66,7 @@
 				
 				
 				
-				<a href="/jm/jm_Contact" class="btn btn-danger">목록으로 가기</a>
+				<a href="/jm/jm_contact" class="btn btn-danger">목록으로 가기</a>
 				
 				<c:choose>
 					<c:when test="${sessionScope.u_id == jmContactVo.c_id}">
