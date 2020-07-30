@@ -25,7 +25,19 @@ public interface LSH_BoardDao {
 	// 이미지 불러오기
 	public List<LshBoardVo> getImg(int p_num) throws Exception;
 	
-	//	p_num 으로 p_serve 구하기
+	// p_num 으로 p_serve 구하기
 	public String getServe(int p_num) throws Exception;
+	
+	// S사이즈 개수 구하기
+	public String S_sizeCnt(int p_num) throws Exception;
+	
+	// M사이즈 개수 구하기
+	public String M_sizeCnt(int p_num) throws Exception;
+	
+	// L사이즈 개수 구하기
+	public String L_sizeCnt(int p_num) throws Exception;
+	
+	// XL사이즈 개수 구하기
+	public String XL_sizeCnt(int p_num) throws Exception;
 }
 

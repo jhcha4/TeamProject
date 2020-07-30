@@ -50,4 +50,24 @@ public class LSH_BoardServiceImpl implements LSH_BoardService {
 		return boardDao.getServe(p_num);
 	}
 
+	@Override
+	public String S_sizeCnt(int p_num) throws Exception {
+		return boardDao.S_sizeCnt(p_num);
+	}
+
+	@Override
+	public String M_sizeCnt(int p_num) throws Exception {
+		return boardDao.M_sizeCnt(p_num);
+	}
+
+	@Override
+	public String L_sizeCnt(int p_num) throws Exception {
+		return boardDao.L_sizeCnt(p_num);
+	}
+
+	@Override
+	public String XL_sizeCnt(int p_num) throws Exception {
+		return boardDao.XL_sizeCnt(p_num);
+	}
+
 }

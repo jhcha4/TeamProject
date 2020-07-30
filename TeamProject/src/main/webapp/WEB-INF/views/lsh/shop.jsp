@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="../include/head.jsp" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <script>
 $(function() {
@@ -132,7 +133,9 @@ $(function() {
 	                  <div class="block-4-text p-4">
 	                    <h3><a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}">${lshBoardVo.p_name}</a></h3>
 	                    <p class="mb-0">${lshBoardVo.p_content}</p>
-	                    <p class="text-primary font-weight-bold">${lshBoardVo.p_price}원</p>
+	                    <p class="text-primary font-weight-bold">
+	                    <fmt:formatNumber value="${lshBoardVo.p_price}" pattern="#,###"/>원
+	                    </p>
 	                  </div>
 	                  <div class="block-4-text right">
 	                    <p>조회수 : ${lshBoardVo.p_viewCnt}</p>

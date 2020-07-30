@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="../include/head.jsp" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <script>
 $(function() {
@@ -97,12 +98,12 @@ $(function() {
 		if (isChecked == true) {
 			return;
 		}
-		var html = "<div class='input-group mb-3' style='max-width: auto;'>";
-		html += "<h5 id='name'>${lshBoardVo.p_name}[</h5><h5 name=p_size>"+size+"</h5><h5>]</h5>";
-		html += "<h5>&nbsp&nbsp| 수량 :</h5>"
+		var html = "<div class='input-group mb-3' style='max-width: auto; border:1px solid blue;'>";
+		html += "<h4 id='name'>${lshBoardVo.p_name}[</h4><h4 name=p_size>"+size+"</h4><h4>]</h4>";
+		html += "<h4>&nbsp&nbsp| 수량 :</h4>"
 		html += "<input name='p_count' type='number' min='1' class='form-control text-center' value='1'>";
 		html += "<a href='#'class='delete'><h3>x</h3></a>"
-		html += "<h5 class='sumPrice'>${lshBoardVo.p_price}</h5><h5>원</h5>"
+		html += "<h4 class='sumPrice'>${lshBoardVo.p_price}</h4><h4>원</h4>"
 		html += "</div>";
 		
 		$("#hidden").append(html);
@@ -130,6 +131,7 @@ $(function() {
 		var totalPrice = Number(total);
 		$("#total").text(totalPrice - nPrice);
 		that.parent().remove();
+		arrSize = [];
 	});
 	$("#hidden").on("change", "input[name=p_count]", function() {
 		var totalPrice = 0;
@@ -153,6 +155,19 @@ $(function() {
 		$("#singlePage").attr("action", $(this).attr("href"));
 		$("#singlePage").submit();
 	});
+	
+	if ("${S_sizeCnt}" == 0 || "${S_sizeCnt}" == null) {
+		$("select option[value='S']").prop('disabled',true);
+	}
+	if ("${M_sizeCnt}" == 0 || "${M_sizeCnt}" == null) {
+		$("select option[value='M']").prop('disabled',true);
+	}
+	if ("${L_sizeCnt}" == 0 || "${L_sizeCnt}" == null) {
+		$("select option[value='L']").prop('disabled',true);
+	}
+	if ("${XL_sizeCnt}" == 0 || "${XL_sizeCnt}" == null) {
+		$("select option[value='XL']").prop('disabled',true);
+	}
 });
 </script>
 <%@ include file="frmPage.jsp" %>
@@ -188,10 +203,51 @@ $(function() {
 		            <select id="size">
 		            	<c:if test="${lshBoardVo.p_main == 'T' || lshBoardVo.p_main == 'P'}">
 		            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
-			               	<option value="S">S</option>
-			               	<option value="M">M</option>
-			               	<option value="L">L</option>
-			               	<option value="XL">XL</option>
+		            		
+			               	<option value="S">S 수량:(
+			               		<c:choose>
+					               	<c:when test="${S_sizeCnt == null || S_sizeCnt == 0}">
+										품절
+									</c:when>
+									<c:otherwise>
+										${S_sizeCnt}
+									</c:otherwise> 
+								</c:choose>
+							)</option>
+							
+			               	<option value="M">M 수량:(
+			               		<c:choose>
+					               	<c:when test="${M_sizeCnt == null || M_sizeCnt == 0}">
+										품절
+									</c:when>
+									<c:otherwise>
+										${M_sizeCnt}
+									</c:otherwise> 
+								</c:choose>
+							)</option>
+							
+							<option value="L">L 수량:(
+			               		<c:choose>
+					               	<c:when test="${L_sizeCnt == null || L_sizeCnt == 0}">
+										품절
+									</c:when>
+									<c:otherwise>
+										${L_sizeCnt}
+									</c:otherwise> 
+								</c:choose>
+							)</option>
+							
+							<option value="XL">XL 수량:(
+			               		<c:choose>
+					               	<c:when test="${XL_sizeCnt == null || XL_sizeCnt == 0}">
+										품절
+									</c:when>
+									<c:otherwise>
+										${XL_sizeCnt}
+									</c:otherwise> 
+								</c:choose>
+							)</option>
+							
 			            </c:if>
 			            
 			            <c:if test="${lshBoardVo.p_main == 'S'}">
@@ -213,11 +269,14 @@ $(function() {
 		            	<h5>&nbsp&nbsp| 수량 :</h5>
 		            	<input name='p_count' type='number' min='1' class='form-control text-center' value='1'>
 		            	<a></a>
-		            	<h5 class='sumPrice'>${lshBoardVo.p_price}</h5><h5>원</h5>
+		            	<h5 class='sumPrice'>
+		            		${lshBoardVo.p_price}
+		            	</h5>
+		            	<h5>원</h5>
 		            </div>
 	            </c:if>
             </div>
-            <h2>가격 :<span id="total">0</span>원</h2>
+            <h2>가격 :<span id="total" style="color: black">0</span>원</h2>
             
             <div id="p_num" style="display:none">${lshBoardVo.p_num}</div>
             <div id="p_serve" style="display:none">${lshBoardVo.p_serve}</div>
@@ -256,7 +315,9 @@ $(function() {
                     	${lshBoardVo.p_name}</a>
                     </h3>
                     <p class="mb-0">${lshBoardVo.p_content}</p>
-                    <p class="text-primary font-weight-bold">${lshBoardVo.p_price}원</p>
+                    <p class="text-primary font-weight-bold">
+                    <fmt:formatNumber value="${lshBoardVo.p_price}" pattern="#,###"/>원
+					</p>
                   </div>
                 </div>
               </div>
