@@ -1,13 +1,11 @@
 package com.kh.team.cjh.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.team.cjh.service.CjhCartService;
 import com.kh.team.cjh.service.CjhPointService;
-import com.kh.team.cjh.service.CjhUserService;
 import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.CjhPagingDto;
 import com.kh.team.domain.LshBoardVo;
