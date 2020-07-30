@@ -106,10 +106,10 @@ $(function() {
                     <select name="type" id="type">
                     	<option value="PL" 
                     		<c:if test="${lshBoardDto.type == 'PL'}">selected</c:if>
-                    	>낮은 가격순</option>
+                    	>가격 낮은순</option>
                     	<option value="PH" 
                     	    <c:if test="${lshBoardDto.type == 'PH'}">selected</c:if>
-                    	>높은 가격순</option>
+                    	>가격 높은순</option>
                     	<option value="VH" 
                     	    <c:if test="${lshBoardDto.type == 'VH'}">selected</c:if>
                     	>조회 높은순</option>
