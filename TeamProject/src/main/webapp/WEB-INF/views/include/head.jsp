@@ -57,24 +57,26 @@
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
               
-              <c:choose>
-			<c:when test="${not empty sessionScope.u_id }">
-				<p>${sessionScope.u_id}님 로그인중</p>
-				<a href="/jm/logout" class="btn btn-default btn-danger">로그아웃</a>
-			</c:when>
-			<c:otherwise>
-				<a class="btn btn-default btn-sm" href="/jm/jm_signUp">signUp</a>
-				<a class="btn btn-default btn-sm" href="/jm/jm_login">Login</a>
-			</c:otherwise>		
-		</c:choose>
+<%--               <c:choose> --%>
+<%-- 			<c:when test="${not empty sessionScope.u_id }"> --%>
+<%-- 				<p>${sessionScope.u_id}님 로그인중</p> --%>
+<!-- 				<a href="/jm/logout" class="btn btn-basic btn-flat">logout</a> -->
+<%-- 			</c:when> --%>
+<%-- 			<c:otherwise> --%>
+<!-- 				<a class="btn btn-default btn-sm" href="/jm/jm_signUp">signUp</a> -->
+<!-- 				<a class="btn btn-default btn-sm" href="/jm/jm_login">Login</a> -->
+<%-- 			</c:otherwise>		 --%>
+<%-- 		</c:choose> --%>
               
                 <ul>
                   <c:choose>
 		             <c:when test="${not empty sessionScope.u_id}">
-		              	<a href="/cjh/logout" class="btn btn-basic btn-flat">logout</a>
+		             	<a>${sessionScope.u_id}님 로그인중</a>
+		              	<a href="/jm/logout" class="btn btn-basic btn-flat">logout</a>
 		             </c:when>
 					<c:otherwise>
-		              	<a href="/cjh/login" class="btn btn-basic btn-flat">login</a>
+						<a class="btn btn-default btn-sm" href="/jm/jm_signUp">signUp</a>
+		              	<a href="/jm/jm_login" class="btn btn-basic btn-flat">login</a>
 		            </c:otherwise>
 		          </c:choose>
                   <li><a href="/cjh/mypage"><span class="icon icon-person"></span></a></li>
@@ -103,9 +105,9 @@
       <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="has">
-              <a href="/cjh/index" >Home</a>
-             <!--  <ul class="dropdown">
+            <li class="has-children active">
+              <a href="/cjh/index">Home</a>
+              <ul class="dropdown">
                 <li><a href="#">Menu One</a></li>
                 <li><a href="#">Menu Two</a></li>
                 <li><a href="#">Menu Three</a></li>
@@ -117,7 +119,7 @@
                     <li><a href="#">Menu Three</a></li>
                   </ul>
                 </li>
-              </ul> -->
+              </ul>
             </li>
             <li>
               <a href="/jm/jm_about">About</a>
@@ -132,42 +134,42 @@
            		<a href="/lsh/shop">Shop</a>
            		<ul class="dropdown">
 					<li class="has-children">
-	                  <a href="/lsh/shop?p_main=T&type=L&page=1">상의</a>
+	                  <a href="/lsh/shop?p_main=T&type=PL&page=1">상의</a>
 	                  <ul class="dropdown">
-	                    <li><a href="/lsh/shop?p_serve=TH&type=L&page=1">반팔</a></li>
-	                    <li><a href="/lsh/shop?p_serve=TL&type=L&page=1">긴팔</a></li>
-	                    <li><a href="/lsh/shop?p_serve=TS&type=L&page=1">셔츠</a></li>
-	                    <li><a href="/lsh/shop?p_serve=TM&type=L&page=1">맨투맨</a></li>
+	                    <li><a href="/lsh/shop?p_serve=TH&type=PL&page=1">반팔</a></li>
+	                    <li><a href="/lsh/shop?p_serve=TL&type=PL&page=1">긴팔</a></li>
+	                    <li><a href="/lsh/shop?p_serve=TS&type=PL&page=1">셔츠</a></li>
+	                    <li><a href="/lsh/shop?p_serve=TM&type=PL&page=1">맨투맨</a></li>
 	                  </ul>
 	                </li>
 	                 
 	                <li class="has-children">
-	                  <a href="/lsh/shop?p_main=P&type=L&page=1">하의</a>
+	                  <a href="/lsh/shop?p_main=P&type=PL&page=1">하의</a>
 	                  <ul class="dropdown">
-	                    <li><a href="/lsh/shop?p_serve=PJ&type=L&page=1">청바지</a></li>
-	                    <li><a href="/lsh/shop?p_serve=PM&type=L&page=1">면바지</a></li>
-	                    <li><a href="/lsh/shop?p_serve=PH&type=L&page=1">반바지</a></li>
-	                    <li><a href="/lsh/shop?p_serve=P7&type=L&page=1">7부바지</a></li>
+	                    <li><a href="/lsh/shop?p_serve=PJ&type=PL&page=1">청바지</a></li>
+	                    <li><a href="/lsh/shop?p_serve=PM&type=PL&page=1">면바지</a></li>
+	                    <li><a href="/lsh/shop?p_serve=PH&type=PL&page=1">반바지</a></li>
+	                    <li><a href="/lsh/shop?p_serve=P7&type=PL&page=1">7부바지</a></li>
 	                  </ul>
 	                </li>
 	                  
 	                <li class="has-children">
-					  <a href="/lsh/shop?p_main=S&type=L&page=1">신발</a>
+					  <a href="/lsh/shop?p_main=S&type=PL&page=1">신발</a>
 	                  <ul class="dropdown">
-	                    <li><a href="/lsh/shop?p_serve=SD&type=L&page=1">구두</a></li>
-	                    <li><a href="/lsh/shop?p_serve=SU&type=L&page=1">운동화</a></li>
-	                    <li><a href="/lsh/shop?p_serve=SS&type=L&page=1">슬리퍼</a></li>
-	                    <li><a href="/lsh/shop?p_serve=SR&type=L&page=1">로퍼</a></li>
+	                    <li><a href="/lsh/shop?p_serve=SD&type=PL&page=1">구두</a></li>
+	                    <li><a href="/lsh/shop?p_serve=SU&type=PL&page=1">운동화</a></li>
+	                    <li><a href="/lsh/shop?p_serve=SS&type=PL&page=1">슬리퍼</a></li>
+	                    <li><a href="/lsh/shop?p_serve=SR&type=PL&page=1">로퍼</a></li>
 	                  </ul>
 	                </li>
 	                  
 					<li class="has-children">	                  
-	                  <a href="/lsh/shop?p_main=A&type=L&page=1">악세사리</a>
+	                  <a href="/lsh/shop?p_main=A&type=PL&page=1">악세사리</a>
 	                  <ul class="dropdown">
-	                    <li><a href="/lsh/shop?p_serve=AR&type=L&page=1">반지</a></li>
-	                    <li><a href="/lsh/shop?p_serve=AW&type=L&page=1">지갑</a></li>
-	                    <li><a href="/lsh/shop?p_serve=AC&type=L&page=1">모자</a></li>
-	                    <li><a href="/lsh/shop?p_serve=AB&type=L&page=1">가방</a></li>
+	                    <li><a href="/lsh/shop?p_serve=AR&type=PL&page=1">반지</a></li>
+	                    <li><a href="/lsh/shop?p_serve=AW&type=PL&page=1">지갑</a></li>
+	                    <li><a href="/lsh/shop?p_serve=AC&type=PL&page=1">모자</a></li>
+	                    <li><a href="/lsh/shop?p_serve=AB&type=PL&page=1">가방</a></li>
 	                  </ul>
 	                </li>
 	                
@@ -178,9 +180,9 @@
             
             
             
-            <!-- <li><a href="#">Catalogue</a></li>
-            <li><a href="#">New Arrivals</a></li>  -->
-            <li><a href="/jm/jm_contact">Q&A</a></li>
+            <li><a href="#">Catalogue</a></li>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="/jm/jm_contact">Contact</a></li>
             <li><a href="/jm/jm_reviewForm">review</a></li>
           </ul>
           

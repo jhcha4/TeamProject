@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kh.team.cjh.service.CjhCartService;
+import com.kh.team.cjh.service.CjhPointService;
+import com.kh.team.cjh.service.CjhUserService;
 import com.kh.team.domain.JmEmailDto;
 import com.kh.team.domain.JmMemberVo;
 import com.kh.team.domain.JmPwEmailDto;
@@ -27,27 +30,30 @@ public class Jm_UserController {
 
 	@Inject
 	private JmMemberService jmMemberService;
+	@Inject
+	private CjhUserService userService;
+	@Inject
+	private CjhCartService cartService;
 
 	// 로그인 폼
 	@RequestMapping(value = "/jm_login", method = RequestMethod.GET)
-	public void jmLogin() throws Exception {
-
+	public void jmLogin(String targetLocation, HttpSession session) throws Exception {
+		System.out.println("targetLocation:" + targetLocation);
+		session.setAttribute("targetLocation", targetLocation);
 	}
 
 	// 로그인 처리
 	@RequestMapping(value = "/jm_login", method = RequestMethod.POST)
 	public String jmLoginPost(String u_id, String u_pw, HttpSession session, RedirectAttributes rttr) throws Exception {
 
-		boolean result = jmMemberService.selectMemberUserIdPw(u_id, u_pw);
-		System.out.println("result:" + result);
+		boolean result = userService.login(u_id, u_pw);
+		int count = cartService.getCountCart(u_id);
 		if (result == true) {
-
+			//	해당 사용자가 있다면 아이디를 세션에 저장
 			session.setAttribute("u_id", u_id);
-			System.out.println("ssession:" + session);
-			String targetLocation = (String) session.getAttribute("targetLocation");
-			System.out.println("targetLocation:" + targetLocation);
+			session.setAttribute("count", count);
+			String targetLocation = (String)session.getAttribute("targetLocation");
 			if (targetLocation != null && !targetLocation.equals("")) {
-
 				session.removeAttribute("targetLocation");
 				return "redirect:" + targetLocation;
 			}

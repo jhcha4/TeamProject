@@ -75,7 +75,7 @@ $(document).ready(function() {
 		var myAddress = mainAddress +" "+ detailAddress;
 		$("#myAddress").val(myAddress);
 // 		console.log("myAddress : " + myAddress);
-// 		$("#modifyForm").submit();
+		$("#modifyForm").submit();
 	});
 	
 	$("#btnCancel").click(function() {

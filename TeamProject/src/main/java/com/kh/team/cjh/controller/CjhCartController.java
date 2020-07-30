@@ -50,13 +50,14 @@ public class CjhCartController {
 		LshBoardVo boardVo = boardService.single(p_num);
 //		String p_serve = boardService.getServe(p_num);
 //		String targetLocation = "/lsh/shop_single?p_num="+p_num+"&p_serve="+p_serve;
-//		System.out.println("boardVo : " + boardVo);
+		System.out.println("boardVo : " + boardVo);
 //		System.out.println(session.getAttribute("u_id"));
 //		session.setAttribute("targetLocation", targetLocation);
 		String u_id = (String)session.getAttribute("u_id");
 		model.addAttribute("u_id", u_id);
 //			System.out.println("u_id : " + u_id);
 		cartService.insertCart(u_id, countArr, sizeArr, boardVo);
+		
 		int count = cartService.getCountCart(u_id);
 		session.setAttribute("count", count);
 		return "success";

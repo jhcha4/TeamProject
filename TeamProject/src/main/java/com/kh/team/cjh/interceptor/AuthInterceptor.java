@@ -13,25 +13,27 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		HttpSession session = request.getSession();
-		String targetLocation = (String) session.getAttribute("targetLocation");
+		String targetLocation = (String)session.getAttribute("targetLocation");
 		String u_id = (String)session.getAttribute("u_id");
+		
 		
 		
 		//	로그인 되어 있지 않다면
 		if (u_id == null || u_id.equals("")) {
 			
 			//	사용자가 요청했던경로
-			if (targetLocation != null && !targetLocation.equals("")) {
+//			if (targetLocation != null && !targetLocation.equals("")) {
 				String uri = request.getRequestURI();				//	/board/selectBybno
+				System.out.println("uri : " + uri);
 				String queryString = request.getQueryString();		//	bno=1&page=1&perpage=10
 				targetLocation = uri;
 //				System.out.println("queryString : " +queryString);
 				if (queryString != null) {
 					targetLocation += "?" + queryString;
 				} 
-			}
+//			}
 			session.setAttribute("targetLocation", targetLocation);
-			response.sendRedirect("/cjh/login");
+			response.sendRedirect("/jm/jm_login?targetLocation="+targetLocation);
 			return false;		//	요청을 계속 진행하지 않음
 		}
 		return true;
