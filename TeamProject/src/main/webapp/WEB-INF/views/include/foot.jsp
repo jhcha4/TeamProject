@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<a id="TopButton" class="ScrollButton"><img src="../../resources/images/scroll_up.png" alt="스크롤-업!"></a>
+<a id="BottomButton" class="ScrollButton"><img src="../../resources/images/scroll_down.png" alt="스크롤-다운!"></a>
 
     <footer class="site-footer border-top">
       <div class="container">
