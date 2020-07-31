@@ -138,16 +138,20 @@ $(function() {
 		});
 	});
 	$("#formSubmit").submit(function(){
+// 	$("#btnSubmit").cliclk(function(){
 		var upDiv = $("#imgFileDrop > div");
 		var titleDiv = $("#titleImg > div");
+		console.log("upDiv :   :"+upDiv);
+		console.log("titleDiv :   :"+titleDiv);
 		
-		if(upDiv ==null || upDiv.equals("")){
-			alert("사진을 등록해주세요");
-			return;
-		} else if(titleDiv ==null || titleDiv.equals("")){
-			alert("메인 사진을 등록해주세요.");
-			return;
-		}
+// 		if(upDiv ==null || upDiv.equals("")){
+// 			alert("사진을 등록해주세요");
+// 			return false;
+// 		} 
+// 		if(titleDiv ==null || titleDiv.equals("")){
+// 			alert("메인 사진을 등록해주세요.");
+// 			return false;
+// 		}
 		upDiv.each(function(index){
 			var filename = $(this).attr("data-filename");
 			var hiddenInput = "<input type='hidden' name='p_files["+index+"]' value='"+filename+"'/>";
@@ -166,9 +170,8 @@ $(function() {
 // 		console.log(p_size);
 // 		var size = $("label[name=p_size]").val();
 // 		console.log(size);
-		var size = $("input[name=p_size]").val();
-		console.log(size);
-		return false;
+	
+		
 	});
 });
 </script>
