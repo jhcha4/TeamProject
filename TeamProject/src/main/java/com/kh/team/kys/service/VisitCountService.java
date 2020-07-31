@@ -18,5 +18,5 @@ public interface VisitCountService {
 	//일일 매출 데이터
 	public JSONObject salesList() throws Exception;
 	//주문목록 가져오기
-	public List<CjhCartVo> orderList() throws Exception;
+	public List<KysVisitCountVo> orderList() throws Exception;
 }

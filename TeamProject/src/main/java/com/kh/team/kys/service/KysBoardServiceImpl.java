@@ -38,9 +38,7 @@ public class KysBoardServiceImpl implements KysBoardService {
 		}
 		System.out.println("boardVo insert : "+boardVo);
 		String[] p = boardVo.getP_size();
-		
 		System.out.println("p:" + p);
-		
 		for(int i = 0 ; i < p.length ; i++ ) {
 			String[] p_size = boardVo.getP_size();
 			int[] p_count = boardVo.getP_count();

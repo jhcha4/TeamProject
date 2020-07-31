@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.KysVisitCountVo;
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
@@ -42,11 +43,8 @@ public class KysBoardController {
 	//관리자 메인 화면.
 	@RequestMapping(value="/manager_main",method = RequestMethod.GET)
 	public String manager_main(Model model) throws Exception {
-		 List<Kys_MainVo> mainList = serveService.mainList();
-		 List<Kys_ServeVo> serveList = serveService.serveList();
-			
-			 model.addAttribute("mainList",mainList);
-			 model.addAttribute("serveList",serveList);
+		List<KysVisitCountVo> cartVo = visitService.orderList();
+		model.addAttribute("cartVo",cartVo);
 
 		return "manager/manager_main";
 	}

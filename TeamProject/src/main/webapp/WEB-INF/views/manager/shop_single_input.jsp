@@ -9,9 +9,7 @@ $(function() {
 	if(m == "T") {   
 		$("#serveOption option").remove();
 		$("#serveOption").append(options[0]).append(options[1]).append(options[2]).append(options[3]);
-		$("#code_T").show();
-		$("#code_P").hide();
-		$("#code_S").hide();
+		
 	}
 	$("#mainOption").change(function(){
 		$("#serveOption option").remove();
@@ -140,9 +138,16 @@ $(function() {
 		});
 	});
 	$("#formSubmit").submit(function(){
-// 	$("#btnSubmit").click(function(){
 		var upDiv = $("#imgFileDrop > div");
 		var titleDiv = $("#titleImg > div");
+		
+		if(upDiv ==null || upDiv.equals("")){
+			alert("사진을 등록해주세요");
+			return;
+		} else if(titleDiv ==null || titleDiv.equals("")){
+			alert("메인 사진을 등록해주세요.");
+			return;
+		}
 		upDiv.each(function(index){
 			var filename = $(this).attr("data-filename");
 			var hiddenInput = "<input type='hidden' name='p_files["+index+"]' value='"+filename+"'/>";
@@ -157,14 +162,13 @@ $(function() {
 // 		$("label[name=p_size]").each(function() {
 // 			size = $(this).text();
 // 			p_size.push(size);
-			
 // 		});
 // 		console.log(p_size);
 // 		var size = $("label[name=p_size]").val();
 // 		console.log(size);
 		var size = $("input[name=p_size]").val();
 		console.log(size);
-// 		return false;
+		return false;
 	});
 });
 </script>
@@ -224,44 +228,48 @@ $(function() {
 					</p>
 					<!-- 사이즈 -->
 					<div class="mb-1 d-flex dress_size">
-						<div  style='float: left;'>
-						<label for='option-sm' class='d-flex mr-3 mb-3'>
-						<span class='d-inline-block mr-2' style='top: -2px; position: relative;''>
-						<label  style='margin: 10px;'>S</label>
-						<input type='hidden' name='p_size' value='S'>
-						<input type='text' id='p_count' name='p_count' value='0'>
-						</span>
-						</label>
+						<div style='float: left;'>
+							<label for='option-sm' class='d-flex mr-3 mb-3'> <span
+								class='d-inline-block mr-2'
+								style='top: -2px; position: relative;''> 
+								<label style='margin: 10px;'>S</label> <input type='hidden'
+									name='p_size' value='S'> <input type='text'
+									id='p_count' name='p_count' value='0'>
+							</span>
+							</label>
 						</div>
-						<div  style='float: left;'>
-						<label for='option-sm' class='d-flex mr-3 mb-3'>
-						<span class='d-inline-block mr-2' style='top: -2px; position: relative;''>
-						<label  style='margin: 10px;'>M</label>
-						<input type='hidden' name='p_size' value='M'>
-						<input type='text' id='p_count' name='p_count' value='0'>
-						</span>
-						</label>
+						<div style='float: left;'>
+							<label for='option-sm' class='d-flex mr-3 mb-3'> <span
+								class='d-inline-block mr-2'
+								style='top: -2px; position: relative;''> 
+								<label style='margin: 10px;'>M</label> <input type='hidden'
+									name='p_size' value='M'> <input type='text'
+									id='p_count' name='p_count' value='0'>
+							</span>
+							</label>
 						</div>
-						<div  style='float: left;'>
-						<label for='option-sm' class='d-flex mr-3 mb-3'>
-						<span class='d-inline-block mr-2' style='top: -2px; position: relative;''>
-						<label  style='margin: 10px;'>L</label>
-						<input type='hidden' name='p_size' value='L'>
-						<input type='text' id='p_count' name='p_count' value='0'>
-						</span>
-						</label>
+						<div style='float: left;'>
+							<label for='option-sm' class='d-flex mr-3 mb-3'> <span
+								class='d-inline-block mr-2'
+								style='top: -2px; position: relative;''> 
+								<label style='margin: 10px;'>L</label> <input type='hidden'
+									name='p_size' value='L'> <input type='text'
+									id='p_count' name='p_count' value='0'>
+							</span>
+							</label>
 						</div>
-						<div  style='float: left;'>
-						<label for='option-sm' class='d-flex mr-3 mb-3'>
-						<span class='d-inline-block mr-2' style='top: -2px; position: relative;''>
-						<label  style='margin: 10px;'>XL</label>
-						<input type='hidden' name='p_size' value='XL'>
-						<input type='text' id='p_count' name='p_count' value='0'>
-						</span>
-						</label>
+						<div style='float: left;'>
+							<label for='option-sm' class='d-flex mr-3 mb-3'> <span
+								class='d-inline-block mr-2'
+								style='top: -2px; position: relative;''> 
+								<label style='margin: 10px;'>XL</label> 
+								<input type='hidden' name='p_size' value='XL'> <input type='text'
+									id='p_count' name='p_count' value='0'>
+							</span>
+							</label>
 						</div>
-							
-							
+
+
 					</div>
 					<!-- 사이즈 끝 -->
 

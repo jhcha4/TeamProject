@@ -15,9 +15,9 @@ public interface VisitCountDao {
 	//일별 데이터 가져오기
 	public List<KysVisitCountVo> rodChart() throws Exception;
 	//일일 매출 데이터
-	public List<CjhCartVo> salesList() throws Exception;
+	public List<KysVisitCountVo> salesList() throws Exception;
 	//주문목록 가져오기
-	public List<CjhCartVo> orderList() throws Exception;
+	public List<KysVisitCountVo> orderList() throws Exception;
 	
 
 }
