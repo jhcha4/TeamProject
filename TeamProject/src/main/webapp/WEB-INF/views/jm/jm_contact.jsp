@@ -3,7 +3,22 @@
 <%@ include file="../include/head.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
+<style>
 
+.form-inline { 
+  
+  padding: 20px; 
+  width: 300px; 
+  
+  border-radius: 5px; 
+  top: 25%; 
+  left: 25%; 
+  margin: 25
+} 
+
+
+
+</style>
  
 
 
@@ -104,7 +119,7 @@ $("a.review_title").click(function(e){
 			</c:choose>
 		
 		
-		<select name="perPage">
+		<select class="form-inline" name="perPage">
 			<c:forEach begin="5" end="20" step="5" var="i">
 				<option value="${i}"
 					<c:if test="${i==jmPagingDto.perPage}">selected</c:if>
@@ -180,14 +195,21 @@ $("a.review_title").click(function(e){
 							${jmContactVo.c_subject}
 						</td>
 						<td>
-							${jmContactVo.c_time}
+							${jmContactVo.c_time} 
 						</td>
 					
 						<td>
 							${jmContactVo.c_viewcnt}
 						</td>
 						<td>
-							<a href="#" type="button" class="btn btn-sm btn-info">관리자-답글달기</a>
+						<c:choose>
+							<c:when test="${sessionScope.u_grade == gold}">
+								<a href="#" type="button" class="btn btn-sm btn-info">관리자-답글달기</a>
+							</c:when>
+							<c:otherwise>
+							관리자
+							</c:otherwise>
+						</c:choose>	
 						</td>
 					</tr>
 					

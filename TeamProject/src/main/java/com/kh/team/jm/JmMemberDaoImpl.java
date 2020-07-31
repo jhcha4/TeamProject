@@ -94,5 +94,12 @@ public class JmMemberDaoImpl implements JmMemberDao {
 		return SqlSession.selectOne(NAMESPACE+"selectUserCount",jmPagingDto);
 	}
 	
+	//세션 등급 가져오기
+	@Override
+	public String selectGrade(String u_grade) throws Exception {
+		
+		return SqlSession.selectOne(NAMESPACE+"selectGrade",u_grade);
+	}
+	
 
 }

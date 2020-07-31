@@ -19,11 +19,6 @@ public interface LSH_BoardService {
 	
 	public String getServe(int p_num) throws Exception;
 	
-	public String S_sizeCnt(int p_num) throws Exception;
+	public List<LshBoardVo> getSize(int p_num) throws Exception;
 	
-	public String M_sizeCnt(int p_num) throws Exception;
-	
-	public String L_sizeCnt(int p_num) throws Exception;
-	
-	public String XL_sizeCnt(int p_num) throws Exception;
 }

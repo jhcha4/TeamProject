@@ -5,18 +5,18 @@ package com.kh.team.kys.dao;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.KysVisitCountVo;
 
 @Repository
 public class VisitCountDaoImpl implements VisitCountDao {
 	
-	private final String NAMESPACE = "mappers.kysboard-mapper.";
-	
+
+	private final String NAMESPACE = "mappers.kysVisit-mapper.";
 	@Inject
 	private SqlSession sqlSession;
 	
@@ -39,6 +39,14 @@ public class VisitCountDaoImpl implements VisitCountDao {
 	public List<KysVisitCountVo> rodChart() throws Exception {
 		
 		return sqlSession.selectList(NAMESPACE+"rodChart");
+	}
+	@Override
+	public List<CjhCartVo> salesList() throws Exception {
+		return sqlSession.selectList(NAMESPACE+"salesList");
+	}
+	@Override
+	public List<CjhCartVo> orderList() throws Exception {
+		return sqlSession.selectList(NAMESPACE+"orderList");
 	}
 
 }

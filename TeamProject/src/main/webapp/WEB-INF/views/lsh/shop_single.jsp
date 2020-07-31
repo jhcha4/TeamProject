@@ -41,7 +41,7 @@ $(function() {
 			console.log("p_num : " + p_num);
 			var countArr = new Array();
 			var sizeArr = new Array();
-			$("h5[name=p_size]").each(function() {
+			$("h4[name=p_size]").each(function() {
 				var size = $(this).text();
 				sizeArr.push(size);
 			});
@@ -162,18 +162,6 @@ $(function() {
 		$("#singlePage").submit();
 	});
 	
-	if ("${S_sizeCnt}" == 0 || "${S_sizeCnt}" == null) {
-		$("select option[value='S']").prop('disabled',true);
-	}
-	if ("${M_sizeCnt}" == 0 || "${M_sizeCnt}" == null) {
-		$("select option[value='M']").prop('disabled',true);
-	}
-	if ("${L_sizeCnt}" == 0 || "${L_sizeCnt}" == null) {
-		$("select option[value='L']").prop('disabled',true);
-	}
-	if ("${XL_sizeCnt}" == 0 || "${XL_sizeCnt}" == null) {
-		$("select option[value='XL']").prop('disabled',true);
-	}
 });
 </script>
 <%@ include file="frmPage.jsp" %>
@@ -207,62 +195,18 @@ $(function() {
 	            <h4>Size:</h4>
 	            <c:if test="${lshBoardVo.p_main == 'T' || lshBoardVo.p_main == 'P' || lshBoardVo.p_main == 'S'}">
 		            <select id="size">
-		            	<c:if test="${lshBoardVo.p_main == 'T' || lshBoardVo.p_main == 'P'}">
 		            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
-		            		
-			               	<option value="S">S 수량:(
-			               		<c:choose>
-					               	<c:when test="${S_sizeCnt == null || S_sizeCnt == 0}">
-										품절
-									</c:when>
-									<c:otherwise>
-										${S_sizeCnt}
-									</c:otherwise> 
-								</c:choose>
-							)</option>
-							
-			               	<option value="M">M 수량:(
-			               		<c:choose>
-					               	<c:when test="${M_sizeCnt == null || M_sizeCnt == 0}">
-										품절
-									</c:when>
-									<c:otherwise>
-										${M_sizeCnt}
-									</c:otherwise> 
-								</c:choose>
-							)</option>
-							
-							<option value="L">L 수량:(
-			               		<c:choose>
-					               	<c:when test="${L_sizeCnt == null || L_sizeCnt == 0}">
-										품절
-									</c:when>
-									<c:otherwise>
-										${L_sizeCnt}
-									</c:otherwise> 
-								</c:choose>
-							)</option>
-							
-							<option value="XL">XL 수량:(
-			               		<c:choose>
-					               	<c:when test="${XL_sizeCnt == null || XL_sizeCnt == 0}">
-										품절
-									</c:when>
-									<c:otherwise>
-										${XL_sizeCnt}
-									</c:otherwise> 
-								</c:choose>
-							)</option>
-							
-			            </c:if>
-			            
-			            <c:if test="${lshBoardVo.p_main == 'S'}">
-		            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
-			               	<option value="S">250</option>
-			               	<option value="M">260</option>
-			               	<option value="L">270</option>
-			               	<option value="XL">280</option>
-			            </c:if>
+		            		<c:forEach items="${sizeList}" var="item">
+		            			<c:choose>
+		            				<c:when test="${item.p_count == null || item.p_count == 0}">
+		            					<option value="${item.p_size}" disabled>${item.p_size}(품절)</option>
+		            				</c:when>
+		            				
+		            				<c:otherwise>
+		            					<option value="${item.p_size}">${item.p_size}(남은수량:${item.p_count})</option>
+		            				</c:otherwise>
+		            			</c:choose>
+		            		</c:forEach>
 		            </select>
 	            </c:if>
 	            

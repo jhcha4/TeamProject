@@ -133,30 +133,6 @@
 					and p_serve like #{p_serve}
 		</if>
 	</sql>
-	<!-- 방문자수를 증가시키는 -->
-	<insert id="insertVisitor" >
-		insert into tbl_visitor(
-				visit_id,
-				visit_ip,
-				visit_time)
-		values(
-		seq_visit.nextval,#{visit_ip},
-		sysdate)
-		
-	</insert>
-	<!-- 총 방문자수 가져오기 -->
-	<select id="visitAll" resultType="int">
-		select count(*) as TotalCnt from tbl_visitor
-	</select>
-	<!-- 오늘 방문자수 가져오기 -->
-	<select id="visitNow" resultType="int">
-		select count(*) as TodayCon from tbl_visitor
-		where to_date(visit_time,'YY-MM-DD') = to_date(sysdate, 'YY-MM-DD')
-	</select>
-	<!-- 일별 데이터 가져오기 -->
-	<select id="rodChart" resultType="KysVisitCountVo">
-		select visit_time, count(*) as todaycon from tbl_visitor
-		group by visit_time order by visit_time
-	</select>
+	
 	
 </mapper>

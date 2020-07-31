@@ -148,33 +148,11 @@ $(function() {
               </c:forEach>
             </div>
             
-            <div class="row" data-aos="fade-up">
-              <div class="col-md-12 text-center">
-                <div class="site-block-27">
-                  <ul>
-                  	<c:if test="${lshBoardDto.startPage != 1}">
-	                    <li>
-	                    	<a class="page" href="${lshBoardDto.startPage - 1}">&lt;</a>
-	                    </li>
-                  	</c:if>
-                  	
-                  	<c:forEach begin="${lshBoardDto.startPage}" end="${lshBoardDto.endPage}" var="v">
-                    	<li>
-                    		<a class="page" href="${v}">${v}</a>
-                    	</li>
-                    </c:forEach>
-                    
-                    <c:if test="${lshBoardDto.endPage < lshBoardDto.totalPage}">
-	                    <li>
-	                    	<a class="page" href="${lshBoardDto.endPage + 1}">&gt;</a>
-	                    </li>
-                    </c:if>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            
             
           </div>
+          
+          
 
           <div class="col-md-3 order-1 mb-5 mb-md-0">
             <div class="border p-4 rounded mb-4">
@@ -217,6 +195,32 @@ $(function() {
 
           </div>
         </div>
+
+		<div class="row" data-aos="fade-up">
+              <div class="col-md-12 text-md-center">
+                <div class="site-block-27">
+                  <ul>
+                  	<c:if test="${lshBoardDto.startPage != 1}">
+	                    <li>
+	                    	<a class="page" href="${lshBoardDto.startPage - 1}">&lt;</a>
+	                    </li>
+                  	</c:if>
+                  	
+                  	<c:forEach begin="${lshBoardDto.startPage}" end="${lshBoardDto.endPage}" var="v">
+                    	<li>
+                    		<a class="page" href="${v}">${v}</a>
+                    	</li>
+                    </c:forEach>
+                    
+                    <c:if test="${lshBoardDto.endPage < lshBoardDto.totalPage}">
+	                    <li>
+	                    	<a class="page" href="${lshBoardDto.endPage + 1}">&gt;</a>
+	                    </li>
+                    </c:if>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
         <div class="row">
           <div class="col-md-12">

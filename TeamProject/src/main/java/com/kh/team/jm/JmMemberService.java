@@ -12,6 +12,11 @@ public interface JmMemberService {
 		//로그인
 		public boolean selectMemberUserIdPw(String u_id ,String u_pw) throws Exception;
 		
+		//세션 등급 가져오기
+		public String selectGrade(String u_grade)throws Exception;
+		
+		
+		
 		
 		//회원 가입
 		public void insertMember(JmMemberVo vo) throws Exception;

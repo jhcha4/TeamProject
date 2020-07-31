@@ -43,7 +43,7 @@ public class KysBoardController {
 	@RequestMapping(value="/manager_main",method = RequestMethod.GET)
 	public String manager_main(Model model) throws Exception {
 		 List<Kys_MainVo> mainList = serveService.mainList();
-			List<Kys_ServeVo> serveList = serveService.serveList();
+		 List<Kys_ServeVo> serveList = serveService.serveList();
 			
 			 model.addAttribute("mainList",mainList);
 			 model.addAttribute("serveList",serveList);
@@ -66,13 +66,19 @@ public class KysBoardController {
 	
 	//상품 등록 폼
 	@RequestMapping(value ="/shop_single_input", method = RequestMethod.GET)
-	public void board_produce() throws Exception{
+	public void board_produce(Model model) throws Exception{
+		List<Kys_MainVo> mainList = serveService.mainList();
+//		List<Kys_MainVo> sizeList = serveService.dress_size();
+		List<Kys_ServeVo> serveList = serveService.serveList();
+		model.addAttribute("mainList",mainList);
+//		model.addAttribute("sizeList",sizeList);
+		model.addAttribute("serveList",serveList);
 		
 	}
 	//등록 처리 
 	@RequestMapping(value="/shop_single_input", method = RequestMethod.POST)
 	public String shop_single_input(Kys_BoardVo boardVo,Kys_productCountVo productCountVo) throws Exception{
-		
+		System.out.println("boardVo: " + boardVo);
 		boardService.boardInsert(boardVo);
 		
 		return "redirect:/manager/manager_main";
@@ -80,10 +86,14 @@ public class KysBoardController {
 	//상품 1개 검색
 	@RequestMapping(value="oenSelect", method = RequestMethod.GET)
 	public void oenSelect(Model model, int p_num) throws Exception {
-		
 		List<Kys_ImgVo> listImg = boardService.imgSelectBy(p_num);
 		Kys_BoardVo boardVo = boardService.boardSelectBy(p_num);
-		 List<Kys_productCountVo> prodcutCountList = boardService.selectProductCount(p_num);
+		List<Kys_productCountVo> prodcutCountList = boardService.selectProductCount(p_num);
+		List<Kys_MainVo> mainList = serveService.mainList();
+		List<Kys_ServeVo> serveList = serveService.serveList();
+			
+		model.addAttribute("mainList",mainList);
+		model.addAttribute("serveList",serveList);
 		model.addAttribute("boardVo",boardVo);
 		model.addAttribute("listImg",listImg);
 		model.addAttribute("prodcutCountList",prodcutCountList);

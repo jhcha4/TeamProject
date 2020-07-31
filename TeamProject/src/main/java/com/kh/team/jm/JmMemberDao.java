@@ -17,6 +17,12 @@ public interface JmMemberDao {
 	//회원 가입
 	public void insertMember(JmMemberVo vo) throws Exception;
 	
+	//세션 등급 가져오기
+	public String selectGrade(String u_grade)throws Exception;
+	
+	
+	
+	
 	//관리자 페이지- 일반회원 리스트 조회
 	public List<JmMemberVo> selectList() throws Exception;
 	
