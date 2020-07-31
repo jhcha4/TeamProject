@@ -3,7 +3,20 @@
 <%@ include file="../include/head.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
+<style>
+.form-inline { 
+  
+  padding: 20px; 
+  width: 300px; 
+  
+  border-radius: 5px; 
+  top: 25%; 
+  left: 25%; 
+  margin: 25
+} 
 
+
+</style>
  
 
 
@@ -104,7 +117,7 @@ $("a.review_title").click(function(e){
 			</c:choose>
 		
 		
-		<select name="perPage">
+		<select  class="form-inline" name="perPage">
 			<c:forEach begin="5" end="20" step="5" var="i">
 				<option value="${i}"
 					<c:if test="${i==jmPagingDto.perPage}">selected</c:if>

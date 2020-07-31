@@ -9,6 +9,7 @@
     height:100px;
     margin:0 auto;
 }
+
 </style>
 <script>
 $(document).ready(function() {
@@ -101,7 +102,6 @@ $(document).ready(function() {
 });
 </script>
 
-${list}
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -118,6 +118,7 @@ ${list}
 		<div class="row mb-5">
 			<form id="frmCart" class="col-md-12" action="/cjh/updateCart" method="post">
 				<div class="title" style="text-align:center;"><h1 class="tit">CART</h1></div>
+				
 				<div class="site-blocks-table">
 					<table class="table table-bordered">
 						<thead style="height: 10px">

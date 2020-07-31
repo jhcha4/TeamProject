@@ -154,6 +154,8 @@ public class CjhMyInfoController {
 		int u_point = pointService.getUserPoint(u_id);
 		List<CjhPointVo> getList = pointService.getTotalPoint(u_id);
 		List<CjhPointVo> useList = pointService.getUsePoint(u_id);
+		int oCount = cartService.getUserOrder(u_id);
+		model.addAttribute("oCount", oCount);
 		model.addAttribute("useList", useList);
 		model.addAttribute("getList", getList);
 		model.addAttribute("u_point", u_point);

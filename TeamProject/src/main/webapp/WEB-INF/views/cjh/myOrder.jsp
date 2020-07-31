@@ -109,6 +109,7 @@ $(document).ready(function() {
 		
 			<table class="table table-bordered">
 				<thead>
+					<tr bgcolor="#eeeeee"><th colspan="7" style="text-align: Left;">주문목록</th></tr>
 					<tr>
 						<th>주문번호</th>
 						<th colspan="2">상품정보</th>
@@ -121,7 +122,7 @@ $(document).ready(function() {
 				<tbody>
 					<c:if test="${not empty list}">
 						<c:forEach var="item" items="${list}" varStatus="status">
-							<tr class="calculation1_tbody_tr1" style="height: 90px; background-color: #fff;" >
+							<tr class="calculation1_tbody_tr1" style="height: 90px; background-color: #fff;">
 								<td style="text-align: Left; text-align:center; width:10%">
 									${item.c_num}
 								</td>

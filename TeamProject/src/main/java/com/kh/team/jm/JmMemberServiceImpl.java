@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.team.domain.CjhUserVo;
 import com.kh.team.domain.JmMemberVo;
 import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmPwEmailDto;
@@ -83,6 +84,13 @@ public class JmMemberServiceImpl implements JmMemberService {
 	public int selectUserCount(JmPagingDto jmPagingDto) throws Exception {
 		
 		return jmMemberDao.selectUserCount(jmPagingDto);
+	}
+	@Override
+	public String selectGrade(String u_grade) throws Exception {
+		
+		
+		
+		return jmMemberDao.selectGrade(u_grade);
 	}
 	
 

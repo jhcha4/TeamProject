@@ -52,7 +52,6 @@ public class CjhCartController {
 //		session.setAttribute("targetLocation", targetLocation);
 		String u_id = (String)session.getAttribute("u_id");
 		model.addAttribute("u_id", u_id);
-//			System.out.println("u_id : " + u_id);
 		cartService.insertCart(u_id, countArr, sizeArr, boardVo);
 		
 		int count = cartService.getCountCart(u_id);

@@ -2,6 +2,8 @@ package com.kh.team.jm;
 
 
 
+import java.util.Enumeration;
+
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
@@ -20,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.kh.team.cjh.service.CjhCartService;
 import com.kh.team.cjh.service.CjhPointService;
 import com.kh.team.cjh.service.CjhUserService;
+import com.kh.team.domain.CjhUserVo;
 import com.kh.team.domain.JmEmailDto;
 import com.kh.team.domain.JmMemberVo;
 import com.kh.team.domain.JmPwEmailDto;
@@ -44,19 +47,34 @@ public class Jm_UserController {
 
 	// 로그인 처리
 	@RequestMapping(value = "/jm_login", method = RequestMethod.POST)
-	public String jmLoginPost(String u_id, String u_pw, HttpSession session, RedirectAttributes rttr) throws Exception {
-
+	public String jmLoginPost(String u_id, String u_pw,HttpSession session, RedirectAttributes rttr) throws Exception {
+		/*System.out.println("jm_login, post");
+		session.setAttribute("key1", "val1");*/
+		
 		boolean result = userService.login(u_id, u_pw);
 		int count = cartService.getCountCart(u_id);
+		String u_grade = jmMemberService.selectGrade(u_id);
+		
+		
 		if (result == true) {
 			//	해당 사용자가 있다면 아이디를 세션에 저장
 			session.setAttribute("u_id", u_id);
 			session.setAttribute("count", count);
+			session.setAttribute("u_grade", u_grade);
 			String targetLocation = (String)session.getAttribute("targetLocation");
 			if (targetLocation != null && !targetLocation.equals("")) {
 				session.removeAttribute("targetLocation");
 				return "redirect:" + targetLocation;
 			}
+			
+			Enumeration<String> enumer =  session.getAttributeNames();
+			while (enumer.hasMoreElements()) {
+				String key = enumer.nextElement();
+				System.out.println("key:" + key);
+			}
+			
+			
+			System.out.println("session:::::::::"+session);
 			return "redirect:/";
 		}
 		rttr.addFlashAttribute("msg", "fail");
