@@ -31,7 +31,7 @@
 					and c.p_status = o.o_code
 					and c.p_num = a.p_num
 					<include refid="cstatus"/>
-					order by c.p_num desc ) a)
+					order by c.p_date desc ) a)
 		where rnum between #{pagingDto.startRow} and #{pagingDto.endRow}
 	</select>
 	

@@ -74,6 +74,21 @@
     height: 180px;
     
 }
+
+.ScrollButton {
+  position: fixed;   /* 버튼의 위치 고정 */
+  right: 10px;       /* x 위치 입력 */
+  cursor: pointer;   /* 호버링 했을 때 커서 모양 변경 */
+  z-index: 10;       /* 다른 태그에 가려지지 않게 우선순위 변경 */
+}
+/* 두 태그에 각각 y 위치 입력 */
+#TopButton {
+  bottom: 108px;        
+}
+#BottomButton {
+  bottom: 75px;
+}
+
 </style>
 
 <script>
@@ -105,11 +120,16 @@ $(document).ready(function() {
 		$(".usedPoint").text(usePoints + " 원");
 	});
 	
+//     $("#TopButton").click(function() {
+//         $('html, body').animate({scrollTop : 0}, 400);
+//         return false;
+//     });
+ 
+//     $("#BottomButton").click(function() {
+//         $('html, body').animate({scrollTop : $(document).height()  }, 400);
+//         return false;
+//     });
 });
-</script>
-
-<script type="text/javascript">
-     history.replaceState({}, null, location.pathname);
 </script>
 
 <c:forEach var="item" items="${getList}" varStatus="status">
@@ -254,5 +274,8 @@ $(document).ready(function() {
 
 	</div>
 </div>
+
+<!-- <a id="TopButton" class="ScrollButton"><img src="../../resources/images/scroll_up.png" alt="스크롤-업!"></a> -->
+<!-- <a id="BottomButton" class="ScrollButton"><img src="../../resources/images/scroll_down.png" alt="스크롤-다운!"></a> -->
 
 <%@ include file="../include/foot.jsp" %>
