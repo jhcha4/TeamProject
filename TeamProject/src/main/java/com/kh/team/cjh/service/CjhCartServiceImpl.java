@@ -104,6 +104,11 @@ public class CjhCartServiceImpl implements CjhCartService {
 		cartDao.comfirmOrder(c_num);
 	}
 
+	@Override
+	public int getUserOrder(String u_id) throws Exception {
+		return cartDao.getUserOrder(u_id);
+	}
+
 
 
 }

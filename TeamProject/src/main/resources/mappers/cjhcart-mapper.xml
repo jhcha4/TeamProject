@@ -98,6 +98,12 @@
 		<include refid="status"/>
 	</select>
 	
+	<select id="getUserOrder" resultType="int">
+		select count(*) from tbl_cart
+		where u_id = #{u_id}
+		and p_status != 1001
+	</select>
+	
 	<sql id="cstatus">
 		<if test="#{p_status} != null">
 			<choose>

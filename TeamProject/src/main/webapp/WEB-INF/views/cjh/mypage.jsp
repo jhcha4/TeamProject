@@ -24,7 +24,7 @@
 }
 
 #myshopMain {
-    margin: 120px 20px 0 0;
+    margin: 10px 120px 0 0;
     height: 149px;
     width: 175%;
     clear: both;
@@ -101,7 +101,7 @@ $(document).ready(function() {
 		var point = $(this).val();
 		usePoints += Number(point);
 // 		console.log(usePoints);
-		$(".usePoints").text(usePoints + " 원");
+		$("span[name=usePoints]").text(usePoints + " 원");
 		$(".usedPoint").text(usePoints + " 원");
 	});
 	
@@ -173,11 +173,11 @@ $(document).ready(function() {
 						</li>
 						<li class="">
 							<strong class="title">사용적립금</strong>
-							<strong class="data"><span id="xans_myshop_bankbook_used_mileage" class="usePoints">0원</span></strong>
+							<strong class="data"><span id="xans_myshop_bankbook_used_mileage" name="usePoints"></span></strong>
 						</li>
 						<li>
 							<strong class="title">총주문</strong>
-							<strong class="data"><span id="xans_myshop_bankbook_order_price" class="usedPoint">₩0</span>(<span id="xans_myshop_bankbook_order_count">0</span>회)</strong>
+							<strong class="data"><span id="xans_myshop_bankbook_order_price" class="usedPoint"></span>(<span id="xans_myshop_bankbook_order_count">${oCount}</span>회)</strong>
 						</li>
 					</ul>
 				</div>
@@ -205,7 +205,7 @@ $(document).ready(function() {
 					<div class="shopMain wishlist">
 						<li>
 							<p><a href="/cjh/cart"><img src="../../resources/images/cart.png"></a></p>
-							<h3><a href="/cjh/cart">cart</a></h3>
+							<h3><a href="/cjh/cart">CART</a></h3>
 							<p><a href="/cjh/cart">장바구니</a></p>
 						</li>
 					</div>
