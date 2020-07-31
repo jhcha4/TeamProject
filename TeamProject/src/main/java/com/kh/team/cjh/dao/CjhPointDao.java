@@ -20,10 +20,10 @@ public interface CjhPointDao {
 	public void plusPoint(String u_id, int totalPrice) throws Exception;
 	
 	//	총 적립 포인트
-	public List<CjhPointVo> getTotalPoint(String u_id) throws Exception;
+	public int getTotalPoint(String u_id) throws Exception;
 	
 	//	총 사용 포인트
-	public List<CjhPointVo> getUsePoint(String u_id) throws Exception;
+	public int getUsePoint(String u_id) throws Exception;
 	
 	//	포인트 정보 불러오기
 	public List<CjhPointVo> listPoint(String u_id, int point_code, CjhPagingDto pagingDto) throws Exception;
@@ -36,4 +36,5 @@ public interface CjhPointDao {
 	
 	//	포인트 갯수
 	public int getPointCount(String u_id, int point_code) throws Exception;
+	
 }

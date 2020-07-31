@@ -43,13 +43,13 @@ public class CjhPointServiceImpl implements CjhPointService {
 
 	//	총 적립 포인트
 	@Override
-	public List<CjhPointVo> getTotalPoint(String u_id) throws Exception {
+	public int getTotalPoint(String u_id) throws Exception {
 		return pointDao.getTotalPoint(u_id);
 	}
 
 	//	총 사용 포인트
 	@Override
-	public List<CjhPointVo> getUsePoint(String u_id) throws Exception {
+	public int getUsePoint(String u_id) throws Exception {
 		return pointDao.getUsePoint(u_id);
 	}
 

@@ -25,7 +25,6 @@ $(document).ready(function() {
 });
 </script>
 
-{list}
 
     <div class="bg-light py-3">
       <div class="container">

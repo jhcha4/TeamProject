@@ -43,7 +43,7 @@ $(document).ready(function() {
 		var count = $(this).val();
 		var c_num = $(this).parent().parent().next().next().next().text();
 		console.log("c_num : " + c_num);
-		location.href = "/cjh/updateCart?u_id=${u_id}&p_num="+p_num+"&p_count="+count+"&c_num="+c_num;
+		location.href = "/cjh/updateCart?p_num="+p_num+"&p_count="+count+"&c_num="+c_num;
 		var p_price = $(this).parent().parent().prev().text();
 // 		var p_count = $(this).parent().parent().next().children().text();
 // 		console.log("p_count : " + p_count);
@@ -54,7 +54,7 @@ $(document).ready(function() {
 	//	결제하러가기
 	$("#btnCheckOut").click(function(e) {
 		e.preventDefault();
-		location.href = "/cjh/checkout?u_id=${u_id}";
+		location.href = "/cjh/checkout";
 	});
 	
 	//	선택된 쪽지 삭제
@@ -72,7 +72,7 @@ $(document).ready(function() {
 			var u_id = $("#u_id").val();
 			var c_num = sc_num.substring(0, sc_num.length - 1);
 			console.log(c_num);
-	 		location.href="/cjh/deleteCheckedCart?u_id="+u_id+"&c_num="+c_num;
+	 		location.href="/cjh/deleteCheckedCart?&c_num="+c_num;
 		} else {
 			alert("삭제할 항목을 체크해주세요");
 		}

@@ -103,46 +103,19 @@ $(document).ready(function() {
 	$("input[name=getPoints]").each(function() {
 		var point = $(this).val();
 		totalPoints += Number(point);
-// 		console.log(totalPoints);
 		$(".totalPoints").text(totalPoints + " 원");
 	});
 	
-	
-	$(".usePoints").each(function() {
-		$(this).css("display", "none");
+	$("[id^='xans_myshop_bankbook']").each(function() {
+		$(this).text(numberFormat($(this).text()));
 	});
-	
-	$("input[name=usePoints]").each(function() {
-		var point = $(this).val();
-		usePoints += Number(point);
-// 		console.log(usePoints);
-		$("span[name=usePoints]").text(usePoints + " 원");
-		$(".usedPoint").text(usePoints + " 원");
-	});
-	
-//     $("#TopButton").click(function() {
-//         $('html, body').animate({scrollTop : 0}, 400);
-//         return false;
-//     });
- 
-//     $("#BottomButton").click(function() {
-//         $('html, body').animate({scrollTop : $(document).height()  }, 400);
-//         return false;
-//     });
 });
+
+function numberFormat(inputNumber) {
+   return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 </script>
 
-<c:forEach var="item" items="${getList}" varStatus="status">
-	<tr class="getPoints" style="height: 90px; background-color: #fff;" >
-		<td><input style="display:none;" name="getPoints" value = "${item.point_value}"/></td>
-	</tr>
-</c:forEach>
-
-<c:forEach var="item" items="${useList}" varStatus="status">
-	<tr class="usePoints" style="height: 90px; background-color: #fff;" >
-		<td><input style="display:none;" name="usePoints" value = "${item.point_value}"/></td>
-	</tr>
-</c:forEach>
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -185,19 +158,19 @@ $(document).ready(function() {
 					<ul>
 						<li class=" ">
 							<strong class="title">가용적립금</strong>
-							<strong class="data use">&nbsp;<span id="xans_myshop_bankbook_avail_mileage" class="nowPoint">${u_point}원</span></strong>
+							<strong class="data use">&nbsp;<span id="xans_myshop_bankbook_avail_mileage" class="nowPoint">${u_point} 원</span></strong>
 						</li>
 						<li class="">
 							<strong class="title">총적립금</strong>
-							<strong class="data"><span id="xans_myshop_bankbook_total_mileage" class="totalPoint">${u_point}원</span></strong>
+							<strong class="data"><span id="xans_myshop_bankbook_total_mileage" class="totalPoint">${totalPoint} 원</span></strong>
 						</li>
 						<li class="">
 							<strong class="title">사용적립금</strong>
-							<strong class="data"><span id="xans_myshop_bankbook_used_mileage" name="usePoints"></span></strong>
+							<strong class="data"><span id="xans_myshop_bankbook_used_mileage" name="usePoints">${usePoint} 원</span></strong>
 						</li>
 						<li>
 							<strong class="title">총주문</strong>
-							<strong class="data"><span id="xans_myshop_bankbook_order_price" class="usedPoint"></span>(<span id="xans_myshop_bankbook_order_count">${oCount}</span>회)</strong>
+							<strong class="data"><span id="xans_myshop_bankbook_order_price" class="usedPoint">${usePoint} 원</span>(<span id="xans_myshop_bankbook_order_count">${oCount}</span>회)</strong>
 						</li>
 					</ul>
 				</div>
@@ -275,7 +248,5 @@ $(document).ready(function() {
 	</div>
 </div>
 
-<!-- <a id="TopButton" class="ScrollButton"><img src="../../resources/images/scroll_up.png" alt="스크롤-업!"></a> -->
-<!-- <a id="BottomButton" class="ScrollButton"><img src="../../resources/images/scroll_down.png" alt="스크롤-다운!"></a> -->
 
 <%@ include file="../include/foot.jsp" %>

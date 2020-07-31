@@ -33,14 +33,18 @@
 		where u_id = #{u_id}
 	</select>
 	
-	<select id="getTotalPoint" resultType="CjhPointVo">
-		select * from tbl_point
-		where u_id = #{u_id} and point_code = 1002
+	<select id="getTotalPoint" resultType="int">
+		select sum(point_value)
+		from tbl_point
+		where u_id= #{u_id}
+		and point_code != 1003
 	</select>
 	
-	<select id="getUsePoint" resultType="CjhPointVo">
-		select * from tbl_point
-		where u_id = #{u_id} and point_code = 1003
+	<select id="getUsePoint" resultType="int">
+		select sum(point_value)
+		from tbl_point
+		where u_id= #{u_id}
+		and point_code = 1003
 	</select>
 	
 <!-- 	<select id="listPoint" resultType="CjhPointVo"> -->
