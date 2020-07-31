@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.kh.team.domain.CjhUserVo;
+import com.kh.team.domain.JmContactVo;
 import com.kh.team.domain.JmMemberVo;
 import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmPwEmailDto;
@@ -91,6 +92,22 @@ public class JmMemberServiceImpl implements JmMemberService {
 		
 		
 		return jmMemberDao.selectGrade(u_grade);
+	}
+	//관리자 Q&A 답글달기
+	@Override
+	public void contactManagerInsert(JmContactVo jmContactVo) throws Exception {
+		jmMemberDao.contactManagerInsert(jmContactVo);
+		
+	}
+	@Override
+	public int selectOriginNum(int c_originnum) throws Exception {
+		
+		return jmMemberDao.selectOriginNum(c_originnum);
+	}
+	@Override
+	public void deleteContact(int c_info) throws Exception {
+		jmMemberDao.deleteContact(c_info);
+		
 	}
 	
 

@@ -6,9 +6,11 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kh.team.domain.JmContactVo;
 import com.kh.team.domain.JmMemberVo;
 import com.kh.team.domain.JmPagingDto;
 
@@ -18,6 +20,9 @@ public class Jm_ManagerController {
 
 	@Inject
 	private JmMemberService jmMemberService;
+	
+	
+	
 	
 	
 	
@@ -59,5 +64,36 @@ public class Jm_ManagerController {
 			return "redirect:/jm/jm_userList";
 		}
 	
-	
+		//관리자 Q&A 게시판 답글 달기 폼
+		@RequestMapping(value="/jm_contactManagerInsert/{c_info}", method=RequestMethod.GET)
+		public String jmContactManagerInsertForm(@PathVariable("c_info") int c_info ,Model model )throws Exception{
+			
+			System.out.println("/jm_contactManagerInsert");
+			System.out.println("jmContactManagerInsertForm, c_info::::::"+c_info);
+			
+			int origin = jmMemberService.selectOriginNum(c_info);      
+			
+			System.out.println("origin::::::"+origin);
+			model.addAttribute("origin",origin);
+			return "jm/jm_contactManagerInsert";
+		}
+		
+		//관리자 Q&A 게시판 답글 달기 런
+		@RequestMapping(value="/jm_contactManagerInsertRun", method=RequestMethod.POST)
+		public String jmContactManagerInsertRun(JmContactVo jmContactVo ,Model model)throws Exception{
+				System.out.println("/jm_contactManagerInsertRun");
+				jmMemberService.contactManagerInsert(jmContactVo);
+				
+				model.addAttribute("jmContactVo",jmContactVo);
+			
+				return "redirect:/jm/jm_contact";
+		}
+		
+		//Q&A  게시판 관리자-삭제 기능
+		@RequestMapping(value="/jm_deleteContact/{c_info}",method=RequestMethod.GET)
+		public String deleteContact(@PathVariable("c_info")  int c_info)throws Exception{
+			jmMemberService.deleteContact(c_info);
+			
+			return "redirect:/jm/jm_contact";
+		}
 }

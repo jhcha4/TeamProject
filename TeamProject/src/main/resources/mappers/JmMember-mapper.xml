@@ -25,7 +25,7 @@
 
 	<!-- 회원가입 -->
 	
-	<insert id="insertMember"  >
+	<insert id="insertMember">
 		
 		insert into tbl_user(u_info,u_id ,u_pw ,u_name,u_gender, u_email,u_address, u_phone)
 		values (seq_user_count.nextval,#{u_id}, #{u_pw},#{u_name},#{u_gender},#{u_email},#{u_address},#{u_phone})
@@ -68,6 +68,31 @@
 		where u_id=#{u_id}
 	
 	</delete>
+	
+	 <!-- 관리자 Q&A 게시판 답글 달기 -->
+	 <insert id="contactManagerInsert">
+	insert into tbl_contact(c_info, c_id,c_subject,c_contents,c_originnum,c_groupold)
+	values (seq_contact.nextval, #{c_id},#{c_subject},#{c_contents},#{c_originnum}, (select max(c_groupold) from tbl_contact)+1)
+
+	</insert> 
+	
+	<!-- 관리자 Q&A 게시판 삭제기능 -->
+		<delete id="deleteContact">
+		
+		delete from tbl_contact
+		where c_info = #{c_info}
+		
+		</delete>
+	
+	
+	 
+	
+	<!-- 관리자 c_originnum 찾기  -->
+	<select id="selectOriginNum" resultType="int">
+	select c_originnum from tbl_contact 
+	where c_info =#{c_info}
+	
+	</select>
 	
 	<!-- 비밀번호 찾기(이메일 찾기) -->
 	<select id="selectPw" resultType="JmPwEmailDto">

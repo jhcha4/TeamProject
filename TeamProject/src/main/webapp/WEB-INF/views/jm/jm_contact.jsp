@@ -105,6 +105,8 @@ $("a.review_title").click(function(e){
 </form>
 
 
+
+					
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -178,12 +180,16 @@ $("a.review_title").click(function(e){
 						<th>
 							조회수
 						</th>
+						<th>
+							등급
+						</th>
 						
 					</tr>
 					
 				</thead>
 				<tbody>
 				<c:forEach items="${list}" var="jmContactVo">
+				
 					<tr class="table-danger">
 						<td>
 						<a href="/jm/jm_contactInfo/${jmContactVo.c_info}"  class="review_title btn btn-sm btn-danger">${jmContactVo.c_info}</a>
@@ -197,17 +203,17 @@ $("a.review_title").click(function(e){
 						<td>
 							${jmContactVo.c_time} 
 						</td>
-					
 						<td>
 							${jmContactVo.c_viewcnt}
 						</td>
 						<td>
 						<c:choose>
-							<c:when test="${sessionScope.u_grade == gold}">
-								<a href="#" type="button" class="btn btn-sm btn-info">관리자-답글달기</a>
+							<c:when test="${sessionScope.u_grade != 'gold'}">
+								일반유저
 							</c:when>
 							<c:otherwise>
-							관리자
+								<a href="/jm/jm_contactManagerInsert/${jmContactVo.c_info}" type="button" class="btn btn-sm btn-info">관리자-답글달기</a>
+								<a href="/jm/jm_deleteContact/${jmContactVo.c_info}" type="button" class="btn btn-sm btn-info">관리자-글삭제</a>
 							</c:otherwise>
 						</c:choose>	
 						</td>

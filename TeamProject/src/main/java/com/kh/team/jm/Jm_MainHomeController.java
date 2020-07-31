@@ -13,9 +13,5 @@ public class Jm_MainHomeController {
 	public void jm_About() throws Exception {
 	}   
 
-	//main
-	@RequestMapping(value="/jm_mainFormManager",method=RequestMethod.GET)
-	public void jm_mainFormManager()throws Exception{
-		
-	}
+	
 }
