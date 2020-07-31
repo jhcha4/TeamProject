@@ -206,7 +206,7 @@ $("a.review_title").click(function(e){
 						<td>
 							${jmContactVo.c_viewcnt}
 						</td>
-						<td>
+						<td> 
 						<c:choose>
 							<c:when test="${sessionScope.u_grade != 'gold'}">
 								일반유저
