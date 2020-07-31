@@ -41,11 +41,11 @@ public class VisitCountDaoImpl implements VisitCountDao {
 		return sqlSession.selectList(NAMESPACE+"rodChart");
 	}
 	@Override
-	public List<CjhCartVo> salesList() throws Exception {
+	public List<KysVisitCountVo> salesList() throws Exception {
 		return sqlSession.selectList(NAMESPACE+"salesList");
 	}
 	@Override
-	public List<CjhCartVo> orderList() throws Exception {
+	public List<KysVisitCountVo> orderList() throws Exception {
 		return sqlSession.selectList(NAMESPACE+"orderList");
 	}
 

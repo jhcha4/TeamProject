@@ -220,7 +220,7 @@ $(function() {
 								style="margin: 10px;" disabled="disabled"> 
 								<input type="text" id="p_count" name="p_count" value="${PC_vo.p_count}">
 							</span>
-							<span class="d-inline-block text-black">${PC_vo.p_size}</span>
+							<span class="d-inline-block text-black"></span>
 						</label> 
 					</c:forEach>
 					
