@@ -146,6 +146,12 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		sqlSession.update(NAMESPACE + "confirmOrder", c_num);
 	}
 
+	//	회원이 주문한 상품 갯수 불러오기
+	@Override
+	public int getUserOrder(String u_id) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getUserOrder", u_id);
+	}
+
 	
 
 

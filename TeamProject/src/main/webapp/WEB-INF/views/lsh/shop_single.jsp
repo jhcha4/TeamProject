@@ -16,6 +16,7 @@ $(function() {
 		arrSize.push(size);
 		return false;
 	}
+	
 	$("input[name=p_count]").change(function() {
 		var p_count = $(this).val();
 		$(this).val(p_count);
@@ -235,48 +236,123 @@ $(function() {
 			
           </div>
           
-          <c:forEach items="${imgList}" var="lshBoardVo">
-				<img src="/upload/displayFile?fileName=${lshBoardVo.file_name}">
-		  </c:forEach>
+          
+			
+			
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="tabbable" id="tabs-402995">
+							<ul class="nav nav-tabs" style="left: 50%; margin-left: 420px;">
+								<li class="nav-item">
+									<a class="nav-link active show" href="#tab1" data-toggle="tab">상품 정보</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#tab2" data-toggle="tab">관련 상품</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#tab3" data-toggle="tab">구매 정보</a>
+								</li>
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane active" id="tab1" style="text-align: center;">
+									<c:forEach items="${imgList}" var="lshBoardVo">
+										<img src="/upload/displayFile?fileName=${lshBoardVo.file_name}">
+		 							</c:forEach>
+								</div>
+								
+								<div class="tab-pane" id="tab2" style="text-align: center;">
+									<div class="site-section block-3 site-blocks-2">
+								      <div class="container">
+								        <div class="row justify-content-center">
+								          <div class="col-md-7 site-section-heading text-center pt-4">
+								            <h2>관련 상품</h2>
+								          </div>
+								        </div>
+								        <div class="row">
+								          <div class="col-md-12">
+								            <div class="nonloop-block-3 owl-carousel">
+								            
+								            <c:forEach items="${relationList}" var="lshBoardVo">
+								              <div class="item">
+								                <div class="block-4 text-center" >
+								                  <a class="block-4 title" href="shop_single" data-p_num="${lshBoardVo.p_num}">
+								                    <img src="/upload/displayFile?fileName=${lshBoardVo.title_name}">
+								                  </a>
+								                  <div class="block-4-text p-4">
+								                    <h3><a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}">
+								                    	${lshBoardVo.p_name}</a>
+								                    </h3>
+								                    <p class="mb-0">${lshBoardVo.p_content}</p>
+								                    <p class="text-primary font-weight-bold">
+								                    <fmt:formatNumber value="${lshBoardVo.p_price}" pattern="#,###"/>원
+													</p>
+								                  </div>
+								                </div>
+								              </div>
+								             </c:forEach>
+								              
+								            </div>
+								          </div>
+								        </div>
+								        
+								      </div>
+								    </div>
+								</div>
+								
+								<div class="tab-pane" id="tab3">
+									<div>
+										<h3 style="color: black">상품 결제 정보</h3>
+											<p>
+												고액결제의 경우 안전을 위해 카드사에서 확인전화를 드릴 수도 있습니다. 확인과정에서 도난 카드의 사용이나 타인 명의의 주문등 정상적인 주문이 아니라고 판단될 경우 임의로 주문을 보류 또는 취소할 수 있습니다.  
+												무통장 입금은 상품 구매 대금은 PC뱅킹, 인터넷뱅킹, 텔레뱅킹 혹은 가까운 은행에서 직접 입금하시면 됩니다.  
+												주문시 입력한 입금자명과 실제입금자의 성명이 반드시 일치하여야 하며, 3일 이내로 입금을 하셔야 하며 입금되지 않은 주문은 자동취소 됩니다.
+												무통장 입금확인의 경우 15분 단위로 전산처리되어 바로 입금확인처리가 안될 수 있습니다. (주문시 입금자명과 금액이 꼭 동일해야 정상전산처리됩니다.)
+											</p>
+										<hr/>
+										<h3 style="color: black">배송정보</h3>
+										<p>
+											배송 방법 : 택배<br>
+											배송 지역 : 전국지역<br>
+											배송 비용 : ₩2,500<br>
+											배송 기간 : 3일 ~ 7일<br>
+											배송 안내 : - 산간벽지나 도서지방은 별도의 추가금액을 지불하셔야 하는 경우가 있습니다.
+											고객님께서 주문하신 상품은 입금 확인후 배송해 드립니다. 다만, 상품종류에 따라서 상품의 배송이 다소 지연될 수 있습니다.<br>
+											- 수량부족시 교환이 아닌 환불 처리될 수 있습니다
+										</p>
+										<hr/>
+										<h3 style="color: black">교환 및 반품정보</h3>
+										<h5 style="color: black">교환 및 반품 주소</h5>
+										<p> - 서울</p>
+										<h5 style="color: black">교환 및 반품이 가능한 경우</h5>
+										<p>
+											- 상품을 공급 받으신 날로부터 7일이내 포장을 개봉하였거나 포장이 훼손되어 상품가치가 상실된 경우에는 교환/반품이 불가능합니다.<br>
+											- 공급받으신 상품 및 용역의 내용이 표시.광고 내용과 다르거나 다르게 이행된 경우에는 공급받은 날로부터 3월이내, 그사실을 알게 된 날로부터 30일이내
+										</p>
+										<h5 style="color: black">교환 및 반품이 불가능한 경우</h5>
+										<p>
+											- 고객님의 책임 있는 사유로 상품등이 멸실 또는 훼손된 경우. 단, 상품의 내용을 확인하기 위하여
+											 포장 등을 훼손한 경우는 제외<br>
+											- 포장을 개봉하였거나 포장이 훼손되어 상품가치가 상실된 경우<br>
+											- 고객님의 사용 또는 일부 소비에 의하여 상품의 가치가 현저히 감소한 경우<br>
+											- 시간의 경과에 의하여 재판매가 곤란할 정도로 상품등의 가치가 현저히 감소한 경우<br>
+											- 복제가 가능한 상품등의 포장을 훼손한 경우<br>
+											※ 고객님의 마음이 바뀌어 교환, 반품을 하실 경우 상품반송 비용은 고객님께서 부담하셔야 합니다.<br>
+											 (색상 교환, 사이즈 교환 등 포함)<br>
+											※ 교환접수시 택배사로 기사님 배정을 해드립니다. 접수완료 후 영업일 기준 1-3일 이내에 기사님에게 연락이 갑니다. 빠른 교환을 원하시는 경우 따로 본사주소로 배송 부탁드립니다.<br>
+											※  재고부족시 환불처리될 수 있습니다
+										</p>
+									</div>
+									
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			
         </div>
-      </div>
-    </div>
-
-    <div class="site-section block-3 site-blocks-2 bg-light">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>관련 상품</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="nonloop-block-3 owl-carousel">
-            
-            <c:forEach items="${relationList}" var="lshBoardVo">
-              <div class="item">
-                <div class="block-4 text-center" >
-                  <a class="block-4 title" href="shop_single" data-p_num="${lshBoardVo.p_num}">
-                    <img src="/upload/displayFile?fileName=${lshBoardVo.title_name}">
-                  </a>
-                  <div class="block-4-text p-4">
-                    <h3><a href="shop_single" class="title" data-p_num="${lshBoardVo.p_num}">
-                    	${lshBoardVo.p_name}</a>
-                    </h3>
-                    <p class="mb-0">${lshBoardVo.p_content}</p>
-                    <p class="text-primary font-weight-bold">
-                    <fmt:formatNumber value="${lshBoardVo.p_price}" pattern="#,###"/>원
-					</p>
-                  </div>
-                </div>
-              </div>
-             </c:forEach>
-              
-            </div>
-          </div>
-        </div>
-        
       </div>
     </div>
 

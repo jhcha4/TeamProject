@@ -9,6 +9,7 @@
     height:100px;
     margin:0 auto;
 }
+
 </style>
 <script>
 $(document).ready(function() {
@@ -42,7 +43,7 @@ $(document).ready(function() {
 		var count = $(this).val();
 		var c_num = $(this).parent().parent().next().next().next().text();
 		console.log("c_num : " + c_num);
-		location.href = "/cjh/updateCart?u_id=${u_id}&p_num="+p_num+"&p_count="+count+"&c_num="+c_num;
+		location.href = "/cjh/updateCart?p_num="+p_num+"&p_count="+count+"&c_num="+c_num;
 		var p_price = $(this).parent().parent().prev().text();
 // 		var p_count = $(this).parent().parent().next().children().text();
 // 		console.log("p_count : " + p_count);
@@ -53,7 +54,7 @@ $(document).ready(function() {
 	//	결제하러가기
 	$("#btnCheckOut").click(function(e) {
 		e.preventDefault();
-		location.href = "/cjh/checkout?u_id=${u_id}";
+		location.href = "/cjh/checkout";
 	});
 	
 	//	선택된 쪽지 삭제
@@ -71,7 +72,7 @@ $(document).ready(function() {
 			var u_id = $("#u_id").val();
 			var c_num = sc_num.substring(0, sc_num.length - 1);
 			console.log(c_num);
-	 		location.href="/cjh/deleteCheckedCart?u_id="+u_id+"&c_num="+c_num;
+	 		location.href="/cjh/deleteCheckedCart?&c_num="+c_num;
 		} else {
 			alert("삭제할 항목을 체크해주세요");
 		}
@@ -101,7 +102,6 @@ $(document).ready(function() {
 });
 </script>
 
-${list}
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -118,6 +118,7 @@ ${list}
 		<div class="row mb-5">
 			<form id="frmCart" class="col-md-12" action="/cjh/updateCart" method="post">
 				<div class="title" style="text-align:center;"><h1 class="tit">CART</h1></div>
+				
 				<div class="site-blocks-table">
 					<table class="table table-bordered">
 						<thead style="height: 10px">

@@ -40,4 +40,7 @@ public interface CjhCartService {
 	
 	//	배송완료 물품 구매확정하기
 	public void comfirmOrder(int c_num) throws Exception;
+	
+	//	회원이 주문한 상품 갯수 불러오기
+	public int getUserOrder(String u_id) throws Exception;
 }

@@ -34,7 +34,7 @@ public class CjhPointDaoImpl implements CjhPointDao {
 	public void getPoint(String u_id, int totalPrice) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("u_id", u_id);
-		paramMap.put("totalPrice", (int)(totalPrice * 0.1));
+		paramMap.put("totalPrice", (int)(totalPrice * 0.01));
 		sqlSession.update(NAMESPACE + "getPoint", paramMap);
 	}
 	
@@ -52,23 +52,31 @@ public class CjhPointDaoImpl implements CjhPointDao {
 	public void plusPoint(String u_id, int totalPrice) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("u_id", u_id);
-		paramMap.put("totalPrice", (int)(totalPrice * 0.1));
+		paramMap.put("totalPrice", (int)(totalPrice * 0.01));
 		sqlSession.selectOne(NAMESPACE + "plusPoint", paramMap);
 	}
 	
 	//	총 적립 포인트
 	@Override
-	public List<CjhPointVo> getTotalPoint(String u_id) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "getTotalPoint", u_id);
+	public int getTotalPoint(String u_id) throws Exception {
+		if (sqlSession.selectOne(NAMESPACE + "getTotalPoint", u_id) == null) {
+			return 0;
+		} else {
+			return sqlSession.selectOne(NAMESPACE + "getTotalPoint", u_id);
+		}
 	}
 
-	//	유저 사용 포인트
+	//	총 사용 포인트
 	@Override
-	public List<CjhPointVo> getUsePoint(String u_id) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "getUsePoint", u_id);
+	public int getUsePoint(String u_id) throws Exception {
+		if (sqlSession.selectOne(NAMESPACE + "getUsePoint", u_id) == null) {
+			return 0;
+		} else {
+			return sqlSession.selectOne(NAMESPACE + "getUsePoint", u_id);
+		}
 	}
 
-//	유저 포인트 목록
+	//	유저 포인트 목록
 	@Override
 	public List<CjhPointVo> listPoint(String u_id, int point_code, CjhPagingDto pagingDto) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();

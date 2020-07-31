@@ -40,5 +40,9 @@ public class KysVisitCountController  {
 	
 		return service.rodChart();
 	}
-
+	@RequestMapping(value="/salesList")
+	public JSONObject salesList() throws Exception{
+		
+		return service.salesList();
+	}
 }

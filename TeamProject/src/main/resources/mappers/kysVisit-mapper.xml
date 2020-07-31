@@ -5,13 +5,16 @@
 
 <mapper namespace="mappers.kysVisit-mapper">
 	<!-- 일일 매출 -->
-	<select id="salesList" resultType="CjhCartVo">
-		select * from tbl_cart
+	<select id="salesList" resultType="KysVisitCountVo">
+		select to_char(CAST(p_date AS DATE) ,'yyyy-mm-dd') p_date, count(*) cnt,sum(p_price) p_price
+		from tbl_cart 
 		where p_status = 1006
+		group by to_char(CAST(p_date AS DATE) ,'yyyy-mm-dd'), p_status
+		order by p_date
 	</select>
 
 	<!-- 주문 목록 -->
-	<select id="orderList" resultType="CjhCartVo">
+	<select id="orderList" resultType="KysVisitCountVo">
 		select * from tbl_cart
 		where p_status = 1002
 	</select>
