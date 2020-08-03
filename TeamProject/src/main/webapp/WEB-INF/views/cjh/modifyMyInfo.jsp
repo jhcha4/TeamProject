@@ -84,6 +84,7 @@ $(document).ready(function() {
 });
 </script>
 
+${userVo}
 
 <div class="bg-light py-3">
 	<div class="container">
@@ -151,22 +152,33 @@ $(document).ready(function() {
 										<tr id="email-area">
 											<th scope="row">이메일</th>
 											<td colspan="2">
-												<input type="email" class="form-control" id="email" name="u_email"
+												<input type="email" class="form-control" id="u_email" name="u_email"
 														value="${userVo.u_email}"/>
 											</td>
 										</tr>
 									</thead>
 									
+									<thead>
+										
+										<tr id="phone-area">
+											<th scope="row">전화번호</th>
+											<td colspan="2">
+												<input type="text" class="form-control" id="u_phone" name="u_phone"
+														value="${userVo.u_phone}"/>
+											</td>
+										</tr>
+									</thead>
 									
-<!-- 									<thead> -->
-<!-- 										<tr id="address-area"> -->
-<!-- 					                        <th scope="row">주소</th> -->
-<!-- 					                       	<td colspan="2"> -->
-<!-- 												<input type="text" class="form-control" id="address" name="u_address" -->
-<%-- 														value="${userVo.u_address}"/> --%>
-<!-- 											</td> -->
-<!-- 					                    </tr> -->
-<!-- 									</thead> -->
+									<thead>
+										
+										<tr id="email-area">
+											<th scope="row">회원등급</th>
+											<td colspan="2">
+												<input type="text" class="form-control" id="u_grade" name="u_grade"
+														value="${userVo.u_grade}" readonly/>
+											</td>
+										</tr>
+									</thead>
 									
 									<thead>
 										<tr id="address-area">
