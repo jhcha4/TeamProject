@@ -163,6 +163,10 @@ $(function() {
 		$("#singlePage").submit();
 	});
 	
+	function addComma(n) {
+	    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
 });
 </script>
 <%@ include file="frmPage.jsp" %>
