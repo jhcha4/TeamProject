@@ -12,7 +12,7 @@
 		    from (select b.p_num, b.p_name, b.p_content, b.p_price, b.p_main, b.p_serve, b.p_deleted, b.p_size, b.p_viewcnt, a.title_name
 		          from tbl_product_board b, tbl_title_attach a
 		          <where>
-		          	b.p_num = a.p_num
+		          	b.p_num = a.p_num and p_deleted is null
 		        	<include refid="item"/>
 		          </where>
 		        order by <include refid="type"/>p_num desc) c)
