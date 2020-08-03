@@ -139,7 +139,10 @@ $(document).ready(function() {
 <!--                 </div> -->
 <!--               </div> -->
 
-
+			  <div class="form-group">
+			  	해외배송 준비중입니다.
+			  </div>
+			  
               <div class="form-group">
                 <label for="c_ship_different_address" class="text-black" data-toggle="collapse" href="#ship_different_address" role="button" aria-expanded="false" aria-controls="ship_different_address"><input type="checkbox" value="1" id="c_ship_different_address"> Ship To A Different Address?</label>
                 <div class="collapse" id="ship_different_address">
@@ -231,11 +234,11 @@ $(document).ready(function() {
                 <h2 class="h3 mb-3 text-black">Coupon Code</h2>
                 <div class="p-3 p-lg-5 border">
                   
-                  <label for="c_code" class="text-black mb-3">Enter your coupon code if you have one</label>
+                  <label for="c_code" class="text-black mb-3">보유한 쿠폰을 입력해주세요.</label>
                   <div class="input-group w-75">
                     <input type="text" class="form-control" id="c_code" placeholder="Coupon Code" aria-label="Coupon Code" aria-describedby="button-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-primary btn-sm" type="button" id="button-addon2">Apply</button>
+                      <button class="btn btn-primary btn-sm" type="button" id="button-addon2" disabled>Apply</button>
                     </div>
                   </div>
 
