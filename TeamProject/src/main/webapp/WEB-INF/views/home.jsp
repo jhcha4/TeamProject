@@ -14,7 +14,7 @@
                 <a href="/lsh/shop?p_main=T&type=L&page=1" class="btn btn-sm btn-info">상품 둘러보기</a>
               </p>
             </div>
-          </div>
+          </div> 
         </div>
       </div>
     </div>
