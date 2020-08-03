@@ -74,8 +74,6 @@
 						
 					</c:when>
 					<c:otherwise>
-					<button type="button" class="btn btn-info">글 수정은 로그인시 가능  </button>
-					
 					</c:otherwise>
 				
 				

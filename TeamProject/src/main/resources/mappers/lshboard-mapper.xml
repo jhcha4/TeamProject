@@ -53,7 +53,7 @@
                 from tbl_product_board b, tbl_title_attach a
                 where b.p_num = a.p_num and p_serve = #{p_serve}
                 order by p_viewcnt desc) a)
-                where rnum between 1 and 7 and p_num not in(#{p_num})
+                where rnum between 1 and 8 and p_num not in(#{p_num})
 	</select>
 	
 	<!-- 서브 이미지 여러개 불러오기 -->

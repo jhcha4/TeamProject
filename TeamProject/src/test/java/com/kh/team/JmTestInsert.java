@@ -99,5 +99,16 @@ public class JmTestInsert {
 		public void selectId()throws Exception{
 			jmMemberDao.selectId("123");
 		}
+		//origin
+	@Test	
+	public void  selectOriginNum()throws Exception{
+		jmMemberDao.selectOriginNum(473);
+	}
+	//origin
+	@Test	
+	public void  selectOriginNum2()throws Exception{
+		jmMemberService.selectOriginNum(473);
+	}	
+		
 	
 }

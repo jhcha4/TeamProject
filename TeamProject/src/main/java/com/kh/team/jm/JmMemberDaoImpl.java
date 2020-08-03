@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.team.domain.JmContactVo;
 import com.kh.team.domain.JmMemberVo;
 import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmPwEmailDto;
@@ -99,6 +100,27 @@ public class JmMemberDaoImpl implements JmMemberDao {
 	public String selectGrade(String u_grade) throws Exception {
 		
 		return SqlSession.selectOne(NAMESPACE+"selectGrade",u_grade);
+	}
+	//Q&A 게시판 관리자 답글 달기
+	@Override
+	public void contactManagerInsert(JmContactVo jmContactVo) throws Exception {
+		
+		SqlSession.insert(NAMESPACE+"contactManagerInsert",jmContactVo);
+	}
+	
+	
+	@Override
+	public int selectOriginNum(int c_originnum) throws Exception {
+		
+		return SqlSession.selectOne(NAMESPACE+"selectOriginNum",c_originnum);
+	}
+	
+	
+	//관리자 Q&A 게시판 삭제기능 
+	@Override
+	public void deleteContact(int c_info) throws Exception {
+		SqlSession.delete(NAMESPACE+"deleteContact",c_info);
+		
 	}
 	
 

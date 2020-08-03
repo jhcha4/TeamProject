@@ -12,6 +12,9 @@ public class JmContactVo {
 	private int c_item;
 	private int c_viewcnt;
 	
+	private int c_originnum;
+	private int c_groupold;
+	
 	public JmContactVo() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -73,15 +76,32 @@ public class JmContactVo {
 		this.c_viewcnt = c_viewcnt;
 	}
 
+	public int getC_originnum() {
+		return c_originnum;
+	}
+
+	public void setC_originnum(int c_originnum) {
+		this.c_originnum = c_originnum;
+	}
+
+	public int getC_groupold() {
+		return c_groupold;
+	}
+
+	public void setC_groupold(int c_groupold) {
+		this.c_groupold = c_groupold;
+	}
+
 	@Override
 	public String toString() {
-		return "jmContactVo [c_info=" + c_info + ", c_id=" + c_id + ", c_subject=" + c_subject + ", c_contents="
-				+ c_contents + ", c_time=" + c_time + ", c_item=" + c_item + ", c_viewcnt=" + c_viewcnt + "]";
+		return "JmContactVo [c_info=" + c_info + ", c_id=" + c_id + ", c_subject=" + c_subject + ", c_contents="
+				+ c_contents + ", c_time=" + c_time + ", c_item=" + c_item + ", c_viewcnt=" + c_viewcnt
+				+ ", c_originnum=" + c_originnum + ", c_groupold=" + c_groupold + "]";
 	}
 	
 	
 	
 	
 	
-	
 }
+	

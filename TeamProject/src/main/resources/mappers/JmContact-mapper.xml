@@ -9,7 +9,7 @@
 
 	<!-- Contact게시판 리스트 조회 -->
 		<select id="selectContactList" resultType="JmContactVo">
-			select * from tbl_contact order by c_info desc
+			select * from  tbl_contact order by c_originnum desc,c_groupold asc
 		</select>
 
 	
@@ -26,8 +26,8 @@
 		
 	<!-- Contact 게시판 글쓰기 -->
 		<insert id="insertContact">
-		insert into tbl_contact(c_info, c_id,c_subject,c_contents)
-		values (seq_contact.nextval, #{c_id},#{c_subject},#{c_contents})
+		insert into tbl_contact(c_info, c_id,c_subject,c_contents,c_originnum)
+		values (seq_contact.nextval, #{c_id},#{c_subject},#{c_contents}, (select nvl(max(c_originnum),0) from tbl_contact)+1)
 		
 		</insert>
 		
@@ -66,7 +66,7 @@
 		from(select rownum rnum,a.*
 		from(select * from tbl_contact
 		<include refid="search"></include>
-		order by c_info desc)a)
+		order by c_originnum desc,c_groupold asc)a)
 		where rnum between #{startRow} and #{endRow}
 	</select>
 	
