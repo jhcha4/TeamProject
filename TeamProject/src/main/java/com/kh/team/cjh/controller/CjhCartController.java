@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.team.cjh.service.CjhCartService;
 import com.kh.team.cjh.service.CjhPointService;
+import com.kh.team.cjh.service.CjhUserService;
 import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.CjhPagingDto;
+import com.kh.team.domain.CjhUserVo;
 import com.kh.team.domain.LshBoardVo;
 import com.kh.team.lsh.service.LSH_BoardService;
 
@@ -29,6 +31,8 @@ public class CjhCartController {
 	private CjhPointService pointService;
 	@Inject
 	private LSH_BoardService boardService;
+	@Inject
+	private CjhUserService userService;
 	
 	//	장바구니에 추가
 	@RequestMapping(value="/insertCart", method=RequestMethod.POST)
@@ -111,6 +115,8 @@ public class CjhCartController {
 		String u_id = (String)session.getAttribute("u_id");
 		List<CjhCartVo> list = cartService.getCart(u_id);
 		int userPoint = pointService.getUserPoint(u_id);
+		CjhUserVo userVo = userService.selectUser(u_id);
+		model.addAttribute("userVo", userVo);
 		model.addAttribute("userPoint", userPoint);
 		model.addAttribute("list", list);
 		return "cjh/checkout";
