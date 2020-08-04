@@ -144,7 +144,7 @@ $(document).ready(function() {
 			  </div>
 			  
               <div class="form-group">
-                <label for="c_ship_different_address" class="text-black" data-toggle="collapse" href="#ship_different_address" role="button" aria-expanded="false" aria-controls="ship_different_address"><input type="checkbox" value="1" id="c_ship_different_address"> Ship To A Different Address?</label>
+<!--                 <label for="c_ship_different_address" class="text-black" data-toggle="collapse" href="#ship_different_address" role="button" aria-expanded="false" aria-controls="ship_different_address"><input type="checkbox" value="1" id="c_ship_different_address"> Ship To A Different Address?</label> -->
                 <div class="collapse" id="ship_different_address">
                   <div class="py-2">
 
