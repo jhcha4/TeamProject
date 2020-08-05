@@ -11,7 +11,7 @@
 
 		select * from tbl_user
 		where u_id =#{u_id} and u_pw=#{u_pw}
-
+ 
 	</select>
 	
 	<!-- 등급 세션 가져오기 -->
@@ -146,7 +146,6 @@
 			<include refid="searchUser"></include>
 		
 		</select>	
-	
 	
 	
 	
