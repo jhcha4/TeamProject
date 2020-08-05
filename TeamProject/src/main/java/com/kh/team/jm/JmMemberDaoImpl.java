@@ -14,6 +14,7 @@ import com.kh.team.domain.JmMemberVo;
 import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmPwEmailDto;
 import com.kh.team.domain.JmReviewVo;
+import com.kh.team.domain.Kys_BoardVo;
 
 @Repository
 public class JmMemberDaoImpl implements JmMemberDao {
