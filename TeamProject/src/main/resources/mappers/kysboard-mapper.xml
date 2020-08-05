@@ -133,6 +133,13 @@
 					and p_serve like #{p_serve}
 		</if>
 	</sql>
-	
+	<!-- 구매요청 목록 -->
+	<select id="salesAll" resultType="CjhCartVo">
+		select * from tbl_cart
+		where p_status = 1002
+				or p_status = 1003 
+				or p_status = 1004 
+				or p_status = 1005
+	</select>
 	
 </mapper>

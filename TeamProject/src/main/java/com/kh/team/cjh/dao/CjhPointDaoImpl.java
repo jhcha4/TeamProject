@@ -20,6 +20,18 @@ public class CjhPointDaoImpl implements CjhPointDao {
 	@Inject
 	private SqlSession sqlSession;
 
+	//	회원가입시 포인트 지급 (포인트)
+	@Override
+	public void signUpPoint(String u_id) throws Exception {
+		sqlSession.insert(NAMESPACE + "signUpPoint", u_id);
+	}
+	
+	//	회원가입시 포인트 지금 (유저)
+	@Override
+	public void signUpUser(String u_id) throws Exception {
+		sqlSession.update(NAMESPACE + "signUpUser", u_id);
+	}
+	
 	//	유저의 포인트 차감
 	@Override
 	public void usePoint(String u_id, int totalPrice) throws Exception {
@@ -111,5 +123,9 @@ public class CjhPointDaoImpl implements CjhPointDao {
 		paramMap.put("point_code", point_code);
 		return sqlSession.selectOne(NAMESPACE + "getPointCount", paramMap);
 	}
+
+
+
+
 
 }

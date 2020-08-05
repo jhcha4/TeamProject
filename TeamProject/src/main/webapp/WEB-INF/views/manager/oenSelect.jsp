@@ -107,7 +107,7 @@ $(function() {
 		$("#imgFileDrop").css("height", "auto");
 	});
 	$("#formSubmit").submit(function(){
-		var upDiv = $("#update >div ");
+		var upDiv = $("#imgFileDrop >div ");
 		var titleDiv = $("#titleImg > div");
 		upDiv.each(function(index){
 			var filename = $(this).attr("data-filename");
@@ -121,7 +121,7 @@ $(function() {
 			var hiddenInput = "<input type='hidden' name='title_name' value='"+filename+"'/>";
 			$("#formSubmit").prepend(hiddenInput);
 		});
-// 		return false;
+		return false;
 	});
 
 

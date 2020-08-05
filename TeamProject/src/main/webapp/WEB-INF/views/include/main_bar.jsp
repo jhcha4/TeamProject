@@ -27,6 +27,7 @@
 			<div class="btn-group" role="group">
 
 				<button class="btn btn-secondary" type="button"><a href="/manager/manager_main">관리자 홈</a></button>
+				<button class="btn btn-secondary" type="button"><a href="/manager/salesAll">주문 리스트</a></button>
 				<button class="btn btn-secondary" type="button"><a href="/manager/shop_single_input">상품 등록</a></button>
 				<button class="btn btn-secondary" type="button"><a href="/manager/normal_list">상품리스트</a></button>
 				<button class="btn btn-secondary" type="button"><a href="/jm/jm_userList">유저리스트</a></button>

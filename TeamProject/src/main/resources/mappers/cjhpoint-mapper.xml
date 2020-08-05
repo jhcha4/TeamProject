@@ -4,6 +4,19 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mappers.cjhpoint-mapper">
+
+	<insert id="signUpPoint">
+		insert into tbl_point (point_num, point_code, u_id, point_value)
+		values (seq_point_num.nextval, 1001, #{u_id}, 500000)
+	</insert>
+	
+	<update id="signUpUser">
+		update tbl_user set
+			u_point = (select u_point from tbl_user
+					   where u_id = #{u_id}) + 500000
+		where u_id = #{u_id}
+	</update>
+
 	<update id="usePoint">
 		update tbl_user set
 			u_point = (select u_point from tbl_user

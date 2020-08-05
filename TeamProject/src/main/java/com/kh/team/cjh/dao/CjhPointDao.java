@@ -7,6 +7,12 @@ import com.kh.team.domain.CjhPointVo;
 
 public interface CjhPointDao {
 	
+	//	회원가입시 포인트 지급 (포인트)
+	public void signUpPoint(String u_id) throws Exception;
+	
+	//	회원가입시 포인트 지급 (유저)
+	public void signUpUser(String u_id) throws Exception;
+	
 	//	유저의 포인트 차감
 	public void usePoint(String u_id, int totalPrice) throws Exception;	
 	

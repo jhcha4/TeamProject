@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
@@ -58,13 +59,15 @@ public class KysBoardServiceImpl implements KysBoardService {
 	
 		String[] files = boardVo.getP_files();
 		System.out.println("update / service / file : "+files);
-		if(files != null || files.equals("") 	) {
+		if(files != null || !files.equals("")) {
+			
 			for (String file_name : files) {
 				boardDao.imgFile(file_name, p_num);
 			return;	
 		}
-		
+			return;	
 	}
+		return;	
 	}
 
 	@Override
@@ -121,6 +124,11 @@ public class KysBoardServiceImpl implements KysBoardService {
 	public List<Kys_productCountVo> selectProductCount(int p_num) throws Exception {
 		 List<Kys_productCountVo> prodcutCountList = boardDao.selectProductCount(p_num);
 		return prodcutCountList;
+	}
+	@Override
+	public List<CjhCartVo> salesAll() throws Exception {
+		
+		return boardDao.salesAll();
 	}
 	
 }
