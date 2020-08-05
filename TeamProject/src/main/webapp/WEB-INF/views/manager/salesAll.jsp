@@ -40,7 +40,7 @@ $(function(){
 			"data" : sendData,
 			"url"  : url,
 			"success" : function(rData){
-				console.log(rData);
+// 				console.log(rData);
 				alert("변경 되었습니다.");
 			}
 		});
@@ -50,13 +50,17 @@ $(function(){
 </script>
 
 <div class="col-md-12">
-				<div >
-				<select id="selectBar">
-					<option value="1">배송 현황 조회
-					
-					<option value="3">날자별 조회
-				</select>
-				<button type="button" id="btnSearch">검색</button>
+			
+				
+				
+				
+			</div>
+    	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-8">
 				<div id="delDiv" >
 				<label>배송 조회:</label>
 					<select id="p_price" name="p_price">
@@ -65,10 +69,7 @@ $(function(){
 						<option>배송중
 						<option>배송완료
 					</select>
-				</div>
-				
-					
-					
+					<button type="button" id="btnSearch">검색</button>
 					<!-- n줄 씩보기 -->
 					<select name="perPage" >
 						<c:forEach begin="5" end="50" step="5" var="i">
@@ -78,13 +79,6 @@ $(function(){
 						</c:forEach>
 					</select>
 				</div>
-			</div>
-    	<div class="row">
-		<div class="col-md-12">
-			<div class="row">
-				<div class="col-md-2">
-				</div>
-				<div class="col-md-8">
 					<table class="table">
 						<thead>
 							<tr>

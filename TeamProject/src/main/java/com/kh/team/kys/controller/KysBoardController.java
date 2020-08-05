@@ -74,10 +74,10 @@ public class KysBoardController {
 	//등록 처리 
 	@RequestMapping(value="/shop_single_input", method = RequestMethod.POST)
 	public String shop_single_input(Kys_BoardVo boardVo,Kys_productCountVo productCountVo) throws Exception{
-		System.out.println("boardVo: " + boardVo);
+//		System.out.println("boardVo: " + boardVo);
 		boardService.boardInsert(boardVo);
 		
-		return "redirect:/manager/manager_main";
+		return "redirect:/manager/shop_single_input";
 	}
 	//상품 1개 찾기
 	@RequestMapping(value="oenSelect", method = RequestMethod.GET)
