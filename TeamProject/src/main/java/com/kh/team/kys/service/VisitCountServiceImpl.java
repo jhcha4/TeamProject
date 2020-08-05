@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.KysVisitCountVo;
@@ -128,8 +129,9 @@ public class VisitCountServiceImpl implements VisitCountService {
 		return dao.orderList();
 	}
 	@Override
-	public void updateStatus(KysVisitCountVo vo) throws Exception {
-		dao.updateStatus(vo);
+	public void updateStatus(int p_status,int p_num,String u_id) throws Exception {
+
+		dao.updateStatus(p_status,p_num,u_id);
 		
 	}
 

@@ -1,6 +1,8 @@
 package com.kh.team.kys.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -20,6 +22,7 @@ import com.kh.team.kys.service.VisitCountService;
 @RequestMapping("/ajax")
 public class KysAjaxContriller {
 	
+	private static final int HashMap = 0;
 	@Inject
 	private KysBoardService boardService;
 	@Inject
@@ -53,8 +56,9 @@ public class KysAjaxContriller {
 		}
 		//배송상태 업뎃
 		@RequestMapping(value="/updateStatus",method=RequestMethod.POST)
-		public String updateStatus(KysVisitCountVo vo) throws Exception{
-			visitService.updateStatus(vo);
+		public String updateStatus(int p_status,int p_num,String u_id) throws Exception{
+			
+			visitService.updateStatus(p_status,p_num,u_id);
 			return "success";
 		}
 		

@@ -26,34 +26,38 @@ $(function(){
 		
 	});
 	$("select[name=p_status]").change(function(){
-		var price = $(this).val();
-		var u_id = $("input[name=u_id]").val();
-		var p_num = $(this).parent().eq(0).val();
+		var p_status = $(this).val();
+		var u_id = $(this).parent().children().eq(0).val();
+		var p_num = $(this).parent().children().eq(1).val();
 		$("input[name=p_num]").val();
-		console.log(price);
-		console.log(u_id);
-		console.log(p_num);
-		var sendData = {"p_price":price};
-		var url = "ajax/updateStatus";
-// 		$.ajax({
-// 			"type" : "post",
-// 			"data" : sendData,
-// 			"url"  : url,
-			
-// 		});
+	
+		var sendData = {"p_status":p_status ,
+						"u_id" : u_id,
+						"p_num" : p_num};
+		var url = "/ajax/updateStatus";
+		$.ajax({
+			"type" : "post",
+			"data" : sendData,
+			"url"  : url,
+			"success" : function(rData){
+				console.log(rData);
+				alert("변경 되었습니다.");
+			}
+		});
 		
 	});
 });
 </script>
+
 <div class="col-md-12">
 				<div >
 				<select id="selectBar">
 					<option value="1">배송 현황 조회
-					<option value="2">상품별 조회
+					
 					<option value="3">날자별 조회
 				</select>
 				<button type="button" id="btnSearch">검색</button>
-				<div id="delDiv" style="display: none;">
+				<div id="delDiv" >
 				<label>배송 조회:</label>
 					<select id="p_price" name="p_price">
 						<option>주문 접수
@@ -63,33 +67,6 @@ $(function(){
 					</select>
 				</div>
 				
-				<div id="iteam" style="display: none;">
-					<label>main : </label> 
-					<select name="p_main" id="mainOption">
-						<option value="T">상의</option>
-						<option value="P">하의</option>
-						<option value="A">악세사리</option>
-						<option value="S">신발</option>
-					</select> <label>serve : </label> 
-					<select name="p_serve" id="serveOption">
-						<option value="TH">반팔</option>
-						<option value="TL">긴팔</option>
-						<option value="TS">셔츠</option>
-						<option value="TM">맨투맨</option>
-						<option value="PJ">청바지</option>
-						<option value="PM">면바지</option>
-						<option value="PH">반바지</option>
-						<option value="P7">7부바지</option>
-						<option value="SD">구두</option>
-						<option value="SU">운동화</option>
-						<option value="SS">스릴퍼</option>
-						<option value="SR">로퍼</option>
-						<option value="AR">반지</option>
-						<option value="AW">지갑</option>
-						<option value="AC">모자</option>
-						<option value="AB">가방</option>
-					</select>
-				</div>
 					
 					
 					<!-- n줄 씩보기 -->

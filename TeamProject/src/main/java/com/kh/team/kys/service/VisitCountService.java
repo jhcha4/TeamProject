@@ -3,6 +3,7 @@ package com.kh.team.kys.service;
 import java.util.List;
 
 import org.json.simple.JSONObject;
+import org.springframework.ui.Model;
 
 import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.KysVisitCountVo;
@@ -20,5 +21,5 @@ public interface VisitCountService {
 	//주문목록 가져오기
 	public List<KysVisitCountVo> orderList() throws Exception;
 	//주문 상태 업뎃
-	public void updateStatus(KysVisitCountVo vo) throws Exception;
+	public void updateStatus(int p_status,int p_num,String u_id) throws Exception;
 }
