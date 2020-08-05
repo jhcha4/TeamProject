@@ -48,5 +48,9 @@ public class VisitCountDaoImpl implements VisitCountDao {
 	public List<KysVisitCountVo> orderList() throws Exception {
 		return sqlSession.selectList(NAMESPACE+"orderList");
 	}
+	@Override
+	public void updateStatus(KysVisitCountVo vo) throws Exception {
+		sqlSession.update(NAMESPACE+"updateStatus",vo);
+	}
 
 }

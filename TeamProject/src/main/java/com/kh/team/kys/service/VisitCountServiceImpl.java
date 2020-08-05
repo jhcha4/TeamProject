@@ -127,5 +127,10 @@ public class VisitCountServiceImpl implements VisitCountService {
 		
 		return dao.orderList();
 	}
+	@Override
+	public void updateStatus(KysVisitCountVo vo) throws Exception {
+		dao.updateStatus(vo);
+		
+	}
 
 }

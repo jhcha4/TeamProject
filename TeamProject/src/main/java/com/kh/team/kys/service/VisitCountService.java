@@ -19,4 +19,6 @@ public interface VisitCountService {
 	public JSONObject salesList() throws Exception;
 	//주문목록 가져오기
 	public List<KysVisitCountVo> orderList() throws Exception;
+	//주문 상태 업뎃
+	public void updateStatus(KysVisitCountVo vo) throws Exception;
 }

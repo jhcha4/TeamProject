@@ -66,10 +66,8 @@ public class KysBoardController {
 	@RequestMapping(value ="/shop_single_input", method = RequestMethod.GET)
 	public void board_produce(Model model) throws Exception{
 		List<Kys_MainVo> mainList = serveService.mainList();
-//		List<Kys_MainVo> sizeList = serveService.dress_size();
 		List<Kys_ServeVo> serveList = serveService.serveList();
 		model.addAttribute("mainList",mainList);
-//		model.addAttribute("sizeList",sizeList);
 		model.addAttribute("serveList",serveList);
 		
 	}
@@ -81,7 +79,7 @@ public class KysBoardController {
 		
 		return "redirect:/manager/manager_main";
 	}
-	//상품 1개 검색
+	//상품 1개 찾기
 	@RequestMapping(value="oenSelect", method = RequestMethod.GET)
 	public void oenSelect(Model model, int p_num) throws Exception {
 		List<Kys_ImgVo> listImg = boardService.imgSelectBy(p_num);
@@ -125,6 +123,12 @@ public class KysBoardController {
 //		System.out.println(list);
 //		model.addAttribute("list",list);
 		return new ModelAndView("manager/rodChart");
+	}
+	//주문 받은 게시물
+	@RequestMapping(value = "/salesAll",method = RequestMethod.GET)
+	public void salesAll(Model model) throws Exception{
+		List<CjhCartVo> list = boardService.salesAll();
+		model.addAttribute("list",list);
 	}
 	
 }
