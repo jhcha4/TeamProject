@@ -38,16 +38,18 @@ $(function(){
 		var u_pwCheck = $("#u_pw2").val();
 		
 		if(u_pw != u_pwCheck){
-			$("#CheckPwSpan").text("비밀번호가 다릅니다 다시 확인해 주세요");
+			$("#CheckPwSpan").text("비밀번호가 일치하지 않습니다. 재확인 해 주세요.");
+		}else{
+			$("#CheckPwSpan").text("비밀번호가 일치합니다.");
 		}	
 	});
 	
 	$("#u_idCheck").click(function(e){
 		console.log(e);
 		var u_id = $("#u_id").val();
-		
+		  
 		if(u_id ==""){
-			$("#CheckidSpan").text("아이디를 입력하세요");
+			$("#CheckidSpan").text("아이디를 입력하세요.");
 			return;
 		}
 		
@@ -77,8 +79,10 @@ $(function(){
 				
 				if(rData =="success"){
 					$("#CheckidSpan").text("중복된 아이디 입니다");
+					$("#btnUp").hide();
 				}else{
 					$("#CheckidSpan").text("사용 가능한 아이디 입니다");
+					$("#btnUp").show();
 				}
 				
 			}		
