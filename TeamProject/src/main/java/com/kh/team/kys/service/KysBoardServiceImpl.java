@@ -38,14 +38,17 @@ public class KysBoardServiceImpl implements KysBoardService {
 			boardDao.imgFile(file_name, p_num);
 		}
 		System.out.println("boardVo insert : "+boardVo);
-		String[] p = boardVo.getP_size();
+		String[] p = null;
+		p = boardVo.getP_size();
 		System.out.println("p:" + p);
+		if ( p !=null || !p.equals("")) {
 		for(int i = 0 ; i < p.length ; i++ ) {
 			String[] p_size = boardVo.getP_size();
 			int[] p_count = boardVo.getP_count();
 			System.out.println("service / insert / p_size : " + p_size);
 			System.out.println("service / insert / p_count : " + p_count);
 			boardDao.insertProductCount(p_size[i], p_count[i], p_num);
+		}
 		}
 	}
 	//수정 처리
