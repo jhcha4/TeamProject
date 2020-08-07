@@ -44,8 +44,8 @@ $(function(){
 				alert("변경 되었습니다.");
 			}
 		});
-		
 	});
+	
 });
 </script>
 
@@ -62,14 +62,14 @@ $(function(){
 				</div>
 				<div class="col-md-8">
 				<div id="delDiv" >
-				<label>배송 조회:</label>
-					<select id="p_price" name="p_price">
-						<option>주문 접수
-						<option>출고
-						<option>배송중
-						<option>배송완료
-					</select>
-					<button type="button" id="btnSearch">검색</button>
+<!-- 				<label>배송 조회:</label> -->
+<!-- 					<select id="p_price" name="p_price"> -->
+<!-- 						<option>주문 접수 -->
+<!-- 						<option>출고 -->
+<!-- 						<option>배송중 -->
+<!-- 						<option>배송완료 -->
+<!-- 					</select> -->
+<!-- 					<button type="button" id="btnSearch">검색</button> -->
 					<!-- n줄 씩보기 -->
 					<select name="perPage" >
 						<c:forEach begin="5" end="50" step="5" var="i">
@@ -124,5 +124,34 @@ $(function(){
 			</div>
 		</div>
 	</div>
-    
-    <%@ include file="../include/foot.jsp" %>
+	<!-- 패이징 -->
+<div class="row justify-content-center">
+	<div class="col-md-12 ">
+		<div class="row justify-content-center">
+			<nav class="pagination-sm">
+				<ul class="pagination">
+					<!-- 이전 -->
+					<c:if test="${boardDto.startPage != 1}">
+						<li class="page-item"><a class="page-link"
+							href="${boardDto.startPage -1}">Previous</a></li>
+					</c:if>
+					<!-- 페이지 번호 -->
+					<c:forEach begin="${boardDto.startPage}" end="${boardDto.endPage}"
+						var="v">
+						<li class="page-item"><a class="page-link" href="${v}">${v}</a>
+						</li>
+					</c:forEach>
+					<!-- 다음 -->
+					<c:if test="${boardDto.endPage < boardDto.totalPage}">
+						<li class="page-item"><a class="page-link"
+							href="${boardDto.endPage +1}">Next</a></li>
+					</c:if>
+
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+
+
+<%@ include file="../include/foot.jsp" %>

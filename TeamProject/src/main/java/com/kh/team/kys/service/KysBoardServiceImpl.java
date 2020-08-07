@@ -129,9 +129,15 @@ public class KysBoardServiceImpl implements KysBoardService {
 		return prodcutCountList;
 	}
 	@Override
-	public List<CjhCartVo> salesAll() throws Exception {
+	public List<CjhCartVo> salesAll(Kys_BoardDto boardDto) throws Exception {
+		List<CjhCartVo> list = boardDao.salesAll(boardDto);
+		System.out.println("list service : " +list);
+		return list;
+	}
+	@Override
+	public int getSalesCount(Kys_BoardDto boardDto) throws Exception {
 		
-		return boardDao.salesAll();
+		return boardDao.getSalesCount(boardDto);
 	}
 	
 }

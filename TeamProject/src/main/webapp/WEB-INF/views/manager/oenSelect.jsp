@@ -121,7 +121,7 @@ $(function() {
 			var hiddenInput = "<input type='hidden' name='title_name' value='"+filename+"'/>";
 			$("#formSubmit").prepend(hiddenInput);
 		});
-		return false;
+// 		return false;
 	});
 
 
