@@ -42,5 +42,7 @@ public interface KysBoardService {
 		//사이즈 수량 가져오기
 		public List<Kys_productCountVo> selectProductCount(int p_num) throws Exception;
 		//구매 요청 목록
-		public List<CjhCartVo> salesAll() throws Exception;
+		public List<CjhCartVo> salesAll(Kys_BoardDto boardDto) throws Exception;
+		//배송현황 카운트
+		public int getSalesCount(Kys_BoardDto boardDto) throws Exception;
 }
