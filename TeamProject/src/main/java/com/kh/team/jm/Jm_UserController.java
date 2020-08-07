@@ -37,6 +37,8 @@ public class Jm_UserController {
 	private CjhUserService userService;
 	@Inject
 	private CjhCartService cartService;
+	@Inject
+	private CjhPointService pointService;
 
 	// 로그인 폼
 	@RequestMapping(value = "/jm_login", method = RequestMethod.GET)
@@ -102,7 +104,8 @@ public class Jm_UserController {
 	public String jmMemberSignUpRun(JmMemberVo vo ,JmEmailDto jmEmailDto) throws Exception {
 		System.out.println("vo:" + vo);
 		jmMemberService.insertMember(vo);
-		
+		pointService.signUpPoint(vo.getU_id());
+		pointService.signUpUser(vo.getU_id()); 
 		
 		//메일보내기
 			MimeMessagePreparator preparator = new MimeMessagePreparator() {

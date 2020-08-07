@@ -56,6 +56,11 @@ public class KysBoardController {
 		int totalCount = boardService.getCount(boardDto);
 		boardDto.setTotalCount(totalCount);
 		List<Kys_BoardVo> pageList = boardService.pageList(boardDto);
+		
+		System.out.println("totalCount controller : "+totalCount);
+		System.out.println("boardDto controller :"+boardDto);
+		System.out.println("pageList controller :"+pageList);
+		
 		model.addAttribute("pageList",pageList);
 		model.addAttribute("boardDto",boardDto);
 		
@@ -66,22 +71,20 @@ public class KysBoardController {
 	@RequestMapping(value ="/shop_single_input", method = RequestMethod.GET)
 	public void board_produce(Model model) throws Exception{
 		List<Kys_MainVo> mainList = serveService.mainList();
-//		List<Kys_MainVo> sizeList = serveService.dress_size();
 		List<Kys_ServeVo> serveList = serveService.serveList();
 		model.addAttribute("mainList",mainList);
-//		model.addAttribute("sizeList",sizeList);
 		model.addAttribute("serveList",serveList);
 		
 	}
 	//등록 처리 
 	@RequestMapping(value="/shop_single_input", method = RequestMethod.POST)
 	public String shop_single_input(Kys_BoardVo boardVo,Kys_productCountVo productCountVo) throws Exception{
-		System.out.println("boardVo: " + boardVo);
+//		System.out.println("boardVo: " + boardVo);
 		boardService.boardInsert(boardVo);
 		
-		return "redirect:/manager/manager_main";
+		return "redirect:/manager/shop_single_input";
 	}
-	//상품 1개 검색
+	//상품 1개 찾기
 	@RequestMapping(value="oenSelect", method = RequestMethod.GET)
 	public void oenSelect(Model model, int p_num) throws Exception {
 		List<Kys_ImgVo> listImg = boardService.imgSelectBy(p_num);
@@ -125,6 +128,16 @@ public class KysBoardController {
 //		System.out.println(list);
 //		model.addAttribute("list",list);
 		return new ModelAndView("manager/rodChart");
+	}
+	//주문 받은 게시물
+	@RequestMapping(value = "/salesAll",method = RequestMethod.GET)
+	public void salesAll(Kys_BoardDto boardDto,Model model) throws Exception{
+		boardDto.setPageInfo();
+		int totalCount = boardService.getSalesCount(boardDto);
+		boardDto.setTotalCount(totalCount);
+		List<CjhCartVo> list = boardService.salesAll(boardDto);
+		model.addAttribute("list",list);
+		model.addAttribute("boardDto",boardDto);
 	}
 	
 }

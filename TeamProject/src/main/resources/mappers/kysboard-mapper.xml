@@ -132,7 +132,36 @@
 					and p_main like #{p_main}
 					and p_serve like #{p_serve}
 		</if>
+		
 	</sql>
+	<!-- 구매요청 목록 -->
+	<select id="salesAll" resultType="CjhCartVo">
+	select * from (
+			select rownum rnum, a.* from(
+										select * from tbl_cart
+										 where p_status = 1002
+											or p_status = 1003 
+											or p_status = 1004 
+											or p_status = 1005
+										
+											order by p_num desc)
+   				  a)
+    where rnum between #{startRow} and #{endRow}
+	
+	</select>
+	<select id="getSalesCount" resultType="int">
+		select count(*) from tbl_cart
+		where p_status = 1002
+				or p_status = 1003 
+				or p_status = 1004 
+				or p_status = 1005
 	
 	
+	</select>
+	<sql id="salesSerch">
+		<if test="p_status != nul and p_status !='' ">
+					where p_status = #{p_status}
+		</if>
+		
+	</sql>
 </mapper>

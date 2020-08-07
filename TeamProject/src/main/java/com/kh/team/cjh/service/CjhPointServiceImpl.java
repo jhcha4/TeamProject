@@ -17,6 +17,18 @@ public class CjhPointServiceImpl implements CjhPointService {
 	@Inject
 	private CjhPointDao pointDao;
 
+	//	회원가입시 포인트 지급 (포인트)
+	@Override
+	public void signUpPoint(String u_id) throws Exception {
+		pointDao.signUpPoint(u_id);
+	}
+
+	//	회원가입시 포인트 지금 (유저)
+	@Override
+	public void signUpUser(String u_id) throws Exception {
+		pointDao.signUpUser(u_id);
+	}
+	
 	//	유저의 포인트 차감
 	@Override
 	public void usePoint(String u_id, int totalPrice) throws Exception {
@@ -77,5 +89,7 @@ public class CjhPointServiceImpl implements CjhPointService {
 	public int getPointCount(String u_id, int point_code) throws Exception {
 		return pointDao.getPointCount(u_id, point_code);
 	}
+
+
 
 }

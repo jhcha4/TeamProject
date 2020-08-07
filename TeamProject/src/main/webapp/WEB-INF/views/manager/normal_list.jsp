@@ -159,34 +159,32 @@ ${boardDto}
 </div>
 <!-- 패이징 -->
 <div class="row justify-content-center">
-		<div class="col-md-12 ">
+	<div class="col-md-12 ">
 		<div class="row justify-content-center">
-		<nav class="pagination-sm">
-			<ul class="pagination">
-				<!-- 이전 -->
-				<c:if test="${boardDto.startPage != 1}">
-					<li class="page-item">
-					<a class="page-link" href="${boardDto.startPage -1}">Previous</a>
-					</li>
-				</c:if>
-				<!-- 페이지 번호 -->
-				<c:forEach begin="${boardDto.startPage}" end="${boardDto.endPage}" var="v">
-					<li class="page-item">
-					<a class="page-link" href="${v}">${v}</a>
-					</li>
-				</c:forEach>
-				<!-- 다음 -->
-				<c:if test="${boardDto.endPage < boardDto.totalPage}">
-					<li class="page-item">
-						<a class="page-link" href="${boardDto.endPage +1}">Next</a>
-					</li>
-				</c:if>
-				
-			</ul>
-		</nav>
-		</div>
+			<nav class="pagination-sm">
+				<ul class="pagination">
+					<!-- 이전 -->
+					<c:if test="${boardDto.startPage != 1}">
+						<li class="page-item"><a class="page-link"
+							href="${boardDto.startPage -1}">Previous</a></li>
+					</c:if>
+					<!-- 페이지 번호 -->
+					<c:forEach begin="${boardDto.startPage}" end="${boardDto.endPage}"
+						var="v">
+						<li class="page-item"><a class="page-link" href="${v}">${v}</a>
+						</li>
+					</c:forEach>
+					<!-- 다음 -->
+					<c:if test="${boardDto.endPage < boardDto.totalPage}">
+						<li class="page-item"><a class="page-link"
+							href="${boardDto.endPage +1}">Next</a></li>
+					</c:if>
+
+				</ul>
+			</nav>
 		</div>
 	</div>
+</div>
 
 
 

@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.KysVisitCountVo;
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
@@ -142,6 +143,25 @@ public class KysBoardDaoImpl implements KysBoardDao {
 		@Override
 		public List<Kys_productCountVo> selectProductCount(int p_num) throws Exception {
 			return 	sqlSession.selectList(NAMESPACE+"selectProductCount",p_num);
+		}
+
+		@Override
+		public List<CjhCartVo> salesAll(Kys_BoardDto boardDto) throws Exception {
+		List<CjhCartVo> pageList = 	sqlSession.selectList(NAMESPACE+"salesAll",boardDto);
+		System.out.println("pageList DAO:"+pageList);
+			return pageList;
+		}
+		//배송현황 검색
+		@Override
+		public void salesSerch(int p_status) throws Exception {
+			
+			
+		}
+
+		@Override
+		public int getSalesCount(Kys_BoardDto boardDto) throws Exception {
+			
+			return sqlSession.selectOne(NAMESPACE+"getSalesCount",boardDto);
 		}
 
 	

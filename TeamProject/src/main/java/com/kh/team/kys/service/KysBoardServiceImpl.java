@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
@@ -37,14 +38,17 @@ public class KysBoardServiceImpl implements KysBoardService {
 			boardDao.imgFile(file_name, p_num);
 		}
 		System.out.println("boardVo insert : "+boardVo);
-		String[] p = boardVo.getP_size();
+		String[] p = null;
+		p = boardVo.getP_size();
 		System.out.println("p:" + p);
+		if ( p !=null || !p.equals("")) {
 		for(int i = 0 ; i < p.length ; i++ ) {
 			String[] p_size = boardVo.getP_size();
 			int[] p_count = boardVo.getP_count();
 			System.out.println("service / insert / p_size : " + p_size);
 			System.out.println("service / insert / p_count : " + p_count);
 			boardDao.insertProductCount(p_size[i], p_count[i], p_num);
+		}
 		}
 	}
 	//수정 처리
@@ -58,13 +62,15 @@ public class KysBoardServiceImpl implements KysBoardService {
 	
 		String[] files = boardVo.getP_files();
 		System.out.println("update / service / file : "+files);
-		if(files != null || files.equals("") 	) {
+		if(files != null || !files.equals("")) {
+			
 			for (String file_name : files) {
 				boardDao.imgFile(file_name, p_num);
 			return;	
 		}
-		
+			return;	
 	}
+		return;	
 	}
 
 	@Override
@@ -121,6 +127,17 @@ public class KysBoardServiceImpl implements KysBoardService {
 	public List<Kys_productCountVo> selectProductCount(int p_num) throws Exception {
 		 List<Kys_productCountVo> prodcutCountList = boardDao.selectProductCount(p_num);
 		return prodcutCountList;
+	}
+	@Override
+	public List<CjhCartVo> salesAll(Kys_BoardDto boardDto) throws Exception {
+		List<CjhCartVo> list = boardDao.salesAll(boardDto);
+		System.out.println("list service : " +list);
+		return list;
+	}
+	@Override
+	public int getSalesCount(Kys_BoardDto boardDto) throws Exception {
+		
+		return boardDao.getSalesCount(boardDto);
 	}
 	
 }
