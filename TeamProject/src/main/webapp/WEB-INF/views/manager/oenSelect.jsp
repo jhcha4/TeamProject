@@ -30,7 +30,7 @@ $(function() {
 		e.preventDefault();
 		var that = $(this);
 		var filename = $(this).attr("href");
-		var url = "/upload/deleteFile";
+		var url = "/upload/updateDelete";
 		var sendData = {"filename" : filename};
 		$.ajax({
 			"type" : "GET",
@@ -58,7 +58,7 @@ $(function() {
 			"url" : url,
 			"data" : formData,
 			"success" :function(rData) {
-				console.log(rData);
+				
 				var slashIndex = rData.lastIndexOf("/");
 				var front =rData.substring(0, slashIndex +1);
 				var rear = rData.substring(slashIndex +1);
@@ -89,7 +89,7 @@ $(function() {
 			"url" : url,
 			"data" :formData,
 			"success" : function(rData) {
-				console.log(rData)
+			
 				var slashIndex = rData.lastIndexOf("/");
 				var front = rData.substring(0, slashIndex +1);
 				var rear = rData.substring(slashIndex +1);
@@ -108,7 +108,7 @@ $(function() {
 		$("#imgFileDrop").css("height", "auto");
 	});
 	$("#formSubmit").submit(function(){
-		var upDiv = $("#imgFileDrop >div ");
+		var upDiv = $("#update >div ");
 		var titleDiv = $("#titleImg > div");
 		upDiv.each(function(index){
 			var filename = $(this).attr("data-filename");
@@ -117,8 +117,8 @@ $(function() {
 		});
 		titleDiv.each(function(index){
 			var filename = $(this).attr("data-filename");
-			console.log("submit filename:"+filename);
-			console.log("formsubmit/filename:"+filename);
+// 			CONSOLE.LOG("SUBMIT FILENAME:"+FILENAME);
+// 			CONSOLE.LOG("FORMSUBMIT/FILENAME:"+FILENAME);
 			var hiddenInput = "<input type='hidden' name='title_name' value='"+filename+"'/>";
 			$("#formSubmit").prepend(hiddenInput);
 		});

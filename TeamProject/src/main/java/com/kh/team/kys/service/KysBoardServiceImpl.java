@@ -40,7 +40,7 @@ public class KysBoardServiceImpl implements KysBoardService {
 		System.out.println("boardVo insert : "+boardVo);
 		String[] p = null;
 		p = boardVo.getP_size();
-		System.out.println("p:" + p);
+		
 		if ( p !=null || !p.equals("")) {
 		for(int i = 0 ; i < p.length ; i++ ) {
 			String[] p_size = boardVo.getP_size();
@@ -57,20 +57,18 @@ public class KysBoardServiceImpl implements KysBoardService {
 		int p_num = boardVo.getP_num();
 		boardDao.boardUpdate(boardVo);
 		String title_name = boardVo.getTitle_name();
-		System.out.println("update / service / title :"+title_name);
-		boardDao.titleImgFile(title_name, p_num);
-	
-		String[] files = boardVo.getP_files();
-		System.out.println("update / service / file : "+files);
+		System.out.println("update / service / vo :"+boardVo);
+		boardDao.updateTitleImg(title_name, p_num);
+		String[] files = null;
+		files = boardVo.getP_files();
+		
 		if(files != null || !files.equals("")) {
-			
 			for (String file_name : files) {
 				boardDao.imgFile(file_name, p_num);
-			return;	
+			}
+		} else  {
+			
 		}
-			return;	
-	}
-		return;	
 	}
 
 	@Override

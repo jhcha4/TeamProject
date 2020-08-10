@@ -64,4 +64,18 @@ public class UploadController {
 		f2.delete();
 		return "success";
 	}
+	@RequestMapping(value="/updateDelete",method = RequestMethod.GET)
+	public String updateDelete(String filename) throws Exception{
+		boardService.fileImgDelete(filename);
+		String front = filename.substring(0,filename.indexOf("/")+1);
+		String rear = filename.substring(filename.lastIndexOf("/")+1);
+		String smServerPath = uploadPath + File.separator +front +"sm_"+ rear;
+		
+		String serverPath = uploadPath + File.separator + filename;
+		File f1 = new File(serverPath);
+		File f2 = new File(smServerPath);
+		f1.delete();
+		f2.delete();
+		return "success";
+	}
 }
