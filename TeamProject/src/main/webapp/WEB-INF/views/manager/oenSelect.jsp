@@ -14,15 +14,16 @@ $(function() {
 	$("#mainOption").change(function(){
 		$("#serveOption option").remove();
 		var main = $(this).val();
+		console.log("main : "+main);
 		var serve = $("#serveOption").val();
-		if(main == "T")                                                     
-			$("#serveOption").append(options[0]).append(options[1]).append(options[2]).append(options[3]);
-		if(main == "P")                                                       
-			$("#serveOption").append(options[4]).append(options[5]).append(options[6]).append(options[7]);
-		if(main == "S")                                                       
-			$("#serveOption").append(options[8]).append(options[9]).append(options[10]).append(options[11]);
-		if(main == "A")                                                       
-			$("#serveOption").append(options[12]).append(options[13]).append(options[14]).append(options[15]);
+		if(main == "T")      {                                               
+			$("#serveOption").append(options[0]).append(options[1]).append(options[2]).append(options[3]);}
+		if(main == "P")   {                                                    
+			$("#serveOption").append(options[4]).append(options[5]).append(options[6]).append(options[7]); }
+		if(main == "S")      {                                                 
+			$("#serveOption").append(options[8]).append(options[9]).append(options[10]).append(options[11]); }
+		if(main == "A")   {                                                    
+			$("#serveOption").append(options[12]).append(options[13]).append(options[14]).append(options[15]); }
 	});
 	//이미지 삭제 버튼
 	$(".imgDrop").on("click",".attach-del", function(e){
@@ -155,8 +156,8 @@ $(function() {
 
 					<!-- 상품 등록 상세 메뉴 select 바-->
 					<div>
-						<label>main : </label> <select name="p_main" id="mainOption"
-							disabled="disabled">
+						<label>main : </label> 
+						<select name="p_main" id="mainOption" disabled="disabled">
 							<option value="T" selected="selected">상의
 							<option value="P">하의
 							<option value="A">악세사리
@@ -164,7 +165,8 @@ $(function() {
 						</select>
 					</div>
 					<div>
-						<label>serve : </label> <select name="p_serve" id="serveOption">
+						<label>serve : </label> 
+						<select name="p_serve" id="serveOption">
 							<c:if test="${boardVo.p_main == 'T' }">
 								<option value="TH">반팔
 								<option value="TL">긴팔

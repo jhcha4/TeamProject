@@ -162,29 +162,29 @@ $(document).ready(function() {
 </div>
 
 <div class="row" data-aos="fade-up">
-  <div class="col-md-12 text-center">
-    <div class="site-block-27">
-      <ul>
-      	<c:if test="${pagingDto.startPage != 1}">
-         <li>
-         	<a class="page" href="${pagingDto.startPage - 1}">&lt;</a>
-         </li>
-      	</c:if>
-      	
-      	<c:forEach begin="${pagingDto.startPage}" end="${pagingDto.endPage}" var="v">
-        	<li>
-        		<a class="page" href="${v}">${v}</a>
-        	</li>
-        </c:forEach>
-        
-        <c:if test="${pagingDto.endPage < pagingDto.totalPage}">
-         <li>
-         	<a class="page" href="${pagingDto.endPage + 1}">&gt;</a>
-         </li>
-        </c:if>
-      </ul>
-    </div>
-  </div>
+	<div class="col-md-12 text-center">
+		<div class="site-block-27">
+			<ul>
+				<c:if test="${pagingDto.startPage != 1}">
+					<li>
+						<a class="page" href="${pagingDto.startPage - 1}">&lt;</a>
+					</li>
+				</c:if>
+				
+				<c:forEach begin="${pagingDto.startPage}" end="${pagingDto.endPage}" var="v">
+					<li>
+						<a class="page" href="${v}">${v}</a>
+					</li>
+				</c:forEach>
+				
+				<c:if test="${pagingDto.endPage < pagingDto.totalPage}">
+					<li>
+						<a class="page" href="${pagingDto.endPage + 1}">&gt;</a>
+					</li>
+				</c:if>
+			</ul>
+		</div>
+	</div>
 </div>
 
 

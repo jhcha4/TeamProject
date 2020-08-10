@@ -148,7 +148,7 @@ public class KysBoardDaoImpl implements KysBoardDao {
 		@Override
 		public List<CjhCartVo> salesAll(Kys_BoardDto boardDto) throws Exception {
 		List<CjhCartVo> pageList = 	sqlSession.selectList(NAMESPACE+"salesAll",boardDto);
-		System.out.println("pageList DAO:"+pageList);
+//		System.out.println("pageList DAO:"+pageList);
 			return pageList;
 		}
 		//배송현황 검색
