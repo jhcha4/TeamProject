@@ -239,7 +239,8 @@ $(function() {
             	<c:if test="${lshBoardVo.p_main == 'A'}">
             		
             		<c:forEach items="${sizeList}" var="Size">
-            			<h4>Size : </h4><h4 name=p_size>${Size.p_size}</h4>
+            			<h4>Size : ${Size.p_size}</h4>
+            			<h4 style="display:none" name='p_size'>${Size.p_size}</h4>
             		</c:forEach>
             		
 	            	<div class='input-group mb-3' style='max-width: auto;'>
