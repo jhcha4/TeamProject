@@ -32,11 +32,7 @@
                   <!-- <li><a href="#">Point of sale</a></li>
                   <li><a href="#">Hardware</a></li>
                   <li><a href="#">Software</a></li> -->
-                  <c:choose>
-                  	<c:when test="${sessionScope.u_grade =='gold'}">
-                  		<li><a href="/manager/manager_main">Manager page</a></li>
-                  	</c:when>
-                  </c:choose>
+                 
                 </ul>
               </div>
             </div>
@@ -66,6 +62,11 @@
                  <p>문의 하기</p>
                   <a href="/jm/jm_contact" class="btn btn-sm btn-primary" >이동</a>
                 </div>
+                 <c:choose>
+                  	<c:when test="${sessionScope.u_grade =='gold'}">
+                  		<li><a href="/manager/manager_main">Manager page</a></li>
+                  	</c:when>
+                  </c:choose>
               </form>
             </div>
           </div>
