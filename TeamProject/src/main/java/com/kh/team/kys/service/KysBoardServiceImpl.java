@@ -131,7 +131,7 @@ public class KysBoardServiceImpl implements KysBoardService {
 	@Override
 	public List<CjhCartVo> salesAll(Kys_BoardDto boardDto) throws Exception {
 		List<CjhCartVo> list = boardDao.salesAll(boardDto);
-		System.out.println("list service : " +list);
+//		System.out.println("list service : " +list);
 		return list;
 	}
 	@Override
