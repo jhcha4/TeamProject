@@ -56,7 +56,6 @@ $(function() {
 				var count = $(this).val();
 				countArr.push(count);
 			});
-			
 			if ((countArr).length == 0) {
 				alert("상품을 선택해주세요");
 				return;
@@ -188,7 +187,6 @@ $(function() {
 	margin : auto;
 	}
 </style>
-
 <%@ include file="frmPage.jsp" %>
     <div class="bg-light py-3">
       <div class="container">
@@ -218,7 +216,7 @@ $(function() {
             <h5><strong class="text-primary h4">${lshBoardVo.p_price}</strong>원</h5>
             <div class="mb-1 d-flex">
 	            <c:if test="${lshBoardVo.p_main == 'T' || lshBoardVo.p_main == 'P' || lshBoardVo.p_main == 'S'}">
-		            <h4>Size:</h4>
+	                <h4>Size:</h4>
 		            <select id="size">
 		            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
 		            		<c:forEach items="${sizeList}" var="item">
@@ -239,6 +237,11 @@ $(function() {
             
             <div id="hidden">
             	<c:if test="${lshBoardVo.p_main == 'A'}">
+            		
+            		<c:forEach items="${sizeList}" var="Size">
+            			<h4>Size : </h4><h4 name=p_size>${Size.p_size}</h4>
+            		</c:forEach>
+            		
 	            	<div class='input-group mb-3' style='max-width: auto;'>
 		            	<h5 id="name">${lshBoardVo.p_name}</h5>
 		            	<h5>&nbsp&nbsp| 수량 :</h5>

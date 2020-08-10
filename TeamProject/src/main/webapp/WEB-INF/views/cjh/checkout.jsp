@@ -24,7 +24,6 @@ $(document).ready(function() {
 });
 </script>
 
-
 <div class="bg-light py-3">
 	<div class="container">
 		<div class="row">
@@ -254,7 +253,7 @@ $(document).ready(function() {
 									<c:forEach var="item" items="${list}" varStatus="status">
 										<tr>
 											<td>
-												${item.p_name} <strong class="mx-2">x</strong> ${item.p_count}
+												${item.p_name} - ${item.p_size} <strong class="mx-2">x</strong> ${item.p_count}
 											</td>
 											<td name="p_price">
 												<strong>${item.p_price * item.p_count}</strong> 원

@@ -74,7 +74,7 @@ public class Jm_UserController {
 				String key = enumer.nextElement();
 				System.out.println("key:" + key);
 			}
-			
+			 
 			
 			System.out.println("session:::::::::"+session);
 			return "redirect:/";
