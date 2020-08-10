@@ -188,7 +188,6 @@ $(function() {
 	margin : auto;
 	}
 </style>
-
 <%@ include file="frmPage.jsp" %>
     <div class="bg-light py-3">
       <div class="container">
@@ -239,6 +238,11 @@ $(function() {
             
             <div id="hidden">
             	<c:if test="${lshBoardVo.p_main == 'A'}">
+            		
+            		<c:forEach items="${sizeList}" var="Size">
+            			<h4>Size:${Size.p_size}</h4>
+            		</c:forEach>
+            		
 	            	<div class='input-group mb-3' style='max-width: auto;'>
 		            	<h5 id="name">${lshBoardVo.p_name}</h5>
 		            	<h5>&nbsp&nbsp| 수량 :</h5>
