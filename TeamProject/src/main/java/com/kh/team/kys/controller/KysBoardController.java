@@ -45,7 +45,9 @@ public class KysBoardController {
 	public String manager_main(Model model) throws Exception {
 		List<KysVisitCountVo> cartVo = visitService.orderList();
 		model.addAttribute("cartVo",cartVo);
-
+		
+		
+		
 		return "manager/manager_main";
 	}
 	

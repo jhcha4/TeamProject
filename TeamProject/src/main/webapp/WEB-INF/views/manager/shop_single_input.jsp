@@ -23,6 +23,7 @@ $(function() {
 			$("#serveOption").append(options[8]).append(options[9]).append(options[10]).append(options[11]);
 		if(main == "A")                                        
 			$("#serveOption").append(options[12]).append(options[13]).append(options[14]).append(options[15]); 
+		
 		var sendData = {"main_code" : main};
 		var url = "/ajax/dress_size";
 		$(".dress_size").children().remove();
