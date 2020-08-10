@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ 
 <form id="shop_form" action="/magager/manager_main" method="get">
 	<input type="hidden" name="main_code" value="${Kys_MainVo.main_code}"/>
 	<input type="hidden" name="main_name" value="${Kys_MainVo.main_name}"/>
@@ -18,6 +19,10 @@
 	<input type="hidden" name="p_serve" value="${deleteListDto.p_serve}">
 	<input type="hidden" name="page" value="${deleteListDto.page}"/>
 	<input type="hidden" name="perPage" value="${deleteListDto.perPage}"/>
+</form>
+<form id="salesAllPage" action="/manager/salesAll" method="get">
+		<input type="hidden" name="page" value="${salesDto.page}"/>
+	<input type="hidden" name="perPage" value="${salesDto.perPage}"/>
 </form>
 	<div class="row">
 		<div class="col-md-2">

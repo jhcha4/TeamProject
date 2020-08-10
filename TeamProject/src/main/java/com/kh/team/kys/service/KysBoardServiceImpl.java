@@ -66,8 +66,6 @@ public class KysBoardServiceImpl implements KysBoardService {
 			for (String file_name : files) {
 				boardDao.imgFile(file_name, p_num);
 			}
-		} else  {
-			
 		}
 	}
 
