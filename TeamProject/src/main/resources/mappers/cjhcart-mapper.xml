@@ -104,6 +104,13 @@
 		and p_status != 1001
 	</select>
 	
+<!-- 	상품개수 구하기 -->
+	<select id="getPCount" resultType="int">
+		select p_count from tbl_product_count
+		where p_num = #{p_num}
+		and p_size = #{p_size}
+	</select>
+	
 	<sql id="cstatus">
 		<if test="#{p_status} != null">
 			<choose>

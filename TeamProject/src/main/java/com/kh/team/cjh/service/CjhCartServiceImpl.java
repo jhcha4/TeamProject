@@ -109,6 +109,9 @@ public class CjhCartServiceImpl implements CjhCartService {
 		return cartDao.getUserOrder(u_id);
 	}
 
-
+	@Override
+	public int getPCount(int p_num, String p_size) throws Exception {
+		return cartDao.getPCount(p_num, p_size);
+	}
 
 }

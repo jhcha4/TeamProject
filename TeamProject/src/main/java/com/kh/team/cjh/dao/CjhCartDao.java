@@ -49,4 +49,7 @@ public interface CjhCartDao {
 	
 	//	회원이 주문한 상품 갯수 불러오기
 	public int getUserOrder(String u_id) throws Exception;
+	
+	// 상품 개수 구하기
+	public int getPCount(int p_num, String p_size) throws Exception;
 }
