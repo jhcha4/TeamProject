@@ -167,8 +167,28 @@ $(function() {
 	    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 
+	
 });
 </script>
+
+<style>
+	#image{
+	width : 100%; 
+	height : 600px;
+	background-color : white;
+	color : black;
+	margin : auto;
+	}
+	
+	#images{
+	width : 100%; 
+	height : auto;
+	background-color : white;
+	color : black;
+	margin : auto;
+	}
+</style>
+
 <%@ include file="frmPage.jsp" %>
     <div class="bg-light py-3">
       <div class="container">
@@ -189,7 +209,7 @@ $(function() {
         <div class="row">
           <div class="col-md-6">
 				 <figure class="block-4-image">
-				 	<img src="/upload/displayFile?fileName=${lshBoardVo.title_name}">
+				 	<img id="image" src="/upload/displayFile?fileName=${lshBoardVo.title_name}">
 				 </figure>
           </div>
           <div class="col-md-6">
@@ -231,7 +251,12 @@ $(function() {
 		            </div>
 	            </c:if>
             </div>
-            <h2>가격 :<span id="total" style="color: black">0</span>원</h2>
+            <h2>가격 :<span id="total" style="color: black">
+            	<c:choose>
+            		<c:when test="${lshBoardVo.p_main == 'A'}">${lshBoardVo.p_price}</c:when>
+            		<c:otherwise>0</c:otherwise>
+            	</c:choose>
+            </span>원</h2>
             
             <div id="p_num" style="display:none">${lshBoardVo.p_num}</div>
             <div id="p_serve" style="display:none">${lshBoardVo.p_serve}</div>
@@ -261,7 +286,7 @@ $(function() {
 							<div class="tab-content">
 								<div class="tab-pane active" id="tab1" style="text-align: center;">
 									<c:forEach items="${imgList}" var="lshBoardVo">
-										<img src="/upload/displayFile?fileName=${lshBoardVo.file_name}">
+										<img id="images" src="/upload/displayFile?fileName=${lshBoardVo.file_name}">
 		 							</c:forEach>
 								</div>
 								
