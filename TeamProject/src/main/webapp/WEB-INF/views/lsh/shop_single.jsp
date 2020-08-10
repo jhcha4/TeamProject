@@ -218,7 +218,7 @@ $(function() {
             <h5><strong class="text-primary h4">${lshBoardVo.p_price}</strong>원</h5>
             <div class="mb-1 d-flex">
 	            <c:if test="${lshBoardVo.p_main == 'T' || lshBoardVo.p_main == 'P' || lshBoardVo.p_main == 'S'}">
-		            <h4>Size:</h4>
+	                <h4>Size:</h4>
 		            <select id="size">
 		            		<option selected disabled>-- 사이즈를 선택해주세요 --</option>
 		            		<c:forEach items="${sizeList}" var="item">
