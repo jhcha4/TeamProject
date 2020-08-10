@@ -59,9 +59,9 @@ public class KysBoardController {
 		boardDto.setTotalCount(totalCount);
 		List<Kys_BoardVo> pageList = boardService.pageList(boardDto);
 		
-		System.out.println("totalCount controller : "+totalCount);
-		System.out.println("boardDto controller :"+boardDto);
-		System.out.println("pageList controller :"+pageList);
+//		System.out.println("totalCount controller : "+totalCount);
+//		System.out.println("boardDto controller :"+boardDto);
+//		System.out.println("pageList controller :"+pageList);
 		
 		model.addAttribute("pageList",pageList);
 		model.addAttribute("boardDto",boardDto);

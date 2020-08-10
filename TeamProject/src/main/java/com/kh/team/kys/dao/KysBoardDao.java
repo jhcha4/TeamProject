@@ -41,6 +41,10 @@ public interface KysBoardDao {
 	//이미지 파일 저장
 	public void imgFile(String file_name,int p_num) throws Exception;
 	public void titleImgFile(String title_name,int p_num) throws Exception;
+	//이미지 파일 수정
+	public void updateImgFile(String file_name,int p_num) throws Exception;
+	public void updateTitleImg(String title_name,int p_num) throws Exception;
+	
 	//이미지 보기
 	public List<Kys_ImgVo> imgSelectBy(int p_num) throws Exception;
 	//이미지 삭제

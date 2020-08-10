@@ -88,7 +88,7 @@ $(function(){
 								<th>주문 금액</th>
 								<th>주문 수량</th>
 								<th>고객</th>
-								<th>주소</th>
+								
 								<th>배송 현황</th>
 							</tr>
 						</thead>
@@ -101,7 +101,7 @@ $(function(){
 								<td>${cartVo.p_price }원</td>
 								<td>size - ${cartVo.p_size} -  ${cartVo.p_count }개</td>
 								<td>${cartVo.u_id }</td>
-								<td>주소</td>
+								
 								<td>
 									<input type="hidden" name="u_id" value="${cartVo.u_id}">
 									<input type="hidden" name="p_num" value="${cartVo.p_num}">
