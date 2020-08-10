@@ -1,5 +1,6 @@
 package com.kh.team.cjh.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -68,15 +69,19 @@ public class CjhCartController {
 	public String cart(Model model, HttpSession session) throws Exception {
 		String u_id = (String)session.getAttribute("u_id");
 		List<CjhCartVo> list = cartService.getCart(u_id);
-		
+//		cartService.getPCount(p_num, p_size);
+		List<Integer> counts = new ArrayList<>();
 		for (CjhCartVo vo : list) {
 			String title_name = vo.getTitle_name();
 			String front = title_name.substring(0, title_name.lastIndexOf("/") + 1);
 			String rear = title_name.substring(title_name.lastIndexOf("/") + 1);
 			String smTitle = front + "sm_" + rear;
 			vo.setTitle_name(smTitle);
+//			System.out.println("p_num : " + vo.getP_num());
+//			System.out.println("p_size : " + vo.getP_size());
+			counts.add(cartService.getPCount(vo.getP_num(), vo.getP_size()));
 		}
-		
+		model.addAttribute("counts", counts);
 		model.addAttribute("list", list);
 		return "/cjh/cart";
 	}
