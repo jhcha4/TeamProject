@@ -84,7 +84,6 @@ $(document).ready(function() {
 });
 </script>
 
-${userVo}
 
 <div class="bg-light py-3">
 	<div class="container">
