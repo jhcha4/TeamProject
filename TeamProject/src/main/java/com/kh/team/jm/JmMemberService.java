@@ -6,6 +6,7 @@ import com.kh.team.domain.JmContactVo;
 import com.kh.team.domain.JmMemberVo;
 import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmPwEmailDto;
+import com.kh.team.domain.Kys_BoardVo;
 
 public interface JmMemberService {
 

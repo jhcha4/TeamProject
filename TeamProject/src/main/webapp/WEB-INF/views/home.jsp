@@ -110,7 +110,7 @@
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="#">르띠아노 바지</a></h3>
-                    <p class="mb-0">이태리 최고급 원단 정장 바지</p>
+                    <p class="mb-0">이테리 최고급 원단 정장 바지</p>
                     <p class="text-primary font-weight-bold">200,000원</p>
                   </div>
                 </div>

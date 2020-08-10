@@ -3,6 +3,7 @@ package com.kh.team.kys.service;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
@@ -40,4 +41,8 @@ public interface KysBoardService {
 		public void fileImgDelete(String filename) throws Exception;
 		//사이즈 수량 가져오기
 		public List<Kys_productCountVo> selectProductCount(int p_num) throws Exception;
+		//구매 요청 목록
+		public List<CjhCartVo> salesAll(Kys_BoardDto boardDto) throws Exception;
+		//배송현황 카운트
+		public int getSalesCount(Kys_BoardDto boardDto) throws Exception;
 }

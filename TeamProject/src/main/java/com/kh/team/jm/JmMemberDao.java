@@ -7,6 +7,7 @@ import com.kh.team.domain.JmMemberVo;
 import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmPwEmailDto;
 import com.kh.team.domain.JmReviewVo;
+import com.kh.team.domain.Kys_BoardVo;
 
 public interface JmMemberDao {
 
@@ -61,6 +62,7 @@ public interface JmMemberDao {
 	
 	//게시글 수 조회
 	public int selectUserCount(JmPagingDto jmPagingDto)throws Exception;
+	
 	
 	
 }

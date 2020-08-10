@@ -11,6 +11,7 @@ import com.kh.team.domain.JmContactVo;
 import com.kh.team.domain.JmMemberVo;
 import com.kh.team.domain.JmPagingDto;
 import com.kh.team.domain.JmPwEmailDto;
+import com.kh.team.domain.Kys_BoardVo;
 
 @Service
 public class JmMemberServiceImpl implements JmMemberService {
@@ -109,6 +110,7 @@ public class JmMemberServiceImpl implements JmMemberService {
 		jmMemberDao.deleteContact(c_info);
 		
 	}
+	
 	
 
 }

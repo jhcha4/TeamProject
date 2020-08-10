@@ -31,6 +31,7 @@ $(function() {
 			"url" : url,
 			"data" : sendData,
 			"success" : function(rData){
+				console.log(rData);
 				$.each(rData, function() {
 					var size = this.size_type;
 					if(size != null || !size.equals("")){
@@ -58,6 +59,7 @@ $(function() {
 	
 	$("#titleImg").on("drop",function(e){
 		e.preventDefault();
+		$("#titleImgFile").remove();
 		$(this).css("height", "auto");
 		var file = e.originalEvent.dataTransfer.files[0];
 		var formData = new FormData();
@@ -76,7 +78,7 @@ $(function() {
 				var rear = rData.substring(slashIndex +1);
 				var thumbnailName = front + rear;
 				var originalFilename = rData.substring(rData.indexOf("_")+1);
-				var html ="<div data-filename='"+rData+"'>";
+				var html ="<div data-filename='"+rData+"' id='titleImgFile'>";
 					html += "<img class='img-rounded' src='/upload/displayFile?fileName="+thumbnailName+"' /><br>";
 					html += "<span>"+originalFilename+"</span>";
 					html +="<a href='"+rData+"' class='attach-del'><span class='pull-rigth'>X</span></a>";
@@ -129,7 +131,7 @@ $(function() {
 		var url= "/upload/deleteFile";
 		var sendData= {"filename" : filename};
 		$.ajax({
-			"type" : "get",
+			"type" : "GET",
 			"url" : url,
 			"data" : sendData,
 			"success" : function(rData){

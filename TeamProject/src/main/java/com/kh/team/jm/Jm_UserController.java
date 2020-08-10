@@ -105,7 +105,7 @@ public class Jm_UserController {
 		System.out.println("vo:" + vo);
 		jmMemberService.insertMember(vo);
 		pointService.signUpPoint(vo.getU_id());
-		pointService.signUpUser(vo.getU_id());
+		pointService.signUpUser(vo.getU_id()); 
 		
 		//메일보내기
 			MimeMessagePreparator preparator = new MimeMessagePreparator() {
