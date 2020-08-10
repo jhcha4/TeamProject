@@ -1,6 +1,8 @@
 package com.kh.team;
 
 
+import java.util.Enumeration;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,7 +29,7 @@ public class HomeController  {
 	public String home(HttpSession session) throws Exception {
 		//홈페이지 방문자 카운트
 				WebApplicationContext wac = WebApplicationContextUtils.getRequiredWebApplicationContext(session.getServletContext());
-				System.out.println(wac);
+//				System.out.println(wac);
 				HttpServletRequest req =((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
 				KysVisitCountVo vo = new KysVisitCountVo();
 				vo.setVisit_ip(req.getRemoteAddr());
@@ -35,6 +37,12 @@ public class HomeController  {
 				int visitNow = service.visitNow();
 				session.setAttribute("visitAll", visitAll);
 				session.setAttribute("visitNow", visitNow);
+				Enumeration<String> list = session.getAttributeNames();
+				//세션에 들어있는 리스트 목록
+//				while (list.hasMoreElements()) {
+//					String ls = list.nextElement();
+//					System.out.println("ls : "+ls);
+//				}
 				service.insertVisitor(vo);
 	
 
