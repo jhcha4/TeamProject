@@ -112,7 +112,7 @@ $("a.review_title").click(function(e){
 					<a href="/jm/jm_insertReviewForm" class="btn btn-info">후기 작성</a>
 				</c:when>
 				<c:otherwise>
-					<button class="btn btn-danger">후기작성은 로그인시 작성 가능</button>  
+					<a href="/jm//jm_login" class="btn btn-danger">후기작성은 로그인시 작성 가능</a>  
 				</c:otherwise>
 			</c:choose>
 		

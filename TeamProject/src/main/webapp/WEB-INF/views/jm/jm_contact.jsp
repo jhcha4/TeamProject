@@ -116,7 +116,7 @@ $("a.review_title").click(function(e){
 					<a href="/jm/jm_insertContactForm" class="btn btn-info">문의 하기</a>
 				</c:when>
 				<c:otherwise>
-					<button class="btn btn-danger">상품문의는 로그인시 가능</button>  
+					<a href="/jm//jm_login" class="btn btn-danger">상품문의는 로그인시 가능</a>  
 				</c:otherwise>
 			</c:choose>
 		

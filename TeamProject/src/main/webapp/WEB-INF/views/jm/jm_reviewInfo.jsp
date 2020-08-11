@@ -94,8 +94,7 @@
 						<a href="/jm/jm_deleteReview/${jmReviewVo.r_info}" class="btn btn-warning">삭제하기</a>
 					</c:when>
 					<c:otherwise>
-					<button type="button" class="btn btn-info">댓글 수정과 삭제는 로그인시 가능  </button>
-					
+						<a href="/jm//jm_login" class="btn btn-info">댓글 수정과 삭제는 로그인시 가능</a>
 					</c:otherwise>
 				
 				
