@@ -59,9 +59,9 @@ public class KysBoardController {
 		boardDto.setTotalCount(totalCount);
 		List<Kys_BoardVo> pageList = boardService.pageList(boardDto);
 		
-		System.out.println("totalCount controller : "+totalCount);
-		System.out.println("boardDto controller :"+boardDto);
-		System.out.println("pageList controller :"+pageList);
+//		System.out.println("totalCount controller : "+totalCount);
+//		System.out.println("boardDto controller :"+boardDto);
+//		System.out.println("pageList controller :"+pageList);
 		
 		model.addAttribute("pageList",pageList);
 		model.addAttribute("boardDto",boardDto);
@@ -133,13 +133,13 @@ public class KysBoardController {
 	}
 	//주문 받은 게시물
 	@RequestMapping(value = "/salesAll",method = RequestMethod.GET)
-	public void salesAll(Kys_BoardDto boardDto,Model model) throws Exception{
-		boardDto.setPageInfo();
-		int totalCount = boardService.getSalesCount(boardDto);
-		boardDto.setTotalCount(totalCount);
-		List<CjhCartVo> list = boardService.salesAll(boardDto);
+	public void salesAll(Kys_BoardDto salesDto,Model model) throws Exception{
+		salesDto.setPageInfo();
+		int totalCount = boardService.getSalesCount(salesDto);
+		salesDto.setTotalCount(totalCount);
+		List<CjhCartVo> list = boardService.salesAll(salesDto);
 		model.addAttribute("list",list);
-		model.addAttribute("boardDto",boardDto);
+		model.addAttribute("salesDto",salesDto);
 	}
 	
 }

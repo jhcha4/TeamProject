@@ -170,7 +170,7 @@ function numberFormat(inputNumber) {
 						</li>
 						<li>
 							<strong class="title">총주문</strong>
-							<strong class="data"><span id="xans_myshop_bankbook_order_price" class="usedPoint">${usePoint} 원</span>(<span id="xans_myshop_bankbook_order_count">${oCount}</span>회)</strong>
+							<strong class="data"><span id="xans_myshop_bankbook_order_price" class="usedPoint">${usePoint} 원</span>(<span id="xans_myshop_bankbook_order_count">${oCount}</span>개)</strong>
 						</li>
 					</ul>
 				</div>

@@ -27,6 +27,16 @@
 		insert into tbl_title_attach(title_name,p_num)
 		values (#{title_name},#{p_num})
 	</insert>
+	<update id="updateImgFile">
+		update tbl_attach set
+		file_name = #{file_name}
+		where p_num = #{p_num}
+	</update>
+	<update id="updateTitleImg">
+		update tbl_title_attach set
+		title_name = #{title_name}
+		where p_num = #{p_num}
+	</update>
 	<!-- 수정 이미지 삭제 -->
 	<delete id="fileImgDelete">
 		delete from tbl_attach
@@ -63,21 +73,21 @@
 	<!-- 상품 수정 -->
 	<update id="boardUpdate">
 	update tbl_product_board set 
-	p_name = #{p_name},
-	p_content = #{p_content},
-	p_price = #{p_price}
+		p_name = #{p_name},
+		p_content = #{p_content},
+		p_price = #{p_price}
 	where p_num = #{p_num}
 	</update>
 	<!-- 상품 삭제 컬럼추가-->
 	<update id="boardDelete">
-	   update tbl_product_board set
- 	   p_deleted  = 'D'
- 	   where p_num = #{p_num}
+		   update tbl_product_board set
+	 	  	 p_deleted  = 'D'
+	 	   where p_num = #{p_num}
 	</update>
 	<!-- 상품 게시물 복구 -->
 	<update id="boardRestoration">
 		  update tbl_product_board set
- 	 	  p_deleted  = ''
+ 	 		  p_deleted  = ''
  	 	  where p_num = #{p_num}
 	</update>
 	<!-- 게시물 완전 삭제 -->

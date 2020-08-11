@@ -152,8 +152,13 @@ public class CjhCartDaoImpl implements CjhCartDao {
 		return sqlSession.selectOne(NAMESPACE + "getUserOrder", u_id);
 	}
 
-	
-
-
+	//	상품 개수 구하기
+	@Override
+	public int getPCount(int p_num, String p_size) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("p_num", p_num);
+		paramMap.put("p_size", p_size);
+		return sqlSession.selectOne(NAMESPACE + "getPCount", paramMap);
+	}
 
 }
