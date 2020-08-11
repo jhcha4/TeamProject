@@ -104,7 +104,6 @@ $(document).ready(function() {
 });
 </script>
 
-${counts}
 
 <div class="bg-light py-3">
 	<div class="container">
