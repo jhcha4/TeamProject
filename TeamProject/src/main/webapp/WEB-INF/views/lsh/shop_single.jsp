@@ -243,7 +243,7 @@ $(function() {
             			<h4 style="display:none" name='p_size'>${Size.p_size}</h4>
             		</c:forEach>
             		
-	            	<div class='input-group mb-3' style='max-width: auto;'>
+	            	<div class='input-group mb-3' style='max-width: auto; border:3px solid black;'>
 		            	<h5 id="name">${lshBoardVo.p_name}</h5>
 		            	<h5>&nbsp&nbsp| 수량 :</h5>
 		            	<input name='p_count' type='number' min='1' class='form-control text-center' value='1'>
@@ -356,7 +356,7 @@ $(function() {
 										<hr/>
 										<h3 style="color: black">교환 및 반품정보</h3>
 										<h5 style="color: black">교환 및 반품 주소</h5>
-										<p> - 서울</p>
+										<p> - 울산광역시 남구 삼산로35번길 19</p>
 										<h5 style="color: black">교환 및 반품이 가능한 경우</h5>
 										<p>
 											- 상품을 공급 받으신 날로부터 7일이내 포장을 개봉하였거나 포장이 훼손되어 상품가치가 상실된 경우에는 교환/반품이 불가능합니다.<br>
