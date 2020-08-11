@@ -5,6 +5,7 @@ import java.util.List;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.domain.Kys_productCountVo;
+import com.kh.team.domain.Kys_salesVo;
 import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.KysVisitCountVo;
 import com.kh.team.domain.Kys_BoardDto;
@@ -60,6 +61,9 @@ public interface KysBoardDao {
 	
 	//배송현황 카운트
 	public int getSalesCount(Kys_BoardDto boardDto) throws Exception;
+	
+	//엑셀 추출
+	public List<Kys_salesVo> exportToExcel() throws Exception;
 	
 	
 

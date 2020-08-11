@@ -97,7 +97,14 @@ $(function(){
 							<c:if test="${i == salesDto.perPage}"> selected</c:if>
 							>${i}줄씩 보기</option>
 						</c:forEach>
-					</select>
+					</select> <input type="button" value="주문 목록 다운로드"
+						onclick="javascript:ExcelDownload();" />
+					<script type="text/javascript">
+						function ExcelDownload() {
+							console.log("클릭됨");
+							location.href = "/upload/toExcel";
+						}
+					</script>
 				</div>
 					<table class="table">
 						<thead>
