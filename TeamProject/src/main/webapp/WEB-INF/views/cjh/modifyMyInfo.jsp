@@ -150,7 +150,7 @@ $(document).ready(function() {
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 mb-0"><a href="/cjh/index">Home</a> <span class="mx-2 mb-0">/</span>
-				<a href="/cjh/mypage?u_id=${u_id}">My Page</a>  <span class="mx-2 mb-0"></span>
+				<a href="/cjh/mypage">My Page</a>  <span class="mx-2 mb-0"></span>
 			</div>
 		</div>
 	</div>
@@ -257,13 +257,6 @@ $(document).ready(function() {
 							<button id="btnCancel" type="button" class="btn btn-basic">취소</button>
 							<button id="btnModify" type="button" class="btn btn-success">정보 수정 완료</button>
 							<a id="modal-572251" href="#modal-container-572251" role="button" class="btn btn-danger" data-toggle="modal">회원탈퇴</a>
-							
-							
-			 
-			
-
-			
-
 							
 							
 						</div>
