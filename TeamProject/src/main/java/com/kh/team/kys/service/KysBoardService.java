@@ -8,6 +8,7 @@ import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.domain.Kys_productCountVo;
+import com.kh.team.domain.Kys_salesVo;
 
 
 public interface KysBoardService {
@@ -45,4 +46,6 @@ public interface KysBoardService {
 		public List<CjhCartVo> salesAll(Kys_BoardDto boardDto) throws Exception;
 		//배송현황 카운트
 		public int getSalesCount(Kys_BoardDto boardDto) throws Exception;
+		//엑셀추출
+		public List<Kys_salesVo> exportToExcel() throws Exception;
 }

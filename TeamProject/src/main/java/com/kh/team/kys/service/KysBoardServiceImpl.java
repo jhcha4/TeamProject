@@ -11,6 +11,7 @@ import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.domain.Kys_productCountVo;
+import com.kh.team.domain.Kys_salesVo;
 import com.kh.team.kys.dao.KysBoardDao;
 
 @Service
@@ -135,6 +136,12 @@ public class KysBoardServiceImpl implements KysBoardService {
 	public int getSalesCount(Kys_BoardDto boardDto) throws Exception {
 		
 		return boardDao.getSalesCount(boardDto);
+	}
+	@Override
+	public List<Kys_salesVo> exportToExcel() throws Exception {
+		List<Kys_salesVo> list = boardDao.exportToExcel();
+		System.out.println("서비스 : " +list);
+		return list;
 	}
 	
 }

@@ -20,7 +20,14 @@
 } 
 </style>  -->
 
-
+<script>
+$(document).ready(function() {
+	var msg = "${msg}";
+	if (msg == "success") {
+		alert("회원탈퇴가 완료되었습니다.");
+	}
+});
+</script>
 
 <div class="container-fluid">
 	<div class="row">

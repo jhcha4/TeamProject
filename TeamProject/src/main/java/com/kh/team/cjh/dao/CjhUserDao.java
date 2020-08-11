@@ -2,7 +2,6 @@ package com.kh.team.cjh.dao;
 
 import java.util.List;
 
-import com.kh.team.domain.CjhPointVo;
 import com.kh.team.domain.CjhUserVo;
 
 public interface CjhUserDao {
@@ -18,5 +17,11 @@ public interface CjhUserDao {
 	
 	//	내정보 수정
 	public void updateUser(CjhUserVo userVo) throws Exception;
+	
+	//	회원 탈퇴
+	public void quitUser(String u_id) throws Exception;
+	
+	//	비밀번호 확인
+	public int checkPw(String u_id, String u_pw) throws Exception;
 
 }
