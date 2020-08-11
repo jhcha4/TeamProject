@@ -259,13 +259,6 @@ $(document).ready(function() {
 							<a id="modal-572251" href="#modal-container-572251" role="button" class="btn btn-danger" data-toggle="modal">회원탈퇴</a>
 							
 							
-			 
-			
-
-			
-
-							
-							
 						</div>
 					</div>
 				</form>
