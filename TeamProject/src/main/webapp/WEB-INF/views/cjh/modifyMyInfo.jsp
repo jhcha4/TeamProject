@@ -92,12 +92,15 @@ $(document).ready(function() {
 		if (pw == "") {
 			$("#pw").css("background-color","f2f2f2");
 			$("#pw").attr("placeholder", "비밀번호를 입력해주세요.");
+			$("#pw").focus();
 		} else if (pwCheck == "") {
 			$("#pwCheck").css("background-color","f2f2f2");
 			$("#pwCheck").attr("placeholder", "비밀번호를 입력해주세요.");
+			$("#pwCheck").focus();
 		} else if (pw != pwCheck) {
 			$("#pwCheck").css("background-color","f2f2f2");
 			$("#pwCheck").attr("placeholder", "비밀번호를 확인해주세요.");
+			$("#pwCheck").focus();
 		} else {
 			location.href="/cjh/quitUser?u_pw="+pw;
 		}
@@ -111,7 +114,7 @@ $(document).ready(function() {
 	    $("#pwCheck").removeAttr("style");
 		$("#pwCheck").removeAttr("placeholder");
 	});
-	
+	 
 });
 </script>
 
