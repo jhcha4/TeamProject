@@ -182,6 +182,7 @@ public class CjhMyInfoController {
 		if (check > 0 ) {
 			userService.quitUser(u_id);
 			session.invalidate();
+			rttr.addFlashAttribute("msg", "success");
 			return "redirect:/jm/jm_login";
 		} else {
 			rttr.addFlashAttribute("msg", "fail");
