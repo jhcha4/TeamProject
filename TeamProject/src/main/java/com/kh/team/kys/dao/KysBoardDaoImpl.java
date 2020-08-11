@@ -15,6 +15,7 @@ import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.domain.Kys_productCountVo;
+import com.kh.team.domain.Kys_salesVo;
 
 
 @Repository
@@ -178,6 +179,12 @@ public class KysBoardDaoImpl implements KysBoardDao {
 			parammap.put("title_name", title_name);
 			parammap.put("p_num", p_num);
 			sqlSession.update(NAMESPACE+"updateTitleImg",parammap);				
+		}
+		//엑셀
+		@Override
+		public List<Kys_salesVo> exportToExcel() throws Exception {
+			
+			return sqlSession.selectList(NAMESPACE+"exportToExcel");
 		}
 
 	
