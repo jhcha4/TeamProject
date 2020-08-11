@@ -3,6 +3,7 @@ package com.kh.team.cjh.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -174,12 +175,19 @@ public class CjhMyInfoController {
 		model.addAttribute("pagingDto", pagingDto);
 	}
 	
-	//	적립금 페이지
-//	@RequestMapping(value="/myPoint", method = RequestMethod.GET)
-//	public void myPoint(String u_id, CjhPagingDto pagingDto, Model model) throws Exception {
-//		List<CjhPointVo> list = pointService.listPoint(u_id, pagingDto);
-//		model.addAttribute("list", list);
-//		model.addAttribute("pagingDto", pagingDto);
-//	}
+	@RequestMapping(value="/quitUser", method = RequestMethod.GET)
+	public String quitUser(HttpSession session, String u_pw, RedirectAttributes rttr) throws Exception {
+		String u_id = (String) session.getAttribute("u_id");
+		int check = userService.checkPw(u_id, u_pw);
+		if (check > 0 ) {
+			userService.quitUser(u_id);
+			session.invalidate();
+			rttr.addFlashAttribute("msg", "success");
+			return "redirect:/jm/jm_login";
+		} else {
+			rttr.addFlashAttribute("msg", "fail");
+			return "redirect:/cjh/modifyMyInfo";
+		}
+	}
 	
 }

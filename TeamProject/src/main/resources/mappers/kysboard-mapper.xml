@@ -27,6 +27,16 @@
 		insert into tbl_title_attach(title_name,p_num)
 		values (#{title_name},#{p_num})
 	</insert>
+	<update id="updateImgFile">
+		update tbl_attach set
+		file_name = #{file_name}
+		where p_num = #{p_num}
+	</update>
+	<update id="updateTitleImg">
+		update tbl_title_attach set
+		title_name = #{title_name}
+		where p_num = #{p_num}
+	</update>
 	<!-- 수정 이미지 삭제 -->
 	<delete id="fileImgDelete">
 		delete from tbl_attach
@@ -63,21 +73,21 @@
 	<!-- 상품 수정 -->
 	<update id="boardUpdate">
 	update tbl_product_board set 
-	p_name = #{p_name},
-	p_content = #{p_content},
-	p_price = #{p_price}
+		p_name = #{p_name},
+		p_content = #{p_content},
+		p_price = #{p_price}
 	where p_num = #{p_num}
 	</update>
 	<!-- 상품 삭제 컬럼추가-->
 	<update id="boardDelete">
-	   update tbl_product_board set
- 	   p_deleted  = 'D'
- 	   where p_num = #{p_num}
+		   update tbl_product_board set
+	 	  	 p_deleted  = 'D'
+	 	   where p_num = #{p_num}
 	</update>
 	<!-- 상품 게시물 복구 -->
 	<update id="boardRestoration">
 		  update tbl_product_board set
- 	 	  p_deleted  = ''
+ 	 		  p_deleted  = ''
  	 	  where p_num = #{p_num}
 	</update>
 	<!-- 게시물 완전 삭제 -->
@@ -143,25 +153,27 @@
 											or p_status = 1003 
 											or p_status = 1004 
 											or p_status = 1005
-										
 											order by p_num desc)
    				  a)
     where rnum between #{startRow} and #{endRow}
-	
 	</select>
 	<select id="getSalesCount" resultType="int">
 		select count(*) from tbl_cart
 		where p_status = 1002
-				or p_status = 1003 
+				or p_status = 1003 	
 				or p_status = 1004 
 				or p_status = 1005
-	
-	
+	</select>
+	<!-- 엑셀로 추출 -->
+	<select id="exportToExcel" resultType="Kys_salesVo">
+		select c.c_num,c.u_id,c.p_num,c.p_name,c.p_price,c.p_content,c.p_count,c.title_name,c.p_status,c.p_date,c.p_size,
+				c.p_main,c.p_serve,u.u_id,u.u_name,u.u_phone,u.u_address
+			from tbl_cart c,tbl_user u	
+			where  u.u_id =   c.u_id  and p_status = 1002
 	</select>
 	<sql id="salesSerch">
 		<if test="p_status != nul and p_status !='' ">
 					where p_status = #{p_status}
 		</if>
-		
 	</sql>
 </mapper>

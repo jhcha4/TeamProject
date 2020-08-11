@@ -45,6 +45,26 @@ $(function(){
 			}
 		});
 	});
+	$("select[name=perPage]").change(function(){
+		console.log($(this).val());
+		$("#salesAllPage > input[name=perPage]").val($(this).val());
+		$("#salesAllPage").submit();
+	});
+	//패이지 번호
+	$("a.page-link").click(function(e){
+		e.preventDefault();
+		var page = $(this).attr("href").trim();
+		$("#salesAllPage > input[name=page]").val(page);
+		$("#salesAllPage").submit();
+	});
+	//페이지 액티브
+	$("a.page-link").each(function(){
+		var page = $(this).attr("href");
+		if (page == "${boardDto.page}" ){
+			$(this).parent().addClass("active");
+			return;
+		}
+	});
 	
 });
 </script>
@@ -74,10 +94,17 @@ $(function(){
 					<select name="perPage" >
 						<c:forEach begin="5" end="50" step="5" var="i">
 						<option value="${i}" 
-							<c:if test="${i == pagingDto.perPage}"> selected</c:if>
+							<c:if test="${i == salesDto.perPage}"> selected</c:if>
 							>${i}줄씩 보기</option>
 						</c:forEach>
-					</select>
+					</select> <input type="button" value="주문 목록 다운로드"
+						onclick="javascript:ExcelDownload();" />
+					<script type="text/javascript">
+						function ExcelDownload() {
+							console.log("클릭됨");
+							location.href = "/upload/toExcel";
+						}
+					</script>
 				</div>
 					<table class="table">
 						<thead>
@@ -88,7 +115,7 @@ $(function(){
 								<th>주문 금액</th>
 								<th>주문 수량</th>
 								<th>고객</th>
-								<th>주소</th>
+								
 								<th>배송 현황</th>
 							</tr>
 						</thead>
@@ -101,7 +128,7 @@ $(function(){
 								<td>${cartVo.p_price }원</td>
 								<td>size - ${cartVo.p_size} -  ${cartVo.p_count }개</td>
 								<td>${cartVo.u_id }</td>
-								<td>주소</td>
+								
 								<td>
 									<input type="hidden" name="u_id" value="${cartVo.u_id}">
 									<input type="hidden" name="p_num" value="${cartVo.p_num}">
@@ -131,20 +158,20 @@ $(function(){
 			<nav class="pagination-sm">
 				<ul class="pagination">
 					<!-- 이전 -->
-					<c:if test="${boardDto.startPage != 1}">
+					<c:if test="${salesDto.startPage != 1}">
 						<li class="page-item"><a class="page-link"
-							href="${boardDto.startPage -1}">Previous</a></li>
+							href="${salesDto.startPage -1}">Previous</a></li>
 					</c:if>
 					<!-- 페이지 번호 -->
-					<c:forEach begin="${boardDto.startPage}" end="${boardDto.endPage}"
+					<c:forEach begin="${salesDto.startPage}" end="${salesDto.endPage}"
 						var="v">
 						<li class="page-item"><a class="page-link" href="${v}">${v}</a>
 						</li>
 					</c:forEach>
 					<!-- 다음 -->
-					<c:if test="${boardDto.endPage < boardDto.totalPage}">
+					<c:if test="${salesDto.endPage < salesDto.totalPage}">
 						<li class="page-item"><a class="page-link"
-							href="${boardDto.endPage +1}">Next</a></li>
+							href="${salesDto.endPage +1}">Next</a></li>
 					</c:if>
 
 				</ul>

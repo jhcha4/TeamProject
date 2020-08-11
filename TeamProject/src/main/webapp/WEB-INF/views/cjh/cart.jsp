@@ -77,6 +77,7 @@ $(document).ready(function() {
 			alert("삭제할 항목을 체크해주세요");
 		}
 		
+		
 
 
 
@@ -99,6 +100,7 @@ $(document).ready(function() {
 // 			}
 // 		});
 	});
+	
 });
 </script>
 
@@ -160,7 +162,7 @@ $(document).ready(function() {
 <!-- 												<div class="input-group-prepend"> -->
 <!-- 													<button name="btnminus" class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button> -->
 <!-- 												</div> -->
-												<input name="p_count" type="number" min="1" class="form-control text-center" value="${item.p_count}">
+												<input name="p_count" type="number" min="1" max="100" class="form-control text-center" value="${item.p_count}">
 <!-- 												<div class="input-group-append"> -->
 <!-- 													<button name="btnplus" class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button> -->
 <!-- 												</div> -->

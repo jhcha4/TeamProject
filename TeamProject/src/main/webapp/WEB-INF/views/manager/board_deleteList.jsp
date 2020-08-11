@@ -97,7 +97,6 @@ $(function() {
 	color : yellow;
 }
 </style>
-${deleteListDto}
 
 <div class="row">
 	<div class="col-md-2"></div>

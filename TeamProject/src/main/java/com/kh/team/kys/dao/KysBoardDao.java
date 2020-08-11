@@ -5,6 +5,7 @@ import java.util.List;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.domain.Kys_productCountVo;
+import com.kh.team.domain.Kys_salesVo;
 import com.kh.team.domain.CjhCartVo;
 import com.kh.team.domain.KysVisitCountVo;
 import com.kh.team.domain.Kys_BoardDto;
@@ -41,6 +42,10 @@ public interface KysBoardDao {
 	//이미지 파일 저장
 	public void imgFile(String file_name,int p_num) throws Exception;
 	public void titleImgFile(String title_name,int p_num) throws Exception;
+	//이미지 파일 수정
+	public void updateImgFile(String file_name,int p_num) throws Exception;
+	public void updateTitleImg(String title_name,int p_num) throws Exception;
+	
 	//이미지 보기
 	public List<Kys_ImgVo> imgSelectBy(int p_num) throws Exception;
 	//이미지 삭제
@@ -56,6 +61,9 @@ public interface KysBoardDao {
 	
 	//배송현황 카운트
 	public int getSalesCount(Kys_BoardDto boardDto) throws Exception;
+	
+	//엑셀 추출
+	public List<Kys_salesVo> exportToExcel() throws Exception;
 	
 	
 

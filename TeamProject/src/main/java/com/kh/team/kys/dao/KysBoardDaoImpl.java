@@ -15,6 +15,7 @@ import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.domain.Kys_productCountVo;
+import com.kh.team.domain.Kys_salesVo;
 
 
 @Repository
@@ -162,6 +163,28 @@ public class KysBoardDaoImpl implements KysBoardDao {
 		public int getSalesCount(Kys_BoardDto boardDto) throws Exception {
 			
 			return sqlSession.selectOne(NAMESPACE+"getSalesCount",boardDto);
+		}
+
+		@Override
+		public void updateImgFile(String file_name, int p_num) throws Exception {
+			Map<String,Object> parammap = new HashMap<>();
+			parammap.put("file_name", file_name);
+			parammap.put("p_num", p_num);
+			sqlSession.update(NAMESPACE+"updateImgFile",parammap);			
+		}
+
+		@Override
+		public void updateTitleImg(String title_name, int p_num) throws Exception {
+			Map<String,Object> parammap = new HashMap<>();
+			parammap.put("title_name", title_name);
+			parammap.put("p_num", p_num);
+			sqlSession.update(NAMESPACE+"updateTitleImg",parammap);				
+		}
+		//엑셀
+		@Override
+		public List<Kys_salesVo> exportToExcel() throws Exception {
+			
+			return sqlSession.selectList(NAMESPACE+"exportToExcel");
 		}
 
 	

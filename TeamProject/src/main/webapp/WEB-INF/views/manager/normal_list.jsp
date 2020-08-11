@@ -80,7 +80,7 @@ $(function() {
 	color : yellow;
 }
 </style>
-${boardDto}
+
 <div id="div"></div>
 <div class="row">
 	<div class="col-md-2"></div>
@@ -146,7 +146,7 @@ ${boardDto}
 							<td><a type="button" class="btn btn-sm btn-warning"
 								href="/manager/oenSelect?p_num=${BoardVo.p_num}">수정</a></td>
 							<td><a type="button" class="btn btn-sm btn-danger"
-								 id="btnDelete" name="btnDelete" data-p_num="${BoardVo.p_num}">삭제</a></td>
+								 id="btnDelete" name="btnDelete" data-p_num="${BoardVo.p_num}">비공개</a></td>
 						</tr>
 						
 					</c:forEach>

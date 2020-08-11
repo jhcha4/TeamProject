@@ -11,6 +11,7 @@ import com.kh.team.domain.Kys_BoardDto;
 import com.kh.team.domain.Kys_BoardVo;
 import com.kh.team.domain.Kys_ImgVo;
 import com.kh.team.domain.Kys_productCountVo;
+import com.kh.team.domain.Kys_salesVo;
 import com.kh.team.kys.dao.KysBoardDao;
 
 @Service
@@ -40,7 +41,7 @@ public class KysBoardServiceImpl implements KysBoardService {
 		System.out.println("boardVo insert : "+boardVo);
 		String[] p = null;
 		p = boardVo.getP_size();
-		System.out.println("p:" + p);
+		
 		if ( p !=null || !p.equals("")) {
 		for(int i = 0 ; i < p.length ; i++ ) {
 			String[] p_size = boardVo.getP_size();
@@ -57,20 +58,17 @@ public class KysBoardServiceImpl implements KysBoardService {
 		int p_num = boardVo.getP_num();
 		boardDao.boardUpdate(boardVo);
 		String title_name = boardVo.getTitle_name();
-		System.out.println("update / service / title :"+title_name);
-		boardDao.titleImgFile(title_name, p_num);
-	
-		String[] files = boardVo.getP_files();
-		System.out.println("update / service / file : "+files);
-		if(files != null || !files.equals("")) {
-			
+		System.out.println("update / service / vo :"+boardVo);
+		boardDao.updateTitleImg(title_name, p_num);
+		String[] files = null;
+		files = boardVo.getP_files();
+		
+		if(files != null) {
 			for (String file_name : files) {
 				boardDao.imgFile(file_name, p_num);
-			return;	
+				return;
+			}
 		}
-			return;	
-	}
-		return;	
 	}
 
 	@Override
@@ -138,6 +136,12 @@ public class KysBoardServiceImpl implements KysBoardService {
 	public int getSalesCount(Kys_BoardDto boardDto) throws Exception {
 		
 		return boardDao.getSalesCount(boardDto);
+	}
+	@Override
+	public List<Kys_salesVo> exportToExcel() throws Exception {
+		List<Kys_salesVo> list = boardDao.exportToExcel();
+		System.out.println("서비스 : " +list);
+		return list;
 	}
 	
 }
