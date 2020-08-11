@@ -96,7 +96,7 @@ public class UploadController {
 		Map<String,Object> param = new HashMap<>();
 		List<Kys_salesVo> list = boardService.exportToExcel();
 		result.addObject("list",list);
-		System.out.println("엑셀:"+list);
+//		System.out.println("엑셀:"+list);
 		Calendar now = new GregorianCalendar();
 		int year = now.get(Calendar.YEAR);
 		int month = now.get(Calendar.MONTH)+1;

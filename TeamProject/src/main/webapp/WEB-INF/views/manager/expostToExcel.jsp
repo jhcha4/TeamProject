@@ -21,6 +21,8 @@ response.setHeader("Content-Disposition","inline;filename=monitoring"+filename+"
 		<th>주문 금액</th>
 		<th>주문 수량</th>
 		<th>고객</th>
+		<th>주소</th>
+		<th>전화번호</th>
 	</tr>
 	<c:forEach items="${list}" var="cartVo">
 	<tr>

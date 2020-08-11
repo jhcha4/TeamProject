@@ -160,13 +160,13 @@
 	<select id="getSalesCount" resultType="int">
 		select count(*) from tbl_cart
 		where p_status = 1002
-				or p_status = 1003 
+				or p_status = 1003 	
 				or p_status = 1004 
 				or p_status = 1005
 	</select>
 	<!-- 엑셀로 추출 -->
 	<select id="exportToExcel" resultType="Kys_salesVo">
-		select c.u_id,c.p_num,c.p_name,c.p_price,c.p_content,c.p_count,c.title_name,c.p_status,c.p_date,c.p_size,
+		select c.c_num,c.u_id,c.p_num,c.p_name,c.p_price,c.p_content,c.p_count,c.title_name,c.p_status,c.p_date,c.p_size,
 				c.p_main,c.p_serve,u.u_id,u.u_name,u.u_phone,u.u_address
 			from tbl_cart c,tbl_user u	
 			where  u.u_id =   c.u_id  and p_status = 1002
