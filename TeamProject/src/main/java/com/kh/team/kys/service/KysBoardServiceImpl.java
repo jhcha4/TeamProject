@@ -62,9 +62,10 @@ public class KysBoardServiceImpl implements KysBoardService {
 		String[] files = null;
 		files = boardVo.getP_files();
 		
-		if(files != null || !files.equals("")) {
+		if(files != null) {
 			for (String file_name : files) {
 				boardDao.imgFile(file_name, p_num);
+				return;
 			}
 		}
 	}

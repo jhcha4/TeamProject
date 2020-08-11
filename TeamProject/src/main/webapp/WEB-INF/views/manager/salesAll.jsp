@@ -68,7 +68,7 @@ $(function(){
 	
 });
 </script>
-${salesDto} 
+
 <div class="col-md-12">
 			
 				
