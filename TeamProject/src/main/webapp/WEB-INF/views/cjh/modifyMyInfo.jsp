@@ -57,6 +57,10 @@
 
 <script>
 $(document).ready(function() {
+	var msg = "${msg}";
+	if (msg == "fail") {
+		alert("비밀번호가 올바르지 않습니다.");
+	}
 	$("#btnModify").click(function(e) {
 		e.preventDefault();
 		var u_pw = $("#u_pw").val();
@@ -81,8 +85,62 @@ $(document).ready(function() {
 	$("#btnCancel").click(function() {
 		location.href="/cjh/mypage";
 	});
+	
+	$("#btnQuit").click(function() {
+		var pw = $("#pw").val();
+		var pwCheck = $("#pwCheck").val();
+		if (pw == "") {
+			$("#pw").css("background-color","f2f2f2");
+			$("#pw").attr("placeholder", "비밀번호를 입력해주세요.");
+		} else if (pwCheck == "") {
+			$("#pwCheck").css("background-color","f2f2f2");
+			$("#pwCheck").attr("placeholder", "비밀번호를 입력해주세요.");
+		} else if (pw != pwCheck) {
+			$("#pwCheck").css("background-color","f2f2f2");
+			$("#pwCheck").attr("placeholder", "비밀번호를 확인해주세요.");
+		} else {
+			location.href="/cjh/quitUser?u_pw="+pw;
+		}
+	});
+	
+	$('.modal').on('hidden.bs.modal', function (e) {
+	    $("#pw").val("");
+	    $("#pwCheck").val("");
+	    $("#pw").removeAttr("style");
+		$("#pw").removeAttr("placeholder");
+	    $("#pwCheck").removeAttr("style");
+		$("#pwCheck").removeAttr("placeholder");
+	});
+	
 });
 </script>
+
+<div class="modal fade" id="modal-container-572251" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="myModalLabel">
+					비밀번호 확인
+				</h5> 
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body" id="pw1">비밀번호 <input type="password" class="form-control" id="pw"/></div>
+			
+			<div class="modal-body" id="pwCheck1">비밀번호 확인 <input type="password" class="form-control" id="pwCheck"/></div>
+			
+			<div> - 현재 페이지의 [회원탈퇴] 버튼을 누르시면 회원 탈퇴가 완료됩니다.</div>
+			<div> - 비밀번호를 정확히 입력해주세요.</div>
+			<div> - 회원탈퇴후 계정복구가 불가능합니다.</div>
+			<div class="modal-footer">
+				<button type="button" id="btnQuit" class="btn btn-danger">
+					회원 탈퇴
+				</button> 
+			</div>
+		</div>
+	</div>
+</div>
 
 
 <div class="bg-light py-3">
@@ -194,7 +252,17 @@ $(document).ready(function() {
 								</table>
 							</div>
 							<button id="btnCancel" type="button" class="btn btn-basic">취소</button>
-							<button id="btnModify" type="button" class="btn btn-default">정보 수정 완료</button>
+							<button id="btnModify" type="button" class="btn btn-success">정보 수정 완료</button>
+							<a id="modal-572251" href="#modal-container-572251" role="button" class="btn btn-danger" data-toggle="modal">회원탈퇴</a>
+							
+							
+			 
+			
+
+			
+
+							
+							
 						</div>
 					</div>
 				</form>
