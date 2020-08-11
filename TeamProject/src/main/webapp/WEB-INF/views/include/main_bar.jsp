@@ -36,6 +36,7 @@
 				<button class="btn btn-secondary" type="button"><a href="/manager/shop_single_input">상품 등록</a></button>
 				<button class="btn btn-secondary" type="button"><a href="/manager/normal_list">상품리스트</a></button>
 				<button class="btn btn-secondary" type="button"><a href="/jm/jm_userList">유저리스트</a></button>
+				<button class="btn btn-secondary" type="button"><a href="/jm/jm_contact">Q&A</a></button>
 				<button class="btn btn-secondary" type="button"><a href="/manager/board_deleteList">삭제된 상품</a></button>
 			</div>
 			<div class="row">
